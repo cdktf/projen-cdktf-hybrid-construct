@@ -33,9 +33,5 @@ project.addTask("buildExample", {
   exec: "yarn projen && yarn && yarn build",
   cwd: path.resolve(__dirname, "example"),
 });
-project.buildWorkflow.addPostBuildSteps({
-  id: "build-example",
-  name: "Build Example",
-  run: "yarn buildExample",
-});
+
 project.synth();

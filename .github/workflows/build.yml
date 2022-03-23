@@ -23,9 +23,6 @@ jobs:
         run: yarn install --check-files
       - name: build
         run: npx projen build
-      - id: build-example
-        name: Build Example
-        run: yarn buildExample
       - id: self_mutation
         name: Find mutations
         run: |-
