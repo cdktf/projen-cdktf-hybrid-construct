@@ -24,4 +24,5 @@ const project = new typescript.TypeScriptProject({
     allowedUsernames: ["DanielMSchmidt", "github-bot"],
   },
 });
+project.tsconfig.exclude.push("src/exampleCode/**");
 project.synth();

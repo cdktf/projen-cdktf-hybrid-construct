@@ -31,9 +31,10 @@ project.synth();
 
 ### Roadmap
 
+- [x] Add dedicated file for HCL templates
 - [ ] Add example folder
-- [ ] Add dedicated file for HCL templates
-- [ ] Remove release process inherited from the JSII project
+- [ ] [Auto-generate parts of the docs](https://github.com/terraform-aws-modules/terraform-aws-eks/blob/e90c877a741ab3cc4215376a70f7bcc360b6a3d2/.github/workflows/pre-commit.yml)
 - [ ] Add deployment scripts to Artifactory
 - [ ] Add deployment scripts to Github Packages
 - [ ] Add construct for managing multiple repos like this
+- [ ] Add option to manager projen template to bootstrap cdktf app that deploys Artifactory?
