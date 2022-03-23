@@ -14,7 +14,11 @@ describe("HybridModule", () => {
 
     const out = synthSnapshot(project);
 
+    const ignoredFiles = [".projen/tasks.json"];
     Object.entries(out).forEach(([path, content]) => {
+      if (ignoredFiles.some((file) => path.indexOf(file) !== -1)) {
+        return;
+      }
       expect(content).toMatchSnapshot(path);
     });
   });
