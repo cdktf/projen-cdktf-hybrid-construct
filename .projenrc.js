@@ -1,12 +1,27 @@
-const { typescript } = require('projen');
+const { typescript } = require("projen");
+const { NpmAccess } = require("projen/lib/javascript");
+const name = "projen-cdktf-hybrid-construct";
 const project = new typescript.TypeScriptProject({
-  defaultReleaseBranch: 'main',
-  name: 'projen-cdktf-hybrid-construct',
+  defaultReleaseBranch: "main",
+  name,
+  packageName: name,
+  prettier: true,
+  description:
+    "Projen template for CDKTF Constructs that should also be used as Terraform Modules.",
+  license: "MIT",
+  copyrightOwner: "Daniel Schmidt",
 
-  // deps: [],                /* Runtime dependencies of this module. */
-  // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
+  deps: ["projen"],
   // devDeps: [],             /* Build dependencies for this module. */
-  // packageName: undefined,  /* The "name" in package.json. */
-  // release: undefined,      /* Add release management to this project. */
+
+  release: true,
+  releaseToNpm: true,
+  npmAccess: NpmAccess.PUBLIC,
+  autoApproveUpgrades: true,
+  autoApproveProjenUpgrades: true,
+  autoApproveOptions: {
+    label: "auto-approve",
+    allowedUsernames: ["DanielMSchmidt", "github-bot"],
+  },
 });
 project.synth();
