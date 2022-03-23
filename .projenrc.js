@@ -1,5 +1,7 @@
+const path = require("path");
 const { typescript } = require("projen");
 const { NpmAccess } = require("projen/lib/javascript");
+
 const name = "projen-cdktf-hybrid-construct";
 const project = new typescript.TypeScriptProject({
   defaultReleaseBranch: "main",
@@ -12,7 +14,7 @@ const project = new typescript.TypeScriptProject({
   copyrightOwner: "Daniel Schmidt",
 
   deps: ["projen"],
-  // devDeps: [],             /* Build dependencies for this module. */
+  devDeps: ["fs-extra", "glob", "@types/fs-extra", "@types/glob"],
 
   release: true,
   releaseToNpm: true,
@@ -25,4 +27,15 @@ const project = new typescript.TypeScriptProject({
   },
 });
 project.tsconfig.exclude.push("src/exampleCode/**");
+project.tsconfig.exclude.push("example/**");
+
+project.addTask("buildExample", {
+  exec: "yarn projen && yarn && yarn build",
+  cwd: path.resolve(__dirname, "example"),
+});
+project.buildWorkflow.addPostBuildSteps({
+  id: "build-example",
+  name: "Build Example",
+  run: "yarn buildExample",
+});
 project.synth();

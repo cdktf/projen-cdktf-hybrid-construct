@@ -3,6 +3,7 @@
   "description": "Projen template for CDKTF Constructs that should also be used as Terraform Modules.",
   "scripts": {
     "build": "npx projen build",
+    "buildExample": "npx projen buildExample",
     "bump": "npx projen bump",
     "clobber": "npx projen clobber",
     "compile": "npx projen compile",
@@ -24,6 +25,8 @@
     "projen": "npx projen"
   },
   "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/glob": "^7.2.0",
     "@types/jest": "^27.4.1",
     "@types/node": "^12",
     "@typescript-eslint/eslint-plugin": "^5",
@@ -34,6 +37,8 @@
     "eslint-import-resolver-typescript": "^2.5.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-prettier": "^4.0.0",
+    "fs-extra": "^10.0.1",
+    "glob": "^7.2.0",
     "jest": "^27.5.1",
     "jest-junit": "^13",
     "json-schema": "^0.4.0",
