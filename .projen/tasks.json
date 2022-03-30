@@ -31,7 +31,7 @@
           "exec": "yarn projen && yarn && yarn build"
         }
       ],
-      "cwd": "/Users/danielschmidt/work/cdktf-hybrid-modules/projen-cdktf-hybrid-construct/example"
+      "cwd": "./example"
     },
     "bump": {
       "name": "bump",

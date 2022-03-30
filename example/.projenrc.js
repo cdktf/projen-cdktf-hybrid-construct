@@ -7,6 +7,6 @@ const project = new HybridModule({
   defaultReleaseBranch: "main",
   authorAddress: "danielmschmidt92@gmail.com",
   repositoryUrl: "github.com/DanielMSchmidt/my-module",
-  outdir: __dirname,
+  outdir: ".",
 });
 project.synth();

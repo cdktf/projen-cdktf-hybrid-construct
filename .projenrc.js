@@ -31,7 +31,7 @@ project.tsconfig.exclude.push("example/**");
 
 project.addTask("buildExample", {
   exec: "yarn projen && yarn && yarn build",
-  cwd: path.resolve(__dirname, "example"),
+  cwd: "./example",
 });
 
 project.synth();
