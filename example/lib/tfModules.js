@@ -1,0 +1,20 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const cdktf_1 = require("cdktf");
+const cdktf_tf_module_stack_1 = require("cdktf-tf-module-stack");
+const index_1 = require("./index");
+class MyAwesomeModule extends cdktf_tf_module_stack_1.TFModuleStack {
+    constructor(scope, id) {
+        super(scope, id);
+        new index_1.MyConstruct(this, "my-construct", {
+            propertyA: "valueA",
+        });
+    }
+}
+const app = new cdktf_1.App();
+// This is the name the module can be found under. 
+// We expect a "my-awesome-module.md" file in this directory.
+// The README.md file will be generated from this file.
+new MyAwesomeModule(app, "my-awesome-module");
+app.synth();
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidGZNb2R1bGVzLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vc3JjL3RmTW9kdWxlcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLGlDQUE0QjtBQUU1QixpRUFBc0Q7QUFDdEQsbUNBQXNDO0FBRXRDLE1BQU0sZUFBZ0IsU0FBUSxxQ0FBYTtJQUN6QyxZQUFZLEtBQWdCLEVBQUUsRUFBVTtRQUN0QyxLQUFLLENBQUMsS0FBSyxFQUFFLEVBQUUsQ0FBQyxDQUFDO1FBRWpCLElBQUksbUJBQVcsQ0FBQyxJQUFJLEVBQUUsY0FBYyxFQUFFO1lBQ3BDLFNBQVMsRUFBRSxRQUFRO1NBQ3BCLENBQUMsQ0FBQztJQUNMLENBQUM7Q0FDRjtBQUVELE1BQU0sR0FBRyxHQUFHLElBQUksV0FBRyxFQUFFLENBQUM7QUFDdEIsbURBQW1EO0FBQ25ELDZEQUE2RDtBQUM3RCx1REFBdUQ7QUFDdkQsSUFBSSxlQUFlLENBQUMsR0FBRyxFQUFFLG1CQUFtQixDQUFDLENBQUM7QUFDOUMsR0FBRyxDQUFDLEtBQUssRUFBRSxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQXBwIH0gZnJvbSBcImNka3RmXCI7XG5pbXBvcnQgeyBDb25zdHJ1Y3QgfSBmcm9tIFwiY29uc3RydWN0c1wiO1xuaW1wb3J0IHsgVEZNb2R1bGVTdGFjayB9IGZyb20gXCJjZGt0Zi10Zi1tb2R1bGUtc3RhY2tcIjtcbmltcG9ydCB7IE15Q29uc3RydWN0IH0gZnJvbSBcIi4vaW5kZXhcIjtcblxuY2xhc3MgTXlBd2Vzb21lTW9kdWxlIGV4dGVuZHMgVEZNb2R1bGVTdGFjayB7XG4gIGNvbnN0cnVjdG9yKHNjb3BlOiBDb25zdHJ1Y3QsIGlkOiBzdHJpbmcpIHtcbiAgICBzdXBlcihzY29wZSwgaWQpO1xuXG4gICAgbmV3IE15Q29uc3RydWN0KHRoaXMsIFwibXktY29uc3RydWN0XCIsIHtcbiAgICAgIHByb3BlcnR5QTogXCJ2YWx1ZUFcIixcbiAgICB9KTtcbiAgfVxufVxuXG5jb25zdCBhcHAgPSBuZXcgQXBwKCk7XG4vLyBUaGlzIGlzIHRoZSBuYW1lIHRoZSBtb2R1bGUgY2FuIGJlIGZvdW5kIHVuZGVyLiBcbi8vIFdlIGV4cGVjdCBhIFwibXktYXdlc29tZS1tb2R1bGUubWRcIiBmaWxlIGluIHRoaXMgZGlyZWN0b3J5LlxuLy8gVGhlIFJFQURNRS5tZCBmaWxlIHdpbGwgYmUgZ2VuZXJhdGVkIGZyb20gdGhpcyBmaWxlLlxubmV3IE15QXdlc29tZU1vZHVsZShhcHAsIFwibXktYXdlc29tZS1tb2R1bGVcIik7XG5hcHAuc3ludGgoKTsiXX0=
