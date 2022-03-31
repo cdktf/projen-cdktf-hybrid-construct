@@ -18,6 +18,8 @@ Object {
     "node_modules/",
     "*.generated.ts",
     "coverage",
+    "!.projenrc.ts",
+    "!projenrc/**/*.ts",
   ],
   "overrides": Array [
     Object {
@@ -80,6 +82,8 @@ Object {
         "devDependencies": Array [
           "**/test/**",
           "**/build-tools/**",
+          ".projenrc.ts",
+          "projenrc/**/*.ts",
         ],
         "optionalDependencies": false,
         "peerDependencies": true,
@@ -1115,6 +1119,8 @@ Object {
     ".projenrc.js",
     "src/**/*.ts",
     "test/**/*.ts",
+    ".projenrc.ts",
+    "projenrc/**/*.ts",
   ],
 }
 `;

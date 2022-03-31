@@ -10,6 +10,7 @@ type HybridModuleOptions = ConstructLibraryOptions & {
 
 const defaults = {
   prettier: true,
+  projenrcTs: true,
   defaultReleaseBranch: "main",
 };
 
