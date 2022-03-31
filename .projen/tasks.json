@@ -96,7 +96,7 @@
       "description": "Synthesize project files",
       "steps": [
         {
-          "exec": "node .projenrc.js"
+          "exec": "ts-node --project tsconfig.dev.json .projenrc.ts"
         }
       ]
     },
@@ -244,7 +244,7 @@
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @types/fs-extra @types/glob @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint fs-extra glob jest jest-junit json-schema npm-check-updates prettier standard-version ts-jest typescript"
+          "exec": "yarn upgrade @types/fs-extra @types/glob @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint fs-extra glob jest jest-junit json-schema npm-check-updates prettier standard-version ts-jest ts-node typescript"
         },
         {
           "exec": "npx projen"

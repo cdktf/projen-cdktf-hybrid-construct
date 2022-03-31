@@ -1,6 +1,5 @@
-const path = require("path");
-const { typescript } = require("projen");
-const { NpmAccess } = require("projen/lib/javascript");
+import { typescript } from "projen";
+import { NpmAccess } from "projen/lib/javascript";
 
 const name = "projen-cdktf-hybrid-construct";
 const project = new typescript.TypeScriptProject({
@@ -8,6 +7,7 @@ const project = new typescript.TypeScriptProject({
   name,
   packageName: name,
   prettier: true,
+  projenrcTs: true,
   description:
     "Projen template for CDKTF Constructs that should also be used as Terraform Modules.",
   license: "MIT",
@@ -26,8 +26,8 @@ const project = new typescript.TypeScriptProject({
     allowedUsernames: ["DanielMSchmidt", "github-bot"],
   },
 });
-project.tsconfig.exclude.push("src/exampleCode/**");
-project.tsconfig.exclude.push("example/**");
+project.tsconfig?.exclude?.push("src/exampleCode/**");
+project.tsconfig?.exclude?.push("example/**");
 
 project.addTask("buildExample", {
   exec: "yarn projen && yarn && yarn build",
