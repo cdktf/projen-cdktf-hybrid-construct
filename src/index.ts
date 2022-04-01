@@ -10,7 +10,6 @@ type HybridModuleOptions = ConstructLibraryOptions & {
   terraformAwsRegion: string;
 };
 
-
 const defaults = {
   prettier: true,
   projenrcTs: true,
