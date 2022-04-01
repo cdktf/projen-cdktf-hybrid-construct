@@ -1034,10 +1034,10 @@ exports[`HybridModule snapshot: scripts/tf-module-test.sh 1`] = `
 # This script is created by projen, do not edit it directly.
 set -e
 
+terraform -chdir=terraform init --upgrade
 terraform -chdir=terraform fmt
 terraform -chdir=terraform validate
-terraform -chdir=terraform init --upgrade
-terraform -chdir=terraform plan -chdir=terraform
+terraform -chdir=terraform plan     
         "
 `;
 
@@ -1097,7 +1097,7 @@ class MyAwesomeModule extends TFModuleStack {
 }
 
 const app = new App();
-// This is the name the module can be found under.
+// This is the name the module can be found under. 
 // We expect a \\"my-awesome-module.md\\" file in this directory.
 // The README.md file will be generated from this file.
 new MyAwesomeModule(app, \\"my-awesome-module\\");

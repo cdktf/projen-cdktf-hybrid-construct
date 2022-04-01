@@ -25,7 +25,7 @@ const project = new typescript.TypeScriptProject({
     label: "auto-approve",
     allowedUsernames: ["DanielMSchmidt", "github-bot"],
   },
-  gitignore: [".idea/"]
+  gitignore: [".idea/"],
 });
 project.tsconfig?.exclude?.push("src/exampleCode/**");
 project.tsconfig?.exclude?.push("example/**");
