@@ -1,5 +1,6 @@
 {
   "files": [
+    "./scripts/tf-module-test.sh",
     ".eslintrc.json",
     ".gitattributes",
     ".github/pull_request_template.md",

@@ -54,5 +54,8 @@ tsconfig.json
 src/.gen
 src/cdktf.out
 src/modules
+terraform/.terraform
+terraform/.terraform.lock.hcl
 !/scripts/copy-modules.sh
+!/./scripts/tf-module-test.sh
 !/.github/workflows/upgrade-main.yml

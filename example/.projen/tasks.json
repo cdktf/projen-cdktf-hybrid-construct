@@ -101,6 +101,9 @@
         {
           "exec": "./scripts/copy-modules.sh",
           "name": "Copy HCL Modules"
+        },
+        {
+          "exec": "./scripts/tf-module-test.sh"
         }
       ]
     },
@@ -109,7 +112,7 @@
       "description": "Synthesize project files",
       "steps": [
         {
-          "exec": "node .projenrc.js"
+          "exec": "ts-node --project tsconfig.dev.json .projenrc.ts"
         }
       ]
     },
@@ -220,6 +223,9 @@
         },
         {
           "spawn": "eslint"
+        },
+        {
+          "exec": "./scripts/tf-module-test.sh"
         }
       ]
     },

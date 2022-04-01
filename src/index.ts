@@ -6,6 +6,8 @@ type HybridModuleOptions = ConstructLibraryOptions & {
   constructVersion?: string;
   repository: string;
   author: string;
+  terraformExamplesFolder: string;
+  terraformAwsRegion: string;
 };
 
 const defaults = {
@@ -52,6 +54,36 @@ new MyAwesomeModule(app, "my-awesome-module");
 app.synth();
 `;
 
+const terraformMainSrcCode = `
+terraform {
+  # Limit provider version (some modules are not compatible with aws 4.x)
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.74"
+    }
+  }
+  # Terraform binary version constraint
+  required_version = "~> 1.1.0"
+}
+
+
+provider "aws" {
+  region = "__REGION__"
+}
+`;
+
+const terraformReadmeDocs = `
+# Please add here some pure HCL tests for your modules in order to test HCL Interoperability
+
+Examples:
+
+module "my_awesome_test" {
+  source = "../modules/my-awesome-modules"
+  ...variables...
+}
+    `;
+
 class ScriptFile extends FileBase {
   constructor(project: Project, path: string, private content: string) {
     super(project, path, {
@@ -73,6 +105,7 @@ export class HybridModule extends ConstructLibrary {
     this.addPeerDeps(`constructs@${constructVersion}`, `cdktf@${cdktfVersion}`);
     this.addDevDeps(`cdktf-cli@${cdktfVersion}`, "ts-node");
     this.addKeywords("cdktf", "cdktf-hybrid");
+    this.setScript("terraform:test", "./scripts/tf-module-test.sh");
 
     // Module Entrypoint
     this.addDeps("cdktf-tf-module-stack");
@@ -113,7 +146,20 @@ module "eks_managed_node_group" {
       },
     });
 
+    new SampleDir(this, config.terraformExamplesFolder, {
+      files: {
+        "main.tf": terraformMainSrcCode
+          .trim()
+          .replace("__REGION__", config.terraformAwsRegion),
+        "README.md": terraformReadmeDocs.trim(),
+      },
+    });
+
     this.gitignore.addPatterns("src/.gen", "src/cdktf.out", "src/modules");
+    this.gitignore.addPatterns(
+      `${config.terraformExamplesFolder}/.terraform`,
+      `${config.terraformExamplesFolder}/.terraform.lock.hcl`
+    );
     this.compileTask.prependExec("cdktf get", {
       cwd: this.srcdir,
     });
@@ -175,5 +221,23 @@ done
 
     // ignore dist in tests
     this.jest?.addIgnorePattern("dist");
+
+    new ScriptFile(
+      this,
+      "./scripts/tf-module-test.sh",
+      `
+#!/bin/bash
+# This script is created by projen, do not edit it directly.
+set -e
+
+terraform -chdir=terraform init --upgrade
+terraform -chdir=terraform fmt
+terraform -chdir=terraform validate
+terraform -chdir=terraform plan     
+        `
+    );
+
+    this.testTask.exec("./scripts/tf-module-test.sh");
+    this.jest?.addIgnorePattern("terraform");
   }
 }

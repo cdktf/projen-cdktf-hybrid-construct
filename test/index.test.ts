@@ -10,6 +10,8 @@ describe("HybridModule", () => {
       defaultReleaseBranch: "main",
       authorAddress: "danielmschmidt92@gmail.com",
       repositoryUrl: "github.com/DanielMSchmidt/my-module",
+      terraformAwsRegion: "eu-west-1",
+      terraformExamplesFolder: "terraform",
     });
 
     const out = synthSnapshot(project);
