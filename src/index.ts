@@ -9,6 +9,7 @@ type TerraformProviderAwsConfig = {
 type TerraformProviderAzureConfig = {
   location: string;
   requiredProviderVersion: string;
+  resourceGroupName: string;
 };
 
 type HybridModuleOptions = ConstructLibraryOptions & {
@@ -103,7 +104,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "myTFResourceGroup"
+  name     = "__resourceGroupName__"
   location = "__location__"
 }
 `;
