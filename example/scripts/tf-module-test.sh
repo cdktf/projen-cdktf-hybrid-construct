@@ -6,5 +6,5 @@ set -e
 terraform -chdir=terraform init --upgrade
 terraform -chdir=terraform fmt
 terraform -chdir=terraform validate
-terraform -chdir=terraform plan
+terraform -chdir=terraform plan     
         

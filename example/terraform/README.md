@@ -3,6 +3,6 @@
 Examples:
 
 module "my_awesome_test" {
-  source = "../cdktf.out/stacks/my-awesome-modules"
+  source = "../modules/my-awesome-modules"
   ...variables...
 }

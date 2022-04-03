@@ -1,4 +1,4 @@
-import { HybridModule} from "../lib";
+import { HybridModule } from "../lib";
 
 const project = new HybridModule({
   name: "my-module",
@@ -8,7 +8,11 @@ const project = new HybridModule({
   authorAddress: "danielmschmidt92@gmail.com",
   repositoryUrl: "github.com/DanielMSchmidt/my-module",
   outdir: ".",
-  terraformAwsRegion: "eu-west-1",
   terraformExamplesFolder: "terraform",
+  terraformProvider: "aws",
+  terraformProviderAwsConfig: {
+    region: "eu-central-1",
+    requiredProviderVersion: "3.74",
+  },
 });
 project.synth();

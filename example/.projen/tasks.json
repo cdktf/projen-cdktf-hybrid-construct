@@ -101,9 +101,6 @@
         {
           "exec": "./scripts/copy-modules.sh",
           "name": "Copy HCL Modules"
-        },
-        {
-          "exec": "./scripts/tf-module-test.sh"
         }
       ]
     },

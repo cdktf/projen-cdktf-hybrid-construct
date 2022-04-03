@@ -1,13 +1,25 @@
 import { FileBase, IResolver, Project, SampleDir } from "projen";
 import { ConstructLibrary, ConstructLibraryOptions } from "projen/lib/cdk";
 
+type TerraformProviderAwsConfig = {
+  region: string;
+  requiredProviderVersion: string;
+};
+
+type TerraformProviderAzureConfig = {
+  location: string;
+  requiredProviderVersion: string;
+};
+
 type HybridModuleOptions = ConstructLibraryOptions & {
   cdktfVersion?: string;
   constructVersion?: string;
   repository: string;
   author: string;
   terraformExamplesFolder: string;
-  terraformAwsRegion: string;
+  terraformProvider: string;
+  terraformProviderAwsConfig?: TerraformProviderAwsConfig;
+  terraformProviderAzureConfig?: TerraformProviderAzureConfig;
 };
 
 const defaults = {
@@ -54,13 +66,13 @@ new MyAwesomeModule(app, "my-awesome-module");
 app.synth();
 `;
 
-const terraformMainSrcCode = `
+const terraformAwsMainSrcCode = `
 terraform {
   # Limit provider version (some modules are not compatible with aws 4.x)
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 3.74"
+      version = "~> __requiredProviderVersion__"
     }
   }
   # Terraform binary version constraint
@@ -69,9 +81,41 @@ terraform {
 
 
 provider "aws" {
-  region = "__REGION__"
+  region = "__region__"
 }
 `;
+
+const terraformAzureMainSrcCode = `
+# Configure the Azure provider
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~> __requiredProviderVersion__"
+    }
+  }
+
+  required_version = ">= 1.1.0"
+}
+
+provider "azurerm" {
+  features {}
+}
+
+resource "azurerm_resource_group" "rg" {
+  name     = "myTFResourceGroup"
+  location = "__location__"
+}
+`;
+
+const terraformMainSrcCodeMap: { [key: string]: { srcCode: string } } = {
+  aws: {
+    srcCode: terraformAwsMainSrcCode,
+  },
+  azure: {
+    srcCode: terraformAzureMainSrcCode,
+  },
+};
 
 const terraformReadmeDocs = `
 # Please add here some pure HCL tests for your modules in order to test HCL Interoperability
@@ -146,11 +190,35 @@ module "eks_managed_node_group" {
       },
     });
 
+    // Retrieve correct TF main stuff
+    let mainTfFile =
+      terraformMainSrcCodeMap[config.terraformProvider].srcCode.trim();
+
+    let configProperty: any = {};
+    switch (config.terraformProvider) {
+      case "aws": {
+        configProperty = config.terraformProviderAwsConfig;
+        break;
+      }
+      case "azure": {
+        configProperty = config.terraformProviderAzureConfig;
+        break;
+      }
+      default: {
+        throw new Error(
+          "Need to define correctly a Provider, only [aws,azure,gcp] allowed"
+        );
+      }
+    }
+
+    console.log(JSON.stringify(configProperty));
+    Object.keys(configProperty).forEach((key: string) => {
+      mainTfFile = mainTfFile.replace(`__${key}__`, configProperty[key]);
+    });
+
     new SampleDir(this, config.terraformExamplesFolder, {
       files: {
-        "main.tf": terraformMainSrcCode
-          .trim()
-          .replace("__REGION__", config.terraformAwsRegion),
+        "main.tf": mainTfFile,
         "README.md": terraformReadmeDocs.trim(),
       },
     });
