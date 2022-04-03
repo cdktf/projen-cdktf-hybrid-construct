@@ -211,7 +211,6 @@ module "eks_managed_node_group" {
       }
     }
 
-    console.log(JSON.stringify(configProperty));
     Object.keys(configProperty).forEach((key: string) => {
       mainTfFile = mainTfFile.replace(`__${key}__`, configProperty[key]);
     });
