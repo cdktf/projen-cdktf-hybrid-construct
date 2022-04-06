@@ -28,7 +28,8 @@
     "upgrade": "npx projen upgrade",
     "upgrade-projen": "npx projen upgrade-projen",
     "watch": "npx projen watch",
-    "projen": "npx projen"
+    "projen": "npx projen",
+    "terraform:test": "./scripts/tf-module-test.sh"
   },
   "author": {
     "name": "Daniel Schmidt",
@@ -96,11 +97,13 @@
     "coverageDirectory": "coverage",
     "coveragePathIgnorePatterns": [
       "/node_modules/",
-      "dist"
+      "dist",
+      "terraform"
     ],
     "testPathIgnorePatterns": [
       "/node_modules/",
-      "dist"
+      "dist",
+      "terraform"
     ],
     "watchPathIgnorePatterns": [
       "/node_modules/"

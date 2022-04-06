@@ -1,11 +1,26 @@
 import { FileBase, IResolver, Project, SampleDir } from "projen";
 import { ConstructLibrary, ConstructLibraryOptions } from "projen/lib/cdk";
 
+type TerraformProviderAwsConfig = {
+  region: string;
+  requiredProviderVersion: string;
+};
+
+type TerraformProviderAzureConfig = {
+  location: string;
+  requiredProviderVersion: string;
+  resourceGroupName: string;
+};
+
 type HybridModuleOptions = ConstructLibraryOptions & {
   cdktfVersion?: string;
   constructVersion?: string;
   repository: string;
   author: string;
+  terraformExamplesFolder: string;
+  terraformProvider: string;
+  terraformProviderAwsConfig?: TerraformProviderAwsConfig;
+  terraformProviderAzureConfig?: TerraformProviderAzureConfig;
 };
 
 const defaults = {
@@ -52,6 +67,68 @@ new MyAwesomeModule(app, "my-awesome-module");
 app.synth();
 `;
 
+const terraformAwsMainSrcCode = `
+terraform {
+  # Limit provider version (some modules are not compatible with aws 4.x)
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> __requiredProviderVersion__"
+    }
+  }
+  # Terraform binary version constraint
+  required_version = "~> 1.1.0"
+}
+
+
+provider "aws" {
+  region = "__region__"
+}
+`;
+
+const terraformAzureMainSrcCode = `
+# Configure the Azure provider
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~> __requiredProviderVersion__"
+    }
+  }
+
+  required_version = ">= 1.1.0"
+}
+
+provider "azurerm" {
+  features {}
+}
+
+resource "azurerm_resource_group" "rg" {
+  name     = "__resourceGroupName__"
+  location = "__location__"
+}
+`;
+
+const terraformMainSrcCodeMap: { [key: string]: { srcCode: string } } = {
+  aws: {
+    srcCode: terraformAwsMainSrcCode,
+  },
+  azure: {
+    srcCode: terraformAzureMainSrcCode,
+  },
+};
+
+const terraformReadmeDocs = `
+# Please add here some pure HCL tests for your modules in order to test HCL Interoperability
+
+Examples:
+
+module "my_awesome_test" {
+  source = "../modules/my-awesome-modules"
+  ...variables...
+}
+    `;
+
 class ScriptFile extends FileBase {
   constructor(project: Project, path: string, private content: string) {
     super(project, path, {
@@ -73,6 +150,7 @@ export class HybridModule extends ConstructLibrary {
     this.addPeerDeps(`constructs@${constructVersion}`, `cdktf@${cdktfVersion}`);
     this.addDevDeps(`cdktf-cli@${cdktfVersion}`, "ts-node");
     this.addKeywords("cdktf", "cdktf-hybrid");
+    this.setScript("terraform:test", "./scripts/tf-module-test.sh");
 
     // Module Entrypoint
     this.addDeps("cdktf-tf-module-stack");
@@ -113,7 +191,43 @@ module "eks_managed_node_group" {
       },
     });
 
+    // Retrieve correct TF main stuff
+    let mainTfFile =
+      terraformMainSrcCodeMap[config.terraformProvider].srcCode.trim();
+
+    let configProperty: any = {};
+    switch (config.terraformProvider) {
+      case "aws": {
+        configProperty = config.terraformProviderAwsConfig;
+        break;
+      }
+      case "azure": {
+        configProperty = config.terraformProviderAzureConfig;
+        break;
+      }
+      default: {
+        throw new Error(
+          "Need to define correctly a Provider, only [aws,azure,gcp] allowed"
+        );
+      }
+    }
+
+    Object.keys(configProperty).forEach((key: string) => {
+      mainTfFile = mainTfFile.replace(`__${key}__`, configProperty[key]);
+    });
+
+    new SampleDir(this, config.terraformExamplesFolder, {
+      files: {
+        "main.tf": mainTfFile,
+        "README.md": terraformReadmeDocs.trim(),
+      },
+    });
+
     this.gitignore.addPatterns("src/.gen", "src/cdktf.out", "src/modules");
+    this.gitignore.addPatterns(
+      `${config.terraformExamplesFolder}/.terraform`,
+      `${config.terraformExamplesFolder}/.terraform.lock.hcl`
+    );
     this.compileTask.prependExec("cdktf get", {
       cwd: this.srcdir,
     });
@@ -175,5 +289,23 @@ done
 
     // ignore dist in tests
     this.jest?.addIgnorePattern("dist");
+
+    new ScriptFile(
+      this,
+      "./scripts/tf-module-test.sh",
+      `
+#!/bin/bash
+# This script is created by projen, do not edit it directly.
+set -e
+
+terraform -chdir=terraform init --upgrade
+terraform -chdir=terraform fmt
+terraform -chdir=terraform validate
+terraform -chdir=terraform plan     
+        `
+    );
+
+    this.testTask.exec("./scripts/tf-module-test.sh");
+    this.jest?.addIgnorePattern("terraform");
   }
 }
