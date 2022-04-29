@@ -29,10 +29,11 @@ const project = new typescript.TypeScriptProject({
 });
 project.tsconfig?.exclude?.push("src/exampleCode/**");
 project.tsconfig?.exclude?.push("example/**");
-
 project.addTask("buildExample", {
-  exec: "yarn projen && yarn && yarn build",
+  exec: "git clean -dfx . && yarn && yarn projen && yarn && yarn build",
   cwd: "./example",
 });
+
+project.testTask.exec("yarn buildExample");
 
 project.synth();

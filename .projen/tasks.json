@@ -28,7 +28,7 @@
       "name": "buildExample",
       "steps": [
         {
-          "exec": "yarn projen && yarn && yarn build"
+          "exec": "git clean -dfx . && yarn && yarn projen && yarn && yarn build"
         }
       ],
       "cwd": "./example"
@@ -178,6 +178,9 @@
         },
         {
           "spawn": "eslint"
+        },
+        {
+          "exec": "yarn buildExample"
         }
       ]
     },
