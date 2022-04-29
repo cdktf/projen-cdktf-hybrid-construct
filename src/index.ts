@@ -1,4 +1,4 @@
-import { FileBase, IResolver, Project, SampleDir } from "projen";
+import { FileBase, IResolver, Project, SampleDir, YamlFile } from "projen";
 import { ConstructLibrary, ConstructLibraryOptions } from "projen/lib/cdk";
 
 type TerraformProviderAwsConfig = {
@@ -21,6 +21,14 @@ type HybridModuleOptions = ConstructLibraryOptions & {
   terraformProvider: string;
   terraformProviderAwsConfig?: TerraformProviderAwsConfig;
   terraformProviderAzureConfig?: TerraformProviderAzureConfig;
+  // Run pre-commit hooks using local binaries / not at all
+  documentationPrecommitHook?: boolean;
+  documentationPrecommitHookOptions?: {
+    version?: string; // Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
+    disableFormatHook?: boolean;
+    disableDocsHook?: boolean;
+  };
+  additionalPrecommitHooks?: Record<string, any>[];
 };
 
 const defaults = {
@@ -314,5 +322,38 @@ terraform -chdir=terraform plan
 
     this.testTask.exec("./scripts/tf-module-test.sh");
     this.jest?.addIgnorePattern("terraform");
+
+    // Pre-commit hooks
+    if (config.documentationPrecommitHook !== false) {
+      const { additionalPrecommitHooks, documentationPrecommitHookOptions } =
+        config;
+      const {
+        version = "v1.70.1",
+        disableDocsHook = false,
+        disableFormatHook = false,
+      } = documentationPrecommitHookOptions || {};
+
+      new YamlFile(this, ".pre-commit-config.yml", {
+        committed: true,
+        obj: {
+          repos: [
+            {
+              repo: "git://github.com/antonbabenko/pre-commit-terraform",
+              rev: version,
+              hooks: [
+                disableFormatHook ? null : { id: "terraform_fmt" },
+                disableDocsHook ? null : { id: "terraform_docs" },
+              ].filter((item) => item !== null),
+            },
+            ...(additionalPrecommitHooks ?? []),
+          ],
+        },
+      });
+
+      this.tasks.addTask("precommit", {
+        description: "Runs precommit hooks",
+        exec: "pre-commit install",
+      });
+    }
   }
 }

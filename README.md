@@ -34,7 +34,7 @@ project.synth();
 - [x] Add dedicated file for HCL templates
 - [x] Add example folder
 - [x] Add `terraform` example folder
-- [ ] [Auto-generate parts of the docs](https://github.com/terraform-aws-modules/terraform-aws-eks/blob/e90c877a741ab3cc4215376a70f7bcc360b6a3d2/.github/workflows/pre-commit.yml)
+- [x] [Auto-generate parts of the docs](https://github.com/terraform-aws-modules/terraform-aws-eks/blob/e90c877a741ab3cc4215376a70f7bcc360b6a3d2/.github/workflows/pre-commit.yml)
 - [ ] Add testing strategy
 - [ ] Add deployment scripts to Artifactory
 - [ ] Add deployment scripts to Github Packages
