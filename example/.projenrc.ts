@@ -15,4 +15,5 @@ const project = new HybridModule({
     requiredProviderVersion: "3.74",
   },
 });
+project.gitignore.addPatterns("lib/");
 project.synth();

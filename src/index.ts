@@ -143,7 +143,14 @@ class ScriptFile extends FileBase {
 
 export class HybridModule extends ConstructLibrary {
   constructor(config: HybridModuleOptions) {
-    super({ ...defaults, ...config, sampleCode: false });
+    super({
+      ...defaults,
+      ...config,
+      sampleCode: false,
+      eslintOptions: Object.assign({}, config.eslintOptions, {
+        lintProjenRc: false,
+      }),
+    });
     const constructVersion = config.constructVersion || "^10.0.25";
     const cdktfVersion = config.cdktfVersion || "^0.9.4";
 
