@@ -32,8 +32,11 @@ project.tsconfig?.exclude?.push("example/**");
 project.addTask("buildExample", {
   exec: "git clean -dfx . && rm -rf lib modules src && yarn && yarn projen && yarn && yarn build",
   cwd: "./example",
+  env: {
+    // We don't want a project id to be created
+    CHECKPOINT_DISABLE: "true",
+  },
 });
 
 project.testTask.exec("yarn buildExample");
-
 project.synth();
