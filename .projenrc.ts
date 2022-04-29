@@ -39,4 +39,10 @@ project.addTask("buildExample", {
 });
 
 project.testTask.exec("yarn buildExample");
+
+project.addTask("setup-infrastructure", {
+  exec: `yarn ; cdktf get ; cdktf deploy --auto-approve`,
+  cwd: "./infrastructure",
+});
+
 project.synth();

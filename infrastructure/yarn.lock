@@ -291,6 +291,11 @@
   resolved "https://registry.yarnpkg.com/@cdktf/provider-aws/-/provider-aws-7.0.38.tgz#c2e796b8b86519c4dc6352a604f6f946827d430d"
   integrity sha512-xr7t1z737oWA2fQGcWbByJAoS2acZ/gukhhyqPL/Y8qxWpQsXANz31xuHvNjE9xecrxV4YjYkc7RgfBRYxC38w==
 
+"@cdktf/provider-tls@^0.4.37":
+  version "0.4.37"
+  resolved "https://registry.yarnpkg.com/@cdktf/provider-tls/-/provider-tls-0.4.37.tgz#7459e877be6b4062331b91f7272a5549df3e963f"
+  integrity sha512-Q7aaOHZHnYBFo+nQfK55asV4z2WduS6zBDATettWdTa5q4PparPzOnrB3ddYiS9Ay8UF2hDRaHOy0F24mJnq4w==
+
 "@cspotcode/source-map-consumer@0.8.0":
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/@cspotcode/source-map-consumer/-/source-map-consumer-0.8.0.tgz#33bf4b7b39c178821606f669bbc447a6a629786b"
