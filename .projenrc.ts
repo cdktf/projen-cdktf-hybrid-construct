@@ -30,7 +30,7 @@ const project = new typescript.TypeScriptProject({
 project.tsconfig?.exclude?.push("src/exampleCode/**");
 project.tsconfig?.exclude?.push("example/**");
 project.addTask("buildExample", {
-  exec: "git clean -dfx . && yarn && yarn projen && yarn && yarn build",
+  exec: "git clean -dfx . && rm -rf lib modules src && yarn && yarn projen && yarn && yarn build",
   cwd: "./example",
 });
 
