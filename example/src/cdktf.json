@@ -6,5 +6,5 @@
   ],
   "terraformModules": [],
   "output": "modules",
-  "projectId": "replace-me-with-a-random-project-id"
+  "projectId": "my-project-id"
 }

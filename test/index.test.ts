@@ -16,6 +16,7 @@ describe("HybridModule", () => {
         region: "eu-central-1",
         requiredProviderVersion: "3.74",
       },
+      projectId: "test-project",
     });
 
     const out = synthSnapshot(project);
