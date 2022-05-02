@@ -105,15 +105,7 @@
       "type": "build"
     },
     {
-      "name": "@types/uuid",
-      "type": "runtime"
-    },
-    {
       "name": "projen",
-      "type": "runtime"
-    },
-    {
-      "name": "uuid",
       "type": "runtime"
     }
   ],
