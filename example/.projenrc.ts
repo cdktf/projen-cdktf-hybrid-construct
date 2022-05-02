@@ -14,6 +14,7 @@ const project = new HybridModule({
     region: "eu-central-1",
     requiredProviderVersion: "3.74",
   },
+  projectId: "my-project-id",
 });
 project.gitignore.addPatterns("lib/");
 project.synth();

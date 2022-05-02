@@ -13,7 +13,7 @@ const project = new typescript.TypeScriptProject({
   license: "MIT",
   copyrightOwner: "Daniel Schmidt",
 
-  deps: ["projen"],
+  deps: ["projen", "@types/uuid", "uuid"],
   devDeps: ["fs-extra", "glob", "@types/fs-extra", "@types/glob"],
 
   release: true,

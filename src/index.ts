@@ -1,6 +1,7 @@
 import { FileBase, IResolver, Project, SampleDir, YamlFile } from "projen";
 import { ConstructLibrary, ConstructLibraryOptions } from "projen/lib/cdk";
 import { JobStep } from "projen/lib/github/workflows-model";
+import { v4 as uuid } from "uuid";
 
 type TerraformProviderAwsConfig = {
   region: string;
@@ -30,6 +31,8 @@ type HybridModuleOptions = ConstructLibraryOptions & {
     disableDocsHook?: boolean;
   };
   additionalPrecommitHooks?: Record<string, any>[];
+  // Defaulted to a uuid string as cdktf would
+  projectId?: string;
 };
 
 const defaults = {
@@ -209,7 +212,7 @@ module "eks_managed_node_group" {
             terraformProviders: ["hashicorp/null@3.1.1"], // We need at least a provider for get to succeed
             terraformModules: [],
             output: "modules",
-            projectId: "replace-me-with-a-random-project-id",
+            projectId: config.projectId || uuid(),
           },
           null,
           2
