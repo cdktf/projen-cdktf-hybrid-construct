@@ -187,15 +187,6 @@
       "name": "pre-compile",
       "description": "Prepare the project for compilation"
     },
-    "precommit": {
-      "name": "precommit",
-      "description": "Runs precommit hooks",
-      "steps": [
-        {
-          "exec": "pre-commit install"
-        }
-      ]
-    },
     "release": {
       "name": "release",
       "description": "Prepare a release from \"main\" branch",

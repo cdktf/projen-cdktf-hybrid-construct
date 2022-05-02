@@ -58,6 +58,5 @@ terraform/.terraform
 terraform/.terraform.lock.hcl
 !/scripts/copy-modules.sh
 !/./scripts/tf-module-test.sh
-!/.pre-commit-config.yaml
 lib/
 !/.github/workflows/upgrade-main.yml

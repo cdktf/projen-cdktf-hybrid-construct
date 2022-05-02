@@ -29,6 +29,12 @@ const project = new HybridModule({
 project.synth();
 ```
 
+### Requirements
+
+- `terraform`
+- `node`
+- [`terraform-docs`](https://terraform-docs.io/user-guide/installation/)
+
 ### Roadmap
 
 - [x] Add dedicated file for HCL templates

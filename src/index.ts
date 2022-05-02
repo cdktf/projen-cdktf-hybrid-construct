@@ -1,4 +1,4 @@
-import { FileBase, IResolver, Project, SampleDir, YamlFile } from "projen";
+import { FileBase, IResolver, Project, SampleDir } from "projen";
 import { ConstructLibrary, ConstructLibraryOptions } from "projen/lib/cdk";
 import { v4 as uuid } from "uuid";
 
@@ -22,14 +22,6 @@ type HybridModuleOptions = ConstructLibraryOptions & {
   terraformProvider: string;
   terraformProviderAwsConfig?: TerraformProviderAwsConfig;
   terraformProviderAzureConfig?: TerraformProviderAzureConfig;
-  // Run pre-commit hooks using local binaries / not at all
-  documentationPrecommitHook?: boolean;
-  documentationPrecommitHookOptions?: {
-    version?: string; // Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
-    disableFormatHook?: boolean;
-    disableDocsHook?: boolean;
-  };
-  additionalPrecommitHooks?: Record<string, any>[];
   // Defaulted to a uuid string as cdktf would
   projectId?: string;
 };
@@ -161,21 +153,7 @@ export class HybridModule extends ConstructLibrary {
       eslintOptions: Object.assign({}, config.eslintOptions, {
         lintProjenRc: false,
       }),
-      postBuildSteps:
-        config.documentationPrecommitHook !== false
-          ? [
-              {
-                id: "install-pre-commit",
-                name: "Install pre-commit hook",
-                run: "pip install pre-commit",
-              },
-              {
-                id: "documentation-precommit-hook",
-                name: "Documentation Pre-commit Hook",
-                run: "pre-commit run --all-files",
-              },
-            ]
-          : [],
+      postBuildSteps: [],
     });
     const constructVersion = config.constructVersion || "^10.0.25";
     const cdktfVersion = config.cdktfVersion || "^0.9.4";
@@ -314,6 +292,8 @@ for d in */ ; do
     mkdir -p "$TARGET_FOLDER/$dirname"
     cp "$MODULES_FOLDER/$dirname/cdk.tf.json" "$TARGET_FOLDER/$dirname/cdk.tf.json"
     cp "$SRC_FOLDER/$dirname.md" "$TARGET_FOLDER/$dirname/README.md"
+
+    terraform-docs markdown table --output-file "$TARGET_FOLDER/$dirname/README.md" "$TARGET_FOLDER/$dirname" 
 done
 `.trim()
     );
@@ -341,38 +321,5 @@ terraform -chdir=terraform plan
 
     this.testTask.exec("./scripts/tf-module-test.sh");
     this.jest?.addIgnorePattern("terraform");
-
-    // Pre-commit hooks
-    if (config.documentationPrecommitHook !== false) {
-      const { additionalPrecommitHooks, documentationPrecommitHookOptions } =
-        config;
-      const {
-        version = "v1.70.1",
-        disableDocsHook = false,
-        disableFormatHook = false,
-      } = documentationPrecommitHookOptions || {};
-
-      new YamlFile(this, ".pre-commit-config.yaml", {
-        committed: true,
-        obj: {
-          repos: [
-            {
-              repo: "https://github.com/antonbabenko/pre-commit-terraform",
-              rev: version,
-              hooks: [
-                disableFormatHook ? null : { id: "terraform_fmt" },
-                disableDocsHook ? null : { id: "terraform_docs" },
-              ].filter((item) => item !== null),
-            },
-            ...(additionalPrecommitHooks ?? []),
-          ],
-        },
-      });
-
-      this.tasks.addTask("precommit", {
-        description: "Runs precommit hooks",
-        exec: "pre-commit install",
-      });
-    }
   }
 }
