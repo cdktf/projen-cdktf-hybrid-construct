@@ -352,7 +352,7 @@ terraform -chdir=terraform plan
         disableFormatHook = false,
       } = documentationPrecommitHookOptions || {};
 
-      new YamlFile(this, ".pre-commit-config.yml", {
+      new YamlFile(this, ".pre-commit-config.yaml", {
         committed: true,
         obj: {
           repos: [
