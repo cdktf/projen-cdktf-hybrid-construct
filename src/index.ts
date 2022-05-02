@@ -357,7 +357,7 @@ terraform -chdir=terraform plan
         obj: {
           repos: [
             {
-              repo: "git://github.com/antonbabenko/pre-commit-terraform",
+              repo: "https://github.com/antonbabenko/pre-commit-terraform",
               rev: version,
               hooks: [
                 disableFormatHook ? null : { id: "terraform_fmt" },
