@@ -253,10 +253,10 @@ module "eks_managed_node_group" {
       `${config.terraformExamplesFolder}/.terraform`,
       `${config.terraformExamplesFolder}/.terraform.lock.hcl`
     );
-    this.compileTask.prependExec("cdktf get", {
+    this.compileTask.prependExec("CHECKPOINT_DISABLE=1 cdktf get", {
       cwd: this.srcdir,
     });
-    this.compileTask.exec("cdktf synth", {
+    this.compileTask.exec("CHECKPOINT_DISABLE=1 cdktf synth", {
       cwd: this.srcdir,
       name: "Synthesize module HCL",
     });
