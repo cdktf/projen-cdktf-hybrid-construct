@@ -1067,6 +1067,7 @@ Object {
   "app": "npx ts-node tfModules.ts",
   "language": "typescript",
   "output": "modules",
+  "projectId": "replace-me-with-a-random-project-id",
   "terraformModules": Array [],
   "terraformProviders": Array [
     "hashicorp/null@3.1.1",

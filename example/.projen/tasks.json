@@ -87,14 +87,14 @@
       "description": "Only compile",
       "steps": [
         {
-          "exec": "CHECKPOINT_DISABLE=1 cdktf get",
+          "exec": "cdktf get",
           "cwd": "src"
         },
         {
           "exec": "jsii --silence-warnings=reserved-word --no-fix-peer-dependencies"
         },
         {
-          "exec": "CHECKPOINT_DISABLE=1 cdktf synth",
+          "exec": "cdktf synth",
           "cwd": "src",
           "name": "Synthesize module HCL"
         },

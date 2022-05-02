@@ -209,6 +209,7 @@ module "eks_managed_node_group" {
             terraformProviders: ["hashicorp/null@3.1.1"], // We need at least a provider for get to succeed
             terraformModules: [],
             output: "modules",
+            projectId: "replace-me-with-a-random-project-id",
           },
           null,
           2
@@ -253,10 +254,10 @@ module "eks_managed_node_group" {
       `${config.terraformExamplesFolder}/.terraform`,
       `${config.terraformExamplesFolder}/.terraform.lock.hcl`
     );
-    this.compileTask.prependExec("CHECKPOINT_DISABLE=1 cdktf get", {
+    this.compileTask.prependExec("cdktf get", {
       cwd: this.srcdir,
     });
-    this.compileTask.exec("CHECKPOINT_DISABLE=1 cdktf synth", {
+    this.compileTask.exec("cdktf synth", {
       cwd: this.srcdir,
       name: "Synthesize module HCL",
     });
