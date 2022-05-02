@@ -1,6 +1,5 @@
 import { FileBase, IResolver, Project, SampleDir, YamlFile } from "projen";
 import { ConstructLibrary, ConstructLibraryOptions } from "projen/lib/cdk";
-import { JobStep } from "projen/lib/github/workflows-model";
 import { v4 as uuid } from "uuid";
 
 type TerraformProviderAwsConfig = {
