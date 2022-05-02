@@ -293,7 +293,13 @@ for d in */ ; do
     cp "$MODULES_FOLDER/$dirname/cdk.tf.json" "$TARGET_FOLDER/$dirname/cdk.tf.json"
     cp "$SRC_FOLDER/$dirname.md" "$TARGET_FOLDER/$dirname/README.md"
 
-    terraform-docs markdown table --output-file "$TARGET_FOLDER/$dirname/README.md" "$TARGET_FOLDER/$dirname" 
+    # Add README hcl docs
+    if which terraform-docs >/dev/null; then
+      terraform-docs markdown table --output-file "$TARGET_FOLDER/$dirname/README.md" "$TARGET_FOLDER/$dirname" 
+    else
+      docker run --rm --volume "$(pwd)/modules:/terraform-docs" -u $(id -u) quay.io/terraform-docs/terraform-docs:0.16.0 markdown table --output-file "/terraform-docs/$dirname/README.md" /terraform-docs/$dirname
+    fi
+    
 done
 `.trim()
     );

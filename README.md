@@ -33,7 +33,8 @@ project.synth();
 
 - `terraform`
 - `node`
-- [`terraform-docs`](https://terraform-docs.io/user-guide/installation/)
+- `cdktf-cli`
+- [`terraform-docs`](https://terraform-docs.io/user-guide/installation/) or docker
 
 ### Roadmap
 
