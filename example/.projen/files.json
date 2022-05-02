@@ -10,7 +10,7 @@
     ".github/workflows/upgrade-main.yml",
     ".gitignore",
     ".mergify.yml",
-    ".pre-commit-config.yml",
+    ".pre-commit-config.yaml",
     ".prettierignore",
     ".prettierrc.json",
     ".projen/deps.json",
