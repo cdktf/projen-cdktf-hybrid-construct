@@ -1,6 +1,5 @@
 import { FileBase, IResolver, Project, SampleDir, YamlFile } from "projen";
 import { ConstructLibrary, ConstructLibraryOptions } from "projen/lib/cdk";
-import { JobStep } from "projen/lib/github/workflows-model";
 import { v4 as uuid } from "uuid";
 
 type TerraformProviderAwsConfig = {
@@ -162,15 +161,21 @@ export class HybridModule extends ConstructLibrary {
       eslintOptions: Object.assign({}, config.eslintOptions, {
         lintProjenRc: false,
       }),
-      postBuildSteps: [
+      postBuildSteps:
         config.documentationPrecommitHook !== false
-          ? {
-              id: "documentation-precommit-hook",
-              name: "Documentation Pre-commit Hook",
-              run: "pre-commit run --all-files",
-            }
-          : undefined,
-      ].filter((step) => step !== undefined) as JobStep[],
+          ? [
+              {
+                id: "install-pre-commit",
+                name: "Install pre-commit hook",
+                run: "pip install pre-commit",
+              },
+              {
+                id: "documentation-precommit-hook",
+                name: "Documentation Pre-commit Hook",
+                run: "pre-commit run --all-files",
+              },
+            ]
+          : [],
     });
     const constructVersion = config.constructVersion || "^10.0.25";
     const cdktfVersion = config.cdktfVersion || "^0.9.4";

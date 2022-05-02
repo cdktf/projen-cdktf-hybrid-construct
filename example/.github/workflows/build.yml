@@ -23,6 +23,9 @@ jobs:
         run: yarn install --check-files
       - name: build
         run: npx projen build
+      - id: install-pre-commit
+        name: Install pre-commit hook
+        run: pip install pre-commit
       - id: documentation-precommit-hook
         name: Documentation Pre-commit Hook
         run: pre-commit run --all-files
