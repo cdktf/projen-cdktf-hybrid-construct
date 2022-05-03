@@ -8,11 +8,31 @@ const project = new HybridModule({
   authorAddress: "danielmschmidt92@gmail.com",
   repositoryUrl: "github.com/DanielMSchmidt/my-module",
   outdir: ".",
-  terraformExamplesFolder: "terraform",
-  terraformProvider: "aws",
-  terraformProviderAwsConfig: {
-    region: "eu-central-1",
-    requiredProviderVersion: "3.74",
+  terraformExamples: {
+    enabled: true,
+    folder: "terraform",
+    providerConfig: `
+    terraform {
+      # Limit provider version (some modules are not compatible with aws 4.x)
+      required_providers {
+        aws = {
+          source  = "hashicorp/aws"
+          version = "~> 3.74"
+        }
+      }
+      # Terraform binary version constraint
+      required_version = "~> 1.1.0"
+    }
+    
+    
+    provider "aws" {
+      region = "eu-central-1"
+    }
+    `,
+  },
+  constructExamples: {
+    enabled: true,
+    folder: "construct-examples",
   },
   projectId: "my-project-id",
 });

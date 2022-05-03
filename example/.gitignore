@@ -51,13 +51,13 @@ junit.xml
 .jsii
 tsconfig.json
 !/API.md
+terraform/.terraform
+terraform/.terraform.lock.hcl
+construct-examples/cdktf.out
 src/.gen
 src/cdktf.out
 src/modules
-terraform/.terraform
-terraform/.terraform.lock.hcl
 !/scripts/copy-modules.sh
 !/./scripts/tf-module-test.sh
-!/.pre-commit-config.yaml
 lib/
 !/.github/workflows/upgrade-main.yml
