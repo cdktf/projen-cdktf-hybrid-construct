@@ -51,6 +51,7 @@ junit.xml
 .jsii
 tsconfig.json
 !/API.md
+!/src/terraformModules.ts
 !/src/cdktf.json
 lib/
 !/.github/workflows/upgrade-main.yml

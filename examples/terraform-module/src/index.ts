@@ -1,5 +1,4 @@
-// You can re-export the generated module bindings
-export * from "./.gen/modules/eks";
-export * from "./.gen/modules/eks-managed-nodegroup";
+// Re-Export module bindings
+export * from "./terraformModules";
 
-// Or you can wrap the module bindings in a custom construct for a nicer UX
+// Add your custom constructs here

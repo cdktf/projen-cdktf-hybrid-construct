@@ -1,4 +1,4 @@
-import { JsonFile, SampleDir } from "projen";
+import { JsonFile, SampleDir, TextFile } from "projen";
 import { ConstructLibrary } from "projen/lib/cdk";
 import { v4 as uuid } from "uuid";
 
@@ -38,13 +38,10 @@ export class TerraformModule extends ConstructLibrary {
     const cdktfVersion = config.cdktfVersion || "^0.10.1";
 
     const constructSrcCode = `
-// You can re-export the generated module bindings
-${config.terraformModules
-  .map((tfModule) => `export * from "./.gen/modules/${tfModule.name}";`)
-  .join("\n")}
+// Re-Export module bindings
+export * from "./terraformModules";
 
-
-// Or you can wrap the module bindings in a custom construct for a nicer UX
+// Add your custom constructs here
 `;
 
     const constructTestCode = `
@@ -66,6 +63,12 @@ describe("MyModule", () => {
         "index.ts": constructSrcCode.trim(),
         "__tests__/index-test.ts": constructTestCode.trim(),
       },
+    });
+    new TextFile(this, `${this.srcdir}/terraformModules.ts`, {
+      committed: true,
+      lines: config.terraformModules.map(
+        (tfModule) => `export * from "./.gen/modules/${tfModule.name}";`
+      ),
     });
 
     new JsonFile(this, `${this.srcdir}/cdktf.json`, {

@@ -171,6 +171,7 @@ exports[`TerraformModule snapshot: .gitattributes 1`] = `
 /LICENSE linguist-generated
 /package.json linguist-generated
 /src/cdktf.json linguist-generated
+/src/terraformModules.ts linguist-generated
 /tsconfig.dev.json linguist-generated
 /yarn.lock linguist-generated"
 `;
@@ -556,6 +557,7 @@ junit.xml
 .jsii
 tsconfig.json
 !/API.md
+!/src/terraformModules.ts
 !/src/cdktf.json
 !/.github/workflows/upgrade-main.yml
 "
@@ -1002,12 +1004,15 @@ Object {
 `;
 
 exports[`TerraformModule snapshot: src/index.ts 1`] = `
-"// You can re-export the generated module bindings
-export * from \\"./.gen/modules/eks\\";
-export * from \\"./.gen/modules/eks-managed-nodegroup\\";
+"// Re-Export module bindings
+export * from \\"./terraformModules\\";
 
+// Add your custom constructs here"
+`;
 
-// Or you can wrap the module bindings in a custom construct for a nicer UX"
+exports[`TerraformModule snapshot: src/terraformModules.ts 1`] = `
+"export * from \\"./.gen/modules/eks\\";
+export * from \\"./.gen/modules/eks-managed-nodegroup\\";"
 `;
 
 exports[`TerraformModule snapshot: tsconfig.dev.json 1`] = `
