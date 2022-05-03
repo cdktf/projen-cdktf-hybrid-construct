@@ -67,7 +67,7 @@ project.synth();
 
 If you want to republish an existing Terraform module as a CDKTF construct or if you want to repackage them with an easier to use API you can use the `TerraformModule` template.
 
-```js
+````js
 const { HybridModule } = require("projen-cdktf-hybrid-construct");
 
 const project = new TerraformModule({
@@ -91,6 +91,81 @@ const project = new TerraformModule({
 });
 
 project.synth();
+
+
+
+## Publishing
+
+### Open Source
+
+#### Terraform
+
+1. [Sign in at the registry](https://registry.terraform.io/sign-in)
+2. [Select your repository](https://registry.terraform.io/github/create) and create the module
+
+Please make sure your repository name starts with `terraform-cdk-`.
+
+#### npm (Typescript)
+
+1. Create an account at [npmjs.com](https://npmjs.com/)
+2. Create an [automation token](https://docs.npmjs.com/creating-and-viewing-access-tokens) on npm
+3. Create a [GitHub Action Secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) with the name `NPM_TOKEN` and the value of the token
+
+#### pypi (Python)
+
+1. Create an account at [pypi.org](https://pypi.org/)
+2. Create an [API token](https://pypi.org/help/#apitoken) on pypi
+3. Set the `publishToPypi` section in the options of `HybridModule` or `TerraformModule`
+
+```js
+const name = "name-of-my-hybrid-construct";
+new HybridModule({
+  name,
+  // ... other options
+  publishToPypi: {
+    distName: name,
+    module: name.replace(/-/g, "_"),
+  },
+});
+````
+
+#### Maven (Java)
+
+1. [Create a Sonatype account and repository](https://central.sonatype.org/publish/publish-guide/#introduction)
+2. Setup the `publishToMaven` section in the options of `HybridModule` or `TerraformModule`
+
+```js
+const githubNamespace = "my-org";
+const name = "name-of-my-hybrid-construct";
+new HybridModule({
+  name,
+  // ... other options
+  publishToMaven: {
+    javaPackage: name.replace(/-/g, "_"),
+    mavenGroupId: `com.${githubNamespace}`,
+    mavenArtifactId: name,
+  },
+});
+```
+
+#### NuGet (C#)
+
+1. [Create a NuGet account](https://www.nuget.org/users/account/LogOn) (you might need to create a Microsoft Account if you don't have one)
+2. [Create API keys](https://docs.microsoft.com/en-us/nuget/nuget-org/publish-a-package#create-api-keys)
+3. Setup the `publishToNuget` section in the options of `HybridModule` or `TerraformModule`
+
+```js
+const githubNamespace = "my-org";
+const name = "name-of-my-hybrid-construct";
+
+new HybridModule({
+  name,
+  // ... other options
+  publishToNuget: {
+    dotNetNamespace: `MyOrg.NameOfMyHybridConstruct`,
+    packageId: `MyOrg.NameOfMyHybridConstruct`,
+  },
+});
 ```
 
 ### Roadmap
@@ -101,8 +176,6 @@ project.synth();
 - [x] [Auto-generate parts of the docs](https://github.com/terraform-aws-modules/terraform-aws-eks/blob/e90c877a741ab3cc4215376a70f7bcc360b6a3d2/.github/workflows/pre-commit.yml)
 - [x] Add example folder to project using this
 - [x] Add testing strategy
+- [x] Add construct / option / docs to publish existing module as construct
 - [ ] Add deployment scripts to Artifactory
 - [ ] Add deployment scripts to Github Packages
-- [x] Add construct / option / docs to publish existing module as construct
-- [ ] Add construct for managing multiple repos like this
-- [ ] Add option to manager projen template to bootstrap cdktf app that deploys Artifactory?
