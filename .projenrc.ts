@@ -31,12 +31,17 @@ project.tsconfig?.exclude?.push("src/exampleCode/**");
 project.tsconfig?.exclude?.push("example/**");
 project.tsconfig?.exclude?.push("examples/**");
 project.addTask("buildExample", {
-  exec: "yarn buildExample:hybrid",
+  exec: "yarn buildExample:hybrid && yarn buildExample:terraform",
 });
 
 project.addTask("buildExample:hybrid", {
   exec: "git clean -dfx . && rm -rf lib modules src terraform construct-examples && yarn && yarn projen && yarn && yarn build",
   cwd: "./examples/hybrid-module",
+});
+
+project.addTask("buildExample:terraform", {
+  exec: "git clean -dfx . && rm -rf lib modules src terraform construct-examples && yarn && yarn projen && yarn && yarn build",
+  cwd: "./examples/terraform-module",
 });
 
 project.testTask.exec("yarn buildExample");

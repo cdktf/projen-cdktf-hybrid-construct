@@ -6,7 +6,7 @@ const defaults = {
   defaultReleaseBranch: "main",
 };
 
-type HybridModuleOptions = ConstructLibraryOptions & {
+type TerraformModuleOptions = ConstructLibraryOptions & {
   cdktfVersion?: string;
   constructVersion?: string;
 
@@ -22,8 +22,8 @@ type HybridModuleOptions = ConstructLibraryOptions & {
   projectId?: string;
 };
 
-export class HybridModule extends ConstructLibrary {
-  constructor(config: HybridModuleOptions) {
+export class TerraformModule extends ConstructLibrary {
+  constructor(config: TerraformModuleOptions) {
     super({
       ...defaults,
       ...config,
