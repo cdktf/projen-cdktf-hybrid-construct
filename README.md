@@ -35,7 +35,8 @@ project.synth();
 - [x] Add example folder
 - [x] Add `terraform` example folder
 - [x] [Auto-generate parts of the docs](https://github.com/terraform-aws-modules/terraform-aws-eks/blob/e90c877a741ab3cc4215376a70f7bcc360b6a3d2/.github/workflows/pre-commit.yml)
-- [ ] Add testing strategy
+- [x] Add example folder to project using this
+- [x] Add testing strategy
 - [ ] Add deployment scripts to Artifactory
 - [ ] Add deployment scripts to Github Packages
 - [ ] Add construct / option / docs to publish existing module as construct

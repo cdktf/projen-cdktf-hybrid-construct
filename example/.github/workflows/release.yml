@@ -28,12 +28,6 @@ jobs:
         run: yarn install --check-files --frozen-lockfile
       - name: release
         run: npx projen release
-      - id: install-pre-commit
-        name: Install pre-commit hook
-        run: pip install pre-commit
-      - id: documentation-precommit-hook
-        name: Documentation Pre-commit Hook
-        run: pre-commit run --all-files
       - name: Check for new commits
         id: git_remote
         run: echo ::set-output name=latest_commit::"$(git ls-remote origin -h ${{ github.ref }} | cut -f1)"

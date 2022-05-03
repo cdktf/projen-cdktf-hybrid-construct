@@ -1,35 +1,29 @@
-import { FileBase, IResolver, Project, SampleDir, YamlFile } from "projen";
+import { FileBase, IResolver, Project, SampleDir } from "projen";
 import { ConstructLibrary, ConstructLibraryOptions } from "projen/lib/cdk";
 import { v4 as uuid } from "uuid";
-
-type TerraformProviderAwsConfig = {
-  region: string;
-  requiredProviderVersion: string;
-};
-
-type TerraformProviderAzureConfig = {
-  location: string;
-  requiredProviderVersion: string;
-  resourceGroupName: string;
-};
 
 type HybridModuleOptions = ConstructLibraryOptions & {
   cdktfVersion?: string;
   constructVersion?: string;
+  // URL of the repository
   repository: string;
+  // Name of the author
   author: string;
-  terraformExamplesFolder: string;
-  terraformProvider: string;
-  terraformProviderAwsConfig?: TerraformProviderAwsConfig;
-  terraformProviderAzureConfig?: TerraformProviderAzureConfig;
-  // Run pre-commit hooks using local binaries / not at all
-  documentationPrecommitHook?: boolean;
-  documentationPrecommitHookOptions?: {
-    version?: string; // Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
-    disableFormatHook?: boolean;
-    disableDocsHook?: boolean;
+  // If set a terraform examples folder will be created
+  terraformExamples?: {
+    // If set terraform examples will be rendered
+    enabled: boolean;
+    // Path for the terraform examples
+    folder?: string;
+    // The HCL config file to use for the terraform provider
+    providerConfig?: string;
   };
-  additionalPrecommitHooks?: Record<string, any>[];
+  constructExamples?: {
+    // If set construct examples will be rendered
+    enabled: boolean;
+    // Path for the construct examples
+    folder?: string;
+  };
   // Defaulted to a uuid string as cdktf would
   projectId?: string;
 };
@@ -52,6 +46,26 @@ export class MyConstruct extends Construct {
     super(scope, id);
   }
 }
+`;
+
+const constructTestCode = `
+import { Testing } from "cdktf";
+import "cdktf/lib/testing/adapters/jest";
+import { MyConstruct } from "../";
+
+// To learn more about testing see cdk.tf/testing
+describe("MyConstruct", () => {
+  it("should synthesize", () => {
+    expect(
+      Testing.synthScope((scope) => {
+        new MyConstruct(scope, "my-construct", {
+          propertyA: "valueA",
+        });
+      })
+    ).toMatchSnapshot();
+  });
+});
+
 `;
 
 const moduleSrcCode = `
@@ -77,57 +91,6 @@ const app = new App();
 new MyAwesomeModule(app, "my-awesome-module");
 app.synth();
 `;
-
-const terraformAwsMainSrcCode = `
-terraform {
-  # Limit provider version (some modules are not compatible with aws 4.x)
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> __requiredProviderVersion__"
-    }
-  }
-  # Terraform binary version constraint
-  required_version = "~> 1.1.0"
-}
-
-
-provider "aws" {
-  region = "__region__"
-}
-`;
-
-const terraformAzureMainSrcCode = `
-# Configure the Azure provider
-terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "~> __requiredProviderVersion__"
-    }
-  }
-
-  required_version = ">= 1.1.0"
-}
-
-provider "azurerm" {
-  features {}
-}
-
-resource "azurerm_resource_group" "rg" {
-  name     = "__resourceGroupName__"
-  location = "__location__"
-}
-`;
-
-const terraformMainSrcCodeMap: { [key: string]: { srcCode: string } } = {
-  aws: {
-    srcCode: terraformAwsMainSrcCode,
-  },
-  azure: {
-    srcCode: terraformAzureMainSrcCode,
-  },
-};
 
 const terraformReadmeDocs = `
 # Please add here some pure HCL tests for your modules in order to test HCL Interoperability
@@ -161,21 +124,7 @@ export class HybridModule extends ConstructLibrary {
       eslintOptions: Object.assign({}, config.eslintOptions, {
         lintProjenRc: false,
       }),
-      postBuildSteps:
-        config.documentationPrecommitHook !== false
-          ? [
-              {
-                id: "install-pre-commit",
-                name: "Install pre-commit hook",
-                run: "pip install pre-commit",
-              },
-              {
-                id: "documentation-precommit-hook",
-                name: "Documentation Pre-commit Hook",
-                run: "pre-commit run --all-files",
-              },
-            ]
-          : [],
+      postBuildSteps: [],
     });
     const constructVersion = config.constructVersion || "^10.0.25";
     const cdktfVersion = config.cdktfVersion || "^0.9.4";
@@ -222,46 +171,122 @@ module "eks_managed_node_group" {
           null,
           2
         ),
+        "__tests__/index-test.ts": constructTestCode.trim(),
       },
     });
 
-    // Retrieve correct TF main stuff
-    let mainTfFile =
-      terraformMainSrcCodeMap[config.terraformProvider].srcCode.trim();
+    if (config.terraformExamples && config.terraformExamples.enabled) {
+      const providerConfig =
+        config.terraformExamples.providerConfig ||
+        `
+terraform {
+  # Terraform binary version constraint
+  required_version = "~> 1.1.0"
 
-    let configProperty: any = {};
-    switch (config.terraformProvider) {
-      case "aws": {
-        configProperty = config.terraformProviderAwsConfig;
-        break;
-      }
-      case "azure": {
-        configProperty = config.terraformProviderAzureConfig;
-        break;
-      }
-      default: {
-        throw new Error(
-          "Need to define correctly a Provider, only [aws,azure,gcp] allowed"
-        );
-      }
+  # Define all needed providers here, you can find all available providers here:
+  # https://registry.terraform.io/
+  required_providers {}
+}
+
+# Initialize your provider here
+
+`.trim();
+      const examplesFolder =
+        config.terraformExamples.folder || "terraform-examples";
+
+      new SampleDir(this, examplesFolder, {
+        files: {
+          "main.tf": `
+# Configure Terraform
+${providerConfig}
+
+            `.trimStart(),
+          "README.md": terraformReadmeDocs.trim(),
+        },
+      });
+
+      this.gitignore.addPatterns(
+        `${examplesFolder}/.terraform`,
+        `${examplesFolder}/.terraform.lock.hcl`
+      );
     }
 
-    Object.keys(configProperty).forEach((key: string) => {
-      mainTfFile = mainTfFile.replace(`__${key}__`, configProperty[key]);
-    });
+    if (config.constructExamples && config.constructExamples.enabled) {
+      const constructExampleFolder =
+        config.constructExamples.folder || "construct-examples";
 
-    new SampleDir(this, config.terraformExamplesFolder, {
-      files: {
-        "main.tf": mainTfFile,
-        "README.md": terraformReadmeDocs.trim(),
-      },
+      const levels = constructExampleFolder
+        .split("/")
+        .map(() => "..")
+        .join("/");
+
+      const constructReadmeDocs = `
+# Construct Examples
+
+Example use-cases for the Construct library.
+
+- [Basic Usage](./basic.ts)
+
+To ensure all examples are working, please make sure the [index.ts](./index.ts) file is importing all of them.
+`;
+
+      const constructExampleCode = `
+import { TerraformStack } from "cdktf";
+import { Construct } from "constructs";
+
+import { MyConstruct } from "${levels}/src/";
+
+export class BasicExample extends TerraformStack {
+  constructor(scope: Construct, name: string) {
+    super(scope, name);
+
+    new MyConstruct(this, "my-construct", {
+      propertyA: "valueA",
     });
+  }
+}
+
+
+`;
+
+      const exampleCollectionCode = `
+// This file will be synthesized to check if all examples are working
+
+import { App } from "cdktf";
+// All examples need to be imported here
+import { BasicExample } from "./basic";
+
+const app = new App();
+
+// All examples need to be initialized here
+new BasicExample(app, "basic-example");
+app.synth();
+`;
+
+      new SampleDir(this, constructExampleFolder, {
+        files: {
+          "index.ts": exampleCollectionCode.trim(),
+          "basic.ts": constructExampleCode.trim(),
+          "cdktf.json": JSON.stringify(
+            {
+              language: "typescript",
+              app: "npx ts-node index.ts",
+              projectId: config.projectId || uuid(),
+            },
+            null,
+            2
+          ),
+          "README.md": constructReadmeDocs.trim(),
+        },
+      });
+
+      this.testTask.exec(`cdktf synth`, {
+        cwd: constructExampleFolder,
+      });
+      this.gitignore.addPatterns(`${constructExampleFolder}/cdktf.out`);
+    }
 
     this.gitignore.addPatterns("src/.gen", "src/cdktf.out", "src/modules");
-    this.gitignore.addPatterns(
-      `${config.terraformExamplesFolder}/.terraform`,
-      `${config.terraformExamplesFolder}/.terraform.lock.hcl`
-    );
     this.compileTask.prependExec("cdktf get", {
       cwd: this.srcdir,
     });
@@ -314,6 +339,13 @@ for d in */ ; do
     mkdir -p "$TARGET_FOLDER/$dirname"
     cp "$MODULES_FOLDER/$dirname/cdk.tf.json" "$TARGET_FOLDER/$dirname/cdk.tf.json"
     cp "$SRC_FOLDER/$dirname.md" "$TARGET_FOLDER/$dirname/README.md"
+
+    # Add README hcl docs
+    if which terraform-docs >/dev/null; then
+      terraform-docs markdown table --output-file "$TARGET_FOLDER/$dirname/README.md" "$TARGET_FOLDER/$dirname" 
+    else
+      docker run --rm --volume "$SCRIPTPATH/../modules:/terraform-docs" -u $(id -u) quay.io/terraform-docs/terraform-docs:0.16.0 markdown table --output-file "/terraform-docs/$dirname/README.md" /terraform-docs/$dirname
+    fi
 done
 `.trim()
     );
@@ -341,38 +373,5 @@ terraform -chdir=terraform plan
 
     this.testTask.exec("./scripts/tf-module-test.sh");
     this.jest?.addIgnorePattern("terraform");
-
-    // Pre-commit hooks
-    if (config.documentationPrecommitHook !== false) {
-      const { additionalPrecommitHooks, documentationPrecommitHookOptions } =
-        config;
-      const {
-        version = "v1.70.1",
-        disableDocsHook = false,
-        disableFormatHook = false,
-      } = documentationPrecommitHookOptions || {};
-
-      new YamlFile(this, ".pre-commit-config.yaml", {
-        committed: true,
-        obj: {
-          repos: [
-            {
-              repo: "https://github.com/antonbabenko/pre-commit-terraform",
-              rev: version,
-              hooks: [
-                disableFormatHook ? null : { id: "terraform_fmt" },
-                disableDocsHook ? null : { id: "terraform_docs" },
-              ].filter((item) => item !== null),
-            },
-            ...(additionalPrecommitHooks ?? []),
-          ],
-        },
-      });
-
-      this.tasks.addTask("precommit", {
-        description: "Runs precommit hooks",
-        exec: "pre-commit install",
-      });
-    }
   }
 }
