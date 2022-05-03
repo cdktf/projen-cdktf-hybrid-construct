@@ -5,8 +5,6 @@ import { v4 as uuid } from "uuid";
 type HybridModuleOptions = ConstructLibraryOptions & {
   cdktfVersion?: string;
   constructVersion?: string;
-  // URL of the repository
-  repository: string;
   // Name of the author
   author: string;
   // If set a terraform examples folder will be created
@@ -144,7 +142,7 @@ export class HybridModule extends ConstructLibrary {
 \`\`\`hcl
 module "eks_managed_node_group" {
   source = "${
-    config.repository
+    config.repositoryUrl
       ?.replace("https://github.com/", "")
       .replace("http://github.com/", "")
       .replace("github.com/", "") || "my-github-repo"
