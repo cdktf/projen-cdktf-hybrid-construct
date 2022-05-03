@@ -66,9 +66,13 @@ describe("MyModule", () => {
     });
     new TextFile(this, `${this.srcdir}/terraformModules.ts`, {
       committed: true,
-      lines: config.terraformModules.map(
-        (tfModule) => `export * from "./.gen/modules/${tfModule.name}";`
-      ),
+      marker: true,
+      lines: [
+        ...config.terraformModules.map(
+          (tfModule) => `export * from "./.gen/modules/${tfModule.name}";`
+        ),
+        "",
+      ],
     });
 
     new JsonFile(this, `${this.srcdir}/cdktf.json`, {

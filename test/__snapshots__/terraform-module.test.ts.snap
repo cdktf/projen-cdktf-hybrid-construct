@@ -1012,7 +1012,8 @@ export * from \\"./terraformModules\\";
 
 exports[`TerraformModule snapshot: src/terraformModules.ts 1`] = `
 "export * from \\"./.gen/modules/eks\\";
-export * from \\"./.gen/modules/eks-managed-nodegroup\\";"
+export * from \\"./.gen/modules/eks-managed-nodegroup\\";
+"
 `;
 
 exports[`TerraformModule snapshot: tsconfig.dev.json 1`] = `
