@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0
+## 0.1.45
 
 - _Breaking Change_: `terraformExamplesFolder`, `terraformProvider`, `terraformProvider*Config` are now part of `terraformExamples` and differently structured.
 - Add documentation hook (using docker if `terraform-docs` is not enabled)
