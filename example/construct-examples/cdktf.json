@@ -1,5 +1,0 @@
-{
-  "language": "typescript",
-  "app": "npx ts-node index.ts",
-  "projectId": "my-project-id"
-}

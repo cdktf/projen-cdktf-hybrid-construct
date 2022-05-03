@@ -1,3 +1,5 @@
+# Configure Terraform
+
 terraform {
   # Limit provider version (some modules are not compatible with aws 4.x)
   required_providers {
@@ -14,3 +16,6 @@ terraform {
 provider "aws" {
   region = "eu-central-1"
 }
+
+
+            

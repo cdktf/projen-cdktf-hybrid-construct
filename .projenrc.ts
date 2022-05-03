@@ -29,13 +29,14 @@ const project = new typescript.TypeScriptProject({
 });
 project.tsconfig?.exclude?.push("src/exampleCode/**");
 project.tsconfig?.exclude?.push("example/**");
+project.tsconfig?.exclude?.push("examples/**");
 project.addTask("buildExample", {
-  exec: "git clean -dfx . && rm -rf lib modules src && yarn && yarn projen && yarn && yarn build",
-  cwd: "./example",
-  env: {
-    // We don't want a project id to be created
-    CHECKPOINT_DISABLE: "true",
-  },
+  exec: "yarn buildExample:hybrid",
+});
+
+project.addTask("buildExample:hybrid", {
+  exec: "git clean -dfx . && rm -rf lib modules src terraform construct-examples && yarn && yarn projen && yarn && yarn build",
+  cwd: "./examples/hybrid-module",
 });
 
 project.testTask.exec("yarn buildExample");

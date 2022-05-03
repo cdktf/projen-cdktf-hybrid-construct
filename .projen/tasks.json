@@ -26,15 +26,20 @@
     },
     "buildExample": {
       "name": "buildExample",
-      "env": {
-        "CHECKPOINT_DISABLE": "true"
-      },
       "steps": [
         {
-          "exec": "git clean -dfx . && rm -rf lib modules src && yarn && yarn projen && yarn && yarn build"
+          "exec": "yarn buildExample:hybrid"
+        }
+      ]
+    },
+    "buildExample:hybrid": {
+      "name": "buildExample:hybrid",
+      "steps": [
+        {
+          "exec": "git clean -dfx . && rm -rf lib modules src terraform construct-examples && yarn && yarn projen && yarn && yarn build"
         }
       ],
-      "cwd": "./example"
+      "cwd": "./examples/hybrid-module"
     },
     "bump": {
       "name": "bump",

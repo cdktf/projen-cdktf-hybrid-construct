@@ -1,4 +1,4 @@
-import { HybridModule } from "../lib";
+import { HybridModule } from "../../lib";
 
 const project = new HybridModule({
   name: "my-module",
