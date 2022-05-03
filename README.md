@@ -13,6 +13,10 @@ npm install projen-cdktf-hybrid-construct
 
 Edit the `.projenrc.ts`:
 
+### `HybridModule`
+
+If you want to write a CDKTF construct and also publish it as a Terraform Module you can use the `HybridModule` template.
+
 ```js
 const { HybridModule } = require("projen-cdktf-hybrid-construct");
 
@@ -59,6 +63,36 @@ const project = new HybridModule({
 project.synth();
 ```
 
+### `TerraformModule`
+
+If you want to republish an existing Terraform module as a CDKTF construct or if you want to repackage them with an easier to use API you can use the `TerraformModule` template.
+
+```js
+const { HybridModule } = require("projen-cdktf-hybrid-construct");
+
+const project = new TerraformModule({
+  name: "my-module",
+  author: "Daniel Schmidt",
+  authorAddress: "danielmschmidt92@gmail.com",
+  repositoryUrl: "github.com/DanielMSchmidt/my-module",
+
+  terraformModules: [
+    {
+      name: "eks",
+      source: "terraform-aws-modules/eks/aws",
+      version: "~> 18.0",
+    },
+    {
+      name: "eks-managed-nodegroup",
+      source: "terraform-aws-modules/eks/aws//modules/eks-managed-node-group",
+      version: "~> 18.0",
+    },
+  ],
+});
+
+project.synth();
+```
+
 ### Roadmap
 
 - [x] Add dedicated file for HCL templates
@@ -69,6 +103,6 @@ project.synth();
 - [x] Add testing strategy
 - [ ] Add deployment scripts to Artifactory
 - [ ] Add deployment scripts to Github Packages
-- [ ] Add construct / option / docs to publish existing module as construct
+- [x] Add construct / option / docs to publish existing module as construct
 - [ ] Add construct for managing multiple repos like this
 - [ ] Add option to manager projen template to bootstrap cdktf app that deploys Artifactory?
