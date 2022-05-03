@@ -18,13 +18,43 @@ const { HybridModule } = require("projen-cdktf-hybrid-construct");
 
 const project = new HybridModule({
   defaultReleaseBranch: "main",
-  name: "my-new-hybrid-construct",
+  // The name of the module & repository need to start with terraform-cdk-
+  name: "terraform-cdk-my-new-hybrid-construct",
+  repositoryUrl:
+    "github.com/DanielMSchmidt/terraform-cdk-my-new-hybrid-construct",
 
-  // All options available in the Projen Typescript template
-  // deps: [],                /* Runtime dependencies of this module. */
-  // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
-  // devDeps: [],             /* Build dependencies for this module. */
-  // packageName: undefined,  /* The "name" in package.json. */
+  author: "Daniel Schmidt",
+  authorAddress: "danielmschmidt92@gmail.com",
+
+  // If enabled an example folder with terraform code will be created
+  terraformExamples: {
+    enabled: true,
+    folder: "terraform",
+    // The configuration to add to the example terraform file
+    providerConfig: `
+        terraform {
+          required_providers {
+            aws = {
+              source  = "hashicorp/aws"
+              version = "~> 3.74"
+            }
+          }
+          # Terraform binary version constraint
+          required_version = "~> 1.1.0"
+        }
+        
+        
+        provider "aws" {
+          region = "eu-central-1"
+        }
+        `,
+  },
+
+  // If enabled a constructs example folder will be created
+  constructExamples: {
+    enabled: true,
+    folder: "construct-examples",
+  },
 });
 project.synth();
 ```
