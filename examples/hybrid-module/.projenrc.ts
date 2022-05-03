@@ -3,7 +3,6 @@ import { HybridModule } from "../../lib";
 const project = new HybridModule({
   name: "my-module",
   author: "Daniel Schmidt",
-  defaultReleaseBranch: "main",
   authorAddress: "danielmschmidt92@gmail.com",
   repositoryUrl: "github.com/DanielMSchmidt/my-module",
   outdir: ".",

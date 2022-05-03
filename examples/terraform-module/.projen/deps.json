@@ -6,7 +6,7 @@
     },
     {
       "name": "@types/node",
-      "version": "^14",
+      "version": "^12",
       "type": "build"
     },
     {
@@ -20,13 +20,22 @@
       "type": "build"
     },
     {
+      "name": "cdktf-cli",
+      "version": "^0.10.1",
+      "type": "build"
+    },
+    {
       "name": "cdktf",
-      "version": "0.8.3",
+      "version": "0.10.1",
       "type": "build"
     },
     {
       "name": "constructs",
-      "version": "10.0.12",
+      "version": "10.0.107",
+      "type": "build"
+    },
+    {
+      "name": "eslint-config-prettier",
       "type": "build"
     },
     {
@@ -42,18 +51,21 @@
       "type": "build"
     },
     {
+      "name": "eslint-plugin-prettier",
+      "type": "build"
+    },
+    {
       "name": "eslint",
       "version": "^8",
       "type": "build"
     },
     {
-      "name": "jest-junit",
-      "version": "^13",
+      "name": "jest",
       "type": "build"
     },
     {
-      "name": "jest",
-      "version": "^27",
+      "name": "jest-junit",
+      "version": "^13",
       "type": "build"
     },
     {
@@ -82,6 +94,10 @@
       "type": "build"
     },
     {
+      "name": "prettier",
+      "type": "build"
+    },
+    {
       "name": "projen",
       "type": "build"
     },
@@ -92,12 +108,10 @@
     },
     {
       "name": "ts-jest",
-      "version": "^27",
       "type": "build"
     },
     {
       "name": "ts-node",
-      "version": "^9",
       "type": "build"
     },
     {
@@ -106,12 +120,12 @@
     },
     {
       "name": "cdktf",
-      "version": "^0.8.3",
+      "version": "^0.10.1",
       "type": "peer"
     },
     {
       "name": "constructs",
-      "version": "^10.0.12",
+      "version": "^10.0.107",
       "type": "peer"
     }
   ],

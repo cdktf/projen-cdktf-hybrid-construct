@@ -1,8 +1,9 @@
 import { FileBase, IResolver, Project, SampleDir } from "projen";
-import { ConstructLibrary, ConstructLibraryOptions } from "projen/lib/cdk";
+import { ConstructLibrary } from "projen/lib/cdk";
 import { v4 as uuid } from "uuid";
+import { defaults, Options } from "./defaults";
 
-type HybridModuleOptions = ConstructLibraryOptions & {
+type HybridModuleOptions = Options & {
   cdktfVersion?: string;
   constructVersion?: string;
   // Name of the author
@@ -24,13 +25,6 @@ type HybridModuleOptions = ConstructLibraryOptions & {
   };
   // Defaulted to a uuid string as cdktf would
   projectId?: string;
-};
-
-const defaults: Partial<ConstructLibraryOptions> = {
-  prettier: true,
-  projenrcTs: true,
-  defaultReleaseBranch: "main",
-  sampleCode: false,
 };
 
 const constructSrcCode = `
@@ -64,7 +58,6 @@ describe("MyConstruct", () => {
     ).toMatchSnapshot();
   });
 });
-
 `;
 
 const moduleSrcCode = `

@@ -34,6 +34,8 @@ project.addTask("buildExample", {
   exec: "yarn buildExample:hybrid && yarn buildExample:terraform",
 });
 
+project.addPackageIgnore("examples");
+
 project.addTask("buildExample:hybrid", {
   exec: "git clean -dfx . && rm -rf lib modules src terraform construct-examples && yarn && yarn projen && yarn && yarn build",
   cwd: "./examples/hybrid-module",
