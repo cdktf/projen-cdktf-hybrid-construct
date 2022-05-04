@@ -67,7 +67,7 @@ project.synth();
 
 If you want to republish an existing Terraform module as a CDKTF construct or if you want to repackage them with an easier to use API you can use the `TerraformModule` template.
 
-````js
+```js
 const { HybridModule } = require("projen-cdktf-hybrid-construct");
 
 const project = new TerraformModule({
@@ -91,8 +91,7 @@ const project = new TerraformModule({
 });
 
 project.synth();
-
-
+```
 
 ## Publishing
 
@@ -127,7 +126,7 @@ new HybridModule({
     module: name.replace(/-/g, "_"),
   },
 });
-````
+```
 
 #### Maven (Java)
 
