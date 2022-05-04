@@ -1,5 +1,5 @@
 import { HybridModule } from "../src/index";
-import { synthSnapshot } from "./helper";
+import { expectSnapshot } from "./helper";
 
 describe("HybridModule", () => {
   it("snapshot", () => {
@@ -37,14 +37,6 @@ describe("HybridModule", () => {
       projectId: "test-project",
     });
 
-    const out = synthSnapshot(project);
-
-    const ignoredFiles = [".projen", "example"];
-    Object.entries(out).forEach(([path, content]) => {
-      if (ignoredFiles.some((file) => path.indexOf(file) !== -1)) {
-        return;
-      }
-      expect(content).toMatchSnapshot(path);
-    });
+    expectSnapshot(project);
   });
 });
