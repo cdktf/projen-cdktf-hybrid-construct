@@ -98,3 +98,25 @@ export function directorySnapshot(
 
   return output;
 }
+
+export function expectSnapshot(
+  project: Project,
+  ignoredFiles = [".projen", "example"]
+) {
+  const out = synthSnapshot(project);
+
+  Object.entries(out).forEach(([filePath, content]) => {
+    if (ignoredFiles.some((file) => filePath.indexOf(file) !== -1)) {
+      return;
+    }
+    expect(content).toMatchSnapshot(filePath);
+  });
+}
+
+export function expectSnapshotOnly(project: Project, onlyFiles: string[]) {
+  const out = synthSnapshot(project);
+
+  onlyFiles.forEach((file) => {
+    expect(out[file]).toMatchSnapshot(file);
+  });
+}

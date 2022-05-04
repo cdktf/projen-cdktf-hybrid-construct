@@ -21,7 +21,6 @@ If you want to write a CDKTF construct and also publish it as a Terraform Module
 const { HybridModule } = require("projen-cdktf-hybrid-construct");
 
 const project = new HybridModule({
-  defaultReleaseBranch: "main",
   // The name of the module & repository need to start with terraform-cdk-
   name: "terraform-cdk-my-new-hybrid-construct",
   repositoryUrl:
@@ -68,7 +67,7 @@ project.synth();
 If you want to republish an existing Terraform module as a CDKTF construct or if you want to repackage them with an easier to use API you can use the `TerraformModule` template.
 
 ```js
-const { HybridModule } = require("projen-cdktf-hybrid-construct");
+const { TerraformModule } = require("projen-cdktf-hybrid-construct");
 
 const project = new TerraformModule({
   name: "my-module",
@@ -97,6 +96,24 @@ project.synth();
 
 ### Open Source
 
+We have a helper method for easy configuration, but there are still some manual steps required.
+
+```js
+const {
+  HybridModule,
+  publishToRegistries,
+} = require("projen-cdktf-hybrid-construct");
+
+const project = new HybridModule({
+  // ... all the other options
+  ...publishToRegistries({
+    name: "my-new-hybrid-construct",
+    namespace: "my-org",
+    registries: ["npm", "pypi", "nuget", "maven"],
+  }),
+});
+```
+
 #### Terraform
 
 1. [Sign in at the registry](https://registry.terraform.io/sign-in)
@@ -114,7 +131,8 @@ Please make sure your repository name starts with `terraform-cdk-`.
 
 1. Create an account at [pypi.org](https://pypi.org/)
 2. Create an [API token](https://pypi.org/help/#apitoken) on pypi
-3. Set the `publishToPypi` section in the options of `HybridModule` or `TerraformModule`
+3. Create a [GitHub Action Secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) with the name `TWINE_USERNAME` and the value `__token__` and a second one with the name `TWINE_PASSWORD` and the value of the token
+4. Set the `publishToPypi` section in the options of `HybridModule` or `TerraformModule` (or use the helper mentioned above)
 
 ```js
 const name = "name-of-my-hybrid-construct";
@@ -131,7 +149,13 @@ new HybridModule({
 #### Maven (Java)
 
 1. [Create a Sonatype account and repository](https://central.sonatype.org/publish/publish-guide/#introduction)
-2. Setup the `publishToMaven` section in the options of `HybridModule` or `TerraformModule`
+2. Create [GitHub Action Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) to configure maven:
+   - `MAVEN_USERNAME`
+   - `MAVEN_PASSWORD`
+   - `MAVEN_STAGING_PROFILE_ID`
+   - `MAVEN_GPG_PRIVATE_KEY_PASSPHRASE`
+   - `MAVEN_GPG_PRIVATE_KEY_PASSPHRASE`
+3. Setup the `publishToMaven` section in the options of `HybridModule` or `TerraformModule` (or use the helper mentioned above)
 
 ```js
 const githubNamespace = "my-org";
@@ -151,7 +175,8 @@ new HybridModule({
 
 1. [Create a NuGet account](https://www.nuget.org/users/account/LogOn) (you might need to create a Microsoft Account if you don't have one)
 2. [Create API keys](https://docs.microsoft.com/en-us/nuget/nuget-org/publish-a-package#create-api-keys)
-3. Setup the `publishToNuget` section in the options of `HybridModule` or `TerraformModule`
+3. Create a [GitHub Action Secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) with the name `NUGET_API_KEY` and the value of the token
+4. Setup the `publishToNuget` section in the options of `HybridModule` or `TerraformModule` (or use the helper mentioned above)
 
 ```js
 const githubNamespace = "my-org";

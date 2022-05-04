@@ -105,7 +105,15 @@
       "type": "build"
     },
     {
+      "name": "@types/change-case",
+      "type": "runtime"
+    },
+    {
       "name": "@types/uuid",
+      "type": "runtime"
+    },
+    {
+      "name": "change-case",
       "type": "runtime"
     },
     {
