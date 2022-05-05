@@ -75,7 +75,8 @@
   "keywords": [
     "cdk",
     "cdktf",
-    "cdktf-hybrid"
+    "cdktf-hybrid",
+    "terraform"
   ],
   "main": "lib/index.js",
   "license": "Apache-2.0",

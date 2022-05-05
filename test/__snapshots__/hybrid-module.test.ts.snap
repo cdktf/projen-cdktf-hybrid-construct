@@ -940,6 +940,7 @@ Object {
     "cdk",
     "cdktf",
     "cdktf-hybrid",
+    "terraform",
   ],
   "license": "Apache-2.0",
   "main": "lib/index.js",

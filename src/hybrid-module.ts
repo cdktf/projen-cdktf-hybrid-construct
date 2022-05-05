@@ -1,5 +1,5 @@
 import { FileBase, IResolver, Project, SampleDir } from "projen";
-import { ConstructLibrary } from "projen/lib/cdk";
+import { JsiiProject } from "projen/lib/cdk";
 import { v4 as uuid } from "uuid";
 import { defaults, Options } from "./defaults";
 
@@ -107,7 +107,12 @@ class ScriptFile extends FileBase {
   }
 }
 
-export class HybridModule extends ConstructLibrary {
+/**
+ * Hybrid CDKTF Construct / Terraform Module
+ *
+ * @pjid hybrid-module
+ */
+export class HybridModule extends JsiiProject {
   constructor(config: HybridModuleOptions) {
     super({
       ...defaults,
@@ -123,7 +128,7 @@ export class HybridModule extends ConstructLibrary {
 
     this.addPeerDeps(`constructs@${constructVersion}`, `cdktf@${cdktfVersion}`);
     this.addDevDeps(`cdktf-cli@${cdktfVersion}`, "ts-node");
-    this.addKeywords("cdktf", "cdktf-hybrid");
+    this.addKeywords("cdk", "cdktf", "cdktf-hybrid", "terraform");
     this.setScript("terraform:test", "./scripts/tf-module-test.sh");
 
     // Module Entrypoint

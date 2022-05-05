@@ -24,6 +24,11 @@ type TerraformModuleOptions = Options & {
   projectId?: string;
 };
 
+/**
+ * Terraform Modules republished as CDKTF Constructs
+ *
+ * @pjid terraform-module
+ */
 export class TerraformModule extends ConstructLibrary {
   constructor(config: TerraformModuleOptions) {
     super({
