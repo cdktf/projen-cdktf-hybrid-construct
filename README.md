@@ -192,6 +192,26 @@ new HybridModule({
 });
 ```
 
+### Github Packages
+
+We have a helper method for easy configuration, no extra steps needed:
+
+```js
+const {
+  HybridModule,
+  publishToGithubPackages,
+} = require("projen-cdktf-hybrid-construct");
+
+const project = new HybridModule({
+  // ... all the other options
+  ...publishToGithubPackages({
+    name: "my-new-hybrid-construct",
+    namespace: "my-org",
+    registries: ["npm", "maven"], // pypi and nuget are not yet supported
+  }),
+});
+```
+
 ### Roadmap
 
 - [x] Add dedicated file for HCL templates
@@ -201,5 +221,5 @@ new HybridModule({
 - [x] Add example folder to project using this
 - [x] Add testing strategy
 - [x] Add construct / option / docs to publish existing module as construct
+- [x] Add deployment scripts to Github Packages
 - [ ] Add deployment scripts to Artifactory
-- [ ] Add deployment scripts to Github Packages
