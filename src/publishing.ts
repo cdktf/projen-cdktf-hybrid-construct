@@ -86,7 +86,7 @@ export function publishToGithubPackages(options: PublishOptions): Config {
   }
 
   if (registries.includes("npm")) {
-    config.npmRegistryUrl = "npm.pkg.github.com";
+    config.npmRegistryUrl = "https://npm.pkg.github.com";
   }
 
   if (registries.includes("maven")) {
