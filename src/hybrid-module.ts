@@ -20,12 +20,38 @@ export interface TerraformExamplesOption {
 }
 
 export interface HybridModuleOptions extends ConstructLibraryOptions {
+  /**
+   * Minimum target version of this library.
+   * @default "^0.10.1"
+   * @featured
+   */
   readonly cdktfVersion?: string;
+
+  /**
+   * Construct version to use
+   * @default "^10.0.12"
+   */
   readonly constructVersion?: string;
-  // If set a terraform examples folder will be created
+
+  /**
+   * If set a terraform examples folder will be created
+   * @default undefined
+   * @featured
+   */
   readonly terraformExamples?: TerraformExamplesOption;
+
+  /**
+   * If set a construct examples folder will be created
+   * @default undefined
+   * @featured
+   */
   readonly constructExamples?: ConstructExamplesOption;
-  // Defaulted to a uuid string as cdktf would
+
+  /**
+   * If set a terraform examples folder will be created
+   *Defaults to a uuid string as cdktf would
+   * Mostly used for testing to have a predictable result
+   */
   readonly projectId?: string;
 }
 

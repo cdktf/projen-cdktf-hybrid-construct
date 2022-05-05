@@ -200,11 +200,11 @@ const hybridModuleOptions: HybridModuleOptions = { ... }
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.python">python</a></code> | <code>projen.cdk.JsiiPythonTarget</code> | *No description.* |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.rootdir">rootdir</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.catalog">catalog</a></code> | <code>projen.cdk.Catalog</code> | Libraries will be picked up by the construct catalog when they are published to npm as jsii modules and will be published under:. |
-| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.cdktfVersion">cdktfVersion</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.constructExamples">constructExamples</a></code> | <code><a href="#projen-cdktf-hybrid-construct.ConstructExamplesOption">ConstructExamplesOption</a></code> | *No description.* |
-| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.constructVersion">constructVersion</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.projectId">projectId</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.terraformExamples">terraformExamples</a></code> | <code><a href="#projen-cdktf-hybrid-construct.TerraformExamplesOption">TerraformExamplesOption</a></code> | *No description.* |
+| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.cdktfVersion">cdktfVersion</a></code> | <code>string</code> | Minimum target version of this library. |
+| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.constructExamples">constructExamples</a></code> | <code><a href="#projen-cdktf-hybrid-construct.ConstructExamplesOption">ConstructExamplesOption</a></code> | If set a construct examples folder will be created. |
+| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.constructVersion">constructVersion</a></code> | <code>string</code> | Construct version to use. |
+| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.projectId">projectId</a></code> | <code>string</code> | If set a terraform examples folder will be created Defaults to a uuid string as cdktf would Mostly used for testing to have a predictable result. |
+| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.terraformExamples">terraformExamples</a></code> | <code><a href="#projen-cdktf-hybrid-construct.TerraformExamplesOption">TerraformExamplesOption</a></code> | If set a terraform examples folder will be created. |
 
 ---
 
@@ -2267,6 +2267,9 @@ public readonly cdktfVersion: string;
 ```
 
 - *Type:* string
+- *Default:* "^0.10.1"
+
+Minimum target version of this library.
 
 ---
 
@@ -2277,6 +2280,9 @@ public readonly constructExamples: ConstructExamplesOption;
 ```
 
 - *Type:* <a href="#projen-cdktf-hybrid-construct.ConstructExamplesOption">ConstructExamplesOption</a>
+- *Default:* undefined
+
+If set a construct examples folder will be created.
 
 ---
 
@@ -2287,6 +2293,9 @@ public readonly constructVersion: string;
 ```
 
 - *Type:* string
+- *Default:* "^10.0.12"
+
+Construct version to use.
 
 ---
 
@@ -2298,6 +2307,8 @@ public readonly projectId: string;
 
 - *Type:* string
 
+If set a terraform examples folder will be created Defaults to a uuid string as cdktf would Mostly used for testing to have a predictable result.
+
 ---
 
 ##### `terraformExamples`<sup>Optional</sup> <a name="terraformExamples" id="projen-cdktf-hybrid-construct.HybridModuleOptions.property.terraformExamples"></a>
@@ -2307,6 +2318,9 @@ public readonly terraformExamples: TerraformExamplesOption;
 ```
 
 - *Type:* <a href="#projen-cdktf-hybrid-construct.TerraformExamplesOption">TerraformExamplesOption</a>
+- *Default:* undefined
+
+If set a terraform examples folder will be created.
 
 ---
 
@@ -2518,11 +2532,11 @@ const terraformModuleOptions: TerraformModuleOptions = { ... }
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.python">python</a></code> | <code>projen.cdk.JsiiPythonTarget</code> | *No description.* |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.rootdir">rootdir</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.catalog">catalog</a></code> | <code>projen.cdk.Catalog</code> | Libraries will be picked up by the construct catalog when they are published to npm as jsii modules and will be published under:. |
-| <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.terraformModules">terraformModules</a></code> | <code><a href="#projen-cdktf-hybrid-construct.TerraformVersionConstraint">TerraformVersionConstraint</a>[]</code> | *No description.* |
-| <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.cdktfVersion">cdktfVersion</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.constructVersion">constructVersion</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.terraformModules">terraformModules</a></code> | <code><a href="#projen-cdktf-hybrid-construct.TerraformVersionConstraint">TerraformVersionConstraint</a>[]</code> | List of modules to generate bindings for. |
+| <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.cdktfVersion">cdktfVersion</a></code> | <code>string</code> | Minimum target version of this library. |
+| <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.constructVersion">constructVersion</a></code> | <code>string</code> | Construct version to use. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.projectId">projectId</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.terraformProviders">terraformProviders</a></code> | <code><a href="#projen-cdktf-hybrid-construct.TerraformVersionConstraint">TerraformVersionConstraint</a>[]</code> | *No description.* |
+| <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.terraformProviders">terraformProviders</a></code> | <code><a href="#projen-cdktf-hybrid-construct.TerraformVersionConstraint">TerraformVersionConstraint</a>[]</code> | List of provider bindings to generate in addition to the modules. |
 
 ---
 
@@ -4586,6 +4600,8 @@ public readonly terraformModules: TerraformVersionConstraint[];
 
 - *Type:* <a href="#projen-cdktf-hybrid-construct.TerraformVersionConstraint">TerraformVersionConstraint</a>[]
 
+List of modules to generate bindings for.
+
 ---
 
 ##### `cdktfVersion`<sup>Optional</sup> <a name="cdktfVersion" id="projen-cdktf-hybrid-construct.TerraformModuleOptions.property.cdktfVersion"></a>
@@ -4595,6 +4611,9 @@ public readonly cdktfVersion: string;
 ```
 
 - *Type:* string
+- *Default:* "^0.10.1"
+
+Minimum target version of this library.
 
 ---
 
@@ -4605,6 +4624,9 @@ public readonly constructVersion: string;
 ```
 
 - *Type:* string
+- *Default:* "^10.0.12"
+
+Construct version to use.
 
 ---
 
@@ -4625,6 +4647,8 @@ public readonly terraformProviders: TerraformVersionConstraint[];
 ```
 
 - *Type:* <a href="#projen-cdktf-hybrid-construct.TerraformVersionConstraint">TerraformVersionConstraint</a>[]
+
+List of provider bindings to generate in addition to the modules.
 
 ---
 

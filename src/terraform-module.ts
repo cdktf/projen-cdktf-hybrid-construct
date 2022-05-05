@@ -14,10 +14,28 @@ export interface TerraformVersionConstraint {
 }
 
 export interface TerraformModuleOptions extends ConstructLibraryOptions {
+  /**
+   * Minimum target version of this library.
+   * @default "^0.10.1"
+   * @featured
+   */
   readonly cdktfVersion?: string;
+
+  /**
+   * Construct version to use
+   * @default "^10.0.12"
+   */
   readonly constructVersion?: string;
 
+  /**
+   *  List of provider bindings to generate in addition to the modules.
+   */
   readonly terraformProviders?: TerraformVersionConstraint[];
+
+  /**
+   * List of modules to generate bindings for.
+   * @featured
+   */
   readonly terraformModules: TerraformVersionConstraint[];
 
   // Defaulted to a uuid string as cdktf would
