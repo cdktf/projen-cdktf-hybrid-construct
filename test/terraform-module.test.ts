@@ -1,3 +1,4 @@
+import { defaults } from "../src/defaults";
 import {
   TerraformModule,
   publishToRegistries,
@@ -8,6 +9,7 @@ import { expectSnapshot, expectSnapshotOnly } from "./helper";
 describe("TerraformModule", () => {
   it("snapshot", () => {
     const project = new TerraformModule({
+      ...defaults,
       name: "my-module",
       author: "Daniel Schmidt",
       authorAddress: "danielmschmidt92@gmail.com",
@@ -33,6 +35,7 @@ describe("TerraformModule", () => {
 
   it("can be released", () => {
     const project = new TerraformModule({
+      ...defaults,
       name: "my-module",
       author: "Daniel Schmidt",
       authorAddress: "danielmschmidt92@gmail.com",
@@ -62,6 +65,7 @@ describe("TerraformModule", () => {
 
   it("can be released to github packages", () => {
     const project = new TerraformModule({
+      ...defaults,
       name: "my-module",
       author: "Daniel Schmidt",
       authorAddress: "danielmschmidt92@gmail.com",

@@ -11,5 +11,3 @@ export const defaults: Pick<
   ConstructLibraryOptions,
   keyof typeof defaultOptions
 > = defaultOptions;
-
-export type Options = Omit<ConstructLibraryOptions, keyof typeof defaults>;

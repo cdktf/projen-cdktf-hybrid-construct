@@ -1,9 +1,11 @@
+import { defaults } from "../src/defaults";
 import { HybridModule } from "../src/index";
 import { expectSnapshot } from "./helper";
 
 describe("HybridModule", () => {
   it("snapshot", () => {
     const project = new HybridModule({
+      ...defaults,
       name: "my-module",
       author: "Daniel Schmidt",
       authorAddress: "danielmschmidt92@gmail.com",
