@@ -95,3 +95,48 @@ export function publishToGithubPackages(options: PublishOptions): Config {
 
   return config;
 }
+
+export type ArtifactoryPublishOptions = PublishOptions & {
+  // The artifactory url to publish to, e.g. "https://artifactory.example.com/artifactory/api"
+  artifactoryApiUrl: string;
+
+  // Name of the artifactory repository to publish to, defaults to the namespace
+  artifactoryRepository?: string;
+};
+
+export function publishToArtifactory(
+  options: ArtifactoryPublishOptions
+): Config {
+  const {
+    registries,
+    artifactoryApiUrl,
+    artifactoryRepository = options.namespace,
+  } = options;
+  const config = publishToRegistries(options);
+
+  if (registries.includes("npm")) {
+    config.npmRegistryUrl = `${artifactoryApiUrl}/npm/${artifactoryRepository}/`;
+  }
+
+  if (registries.includes("pypi")) {
+    config.publishToPypi!.twineRegistryUrl = `${artifactoryApiUrl}/pypi/${artifactoryRepository}/`;
+  }
+
+  if (registries.includes("maven")) {
+    throw new Error(
+      "Artifactory does support maven packages, but this library does not yet support it"
+    );
+    // With no chance to test it the docs dont tell me enough to implement it
+    // https://www.jfrog.com/confluence/display/JFROG/Maven+Repository#MavenRepository-ResolvingArtifactsThroughArtifactory
+    // config.publishToMaven!.mavenRepositoryUrl = `${artifactoryApiUrl}/`;
+  }
+
+  if (registries.includes("nuget")) {
+    // Seems like projen does not support artifactory on nuget yet: https://github.dev/projen/projen/blob/14f37ec704afdc5143e6a2954c1250b1f0ccaddf/src/release/publisher.ts#L343
+    throw new Error(
+      "Artifactory does support nuget packages, but this library does not yet support it"
+    );
+  }
+
+  return config;
+}
