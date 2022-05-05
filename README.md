@@ -1,21 +1,16 @@
 # Projen-CDKTF-Hybrid-Construct
 
-Projen template for CDKTF Constructs that should also be used as Terraform Modules.
+Projen template for CDKTF Constructs that should also be used as Terraform Modules and for republishing Terraform Modules as Constructs.
 
 ## Usage
-
-```bash
-mkdir my-new-hybrid-construct
-cd my-new-hybrid-construct
-npx projen typescript
-npm install projen-cdktf-hybrid-construct
-```
-
-Edit the `.projenrc.ts`:
 
 ### `HybridModule`
 
 If you want to write a CDKTF construct and also publish it as a Terraform Module you can use the `HybridModule` template.
+
+You can initialize such a project using `npx projen new --from projen-cdktf-hybrid-construct hybrid-module`.
+
+A configutation might look like this:
 
 ```js
 const { HybridModule } = require("projen-cdktf-hybrid-construct");
@@ -65,6 +60,10 @@ project.synth();
 ### `TerraformModule`
 
 If you want to republish an existing Terraform module as a CDKTF construct or if you want to repackage them with an easier to use API you can use the `TerraformModule` template.
+
+You can initialize such a project using `npx projen new --from projen-cdktf-hybrid-construct terraform-module`.
+
+A configutation might look like this:
 
 ```js
 const { TerraformModule } = require("projen-cdktf-hybrid-construct");

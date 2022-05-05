@@ -1,6 +1,9 @@
 import { HybridModule } from "../../lib";
 
 const project = new HybridModule({
+  prettier: true,
+  projenrcTs: true,
+  defaultReleaseBranch: "main",
   name: "my-module",
   author: "Daniel Schmidt",
   authorAddress: "danielmschmidt92@gmail.com",

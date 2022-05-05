@@ -1,10 +1,13 @@
-import { typescript } from "projen";
 import { NpmAccess } from "projen/lib/javascript";
+import { JsiiProject } from "projen/lib/cdk";
 
 const name = "projen-cdktf-hybrid-construct";
-const project = new typescript.TypeScriptProject({
+const project = new JsiiProject({
   defaultReleaseBranch: "main",
   name,
+  repositoryUrl: `https://github.com/DanielMSchmidt/${name}.git`,
+  author: "Daniel Schmidt",
+  authorAddress: "danielmschmidt92@gmail.com",
   packageName: name,
   prettier: true,
   projenrcTs: true,
@@ -12,9 +15,6 @@ const project = new typescript.TypeScriptProject({
     "Projen template for CDKTF Constructs that should also be used as Terraform Modules.",
   license: "MIT",
   copyrightOwner: "Daniel Schmidt",
-
-  deps: ["projen", "@types/uuid", "uuid", "@types/change-case", "change-case"],
-  devDeps: ["fs-extra", "glob", "@types/fs-extra", "@types/glob"],
 
   release: true,
   releaseToNpm: true,
@@ -33,6 +33,18 @@ project.tsconfig?.exclude?.push("examples/**");
 project.addTask("buildExample", {
   exec: "yarn buildExample:hybrid && yarn buildExample:terraform",
 });
+
+project.addPeerDeps("projen@>= 0.53.6");
+project.addBundledDeps("uuid", "change-case");
+project.addDevDeps(
+  "fs-extra",
+  "glob",
+  "projen@0.53.6",
+  "@types/fs-extra",
+  "@types/glob",
+  "@types/uuid",
+  "@types/change-case"
+);
 
 project.addPackageIgnore("examples");
 

@@ -1,28 +1,28 @@
 import { JsonFile, SampleDir, TextFile } from "projen";
-import { ConstructLibrary } from "projen/lib/cdk";
+import { ConstructLibrary, ConstructLibraryOptions } from "projen/lib/cdk";
 import { v4 as uuid } from "uuid";
 
-import { defaults, Options } from "./defaults";
+import { defaults } from "./defaults";
 
-export type TerraformVersionConstraint = {
+export interface TerraformVersionConstraint {
   // name of the module
-  name: string;
+  readonly name: string;
   // path / url / registry identifier for the module
-  source: string;
+  readonly source: string;
   // version constraint (https://www.terraform.io/docs/language/providers/requirements.html#version-constraints)
-  version: string;
-};
+  readonly version: string;
+}
 
-type TerraformModuleOptions = Options & {
-  cdktfVersion?: string;
-  constructVersion?: string;
+export interface TerraformModuleOptions extends ConstructLibraryOptions {
+  readonly cdktfVersion?: string;
+  readonly constructVersion?: string;
 
-  terraformProviders?: TerraformVersionConstraint[];
-  terraformModules: TerraformVersionConstraint[];
+  readonly terraformProviders?: TerraformVersionConstraint[];
+  readonly terraformModules: TerraformVersionConstraint[];
 
   // Defaulted to a uuid string as cdktf would
-  projectId?: string;
-};
+  readonly projectId?: string;
+}
 
 /**
  * Terraform Modules republished as CDKTF Constructs
@@ -30,17 +30,17 @@ type TerraformModuleOptions = Options & {
  * @pjid terraform-module
  */
 export class TerraformModule extends ConstructLibrary {
-  constructor(config: TerraformModuleOptions) {
+  constructor(options: TerraformModuleOptions) {
     super({
       ...defaults,
-      ...config,
-      eslintOptions: Object.assign({}, config.eslintOptions, {
+      ...options,
+      eslintOptions: Object.assign({}, options.eslintOptions, {
         lintProjenRc: false,
       }),
       postBuildSteps: [],
     });
-    const constructVersion = config.constructVersion || "^10.0.107";
-    const cdktfVersion = config.cdktfVersion || "^0.10.1";
+    const constructVersion = options.constructVersion || "^10.0.107";
+    const cdktfVersion = options.cdktfVersion || "^0.10.1";
 
     const constructSrcCode = `
 // Re-Export module bindings
@@ -73,7 +73,7 @@ describe("MyModule", () => {
       committed: true,
       marker: true,
       lines: [
-        ...config.terraformModules.map(
+        ...(options.terraformModules || []).map(
           (tfModule) => `export * from "./.gen/modules/${tfModule.name}";`
         ),
         "",
@@ -85,9 +85,9 @@ describe("MyModule", () => {
       obj: {
         language: "typescript",
         app: "npx ts-node index.ts",
-        terraformProviders: config.terraformProviders || [],
-        terraformModules: config.terraformModules,
-        projectId: config.projectId || uuid(),
+        terraformProviders: options.terraformProviders || [],
+        terraformModules: options.terraformModules,
+        projectId: options.projectId || uuid(),
       },
     });
 

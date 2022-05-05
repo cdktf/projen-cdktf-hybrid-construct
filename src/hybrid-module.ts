@@ -1,31 +1,33 @@
 import { FileBase, IResolver, Project, SampleDir } from "projen";
-import { JsiiProject } from "projen/lib/cdk";
+import { JsiiProject, ConstructLibraryOptions } from "projen/lib/cdk";
 import { v4 as uuid } from "uuid";
-import { defaults, Options } from "./defaults";
+import { defaults } from "./defaults";
 
-type HybridModuleOptions = Options & {
-  cdktfVersion?: string;
-  constructVersion?: string;
-  // Name of the author
-  author: string;
+export interface ConstructExamplesOption {
+  // If set construct examples will be rendered
+  readonly enabled: boolean;
+  // Path for the construct examples
+  readonly folder?: string;
+}
+
+export interface TerraformExamplesOption {
+  // If set terraform examples will be rendered
+  readonly enabled: boolean;
+  // Path for the terraform examples
+  readonly folder?: string;
+  // The HCL config file to use for the terraform provider
+  readonly providerConfig?: string;
+}
+
+export interface HybridModuleOptions extends ConstructLibraryOptions {
+  readonly cdktfVersion?: string;
+  readonly constructVersion?: string;
   // If set a terraform examples folder will be created
-  terraformExamples?: {
-    // If set terraform examples will be rendered
-    enabled: boolean;
-    // Path for the terraform examples
-    folder?: string;
-    // The HCL config file to use for the terraform provider
-    providerConfig?: string;
-  };
-  constructExamples?: {
-    // If set construct examples will be rendered
-    enabled: boolean;
-    // Path for the construct examples
-    folder?: string;
-  };
+  readonly terraformExamples?: TerraformExamplesOption;
+  readonly constructExamples?: ConstructExamplesOption;
   // Defaulted to a uuid string as cdktf would
-  projectId?: string;
-};
+  readonly projectId?: string;
+}
 
 const constructSrcCode = `
 import { Construct } from "constructs";
@@ -113,18 +115,17 @@ class ScriptFile extends FileBase {
  * @pjid hybrid-module
  */
 export class HybridModule extends JsiiProject {
-  constructor(config: HybridModuleOptions) {
+  constructor(options: HybridModuleOptions) {
     super({
       ...defaults,
-      ...config,
-      sampleCode: false,
-      eslintOptions: Object.assign({}, config.eslintOptions, {
+      ...options,
+      eslintOptions: Object.assign({}, options.eslintOptions, {
         lintProjenRc: false,
       }),
       postBuildSteps: [],
     });
-    const constructVersion = config.constructVersion || "^10.0.107";
-    const cdktfVersion = config.cdktfVersion || "^0.10.1";
+    const constructVersion = options.constructVersion || "^10.0.107";
+    const cdktfVersion = options.cdktfVersion || "^0.10.1";
 
     this.addPeerDeps(`constructs@${constructVersion}`, `cdktf@${cdktfVersion}`);
     this.addDevDeps(`cdktf-cli@${cdktfVersion}`, "ts-node");
@@ -141,7 +142,7 @@ export class HybridModule extends JsiiProject {
 \`\`\`hcl
 module "eks_managed_node_group" {
   source = "${
-    config.repositoryUrl
+    options.repositoryUrl
       ?.replace("https://github.com/", "")
       .replace("http://github.com/", "")
       .replace("github.com/", "") || "my-github-repo"
@@ -163,7 +164,7 @@ module "eks_managed_node_group" {
             terraformProviders: ["hashicorp/null@3.1.1"], // We need at least a provider for get to succeed
             terraformModules: [],
             output: "modules",
-            projectId: config.projectId || uuid(),
+            projectId: options.projectId || uuid(),
           },
           null,
           2
@@ -172,9 +173,9 @@ module "eks_managed_node_group" {
       },
     });
 
-    if (config.terraformExamples && config.terraformExamples.enabled) {
+    if (options.terraformExamples && options.terraformExamples.enabled) {
       const providerConfig =
-        config.terraformExamples.providerConfig ||
+        options.terraformExamples.providerConfig ||
         `
 terraform {
   # Terraform binary version constraint
@@ -189,7 +190,7 @@ terraform {
 
 `.trim();
       const examplesFolder =
-        config.terraformExamples.folder || "terraform-examples";
+        options.terraformExamples.folder || "terraform-examples";
 
       new SampleDir(this, examplesFolder, {
         files: {
@@ -208,9 +209,9 @@ ${providerConfig}
       );
     }
 
-    if (config.constructExamples && config.constructExamples.enabled) {
+    if (options.constructExamples && options.constructExamples.enabled) {
       const constructExampleFolder =
-        config.constructExamples.folder || "construct-examples";
+        options.constructExamples.folder || "construct-examples";
 
       const levels = constructExampleFolder
         .split("/")
@@ -268,7 +269,7 @@ app.synth();
             {
               language: "typescript",
               app: "npx ts-node --project ../tsconfig.dev.json index.ts",
-              projectId: config.projectId || uuid(),
+              projectId: options.projectId || uuid(),
             },
             null,
             2
