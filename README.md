@@ -211,14 +211,39 @@ const project = new HybridModule({
 });
 ```
 
-### Roadmap
+### Artifactory
 
-- [x] Add dedicated file for HCL templates
-- [x] Add example folder
-- [x] Add `terraform` example folder
-- [x] [Auto-generate parts of the docs](https://github.com/terraform-aws-modules/terraform-aws-eks/blob/e90c877a741ab3cc4215376a70f7bcc360b6a3d2/.github/workflows/pre-commit.yml)
-- [x] Add example folder to project using this
-- [x] Add testing strategy
-- [x] Add construct / option / docs to publish existing module as construct
-- [x] Add deployment scripts to Github Packages
-- [ ] Add deployment scripts to Artifactory
+We have a helper method for easy configuration, but there are also some manual steps required.
+
+```js
+const {
+  HybridModule,
+  publishToGithubPackages,
+} = require("projen-cdktf-hybrid-construct");
+
+const project = new HybridModule({
+  // ... all the other options
+  ...publishToGithubPackages({
+    name: "my-new-hybrid-construct",
+    namespace: "my-org",
+    registries: ["npm", "pypi", "nuget"], // maven is currently not supported, PRs welcome
+    artifactoryApiUrl: "https://artifactory.my-org.com/api/",
+    artifactoryRepository: "my-repo", // needs to be the same across all registries, defaults to namespace so "my-org" in this case
+  }),
+});
+```
+
+#### Terraform
+
+You can find more information about publishing Terraform Modules to Artifactory [here](https://www.jfrog.com/confluence/display/JFROG/Terraform+Registry#TerraformRegistry-SettingupaLocalModule/ProviderRegistry).
+
+#### npm (Typescript)
+
+1. [Create a virtual npm registry](https://www.jfrog.com/confluence/display/JFROG/npm+Registry#npmRegistry-VirtualnpmRegistry)
+2. [Authenticate against artifactory to get a token](https://www.jfrog.com/confluence/display/JFROG/npm+Registry#npmRegistry-AuthenticatingthenpmClient)
+3. Create a [GitHub Action Secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) with the name `NPM_TOKEN` and the value of the token
+
+#### pypi (Python)
+
+1. Create a [local repository](https://www.jfrog.com/confluence/display/JFROG/PyPI+Repositories#PyPIRepositories-LocalRepositories)
+2. Create a [GitHub Action Secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) with the name `TWINE_USERNAME` and the artifactory user name and a second one with the name `TWINE_PASSWORD` and the artifactory password
