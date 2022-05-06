@@ -172,6 +172,7 @@ exports[`HybridModule snapshot: .gitattributes 1`] = `
 /LICENSE linguist-generated
 /package.json linguist-generated
 /scripts/copy-modules.sh linguist-generated
+/terraform/provider.tf linguist-generated
 /tsconfig.dev.json linguist-generated
 /yarn.lock linguist-generated"
 `;
@@ -557,6 +558,7 @@ junit.xml
 .jsii
 tsconfig.json
 !/API.md
+!/terraform/provider.tf
 terraform/.terraform
 terraform/.terraform.lock.hcl
 !/./scripts/tf-module-test.sh
@@ -1144,8 +1146,10 @@ module \\"my_awesome_test\\" {
 }"
 `;
 
-exports[`HybridModule snapshot: terraform/main.tf 1`] = `
-"# Configure Terraform
+exports[`HybridModule snapshot: terraform/main.tf 1`] = `"# Configure you module here"`;
+
+exports[`HybridModule snapshot: terraform/provider.tf 1`] = `
+"# This file is managed by projen. Do not edit, change the .projenrc file instead.
 
         terraform {
           # Limit provider version (some modules are not compatible with aws 4.x)
@@ -1163,9 +1167,7 @@ exports[`HybridModule snapshot: terraform/main.tf 1`] = `
         provider \\"aws\\" {
           region = \\"eu-central-1\\"
         }
-        
-
-            "
+        "
 `;
 
 exports[`HybridModule snapshot: tsconfig.dev.json 1`] = `
