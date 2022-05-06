@@ -294,7 +294,7 @@ app.synth();
           "cdktf.json": JSON.stringify(
             {
               language: "typescript",
-              app: "npx ts-node --project ../tsconfig.dev.json index.ts",
+              app: `npx ts-node --project ${levels}/tsconfig.dev.json index.ts`,
               projectId: options.projectId || uuid(),
             },
             null,
