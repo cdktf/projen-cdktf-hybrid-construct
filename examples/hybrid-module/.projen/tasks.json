@@ -222,11 +222,11 @@
           "spawn": "eslint"
         },
         {
-          "exec": "cdktf synth",
-          "cwd": "construct-examples"
+          "exec": "./scripts/tf-module-test.sh"
         },
         {
-          "exec": "./scripts/tf-module-test.sh"
+          "exec": "cdktf synth",
+          "cwd": "construct-examples"
         }
       ]
     },

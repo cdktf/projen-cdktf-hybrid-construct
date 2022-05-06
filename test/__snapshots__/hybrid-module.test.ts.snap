@@ -559,12 +559,12 @@ tsconfig.json
 !/API.md
 terraform/.terraform
 terraform/.terraform.lock.hcl
+!/./scripts/tf-module-test.sh
 construct-examples/cdktf.out
 src/.gen
 src/cdktf.out
 src/modules
 !/scripts/copy-modules.sh
-!/./scripts/tf-module-test.sh
 !/.github/workflows/upgrade-main.yml
 "
 `;
@@ -890,8 +890,8 @@ Object {
     "coverageDirectory": "coverage",
     "coveragePathIgnorePatterns": Array [
       "/node_modules/",
-      "dist",
       "terraform",
+      "dist",
     ],
     "coverageReporters": Array [
       "json",
@@ -921,8 +921,8 @@ Object {
     ],
     "testPathIgnorePatterns": Array [
       "/node_modules/",
-      "dist",
       "terraform",
+      "dist",
     ],
     "watchPathIgnorePatterns": Array [
       "/node_modules/",
@@ -1039,15 +1039,15 @@ done"
 
 exports[`HybridModule snapshot: scripts/tf-module-test.sh 1`] = `
 "
-#!/bin/bash
-# This script is created by projen, do not edit it directly.
-set -e
-
-terraform -chdir=terraform init --upgrade
-terraform -chdir=terraform fmt
-terraform -chdir=terraform validate
-terraform -chdir=terraform plan     
-        "
+  #!/bin/bash
+  # This script is created by projen, do not edit it directly.
+  set -e
+  
+  terraform -chdir=terraform init --upgrade
+  terraform -chdir=terraform fmt
+  terraform -chdir=terraform validate
+  terraform -chdir=terraform plan     
+          "
 `;
 
 exports[`HybridModule snapshot: src/__tests__/index-test.ts 1`] = `
