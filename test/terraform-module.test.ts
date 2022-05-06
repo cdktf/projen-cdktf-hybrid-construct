@@ -4,8 +4,8 @@ import {
   publishToRegistries,
   publishToGithubPackages,
 } from "../src/index";
-import { expectSnapshot, expectSnapshotOnly } from "./helper";
 import { publishToArtifactory } from "../src/publishing";
+import { expectSnapshot, expectSnapshotOnly } from "./helper";
 
 describe("TerraformModule", () => {
   it("snapshot", () => {
@@ -96,6 +96,7 @@ describe("TerraformModule", () => {
 
   it("can be released to artifactory", () => {
     const project = new TerraformModule({
+      ...defaults,
       name: "my-module",
       author: "Daniel Schmidt",
       authorAddress: "danielmschmidt92@gmail.com",
@@ -117,7 +118,7 @@ describe("TerraformModule", () => {
       ...publishToArtifactory({
         name: "my-module",
         namespace: "dschmidt",
-        registries: ["npm", "maven", "pypi", "nuget"],
+        registries: ["npm", "pypi"],
         artifactoryApiUrl: "http://my-company.com/artifactory/api",
       }),
     });
