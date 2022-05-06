@@ -233,6 +233,24 @@ ${providerConfig}
         `${examplesFolder}/.terraform`,
         `${examplesFolder}/.terraform.lock.hcl`
       );
+
+      new ScriptFile(
+        this,
+        "./scripts/tf-module-test.sh",
+        `
+  #!/bin/bash
+  # This script is created by projen, do not edit it directly.
+  set -e
+  
+  terraform -chdir=${examplesFolder} init --upgrade
+  terraform -chdir=${examplesFolder} fmt
+  terraform -chdir=${examplesFolder} validate
+  terraform -chdir=${examplesFolder} plan     
+          `
+      );
+
+      this.testTask.exec("./scripts/tf-module-test.sh");
+      this.jest?.addIgnorePattern(examplesFolder);
     }
 
     if (options.constructExamples && options.constructExamples.enabled) {
@@ -241,6 +259,7 @@ ${providerConfig}
 
       const levels = constructExampleFolder
         .split("/")
+        .splice(0, 1)
         .map(() => "..")
         .join("/");
 
@@ -379,23 +398,5 @@ done
 
     // ignore dist in tests
     this.jest?.addIgnorePattern("dist");
-
-    new ScriptFile(
-      this,
-      "./scripts/tf-module-test.sh",
-      `
-#!/bin/bash
-# This script is created by projen, do not edit it directly.
-set -e
-
-terraform -chdir=terraform init --upgrade
-terraform -chdir=terraform fmt
-terraform -chdir=terraform validate
-terraform -chdir=terraform plan     
-        `
-    );
-
-    this.testTask.exec("./scripts/tf-module-test.sh");
-    this.jest?.addIgnorePattern("terraform");
   }
 }

@@ -98,13 +98,13 @@
     "coverageDirectory": "coverage",
     "coveragePathIgnorePatterns": [
       "/node_modules/",
-      "dist",
-      "terraform"
+      "terraform",
+      "dist"
     ],
     "testPathIgnorePatterns": [
       "/node_modules/",
-      "dist",
-      "terraform"
+      "terraform",
+      "dist"
     ],
     "watchPathIgnorePatterns": [
       "/node_modules/"

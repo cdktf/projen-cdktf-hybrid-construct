@@ -53,11 +53,11 @@ tsconfig.json
 !/API.md
 terraform/.terraform
 terraform/.terraform.lock.hcl
+!/./scripts/tf-module-test.sh
 construct-examples/cdktf.out
 src/.gen
 src/cdktf.out
 src/modules
 !/scripts/copy-modules.sh
-!/./scripts/tf-module-test.sh
 lib/
 !/.github/workflows/upgrade-main.yml
