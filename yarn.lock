@@ -554,7 +554,7 @@
     chalk "^4.1.2"
     semver "^7.3.7"
 
-"@jsii/spec@1.58.0", "@jsii/spec@^1.57.0", "@jsii/spec@^1.58.0":
+"@jsii/spec@1.58.0", "@jsii/spec@^1.58.0":
   version "1.58.0"
   resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.58.0.tgz#ae64a7142784bfdd3ce021fdc3363717cefbe9bb"
   integrity sha512-jAFpUW0xGu08CeJLJxc+9z+ZHDQK62OFjV8i2S7850DRm2FJdUMU98wzG4A1FDXRCYlQNlYk2E51LdQfSo7+Vw==
@@ -2074,9 +2074,9 @@ duplexer3@^0.1.4:
   integrity sha1-7gHdHKwO08vH/b6jfcCo8c4ALOI=
 
 electron-to-chromium@^1.4.118:
-  version "1.4.136"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.136.tgz#b6a3595a9c29d6d8f60e092d40ac24f997e4e7ef"
-  integrity sha512-GnITX8rHnUrIVnTxU9UlsTnSemHUA2iF+6QrRqxFbp/mf0vfuSc/goEyyQhUX3TUUCE3mv/4BNuXOtaJ4ur0eA==
+  version "1.4.137"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.137.tgz#186180a45617283f1c012284458510cd99d6787f"
+  integrity sha512-0Rcpald12O11BUogJagX3HsCN3FE83DSqWjgXoHo5a72KUKMSfI39XBgJpgNNxS9fuGzytaFjE06kZkiVFy2qA==
 
 emittery@^0.8.1:
   version "0.8.1"
@@ -3876,18 +3876,18 @@ jsii-diff@^1.58.0:
     typescript "~3.9.10"
     yargs "^16.2.0"
 
-jsii-docgen@^7.0.3:
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-7.0.3.tgz#65c7aa6a7826b3a0a3a7fd8fdcab8bd7303072ec"
-  integrity sha512-0kOYraHMBG3KeESkV6u4ownWcGs2HU/q85W8SevqBwfTGzCdgNv1kJYzUxLzPp791ba3zYttz7DwZ+Hp9o8P0A==
+jsii-docgen@^7.0.4:
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-7.0.4.tgz#ec3d167781945909f8bed57a1393885506f848a7"
+  integrity sha512-WDISGiwbR0yizPDanNYaTM3UtERNG6YkrQ1SaIEyfOqf5/fKNXQY6fGAhfRgSh8LhMn9HszzWL2WEHyFsmkn0w==
   dependencies:
-    "@jsii/spec" "^1.57.0"
+    "@jsii/spec" "^1.58.0"
     case "^1.6.3"
     fs-extra "^10.1.0"
     glob "^7.2.0"
     glob-promise "^3.4.0"
-    jsii-reflect "^1.57.0"
-    jsii-rosetta "^1.57.0"
+    jsii-reflect "^1.58.0"
+    jsii-rosetta "^1.58.0"
     semver "^7.3.7"
     yargs "^16.2.0"
 
@@ -3910,7 +3910,7 @@ jsii-pacmak@^1.58.0:
     xmlbuilder "^15.1.1"
     yargs "^16.2.0"
 
-jsii-reflect@^1.57.0, jsii-reflect@^1.58.0:
+jsii-reflect@^1.58.0:
   version "1.58.0"
   resolved "https://registry.yarnpkg.com/jsii-reflect/-/jsii-reflect-1.58.0.tgz#7959aa15db8e32629d4e7005e68f01964cadd852"
   integrity sha512-kCc7S0XJpJkWz1EBLkvZZnZqKFlT2JqGL72j0nuZFlVvd2W6Hg698JXrTjFWK+/36nfCBKtrUY9mCpbu/Xy6eQ==
@@ -3922,7 +3922,7 @@ jsii-reflect@^1.57.0, jsii-reflect@^1.58.0:
     oo-ascii-tree "^1.58.0"
     yargs "^16.2.0"
 
-jsii-rosetta@^1.57.0, jsii-rosetta@^1.58.0:
+jsii-rosetta@^1.58.0:
   version "1.58.0"
   resolved "https://registry.yarnpkg.com/jsii-rosetta/-/jsii-rosetta-1.58.0.tgz#9b605dc6f4acb64c0f72aab2898d220bc446e269"
   integrity sha512-dp4LUkewqR+i4VWutpYsikwL8LqWMyxx6SLFxmSmsTVGZ1/8Y5b/nen44FdAeSA5LhRN1wsQNzUwqLxt6XYcCA==
