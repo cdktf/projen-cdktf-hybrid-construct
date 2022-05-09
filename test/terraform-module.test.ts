@@ -67,10 +67,8 @@ describe("TerraformModule", () => {
   it("can be released to github packages", () => {
     const project = new TerraformModule({
       ...defaults,
-      name: "my-module",
       author: "Daniel Schmidt",
       authorAddress: "danielmschmidt92@gmail.com",
-      repositoryUrl: "github.com/DanielMSchmidt/my-module",
       terraformModules: [
         {
           name: "eks",
@@ -86,8 +84,8 @@ describe("TerraformModule", () => {
       ],
       projectId: "test-project",
       ...publishToGithubPackages({
-        name: "my-module",
-        namespace: "dschmidt",
+        repositoryName: "my-module",
+        repositoryOwner: "dschmidt",
         registries: ["npm", "maven"],
       }),
     });
