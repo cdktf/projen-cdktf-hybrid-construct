@@ -28,7 +28,7 @@ type Mutable<T> = T extends AtomicObject
   ? { -readonly [K in keyof T]: Mutable<T[K]> }
   : T;
 
-type Config = Mutable<
+type PublishingConfig = Mutable<
   Pick<
     ConstructLibraryOptions,
     | "publishToPypi"
@@ -39,11 +39,11 @@ type Config = Mutable<
   >
 >;
 
-export function publishToRegistries(options: PublishOptions): Config {
+export function publishToRegistries(options: PublishOptions): PublishingConfig {
   const { name, namespace, registries } = options;
   const sanitizedNamespace = namespace.replace(/-/gi, "_");
   const sanitizedName = name.replace(/-/gi, "_");
-  const config: Config = {
+  const config: PublishingConfig = {
     releaseToNpm: registries.includes("npm"),
   };
 
@@ -72,28 +72,52 @@ export function publishToRegistries(options: PublishOptions): Config {
   return config;
 }
 
-export function publishToGithubPackages(options: PublishOptions): Config {
-  const { registries } = options;
-  const config = publishToRegistries(options);
-  if (registries.includes("pypi")) {
-    throw new Error("Github Packages does not support python packages");
-  }
-  if (registries.includes("nuget")) {
-    // Seems like projen does not support github packages on nuget yet: https://github.dev/projen/projen/blob/14f37ec704afdc5143e6a2954c1250b1f0ccaddf/src/release/publisher.ts#L343
-    throw new Error(
-      "Github Packages does support nuget packages, but this library does not yet support it"
-    );
-  }
+export type GithubRegistry = "npm" | "maven";
+type GitHubPublishOptions = {
+  /**
+   * The GitHub repository of this project.
+   */
+  repositoryName: string;
+
+  /**
+   * The GitHub owner of this project.
+   */
+  repositoryOwner: string;
+
+  /**
+   * Registries to publish to
+   */
+  registries: GithubRegistry[];
+};
+
+export type GitHubPublishConfig = {
+  name: string;
+  repositoryUrl: string;
+} & PublishingConfig;
+
+export function publishToGithubPackages(
+  options: GitHubPublishOptions
+): GitHubPublishConfig {
+  const { registries, repositoryName, repositoryOwner } = options;
+  const config = publishToRegistries({
+    name: repositoryName,
+    namespace: repositoryOwner,
+    registries,
+  });
 
   if (registries.includes("npm")) {
     config.npmRegistryUrl = "https://npm.pkg.github.com";
   }
 
   if (registries.includes("maven")) {
-    config.publishToMaven!.mavenRepositoryUrl = "https://maven.pkg.github.com";
+    config.publishToMaven!.mavenRepositoryUrl = `https://maven.pkg.github.com/${repositoryOwner}/${repositoryName}`;
   }
 
-  return config;
+  return {
+    ...config,
+    repositoryUrl: `https://github.com/${repositoryOwner}/${repositoryName}.git`,
+    name: `@${repositoryOwner}/${repositoryName}`,
+  };
 }
 
 export type ArtifactoryPublishOptions = PublishOptions & {
@@ -106,7 +130,7 @@ export type ArtifactoryPublishOptions = PublishOptions & {
 
 export function publishToArtifactory(
   options: ArtifactoryPublishOptions
-): Config {
+): PublishingConfig {
   const {
     registries,
     artifactoryApiUrl,
