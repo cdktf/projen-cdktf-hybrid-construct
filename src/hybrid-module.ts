@@ -1,7 +1,6 @@
 import * as path from "path";
 import { FileBase, IResolver, Project, SampleDir } from "projen";
 import { JsiiProject, ConstructLibraryOptions } from "projen/lib/cdk";
-import { v4 as uuid } from "uuid";
 import { defaults } from "./defaults";
 
 export interface ConstructExamplesOption {
@@ -213,7 +212,9 @@ module "eks_managed_node_group" {
             terraformProviders: ["hashicorp/null@3.1.1"], // We need at least a provider for get to succeed
             terraformModules: [],
             output: "modules",
-            projectId: options.projectId || uuid(),
+            projectId:
+              options.projectId ||
+              "hybrid-module-fb734dba-eac9-466c-96bb-7eb9c406c28a",
           },
           null,
           2
@@ -340,7 +341,9 @@ app.synth();
             {
               language: "typescript",
               app: `npx ts-node --project ${levels}/tsconfig.dev.json index.ts`,
-              projectId: options.projectId || uuid(),
+              projectId:
+                options.projectId ||
+                "hybrid-module-fb734dba-eac9-466c-96bb-7eb9c406c28a",
             },
             null,
             2
