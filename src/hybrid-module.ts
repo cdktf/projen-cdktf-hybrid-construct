@@ -55,6 +55,11 @@ export interface HybridModuleOptions extends ConstructLibraryOptions {
    * Mostly used for testing to have a predictable result
    */
   readonly projectId?: string;
+
+  /**
+   * If set a terraform plan is being run as part of the tests
+   */
+  readonly runPlan?: boolean;
 }
 
 const constructSrcCode = `
@@ -260,15 +265,14 @@ terraform {
       new ScriptFile(
         this,
         "./scripts/tf-module-test.sh",
-        `
-  #!/bin/bash
-  # This script is created by projen, do not edit it directly.
-  set -e
-  
-  terraform -chdir=${examplesFolder} init --upgrade
-  terraform -chdir=${examplesFolder} fmt
-  terraform -chdir=${examplesFolder} validate
-  terraform -chdir=${examplesFolder} plan     
+        `#!/bin/bash
+# This script is created by projen, do not edit it directly.
+set -e
+
+terraform -chdir=${examplesFolder} init --upgrade
+terraform -chdir=${examplesFolder} fmt
+terraform -chdir=${examplesFolder} validate
+${options.runPlan ? `terraform -chdir=${examplesFolder} plan` : ""}
           `
       );
 

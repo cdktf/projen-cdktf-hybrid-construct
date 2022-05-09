@@ -204,6 +204,7 @@ const hybridModuleOptions: HybridModuleOptions = { ... }
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.constructExamples">constructExamples</a></code> | <code><a href="#projen-cdktf-hybrid-construct.ConstructExamplesOption">ConstructExamplesOption</a></code> | If set a construct examples folder will be created. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.constructVersion">constructVersion</a></code> | <code>string</code> | Construct version to use. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.projectId">projectId</a></code> | <code>string</code> | If set a terraform examples folder will be created Defaults to a uuid string as cdktf would Mostly used for testing to have a predictable result. |
+| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.runPlan">runPlan</a></code> | <code>boolean</code> | If set a terraform plan is being run as part of the tests. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.terraformExamples">terraformExamples</a></code> | <code><a href="#projen-cdktf-hybrid-construct.TerraformExamplesOption">TerraformExamplesOption</a></code> | If set a terraform examples folder will be created. |
 
 ---
@@ -2308,6 +2309,18 @@ public readonly projectId: string;
 - *Type:* string
 
 If set a terraform examples folder will be created Defaults to a uuid string as cdktf would Mostly used for testing to have a predictable result.
+
+---
+
+##### `runPlan`<sup>Optional</sup> <a name="runPlan" id="projen-cdktf-hybrid-construct.HybridModuleOptions.property.runPlan"></a>
+
+```typescript
+public readonly runPlan: boolean;
+```
+
+- *Type:* boolean
+
+If set a terraform plan is being run as part of the tests.
 
 ---
 
