@@ -22,10 +22,6 @@
       "type": "build"
     },
     {
-      "name": "@types/uuid",
-      "type": "build"
-    },
-    {
       "name": "@typescript-eslint/eslint-plugin",
       "version": "^5",
       "type": "build"
@@ -131,10 +127,6 @@
     },
     {
       "name": "change-case",
-      "type": "bundled"
-    },
-    {
-      "name": "uuid",
       "type": "bundled"
     },
     {

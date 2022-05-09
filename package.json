@@ -44,7 +44,6 @@
     "@types/glob": "^7.2.0",
     "@types/jest": "^27.5.0",
     "@types/node": "^12",
-    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
     "eslint": "^8",
@@ -74,12 +73,10 @@
     "projen": ">= 0.53.6"
   },
   "dependencies": {
-    "change-case": "^4.1.2",
-    "uuid": "^8.3.2"
+    "change-case": "^4.1.2"
   },
   "bundledDependencies": [
-    "change-case",
-    "uuid"
+    "change-case"
   ],
   "main": "lib/index.js",
   "license": "MIT",

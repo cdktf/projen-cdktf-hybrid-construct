@@ -35,14 +35,13 @@ project.addTask("buildExample", {
 });
 
 project.addPeerDeps("projen@>= 0.53.6");
-project.addBundledDeps("uuid", "change-case");
+project.addBundledDeps("change-case");
 project.addDevDeps(
   "fs-extra",
   "glob",
   "projen@0.53.6",
   "@types/fs-extra",
   "@types/glob",
-  "@types/uuid",
   "@types/change-case"
 );
 

@@ -1,6 +1,5 @@
 import { JsonFile, SampleDir, TextFile } from "projen";
 import { ConstructLibrary, ConstructLibraryOptions } from "projen/lib/cdk";
-import { v4 as uuid } from "uuid";
 
 import { defaults } from "./defaults";
 
@@ -105,7 +104,9 @@ describe("MyModule", () => {
         app: "npx ts-node index.ts",
         terraformProviders: options.terraformProviders || [],
         terraformModules: options.terraformModules,
-        projectId: options.projectId || uuid(),
+        projectId:
+          options.projectId ||
+          "terraform-module-99a770a7-3ec5-40f7-8cd3-dbc72f75a00a",
       },
     });
 
