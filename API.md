@@ -2339,6 +2339,7 @@ const terraformExamplesOption: TerraformExamplesOption = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformExamplesOption.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#projen-cdktf-hybrid-construct.TerraformExamplesOption.property.exampleCode">exampleCode</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformExamplesOption.property.folder">folder</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformExamplesOption.property.providerConfig">providerConfig</a></code> | <code>string</code> | *No description.* |
 
@@ -2351,6 +2352,16 @@ public readonly enabled: boolean;
 ```
 
 - *Type:* boolean
+
+---
+
+##### `exampleCode`<sup>Optional</sup> <a name="exampleCode" id="projen-cdktf-hybrid-construct.TerraformExamplesOption.property.exampleCode"></a>
+
+```typescript
+public readonly exampleCode: string;
+```
+
+- *Type:* string
 
 ---
 

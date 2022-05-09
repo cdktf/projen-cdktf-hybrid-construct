@@ -1,3 +1,4 @@
+import * as path from "path";
 import { FileBase, IResolver, Project, SampleDir } from "projen";
 import { JsiiProject, ConstructLibraryOptions } from "projen/lib/cdk";
 import { v4 as uuid } from "uuid";
@@ -17,6 +18,8 @@ export interface TerraformExamplesOption {
   readonly folder?: string;
   // The HCL config file to use for the terraform provider
   readonly providerConfig?: string;
+  // HCL example config
+  readonly exampleCode?: string;
 }
 
 export interface HybridModuleOptions extends ConstructLibraryOptions {
@@ -124,14 +127,29 @@ module "my_awesome_test" {
     `;
 
 class ScriptFile extends FileBase {
-  constructor(project: Project, path: string, private content: string) {
-    super(project, path, {
+  constructor(project: Project, filePath: string, private content: string) {
+    super(project, filePath, {
       executable: true,
     });
   }
 
   protected synthesizeContent(_: IResolver): string | undefined {
     return this.content;
+  }
+}
+
+class HCLFile extends FileBase {
+  constructor(project: Project, filePath: string, private content: string) {
+    super(project, filePath, {
+      executable: false,
+      committed: true,
+      readonly: false, // terraform fmt might want to overwrite it
+    });
+  }
+
+  protected synthesizeContent(_: IResolver): string | undefined {
+    return `# This file is managed by projen. Do not edit, change the .projenrc file instead.
+${this.content}`;
   }
 }
 
@@ -220,14 +238,18 @@ terraform {
 
       new SampleDir(this, examplesFolder, {
         files: {
-          "main.tf": `
-# Configure Terraform
-${providerConfig}
-
-            `.trimStart(),
+          "main.tf":
+            options.terraformExamples.exampleCode ||
+            `# Configure you module here`,
           "README.md": terraformReadmeDocs.trim(),
         },
       });
+
+      new HCLFile(
+        this,
+        path.join(examplesFolder, "provider.tf"),
+        providerConfig
+      );
 
       this.gitignore.addPatterns(
         `${examplesFolder}/.terraform`,
