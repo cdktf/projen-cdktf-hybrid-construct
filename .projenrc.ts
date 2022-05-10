@@ -1,5 +1,5 @@
-import { NpmAccess } from "projen/lib/javascript";
 import { JsiiProject } from "projen/lib/cdk";
+import { NpmAccess } from "projen/lib/javascript";
 
 const name = "projen-cdktf-hybrid-construct";
 const project = new JsiiProject({
