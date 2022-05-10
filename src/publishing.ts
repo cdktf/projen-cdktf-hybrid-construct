@@ -72,7 +72,7 @@ export function publishToRegistries(options: PublishOptions): PublishingConfig {
   return config;
 }
 
-export type GithubRegistry = "npm" | "maven";
+export type GithubRegistry = "npm" | "maven" | "nuget";
 type GitHubPublishOptions = {
   /**
    * The GitHub repository of this project.
@@ -111,6 +111,10 @@ export function publishToGithubPackages(
 
   if (registries.includes("maven")) {
     config.publishToMaven!.mavenRepositoryUrl = `https://maven.pkg.github.com/${repositoryOwner}/${repositoryName}`;
+  }
+
+  if (registries.includes("nuget")) {
+    config.publishToNuget!.nugetServer = `https://nuget.pkg.github.com/${repositoryOwner}`;
   }
 
   return {

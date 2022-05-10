@@ -18,7 +18,7 @@
     },
     {
       "name": "@types/node",
-      "version": "^12",
+      "version": "^14",
       "type": "build"
     },
     {
@@ -65,12 +65,13 @@
       "type": "build"
     },
     {
-      "name": "jest",
+      "name": "jest-junit",
+      "version": "^13",
       "type": "build"
     },
     {
-      "name": "jest-junit",
-      "version": "^13",
+      "name": "jest",
+      "version": "^27",
       "type": "build"
     },
     {
@@ -104,7 +105,7 @@
     },
     {
       "name": "projen",
-      "version": "0.53.6",
+      "version": "0.56.2",
       "type": "build"
     },
     {
@@ -114,6 +115,7 @@
     },
     {
       "name": "ts-jest",
+      "version": "^27",
       "type": "build"
     },
     {
@@ -131,7 +133,7 @@
     },
     {
       "name": "projen",
-      "version": ">= 0.53.6",
+      "version": ">= 0.56.2",
       "type": "peer"
     }
   ],

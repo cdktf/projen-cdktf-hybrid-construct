@@ -20,7 +20,6 @@ const project = new JsiiProject({
   releaseToNpm: true,
   npmAccess: NpmAccess.PUBLIC,
   autoApproveUpgrades: true,
-  autoApproveProjenUpgrades: true,
   autoApproveOptions: {
     label: "auto-approve",
     allowedUsernames: ["DanielMSchmidt", "github-bot"],
@@ -34,12 +33,12 @@ project.addTask("buildExample", {
   exec: "yarn buildExample:hybrid && yarn buildExample:terraform",
 });
 
-project.addPeerDeps("projen@>= 0.53.6");
+project.addPeerDeps("projen@>= 0.56.2");
 project.addBundledDeps("change-case");
 project.addDevDeps(
   "fs-extra",
   "glob",
-  "projen@0.53.6",
+  "projen@0.56.2",
   "@types/fs-extra",
   "@types/glob",
   "@types/change-case"

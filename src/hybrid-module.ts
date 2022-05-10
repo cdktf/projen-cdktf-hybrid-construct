@@ -277,7 +277,7 @@ ${options.runPlan ? `terraform -chdir=${examplesFolder} plan` : ""}
       );
 
       this.testTask.exec("./scripts/tf-module-test.sh");
-      this.jest?.addIgnorePattern(examplesFolder);
+      this.jest?.addIgnorePattern(`<rootDir>/${examplesFolder}`);
     }
 
     if (options.constructExamples && options.constructExamples.enabled) {
