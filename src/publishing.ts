@@ -160,10 +160,7 @@ export function publishToArtifactory(
   }
 
   if (registries.includes("nuget")) {
-    // Seems like projen does not support artifactory on nuget yet: https://github.dev/projen/projen/blob/14f37ec704afdc5143e6a2954c1250b1f0ccaddf/src/release/publisher.ts#L343
-    throw new Error(
-      "Artifactory does support nuget packages, but this library does not yet support it"
-    );
+    config.publishToNuget!.nugetServer = `${artifactoryApiUrl}/nuget/${artifactoryRepository}/`;
   }
 
   return config;
