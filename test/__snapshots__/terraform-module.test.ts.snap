@@ -479,18 +479,16 @@ Object {
   ],
   "ignorePatterns": Array [
     "*.js",
-    "!.projenrc.js",
+    "!.projenrc.ts",
     "*.d.ts",
     "node_modules/",
     "*.generated.ts",
     "coverage",
-    "!.projenrc.ts",
-    "!projenrc/**/*.ts",
   ],
   "overrides": Array [
     Object {
       "files": Array [
-        ".projenrc.js",
+        ".projenrc.ts",
       ],
       "rules": Object {
         "@typescript-eslint/no-require-imports": "off",
@@ -548,8 +546,6 @@ Object {
         "devDependencies": Array [
           "**/test/**",
           "**/build-tools/**",
-          ".projenrc.ts",
-          "projenrc/**/*.ts",
         ],
         "optionalDependencies": false,
         "peerDependencies": true,
@@ -1011,6 +1007,7 @@ junit.xml
 /dist/version.txt
 !/.github/workflows/release.yml
 !/.mergify.yml
+!/.github/workflows/upgrade-main.yml
 !/.github/pull_request_template.md
 !/.prettierignore
 !/.prettierrc.json
@@ -1025,7 +1022,6 @@ tsconfig.json
 !/API.md
 !/src/terraformModules.ts
 !/src/cdktf.json
-!/.github/workflows/upgrade-main.yml
 "
 `;
 
@@ -1314,7 +1310,7 @@ Object {
   },
   "devDependencies": Object {
     "@types/jest": "*",
-    "@types/node": "^12",
+    "@types/node": "^14",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
     "cdktf": "0.10.1",
@@ -1326,7 +1322,7 @@ Object {
     "eslint-import-resolver-typescript": "*",
     "eslint-plugin-import": "*",
     "eslint-plugin-prettier": "*",
-    "jest": "*",
+    "jest": "^27",
     "jest-junit": "^13",
     "jsii": "*",
     "jsii-diff": "*",
@@ -1337,7 +1333,7 @@ Object {
     "prettier": "*",
     "projen": "*",
     "standard-version": "^9",
-    "ts-jest": "*",
+    "ts-jest": "^27",
     "ts-node": "*",
     "typescript": "*",
   },
@@ -1428,7 +1424,6 @@ Object {
     "test:watch": "npx projen test:watch",
     "unbump": "npx projen unbump",
     "upgrade": "npx projen upgrade",
-    "upgrade-projen": "npx projen upgrade-projen",
     "watch": "npx projen watch",
   },
   "stability": "stable",

@@ -72,7 +72,7 @@ export function publishToRegistries(options: PublishOptions): PublishingConfig {
   return config;
 }
 
-export type GithubRegistry = "npm" | "maven";
+export type GithubRegistry = "npm" | "maven" | "nuget";
 type GitHubPublishOptions = {
   /**
    * The GitHub repository of this project.
@@ -111,6 +111,10 @@ export function publishToGithubPackages(
 
   if (registries.includes("maven")) {
     config.publishToMaven!.mavenRepositoryUrl = `https://maven.pkg.github.com/${repositoryOwner}/${repositoryName}`;
+  }
+
+  if (registries.includes("nuget")) {
+    config.publishToNuget!.nugetServer = `https://nuget.pkg.github.com/${repositoryOwner}`;
   }
 
   return {
@@ -156,10 +160,7 @@ export function publishToArtifactory(
   }
 
   if (registries.includes("nuget")) {
-    // Seems like projen does not support artifactory on nuget yet: https://github.dev/projen/projen/blob/14f37ec704afdc5143e6a2954c1250b1f0ccaddf/src/release/publisher.ts#L343
-    throw new Error(
-      "Artifactory does support nuget packages, but this library does not yet support it"
-    );
+    config.publishToNuget!.nugetServer = `${artifactoryApiUrl}/nuget/${artifactoryRepository}/`;
   }
 
   return config;
