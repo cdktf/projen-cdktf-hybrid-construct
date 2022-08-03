@@ -8,6 +8,7 @@ const project = new TerraformModule({
   author: "Daniel Schmidt",
   authorAddress: "danielmschmidt92@gmail.com",
   repositoryUrl: "github.com/DanielMSchmidt/my-module",
+  cdktfVersion: "0.12.0",
 
   terraformModules: [
     {

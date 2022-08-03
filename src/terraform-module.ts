@@ -15,7 +15,7 @@ export interface TerraformVersionConstraint {
 export interface TerraformModuleOptions extends ConstructLibraryOptions {
   /**
    * Minimum target version of this library.
-   * @default "^0.10.1"
+   * @default "^0.13.0"
    * @featured
    */
   readonly cdktfVersion?: string;
@@ -56,8 +56,8 @@ export class TerraformModule extends ConstructLibrary {
       }),
       postBuildSteps: [],
     });
-    const constructVersion = options.constructVersion || "^10.0.107";
-    const cdktfVersion = options.cdktfVersion || "^0.10.1";
+    const constructVersion = options.constructVersion || "10.0.107";
+    const cdktfVersion = options.cdktfVersion || "0.13.0";
 
     const constructSrcCode = `
 // Re-Export module bindings
@@ -76,8 +76,15 @@ describe("MyModule", () => {
 });
 `;
 
-    this.addPeerDeps(`constructs@${constructVersion}`, `cdktf@${cdktfVersion}`);
-    this.addDevDeps(`cdktf-cli@${cdktfVersion}`, "ts-node");
+    this.addPeerDeps(
+      `constructs@>=${constructVersion}`,
+      `cdktf@>=${cdktfVersion}`
+    );
+    this.addDevDeps(
+      `cdktf@${cdktfVersion}`,
+      `cdktf-cli@${cdktfVersion}`,
+      "ts-node@>=10.9.1"
+    );
     this.addKeywords("cdktf", "cdktf-hybrid");
 
     new SampleDir(this, this.srcdir, {
@@ -110,6 +117,6 @@ describe("MyModule", () => {
       },
     });
 
-    this.preCompileTask.exec(`cdktf get`, { cwd: this.srcdir });
+    this.preCompileTask.exec(`npx cdktf get`, { cwd: this.srcdir });
   }
 }
