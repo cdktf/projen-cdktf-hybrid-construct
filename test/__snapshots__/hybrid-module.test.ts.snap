@@ -1181,7 +1181,7 @@ exports[`HybridModule snapshot: terraform/provider.tf 1`] = `
             }
           }
           # Terraform binary version constraint
-          required_version = \\"~> 1.1.0\\"
+          required_version = \\">= 1.1.0\\"
         }
         
         

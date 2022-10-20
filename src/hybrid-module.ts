@@ -230,7 +230,7 @@ module "eks_managed_node_group" {
         `
 terraform {
   # Terraform binary version constraint
-  required_version = "~> 1.2.0"
+  required_version = ">= 1.2.0"
 
   # Define all needed providers here, you can find all available providers here:
   # https://registry.terraform.io/

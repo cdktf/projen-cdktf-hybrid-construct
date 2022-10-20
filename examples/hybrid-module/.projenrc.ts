@@ -23,7 +23,7 @@ const project = new HybridModule({
         }
       }
       # Terraform binary version constraint
-      required_version = "~> 1.2.0"
+      required_version = ">= 1.2.0"
     }
     
     

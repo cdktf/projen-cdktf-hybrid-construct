@@ -23,7 +23,7 @@ describe("HybridModule", () => {
             }
           }
           # Terraform binary version constraint
-          required_version = "~> 1.1.0"
+          required_version = ">= 1.1.0"
         }
         
         
