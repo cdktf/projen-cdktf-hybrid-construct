@@ -41,7 +41,9 @@
     "*.d.ts",
     "node_modules/",
     "*.generated.ts",
-    "coverage"
+    "coverage",
+    "!.projenrc.ts",
+    "!projenrc/**/*.ts"
   ],
   "rules": {
     "prettier/prettier": [
@@ -55,7 +57,10 @@
       {
         "devDependencies": [
           "**/test/**",
-          "**/build-tools/**"
+          "**/build-tools/**",
+          "**/projenrc/**",
+          ".projenrc.ts",
+          "projenrc/**/*.ts"
         ],
         "optionalDependencies": false,
         "peerDependencies": true

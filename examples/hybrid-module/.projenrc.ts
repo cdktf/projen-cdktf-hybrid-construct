@@ -8,6 +8,7 @@ const project = new HybridModule({
   author: "Daniel Schmidt",
   authorAddress: "danielmschmidt92@gmail.com",
   repositoryUrl: "github.com/DanielMSchmidt/my-module",
+  cdktfVersion: "0.12.0",
   outdir: ".",
   terraformExamples: {
     enabled: true,
@@ -22,7 +23,7 @@ const project = new HybridModule({
         }
       }
       # Terraform binary version constraint
-      required_version = "~> 1.1.0"
+      required_version = ">= 1.2.0"
     }
     
     

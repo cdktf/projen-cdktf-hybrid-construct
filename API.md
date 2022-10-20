@@ -57,6 +57,7 @@ const hybridModuleOptions: HybridModuleOptions = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.name">name</a></code> | <code>string</code> | This is the name of your project. |
+| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.commitGenerated">commitGenerated</a></code> | <code>boolean</code> | Whether to commit the managed files by default. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.logging">logging</a></code> | <code>projen.LoggerOptions</code> | Configure logging options such as verbosity. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.outdir">outdir</a></code> | <code>string</code> | The root directory of the project. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.parent">parent</a></code> | <code>projen.Project</code> | The parent project, if this project is part of a bigger project. |
@@ -85,7 +86,7 @@ const hybridModuleOptions: HybridModuleOptions = { ... }
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.allowLibraryDependencies">allowLibraryDependencies</a></code> | <code>boolean</code> | Allow the project to include `peerDependencies` and `bundledDependencies`. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.authorEmail">authorEmail</a></code> | <code>string</code> | Author's e-mail. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.authorName">authorName</a></code> | <code>string</code> | Author's name. |
-| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.authorOrganization">authorOrganization</a></code> | <code>boolean</code> | Author's Organization. |
+| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.authorOrganization">authorOrganization</a></code> | <code>boolean</code> | Is the author an organization. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.authorUrl">authorUrl</a></code> | <code>string</code> | Author's URL / Website. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.autoDetectBin">autoDetectBin</a></code> | <code>boolean</code> | Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.bin">bin</a></code> | <code>{[ key: string ]: string}</code> | Binary programs vended with your module. |
@@ -118,6 +119,7 @@ const hybridModuleOptions: HybridModuleOptions = { ... }
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.stability">stability</a></code> | <code>string</code> | Package's Stability. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.jsiiReleaseVersion">jsiiReleaseVersion</a></code> | <code>string</code> | Version requirement of `publib` which is used to publish modules to npm. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.majorVersion">majorVersion</a></code> | <code>number</code> | Major version to release from the default branch. |
+| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.minMajorVersion">minMajorVersion</a></code> | <code>number</code> | Minimal Major version to release. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.npmDistTag">npmDistTag</a></code> | <code>string</code> | The npmDistTag to use when publishing from the default branch. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.postBuildSteps">postBuildSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | Steps to execute after build as part of the release workflow. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.prerelease">prerelease</a></code> | <code>string</code> | Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre"). |
@@ -191,6 +193,7 @@ const hybridModuleOptions: HybridModuleOptions = { ... }
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.repositoryUrl">repositoryUrl</a></code> | <code>string</code> | Git repository URL. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.compat">compat</a></code> | <code>boolean</code> | Automatically run API compatibility test against the latest version published to npm after compilation. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.compatIgnore">compatIgnore</a></code> | <code>string</code> | Name of the ignore file for API compatibility tests. |
+| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.compressAssembly">compressAssembly</a></code> | <code>boolean</code> | Emit a compressed version of the assembly. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.docgenFilePath">docgenFilePath</a></code> | <code>string</code> | File path for generated docs. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.dotnet">dotnet</a></code> | <code>projen.cdk.JsiiDotNetTarget</code> | *No description.* |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.excludeTypescript">excludeTypescript</a></code> | <code>string[]</code> | Accepts a list of glob patterns. |
@@ -220,6 +223,19 @@ public readonly name: string;
 - *Default:* $BASEDIR
 
 This is the name of your project.
+
+---
+
+##### `commitGenerated`<sup>Optional</sup> <a name="commitGenerated" id="projen-cdktf-hybrid-construct.HybridModuleOptions.property.commitGenerated"></a>
+
+```typescript
+public readonly commitGenerated: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to commit the managed files by default.
 
 ---
 
@@ -635,7 +651,7 @@ public readonly authorOrganization: boolean;
 
 - *Type:* boolean
 
-Author's Organization.
+Is the author an organization.
 
 ---
 
@@ -1127,6 +1143,24 @@ If not specified, we bump the global latest version.
 
 ---
 
+##### `minMajorVersion`<sup>Optional</sup> <a name="minMajorVersion" id="projen-cdktf-hybrid-construct.HybridModuleOptions.property.minMajorVersion"></a>
+
+```typescript
+public readonly minMajorVersion: number;
+```
+
+- *Type:* number
+- *Default:* No minimum version is being enforced
+
+Minimal Major version to release.
+
+This can be useful to set to 1, as breaking changes before the 1.x major
+release are not incrementing the major version number.
+
+Can not be set together with `majorVersion`.
+
+---
+
 ##### `npmDistTag`<sup>Optional</sup> <a name="npmDistTag" id="projen-cdktf-hybrid-construct.HybridModuleOptions.property.npmDistTag"></a>
 
 ```typescript
@@ -1283,7 +1317,7 @@ public readonly releaseTagPrefix: string;
 ```
 
 - *Type:* string
-- *Default:* no prefix
+- *Default:* "v"
 
 Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers.
 
@@ -2124,6 +2158,19 @@ Name of the ignore file for API compatibility tests.
 
 ---
 
+##### `compressAssembly`<sup>Optional</sup> <a name="compressAssembly" id="projen-cdktf-hybrid-construct.HybridModuleOptions.property.compressAssembly"></a>
+
+```typescript
+public readonly compressAssembly: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Emit a compressed version of the assembly.
+
+---
+
 ##### `docgenFilePath`<sup>Optional</sup> <a name="docgenFilePath" id="projen-cdktf-hybrid-construct.HybridModuleOptions.property.docgenFilePath"></a>
 
 ```typescript
@@ -2273,7 +2320,7 @@ public readonly cdktfVersion: string;
 ```
 
 - *Type:* string
-- *Default:* "^0.10.1"
+- *Default:* "^0.13.0"
 
 Minimum target version of this library.
 
@@ -2418,6 +2465,7 @@ const terraformModuleOptions: TerraformModuleOptions = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.name">name</a></code> | <code>string</code> | This is the name of your project. |
+| <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.commitGenerated">commitGenerated</a></code> | <code>boolean</code> | Whether to commit the managed files by default. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.logging">logging</a></code> | <code>projen.LoggerOptions</code> | Configure logging options such as verbosity. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.outdir">outdir</a></code> | <code>string</code> | The root directory of the project. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.parent">parent</a></code> | <code>projen.Project</code> | The parent project, if this project is part of a bigger project. |
@@ -2446,7 +2494,7 @@ const terraformModuleOptions: TerraformModuleOptions = { ... }
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.allowLibraryDependencies">allowLibraryDependencies</a></code> | <code>boolean</code> | Allow the project to include `peerDependencies` and `bundledDependencies`. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.authorEmail">authorEmail</a></code> | <code>string</code> | Author's e-mail. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.authorName">authorName</a></code> | <code>string</code> | Author's name. |
-| <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.authorOrganization">authorOrganization</a></code> | <code>boolean</code> | Author's Organization. |
+| <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.authorOrganization">authorOrganization</a></code> | <code>boolean</code> | Is the author an organization. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.authorUrl">authorUrl</a></code> | <code>string</code> | Author's URL / Website. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.autoDetectBin">autoDetectBin</a></code> | <code>boolean</code> | Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.bin">bin</a></code> | <code>{[ key: string ]: string}</code> | Binary programs vended with your module. |
@@ -2479,6 +2527,7 @@ const terraformModuleOptions: TerraformModuleOptions = { ... }
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.stability">stability</a></code> | <code>string</code> | Package's Stability. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.jsiiReleaseVersion">jsiiReleaseVersion</a></code> | <code>string</code> | Version requirement of `publib` which is used to publish modules to npm. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.majorVersion">majorVersion</a></code> | <code>number</code> | Major version to release from the default branch. |
+| <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.minMajorVersion">minMajorVersion</a></code> | <code>number</code> | Minimal Major version to release. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.npmDistTag">npmDistTag</a></code> | <code>string</code> | The npmDistTag to use when publishing from the default branch. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.postBuildSteps">postBuildSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | Steps to execute after build as part of the release workflow. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.prerelease">prerelease</a></code> | <code>string</code> | Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre"). |
@@ -2552,6 +2601,7 @@ const terraformModuleOptions: TerraformModuleOptions = { ... }
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.repositoryUrl">repositoryUrl</a></code> | <code>string</code> | Git repository URL. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.compat">compat</a></code> | <code>boolean</code> | Automatically run API compatibility test against the latest version published to npm after compilation. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.compatIgnore">compatIgnore</a></code> | <code>string</code> | Name of the ignore file for API compatibility tests. |
+| <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.compressAssembly">compressAssembly</a></code> | <code>boolean</code> | Emit a compressed version of the assembly. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.docgenFilePath">docgenFilePath</a></code> | <code>string</code> | File path for generated docs. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.dotnet">dotnet</a></code> | <code>projen.cdk.JsiiDotNetTarget</code> | *No description.* |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.excludeTypescript">excludeTypescript</a></code> | <code>string[]</code> | Accepts a list of glob patterns. |
@@ -2580,6 +2630,19 @@ public readonly name: string;
 - *Default:* $BASEDIR
 
 This is the name of your project.
+
+---
+
+##### `commitGenerated`<sup>Optional</sup> <a name="commitGenerated" id="projen-cdktf-hybrid-construct.TerraformModuleOptions.property.commitGenerated"></a>
+
+```typescript
+public readonly commitGenerated: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to commit the managed files by default.
 
 ---
 
@@ -2995,7 +3058,7 @@ public readonly authorOrganization: boolean;
 
 - *Type:* boolean
 
-Author's Organization.
+Is the author an organization.
 
 ---
 
@@ -3487,6 +3550,24 @@ If not specified, we bump the global latest version.
 
 ---
 
+##### `minMajorVersion`<sup>Optional</sup> <a name="minMajorVersion" id="projen-cdktf-hybrid-construct.TerraformModuleOptions.property.minMajorVersion"></a>
+
+```typescript
+public readonly minMajorVersion: number;
+```
+
+- *Type:* number
+- *Default:* No minimum version is being enforced
+
+Minimal Major version to release.
+
+This can be useful to set to 1, as breaking changes before the 1.x major
+release are not incrementing the major version number.
+
+Can not be set together with `majorVersion`.
+
+---
+
 ##### `npmDistTag`<sup>Optional</sup> <a name="npmDistTag" id="projen-cdktf-hybrid-construct.TerraformModuleOptions.property.npmDistTag"></a>
 
 ```typescript
@@ -3643,7 +3724,7 @@ public readonly releaseTagPrefix: string;
 ```
 
 - *Type:* string
-- *Default:* no prefix
+- *Default:* "v"
 
 Automatically add the given prefix to release tags. Useful if you are releasing on multiple branches with overlapping version numbers.
 
@@ -4484,6 +4565,19 @@ Name of the ignore file for API compatibility tests.
 
 ---
 
+##### `compressAssembly`<sup>Optional</sup> <a name="compressAssembly" id="projen-cdktf-hybrid-construct.TerraformModuleOptions.property.compressAssembly"></a>
+
+```typescript
+public readonly compressAssembly: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Emit a compressed version of the assembly.
+
+---
+
 ##### `docgenFilePath`<sup>Optional</sup> <a name="docgenFilePath" id="projen-cdktf-hybrid-construct.TerraformModuleOptions.property.docgenFilePath"></a>
 
 ```typescript
@@ -4645,7 +4739,7 @@ public readonly cdktfVersion: string;
 ```
 
 - *Type:* string
-- *Default:* "^0.10.1"
+- *Default:* "^0.13.0"
 
 Minimum target version of this library.
 
@@ -5297,6 +5391,7 @@ The command to execute.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.buildTask">buildTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.commitGenerated">commitGenerated</a></code> | <code>boolean</code> | Whether to commit the managed files by default. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.compileTask">compileTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.components">components</a></code> | <code>projen.Component[]</code> | Returns all the components within this project. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.deps">deps</a></code> | <code>projen.Dependencies</code> | Project dependencies. |
@@ -5364,6 +5459,18 @@ public readonly buildTask: Task;
 ```
 
 - *Type:* projen.Task
+
+---
+
+##### `commitGenerated`<sup>Required</sup> <a name="commitGenerated" id="projen-cdktf-hybrid-construct.HybridModule.property.commitGenerated"></a>
+
+```typescript
+public readonly commitGenerated: boolean;
+```
+
+- *Type:* boolean
+
+Whether to commit the managed files by default.
 
 ---
 
@@ -6637,6 +6744,7 @@ The command to execute.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.buildTask">buildTask</a></code> | <code>projen.Task</code> | *No description.* |
+| <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.commitGenerated">commitGenerated</a></code> | <code>boolean</code> | Whether to commit the managed files by default. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.compileTask">compileTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.components">components</a></code> | <code>projen.Component[]</code> | Returns all the components within this project. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.deps">deps</a></code> | <code>projen.Dependencies</code> | Project dependencies. |
@@ -6704,6 +6812,18 @@ public readonly buildTask: Task;
 ```
 
 - *Type:* projen.Task
+
+---
+
+##### `commitGenerated`<sup>Required</sup> <a name="commitGenerated" id="projen-cdktf-hybrid-construct.TerraformModule.property.commitGenerated"></a>
+
+```typescript
+public readonly commitGenerated: boolean;
+```
+
+- *Type:* boolean
+
+Whether to commit the managed files by default.
 
 ---
 

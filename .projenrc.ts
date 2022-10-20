@@ -29,23 +29,24 @@ const project = new JsiiProject({
 project.tsconfig?.exclude?.push("src/exampleCode/**");
 project.tsconfig?.exclude?.push("example/**");
 project.tsconfig?.exclude?.push("examples/**");
-project.addTask("buildExample", {
-  exec: "yarn buildExample:hybrid && yarn buildExample:terraform",
-});
 
-project.addPeerDeps("projen@>= 0.56.2");
+project.addPeerDeps("projen@>= 0.63.25");
 project.addBundledDeps("change-case");
 project.addDevDeps(
   "fs-extra",
   "glob",
-  "projen@0.56.2",
+  "projen@0.63.25",
   "@types/fs-extra",
   "@types/glob",
-  "@types/change-case"
+  "@types/change-case",
+  "ts-node@10.9.1"
 );
 
 project.addPackageIgnore("examples");
 
+project.addTask("buildExample", {
+  exec: "yarn buildExample:hybrid && yarn buildExample:terraform",
+});
 project.addTask("buildExample:hybrid", {
   exec: "git clean -dfx . && rm -rf lib modules src terraform construct-examples && yarn && yarn projen && yarn && yarn build",
   cwd: "./examples/hybrid-module",

@@ -87,7 +87,7 @@
       "description": "Only compile",
       "steps": [
         {
-          "exec": "cdktf get",
+          "exec": "npx cdktf get",
           "cwd": "src"
         },
         {
@@ -139,7 +139,7 @@
       "description": "Runs eslint against the codebase",
       "steps": [
         {
-          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern src test build-tools"
+          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern src test build-tools projenrc"
         }
       ]
     },
@@ -148,7 +148,7 @@
       "description": "Creates the distribution package",
       "steps": [
         {
-          "exec": "if [ ! -z ${CI} ]; then mkdir -p dist && rsync -a . dist --exclude .git --exclude node_modules; else npx projen package-all; fi"
+          "exec": "if [ ! -z ${CI} ]; then rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist; else npx projen package-all; fi"
         }
       ]
     },
@@ -230,15 +230,6 @@
         }
       ]
     },
-    "test:update": {
-      "name": "test:update",
-      "description": "Update jest snapshots",
-      "steps": [
-        {
-          "exec": "jest --updateSnapshot"
-        }
-      ]
-    },
     "test:watch": {
       "name": "test:watch",
       "description": "Run jest in watch mode",
@@ -275,19 +266,19 @@
           "exec": "yarn upgrade npm-check-updates"
         },
         {
-          "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='cdktf,constructs'"
+          "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='cdktf-cli,cdktf,constructs,ts-node,cdktf-tf-module-stack'"
         },
         {
-          "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='cdktf,constructs'"
+          "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='cdktf-cli,cdktf,constructs,ts-node,cdktf-tf-module-stack'"
         },
         {
-          "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='cdktf,constructs'"
+          "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='cdktf-cli,cdktf,constructs,ts-node,cdktf-tf-module-stack'"
         },
         {
-          "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='cdktf,constructs'"
+          "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='cdktf-cli,cdktf,constructs,ts-node,cdktf-tf-module-stack'"
         },
         {
-          "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='cdktf,constructs'"
+          "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='cdktf-cli,cdktf,constructs,ts-node,cdktf-tf-module-stack'"
         },
         {
           "exec": "yarn install --check-files"

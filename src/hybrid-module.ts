@@ -24,7 +24,7 @@ export interface TerraformExamplesOption {
 export interface HybridModuleOptions extends ConstructLibraryOptions {
   /**
    * Minimum target version of this library.
-   * @default "^0.10.1"
+   * @default "^0.13.0"
    * @featured
    */
   readonly cdktfVersion?: string;
@@ -172,16 +172,17 @@ export class HybridModule extends JsiiProject {
       }),
       postBuildSteps: [],
     });
-    const constructVersion = options.constructVersion || "^10.0.107";
-    const cdktfVersion = options.cdktfVersion || "^0.10.1";
+    const constructVersion = options.constructVersion || "10.0.107";
+    const cdktfVersion = options.cdktfVersion || "0.13.0";
 
+    console.log({ cdktfVersion, constructVersion });
     this.addPeerDeps(`constructs@${constructVersion}`, `cdktf@${cdktfVersion}`);
-    this.addDevDeps(`cdktf-cli@${cdktfVersion}`, "ts-node");
+    this.addDevDeps(`cdktf-cli@${cdktfVersion}`, "ts-node@>=10.9.1");
     this.addKeywords("cdk", "cdktf", "cdktf-hybrid", "terraform");
     this.setScript("terraform:test", "./scripts/tf-module-test.sh");
 
     // Module Entrypoint
-    this.addDeps("cdktf-tf-module-stack");
+    this.addDeps("cdktf-tf-module-stack@>=0.2.0");
     const moduleDocs = `
 # My Awesome Module
 
@@ -229,7 +230,7 @@ module "eks_managed_node_group" {
         `
 terraform {
   # Terraform binary version constraint
-  required_version = "~> 1.1.0"
+  required_version = ">= 1.2.0"
 
   # Define all needed providers here, you can find all available providers here:
   # https://registry.terraform.io/
@@ -359,7 +360,7 @@ app.synth();
     }
 
     this.gitignore.addPatterns("src/.gen", "src/cdktf.out", "src/modules");
-    this.compileTask.prependExec("cdktf get", {
+    this.compileTask.prependExec("npx cdktf get", {
       cwd: this.srcdir,
     });
     this.compileTask.exec("cdktf synth", {
