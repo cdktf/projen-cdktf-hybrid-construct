@@ -168,7 +168,7 @@ export interface EksOptions extends TerraformModuleUserOptions {
    */
   readonly clusterTimeouts?: { [key: string]: string };
   /**
-   * Kubernetes `<major>.<minor>` version to use for the EKS cluster (i.e.: `1.22`)
+   * Kubernetes `<major>.<minor>` version to use for the EKS cluster (i.e.: `1.24`)
    */
   readonly clusterVersion?: string;
   /**
@@ -1073,6 +1073,9 @@ export class Eks extends TerraformModule {
   }
   public get clusterIdentityProvidersOutput() {
     return this.getString('cluster_identity_providers')
+  }
+  public get clusterNameOutput() {
+    return this.getString('cluster_name')
   }
   public get clusterOidcIssuerUrlOutput() {
     return this.getString('cluster_oidc_issuer_url')
