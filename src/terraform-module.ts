@@ -57,7 +57,7 @@ export class TerraformModule extends ConstructLibrary {
       postBuildSteps: [],
     });
     const constructVersion = options.constructVersion || "10.0.107";
-    const cdktfVersion = options.cdktfVersion || "0.13.0";
+    const cdktfVersion = options.cdktfVersion || "0.15.0";
 
     const constructSrcCode = `
 // Re-Export module bindings

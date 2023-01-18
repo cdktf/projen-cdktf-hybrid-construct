@@ -173,7 +173,7 @@ export class HybridModule extends JsiiProject {
       postBuildSteps: [],
     });
     const constructVersion = options.constructVersion || "10.0.107";
-    const cdktfVersion = options.cdktfVersion || "0.13.0";
+    const cdktfVersion = options.cdktfVersion || "0.15.0";
 
     console.log({ cdktfVersion, constructVersion });
     this.addPeerDeps(`constructs@${constructVersion}`, `cdktf@${cdktfVersion}`);

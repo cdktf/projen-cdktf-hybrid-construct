@@ -218,6 +218,7 @@ Any object.
 | <code><a href="#my-module.Eks.property.clusterIamRoleUniqueIdOutput">clusterIamRoleUniqueIdOutput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#my-module.Eks.property.clusterIdentityProvidersOutput">clusterIdentityProvidersOutput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#my-module.Eks.property.clusterIdOutput">clusterIdOutput</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#my-module.Eks.property.clusterNameOutput">clusterNameOutput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#my-module.Eks.property.clusterOidcIssuerUrlOutput">clusterOidcIssuerUrlOutput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#my-module.Eks.property.clusterPlatformVersionOutput">clusterPlatformVersionOutput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#my-module.Eks.property.clusterPrimarySecurityGroupIdOutput">clusterPrimarySecurityGroupIdOutput</a></code> | <code>string</code> | *No description.* |
@@ -544,6 +545,16 @@ public readonly clusterIdentityProvidersOutput: string;
 
 ```typescript
 public readonly clusterIdOutput: string;
+```
+
+- *Type:* string
+
+---
+
+##### `clusterNameOutput`<sup>Required</sup> <a name="clusterNameOutput" id="my-module.Eks.property.clusterNameOutput"></a>
+
+```typescript
+public readonly clusterNameOutput: string;
 ```
 
 - *Type:* string
@@ -4177,7 +4188,7 @@ const eksOptions: EksOptions = { ... }
 | <code><a href="#my-module.EksOptions.property.clusterServiceIpv4Cidr">clusterServiceIpv4Cidr</a></code> | <code>string</code> | The CIDR block to assign Kubernetes service IP addresses from. |
 | <code><a href="#my-module.EksOptions.property.clusterTags">clusterTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the cluster. |
 | <code><a href="#my-module.EksOptions.property.clusterTimeouts">clusterTimeouts</a></code> | <code>{[ key: string ]: string}</code> | Create, update, and delete timeout configurations for the cluster. |
-| <code><a href="#my-module.EksOptions.property.clusterVersion">clusterVersion</a></code> | <code>string</code> | Kubernetes `<major>.<minor>` version to use for the EKS cluster (i.e.: `1.22`). |
+| <code><a href="#my-module.EksOptions.property.clusterVersion">clusterVersion</a></code> | <code>string</code> | Kubernetes `<major>.<minor>` version to use for the EKS cluster (i.e.: `1.24`). |
 | <code><a href="#my-module.EksOptions.property.controlPlaneSubnetIds">controlPlaneSubnetIds</a></code> | <code>string[]</code> | A list of subnet IDs where the EKS cluster control plane (ENIs) will be provisioned. |
 | <code><a href="#my-module.EksOptions.property.create">create</a></code> | <code>boolean</code> | Controls if EKS resources should be created (affects nearly all resources). |
 | <code><a href="#my-module.EksOptions.property.createAwsAuthConfigmap">createAwsAuthConfigmap</a></code> | <code>boolean</code> | Determines whether to create the aws-auth configmap. |
@@ -4723,7 +4734,7 @@ public readonly clusterVersion: string;
 
 - *Type:* string
 
-Kubernetes `<major>.<minor>` version to use for the EKS cluster (i.e.: `1.22`).
+Kubernetes `<major>.<minor>` version to use for the EKS cluster (i.e.: `1.24`).
 
 ---
 
