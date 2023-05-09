@@ -1,3 +1,4 @@
+import { expectSnapshot, expectSnapshotOnly } from "./helper";
 import { defaults } from "../src/defaults";
 import {
   TerraformModule,
@@ -5,7 +6,6 @@ import {
   publishToGithubPackages,
 } from "../src/index";
 import { publishToArtifactory } from "../src/publishing";
-import { expectSnapshot, expectSnapshotOnly } from "./helper";
 
 describe("TerraformModule", () => {
   it("snapshot", () => {

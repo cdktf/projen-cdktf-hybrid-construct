@@ -1,6 +1,6 @@
+import { expectSnapshot } from "./helper";
 import { defaults } from "../src/defaults";
 import { HybridModule } from "../src/index";
-import { expectSnapshot } from "./helper";
 
 describe("HybridModule", () => {
   it("snapshot", () => {
