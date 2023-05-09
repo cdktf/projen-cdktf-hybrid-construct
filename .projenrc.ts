@@ -7,7 +7,7 @@ const PROJEN_VERSION = "0.71.48";
 const project = new JsiiProject({
   defaultReleaseBranch: "main",
   name,
-  repositoryUrl: `https://github.com/DanielMSchmidt/${name}.git`,
+  repositoryUrl: `https://github.com/cdktf/${name}.git`,
   author: "Daniel Schmidt",
   authorAddress: "danielmschmidt92@gmail.com",
   packageName: name,
