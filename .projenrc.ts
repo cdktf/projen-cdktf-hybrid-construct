@@ -2,6 +2,8 @@ import { JsiiProject } from "projen/lib/cdk";
 import { NpmAccess } from "projen/lib/javascript";
 
 const name = "projen-cdktf-hybrid-construct";
+const PROJEN_VERSION = "0.71.48";
+
 const project = new JsiiProject({
   defaultReleaseBranch: "main",
   name,
@@ -30,12 +32,12 @@ project.tsconfig?.exclude?.push("src/exampleCode/**");
 project.tsconfig?.exclude?.push("example/**");
 project.tsconfig?.exclude?.push("examples/**");
 
-project.addPeerDeps("projen@>= 0.63.25");
+project.addPeerDeps(`projen@>= ${PROJEN_VERSION}`);
 project.addBundledDeps("change-case");
 project.addDevDeps(
   "fs-extra",
   "glob",
-  "projen@0.63.25",
+  `projen@${PROJEN_VERSION}`,
   "@types/fs-extra",
   "@types/glob",
   "@types/change-case",
