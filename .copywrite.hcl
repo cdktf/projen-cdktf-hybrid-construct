@@ -15,6 +15,6 @@ project {
     "**/.github/workflows/*.yml",
     "**/coverage/**",
     "**/test-reports/**",
-    "dist/**",
+    "**/dist/**",
   ]
 }
