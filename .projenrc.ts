@@ -68,6 +68,27 @@ new CustomizedLicense(project);
 
 project.addPackageIgnore("examples");
 
+const setSafeDirectory = {
+  name: "Set git config safe.directory",
+  run: "git config --global --add safe.directory $(pwd)",
+};
+const ensureCorrectUser = {
+  name: "Ensure correct user",
+  run: `chown -R root /__w/${name}`,
+};
+
+const buildSteps = (this.buildWorkflow as any).preBuildSteps as JobStep[];
+const releaseSteps = (this.release as any).defaultBranch.workflow.jobs
+  .release.steps;
+const { upgrade, pr } = (this.upgradeWorkflow as any).workflows[0].jobs;
+
+buildSteps.push(setSafeDirectory);
+buildSteps.push(ensureCorrectUser);
+releaseSteps.splice(1, 0, setSafeDirectory);
+releaseSteps.splice(1, 0, ensureCorrectUser);
+upgrade.steps.splice(1, 0, setSafeDirectory);
+pr.steps.splice(1, 0, setSafeDirectory);
+
 project.addTask("buildExample", {
   exec: "yarn buildExample:hybrid && yarn buildExample:terraform",
 });
