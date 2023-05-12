@@ -16,5 +16,6 @@ project {
     "**/coverage/**",
     "**/test-reports/**",
     "**/dist/**",
+    "examples/**/scripts/*.sh", # these probably should have the headers, but I'm tired of fighting with Projen
   ]
 }
