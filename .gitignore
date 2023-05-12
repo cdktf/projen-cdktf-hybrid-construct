@@ -6,7 +6,6 @@
 !/.github/workflows/pull-request-lint.yml
 !/.github/workflows/auto-approve.yml
 !/package.json
-!/LICENSE
 !/.npmignore
 logs
 *.log
@@ -54,3 +53,4 @@ junit.xml
 .jsii
 tsconfig.json
 !/API.md
+!/LICENSE

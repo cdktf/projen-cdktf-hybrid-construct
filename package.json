@@ -3,7 +3,7 @@
   "description": "Projen template for CDKTF Constructs that should also be used as Terraform Modules.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/DanielMSchmidt/projen-cdktf-hybrid-construct.git"
+    "url": "https://github.com/cdktf/projen-cdktf-hybrid-construct.git"
   },
   "scripts": {
     "build": "npx projen build",
@@ -33,9 +33,9 @@
     "projen": "npx projen"
   },
   "author": {
-    "name": "Daniel Schmidt",
-    "email": "danielmschmidt92@gmail.com",
-    "organization": false
+    "name": "HashiCorp",
+    "url": "https://hashicorp.com",
+    "organization": true
   },
   "devDependencies": {
     "@types/change-case": "^2.3.1",
@@ -78,7 +78,7 @@
     "change-case"
   ],
   "main": "lib/index.js",
-  "license": "MIT",
+  "license": "MPL-2.0",
   "version": "0.0.0",
   "jest": {
     "testMatch": [
