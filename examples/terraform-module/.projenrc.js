@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 const { cdktf } = require("projen");
 const project = new cdktf.ConstructLibraryCdktf({
   author: "Daniel Schmidt",

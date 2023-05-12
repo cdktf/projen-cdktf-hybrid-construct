@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import * as path from "path";
 import { FileBase, IResolver, Project, SampleDir } from "projen";
 import { JsiiProject, ConstructLibraryOptions } from "projen/lib/cdk";

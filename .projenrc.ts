@@ -82,4 +82,14 @@ project.addTask("buildExample:terraform", {
 });
 
 project.testTask.exec("yarn buildExample");
+
+// Run copywrite tool to add copyright headers to all files
+project.buildWorkflow?.addPostBuildSteps(
+  {
+    name: "Setup Copywrite tool",
+    uses: "hashicorp/setup-copywrite@867a1a2a064a0626db322392806428f7dc59cb3e", // v1.1.2
+  },
+  { name: "Add headers using Copywrite tool", run: "copywrite headers" }
+);
+
 project.synth();
