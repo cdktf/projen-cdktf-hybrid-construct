@@ -43,6 +43,10 @@ const project = new JsiiProject({
     allowedUsernames: ["DanielMSchmidt", "github-bot"],
   },
   gitignore: [".idea/"],
+  workflowGitIdentity: {
+    name: "team-tf-cdk",
+    email: "github-team-tf-cdk@hashicorp.com",
+  },
 });
 project.tsconfig?.exclude?.push("src/exampleCode/**");
 project.tsconfig?.exclude?.push("example/**");
