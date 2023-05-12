@@ -1,5 +1,6 @@
 import { IResolver, License } from "projen";
 import { JsiiProject } from "projen/lib/cdk";
+import { JobStep } from "projen/lib/github/workflows-model";
 import { NpmAccess } from "projen/lib/javascript";
 import { TypeScriptProject } from "projen/lib/typescript";
 
