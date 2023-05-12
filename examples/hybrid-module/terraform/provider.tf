@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 # This file is managed by projen. Do not edit, change the .projenrc file instead.
 
 terraform {

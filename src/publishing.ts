@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { pascalCase } from "change-case";
 import { ConstructLibraryOptions } from "projen/lib/cdk";
 
