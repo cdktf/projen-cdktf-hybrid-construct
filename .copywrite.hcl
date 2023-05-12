@@ -11,8 +11,10 @@ project {
     # "vendors/**",
     # "**autogen**",
     "**/node_modules/**",
-    ".mergify.yml",
-    "coverage/**",
+    "**/.mergify.yml",
+    "**/.github/workflows/*.yml",
+    "**/coverage/**",
+    "**/test-reports/**",
     "dist/**",
   ]
 }
