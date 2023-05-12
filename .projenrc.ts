@@ -1,21 +1,39 @@
+import { IResolver, License } from "projen";
 import { JsiiProject } from "projen/lib/cdk";
 import { NpmAccess } from "projen/lib/javascript";
+import { TypeScriptProject } from "projen/lib/typescript";
+
+const SPDX = "MPL-2.0";
+
+class CustomizedLicense extends License {
+  constructor(project: TypeScriptProject) {
+    super(project, { spdx: SPDX });
+
+    project.addFields({ license: SPDX });
+  }
+
+  synthesizeContent(resolver: IResolver) {
+    return (
+      "Copyright (c) 2022 HashiCorp, Inc.\n\n" +
+      super.synthesizeContent(resolver)
+    );
+  }
+}
 
 const name = "projen-cdktf-hybrid-construct";
 const project = new JsiiProject({
   defaultReleaseBranch: "main",
   name,
-  repositoryUrl: `https://github.com/DanielMSchmidt/${name}.git`,
-  author: "Daniel Schmidt",
-  authorAddress: "danielmschmidt92@gmail.com",
+  repositoryUrl: `https://github.com/cdktf/${name}.git`,
+  author: "HashiCorp",
+  authorAddress: "https://hashicorp.com",
+  authorOrganization: true,
   packageName: name,
   prettier: true,
   projenrcTs: true,
   description:
     "Projen template for CDKTF Constructs that should also be used as Terraform Modules.",
-  license: "MIT",
-  copyrightOwner: "Daniel Schmidt",
-
+  licensed: false,
   release: true,
   releaseToNpm: true,
   npmAccess: NpmAccess.PUBLIC,
@@ -25,6 +43,10 @@ const project = new JsiiProject({
     allowedUsernames: ["DanielMSchmidt", "github-bot"],
   },
   gitignore: [".idea/"],
+  workflowGitIdentity: {
+    name: "team-tf-cdk",
+    email: "github-team-tf-cdk@hashicorp.com",
+  },
 });
 project.tsconfig?.exclude?.push("src/exampleCode/**");
 project.tsconfig?.exclude?.push("example/**");
@@ -41,6 +63,8 @@ project.addDevDeps(
   "@types/change-case",
   "ts-node@10.9.1"
 );
+
+new CustomizedLicense(project);
 
 project.addPackageIgnore("examples");
 
