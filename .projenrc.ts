@@ -78,10 +78,10 @@ const ensureCorrectUser = {
   run: `chown -R root /__w/${name}`,
 };
 
-const buildSteps = (this.buildWorkflow as any).preBuildSteps as JobStep[];
-const releaseSteps = (this.release as any).defaultBranch.workflow.jobs
+const buildSteps = (project.buildWorkflow as any).preBuildSteps as JobStep[];
+const releaseSteps = (project.release as any).defaultBranch.workflow.jobs
   .release.steps;
-const { upgrade, pr } = (this.upgradeWorkflow as any).workflows[0].jobs;
+const { upgrade, pr } = (project.upgradeWorkflow as any).workflows[0].jobs;
 
 buildSteps.push(setSafeDirectory);
 buildSteps.push(ensureCorrectUser);
