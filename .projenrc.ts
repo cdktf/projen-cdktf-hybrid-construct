@@ -40,7 +40,12 @@ const project = new JsiiProject({
   autoApproveUpgrades: true,
   autoApproveOptions: {
     label: "auto-approve",
-    allowedUsernames: ["DanielMSchmidt", "github-bot"],
+    allowedUsernames: ["team-tf-cdk"],
+  },
+  depsUpgradeOptions: {
+    workflowOptions: {
+      labels: ["auto-approve", "dependencies"],
+    },
   },
   gitignore: [".idea/"],
   workflowGitIdentity: {
