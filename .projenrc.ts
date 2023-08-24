@@ -82,10 +82,23 @@ project.addTask("buildExample:hybrid", {
   exec: "git clean -dfx . && rm -rf lib modules src terraform construct-examples && yarn && yarn projen && yarn && yarn build",
   cwd: "./examples/hybrid-module",
 });
-
 project.addTask("buildExample:terraform", {
   exec: "git clean -dfx . && rm -rf lib modules src terraform construct-examples && yarn && yarn projen && yarn && yarn build",
   cwd: "./examples/terraform-module",
+});
+
+project.addTask("upgrade:hybrid", {
+  exec: "yarn projen upgrade",
+  cwd: "./examples/hybrid-module",
+});
+project.addTask("upgrade:terraform", {
+  exec: "yarn projen upgrade",
+  cwd: "./examples/terraform-module",
+});
+project.removeTask("post-upgrade");
+project.addTask("post-upgrade", {
+  description: "Runs after upgrading dependencies",
+  exec: "yarn projen upgrade:hybrid && yarn projen upgrade:terraform",
 });
 
 project.testTask.exec("yarn buildExample");

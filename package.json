@@ -29,6 +29,8 @@
     "test:watch": "npx projen test:watch",
     "unbump": "npx projen unbump",
     "upgrade": "npx projen upgrade",
+    "upgrade:hybrid": "npx projen upgrade:hybrid",
+    "upgrade:terraform": "npx projen upgrade:terraform",
     "watch": "npx projen watch",
     "projen": "npx projen"
   },

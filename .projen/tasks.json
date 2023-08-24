@@ -212,7 +212,12 @@
     },
     "post-upgrade": {
       "name": "post-upgrade",
-      "description": "Runs after upgrading dependencies"
+      "description": "Runs after upgrading dependencies",
+      "steps": [
+        {
+          "exec": "yarn projen upgrade:hybrid && yarn projen upgrade:terraform"
+        }
+      ]
     },
     "pre-compile": {
       "name": "pre-compile",
@@ -309,6 +314,24 @@
           "spawn": "post-upgrade"
         }
       ]
+    },
+    "upgrade:hybrid": {
+      "name": "upgrade:hybrid",
+      "steps": [
+        {
+          "exec": "yarn projen upgrade"
+        }
+      ],
+      "cwd": "./examples/hybrid-module"
+    },
+    "upgrade:terraform": {
+      "name": "upgrade:terraform",
+      "steps": [
+        {
+          "exec": "yarn projen upgrade"
+        }
+      ],
+      "cwd": "./examples/terraform-module"
     },
     "watch": {
       "name": "watch",
