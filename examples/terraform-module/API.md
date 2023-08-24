@@ -1,3 +1,4 @@
+# replace this
 # API Reference <a name="API Reference" id="api-reference"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>
@@ -3325,7 +3326,7 @@ public readonly cpuOptions: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
+- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
 The CPU options for the instance.
 
@@ -3392,7 +3393,7 @@ public readonly creditSpecification: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
+- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
 Customize the credit specification of the instance.
 
@@ -3456,7 +3457,7 @@ public readonly elasticGpuSpecifications: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
+- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
 The elastic GPU to attach to the instance.
 
@@ -3469,7 +3470,7 @@ public readonly elasticInferenceAccelerator: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
+- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
 Configuration block containing an Elastic Inference Accelerator to attach to the instance.
 
@@ -3509,7 +3510,7 @@ public readonly enclaveOptions: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
+- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
 Enable Nitro Enclaves on launched instances.
 
@@ -3623,7 +3624,7 @@ public readonly iamRoleTags: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
+- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
 A map of additional tags to add to the IAM role created.
 
@@ -3704,7 +3705,7 @@ public readonly labels: {[ key: string ]: string};
 Key-value map of Kubernetes labels.
 
 Only labels that are applied with the EKS API are managed by this argument. Other Kubernetes labels applied to the EKS Node Group will not be managed
-The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
+The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
 ---
 
@@ -3751,7 +3752,7 @@ public readonly launchTemplateTags: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
+- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
 A map of additional tags to add to the tag_specifications of launch template created.
 
@@ -3791,7 +3792,7 @@ public readonly licenseSpecifications: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
+- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
 A list of license specifications to associate with.
 
@@ -3817,7 +3818,7 @@ public readonly metadataOptions: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
+- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
 Customize the metadata options for the instance.
 
@@ -3866,7 +3867,7 @@ public readonly placement: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
+- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
 The placement of the instance.
 
@@ -3985,7 +3986,7 @@ public readonly securityGroupTags: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
+- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
 A map of additional tags to add to the security group created.
 
@@ -4025,7 +4026,7 @@ public readonly tags: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
+- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
 A map of tags to add to all resources.
 
@@ -4053,7 +4054,7 @@ public readonly timeouts: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
+- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
 Create, update, and delete timeout configurations for the node group.
 
@@ -4066,7 +4067,7 @@ public readonly updateConfig: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
+- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
 Configuration block of settings for max unavailable resources during node group updates.
 
@@ -4496,7 +4497,7 @@ public readonly clusterEncryptionPolicyTags: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
+- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
 A map of additional tags to add to the cluster encryption policy created.
 
@@ -4667,7 +4668,7 @@ public readonly clusterSecurityGroupTags: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
+- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
 A map of additional tags to add to the cluster security group created.
 
@@ -4707,7 +4708,7 @@ public readonly clusterTags: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
+- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
 A map of additional tags to add to the cluster.
 
@@ -4720,7 +4721,7 @@ public readonly clusterTimeouts: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
+- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
 Create, update, and delete timeout configurations for the cluster.
 
@@ -5045,7 +5046,7 @@ public readonly iamRoleTags: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
+- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
 A map of additional tags to add to the IAM role created.
 
@@ -5295,7 +5296,7 @@ public readonly nodeSecurityGroupTags: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
+- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
 A map of additional tags to add to the node security group created.
 
@@ -5401,7 +5402,7 @@ public readonly tags: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
+- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
 A map of tags to add to all resources.
 

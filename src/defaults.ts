@@ -10,6 +10,8 @@ const defaultOptions = {
   projenrcTs: true,
   defaultReleaseBranch: "main",
   sampleCode: false,
+  mergify: false,
+  jsiiVersion: ">=5.1.0",
 };
 // Ensure they match the parent option
 export const defaults: Pick<

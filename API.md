@@ -1,3 +1,253 @@
+# Projen-CDKTF-Hybrid-Construct
+
+Projen template for CDKTF Constructs that should also be used as Terraform Modules and for republishing Terraform Modules as Constructs.
+
+## Usage
+
+### `HybridModule`
+
+If you want to write a CDKTF construct and also publish it as a Terraform Module you can use the `HybridModule` template.
+
+You can initialize such a project using `npx projen new --from projen-cdktf-hybrid-construct hybrid-module`.
+
+A configutation might look like this:
+
+```js
+const { HybridModule } = require("projen-cdktf-hybrid-construct");
+
+const project = new HybridModule({
+  // The name of the module & repository need to start with terraform-cdk-
+  name: "terraform-cdk-my-new-hybrid-construct",
+  repositoryUrl:
+    "github.com/DanielMSchmidt/terraform-cdk-my-new-hybrid-construct",
+
+  author: "Daniel Schmidt",
+  authorAddress: "danielmschmidt92@gmail.com",
+
+  // If enabled an example folder with terraform code will be created
+  terraformExamples: {
+    enabled: true,
+    folder: "terraform",
+    // The configuration to add to the example terraform file
+    providerConfig: `
+        terraform {
+          required_providers {
+            aws = {
+              source  = "hashicorp/aws"
+              version = "~> 3.74"
+            }
+          }
+          # Terraform binary version constraint
+          required_version = ">= 1.2.0"
+        }
+
+
+        provider "aws" {
+          region = "eu-central-1"
+        }
+        `,
+  },
+
+  // If enabled a constructs example folder will be created
+  constructExamples: {
+    enabled: true,
+    folder: "construct-examples",
+  },
+});
+project.synth();
+```
+
+### `TerraformModule`
+
+If you want to republish an existing Terraform module as a CDKTF construct or if you want to repackage them with an easier to use API you can use the `TerraformModule` template.
+
+You can initialize such a project using `npx projen new --from projen-cdktf-hybrid-construct terraform-module`.
+
+A configutation might look like this:
+
+```js
+const { TerraformModule } = require("projen-cdktf-hybrid-construct");
+
+const project = new TerraformModule({
+  name: "my-module",
+  author: "Daniel Schmidt",
+  authorAddress: "danielmschmidt92@gmail.com",
+  repositoryUrl: "github.com/DanielMSchmidt/my-module",
+
+  terraformModules: [
+    {
+      name: "eks",
+      source: "terraform-aws-modules/eks/aws",
+      version: "~> 18.0",
+    },
+    {
+      name: "eks-managed-nodegroup",
+      source: "terraform-aws-modules/eks/aws//modules/eks-managed-node-group",
+      version: "~> 18.0",
+    },
+  ],
+});
+
+project.synth();
+```
+
+## Publishing
+
+### Open Source
+
+We have a helper method for easy configuration, but there are still some manual steps required.
+
+```js
+const {
+  HybridModule,
+  publishToRegistries,
+} = require("projen-cdktf-hybrid-construct");
+
+const project = new HybridModule({
+  // ... all the other options
+  ...publishToRegistries({
+    name: "my-new-hybrid-construct",
+    namespace: "my-org",
+    registries: ["npm", "pypi", "nuget", "maven"],
+  }),
+});
+```
+
+#### Terraform
+
+1. [Sign in at the registry](https://registry.terraform.io/sign-in)
+2. [Select your repository](https://registry.terraform.io/github/create) and create the module
+
+Please make sure your repository name starts with `terraform-cdk-`.
+
+#### npm (Typescript)
+
+1. Create an account at [npmjs.com](https://npmjs.com/)
+2. Create an [automation token](https://docs.npmjs.com/creating-and-viewing-access-tokens) on npm
+3. Create a [GitHub Action Secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) with the name `NPM_TOKEN` and the value of the token
+
+#### pypi (Python)
+
+1. Create an account at [pypi.org](https://pypi.org/)
+2. Create an [API token](https://pypi.org/help/#apitoken) on pypi
+3. Create a [GitHub Action Secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) with the name `TWINE_USERNAME` and the value `__token__` and a second one with the name `TWINE_PASSWORD` and the value of the token
+4. Set the `publishToPypi` section in the options of `HybridModule` or `TerraformModule` (or use the helper mentioned above)
+
+```js
+const name = "name-of-my-hybrid-construct";
+new HybridModule({
+  name,
+  // ... other options
+  publishToPypi: {
+    distName: name,
+    module: name.replace(/-/g, "_"),
+  },
+});
+```
+
+#### Maven (Java)
+
+1. [Create a Sonatype account and repository](https://central.sonatype.org/publish/publish-guide/#introduction)
+2. Create [GitHub Action Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) to configure maven:
+   - `MAVEN_USERNAME`
+   - `MAVEN_PASSWORD`
+   - `MAVEN_STAGING_PROFILE_ID`
+   - `MAVEN_GPG_PRIVATE_KEY_PASSPHRASE`
+   - `MAVEN_GPG_PRIVATE_KEY_PASSPHRASE`
+3. Setup the `publishToMaven` section in the options of `HybridModule` or `TerraformModule` (or use the helper mentioned above)
+
+```js
+const githubNamespace = "my-org";
+const name = "name-of-my-hybrid-construct";
+new HybridModule({
+  name,
+  // ... other options
+  publishToMaven: {
+    javaPackage: name.replace(/-/g, "_"),
+    mavenGroupId: `com.${githubNamespace}`,
+    mavenArtifactId: name,
+  },
+});
+```
+
+#### NuGet (C#)
+
+1. [Create a NuGet account](https://www.nuget.org/users/account/LogOn) (you might need to create a Microsoft Account if you don't have one)
+2. [Create API keys](https://docs.microsoft.com/en-us/nuget/nuget-org/publish-a-package#create-api-keys)
+3. Create a [GitHub Action Secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) with the name `NUGET_API_KEY` and the value of the token
+4. Setup the `publishToNuget` section in the options of `HybridModule` or `TerraformModule` (or use the helper mentioned above)
+
+```js
+const githubNamespace = "my-org";
+const name = "name-of-my-hybrid-construct";
+
+new HybridModule({
+  name,
+  // ... other options
+  publishToNuget: {
+    dotNetNamespace: `MyOrg.NameOfMyHybridConstruct`,
+    packageId: `MyOrg.NameOfMyHybridConstruct`,
+  },
+});
+```
+
+### Github Packages
+
+We have a helper method for easy configuration, no extra steps needed:
+
+```js
+const {
+  HybridModule,
+  publishToGithubPackages,
+} = require("projen-cdktf-hybrid-construct");
+
+const project = new HybridModule({
+  // ... all the other options
+  ...publishToGithubPackages({
+    name: "my-new-hybrid-construct",
+    namespace: "my-org",
+    registries: ["npm", "maven"], // pypi and nuget are not yet supported
+  }),
+});
+```
+
+### Artifactory
+
+We have a helper method for easy configuration, but there are also some manual steps required.
+
+```js
+const {
+  HybridModule,
+  publishToGithubPackages,
+} = require("projen-cdktf-hybrid-construct");
+
+const project = new HybridModule({
+  // ... all the other options
+  ...publishToGithubPackages({
+    name: "my-new-hybrid-construct",
+    namespace: "my-org",
+    registries: ["npm", "pypi", "nuget"], // maven is currently not supported, PRs welcome
+    artifactoryApiUrl: "https://artifactory.my-org.com/api/",
+    artifactoryRepository: "my-repo", // needs to be the same across all registries, defaults to namespace so "my-org" in this case
+  }),
+});
+```
+
+#### Terraform
+
+You can find more information about publishing Terraform Modules to Artifactory [here](https://www.jfrog.com/confluence/display/JFROG/Terraform+Registry#TerraformRegistry-SettingupaLocalModule/ProviderRegistry).
+
+#### npm (Typescript)
+
+1. [Create a virtual npm registry](https://www.jfrog.com/confluence/display/JFROG/npm+Registry#npmRegistry-VirtualnpmRegistry)
+2. [Authenticate against artifactory to get a token](https://www.jfrog.com/confluence/display/JFROG/npm+Registry#npmRegistry-AuthenticatingthenpmClient)
+3. Create a [GitHub Action Secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) with the name `NPM_TOKEN` and the value of the token
+
+#### pypi (Python)
+
+1. Create a [local repository](https://www.jfrog.com/confluence/display/JFROG/PyPI+Repositories#PyPIRepositories-LocalRepositories)
+2. Create a [GitHub Action Secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) with the name `TWINE_USERNAME` and the artifactory user name and a second one with the name `TWINE_PASSWORD` and the artifactory password
+
 # API Reference <a name="API Reference" id="api-reference"></a>
 
 
@@ -58,12 +308,14 @@ const hybridModuleOptions: HybridModuleOptions = { ... }
 | --- | --- | --- |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.name">name</a></code> | <code>string</code> | This is the name of your project. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.commitGenerated">commitGenerated</a></code> | <code>boolean</code> | Whether to commit the managed files by default. |
+| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.gitIgnoreOptions">gitIgnoreOptions</a></code> | <code>projen.IgnoreFileOptions</code> | Configuration options for .gitignore file. |
+| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.gitOptions">gitOptions</a></code> | <code>projen.GitOptions</code> | Configuration options for git. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.logging">logging</a></code> | <code>projen.LoggerOptions</code> | Configure logging options such as verbosity. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.outdir">outdir</a></code> | <code>string</code> | The root directory of the project. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.parent">parent</a></code> | <code>projen.Project</code> | The parent project, if this project is part of a bigger project. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.projenCommand">projenCommand</a></code> | <code>string</code> | The shell command to use in order to run the projen CLI. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.projenrcJson">projenrcJson</a></code> | <code>boolean</code> | Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation. |
-| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.projenrcJsonOptions">projenrcJsonOptions</a></code> | <code>projen.ProjenrcOptions</code> | Options for .projenrc.json. |
+| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.projenrcJsonOptions">projenrcJsonOptions</a></code> | <code>projen.ProjenrcJsonOptions</code> | Options for .projenrc.json. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.renovatebot">renovatebot</a></code> | <code>boolean</code> | Use renovatebot to handle dependency upgrades. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.renovatebotOptions">renovatebotOptions</a></code> | <code>projen.RenovatebotOptions</code> | Options for renovatebot. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.autoApproveOptions">autoApproveOptions</a></code> | <code>projen.github.AutoApproveOptions</code> | Enable and configure the 'auto approve' workflow. |
@@ -112,6 +364,7 @@ const hybridModuleOptions: HybridModuleOptions = { ... }
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.packageName">packageName</a></code> | <code>string</code> | The "name" in package.json. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.peerDependencyOptions">peerDependencyOptions</a></code> | <code>projen.javascript.PeerDependencyOptions</code> | Options for `peerDeps`. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.peerDeps">peerDeps</a></code> | <code>string[]</code> | Peer dependencies for this module. |
+| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.pnpmVersion">pnpmVersion</a></code> | <code>string</code> | The version of PNPM to use if using PNPM as a package manager. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.repository">repository</a></code> | <code>string</code> | The repository is the location where the actual code for your package lives. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.repositoryDirectory">repositoryDirectory</a></code> | <code>string</code> | If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.scopedPackagesOptions">scopedPackagesOptions</a></code> | <code>projen.javascript.ScopedPackagesOptions[]</code> | Options for privately hosted scoped packages. |
@@ -125,6 +378,7 @@ const hybridModuleOptions: HybridModuleOptions = { ... }
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.prerelease">prerelease</a></code> | <code>string</code> | Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre"). |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.publishDryRun">publishDryRun</a></code> | <code>boolean</code> | Instead of actually publishing to package managers, just print the publishing command. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.publishTasks">publishTasks</a></code> | <code>boolean</code> | Define publishing tasks that can be executed manually as well as workflows. |
+| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.releasableCommits">releasableCommits</a></code> | <code>projen.ReleasableCommits</code> | Find commits that should be considered releasable Used to decide if a release is required. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.releaseBranches">releaseBranches</a></code> | <code>{[ key: string ]: projen.release.BranchOptions}</code> | Defines additional release branches. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.releaseEveryCommit">releaseEveryCommit</a></code> | <code>boolean</code> | Automatically release new versions every commit to one of branches in `releaseBranches`. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.releaseFailureIssue">releaseFailureIssue</a></code> | <code>boolean</code> | Create a github issue on every failed publishing task. |
@@ -143,7 +397,7 @@ const hybridModuleOptions: HybridModuleOptions = { ... }
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.buildWorkflow">buildWorkflow</a></code> | <code>boolean</code> | Define a GitHub workflow for building PRs. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.buildWorkflowTriggers">buildWorkflowTriggers</a></code> | <code>projen.github.workflows.Triggers</code> | Build workflow triggers. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.bundlerOptions">bundlerOptions</a></code> | <code>projen.javascript.BundlerOptions</code> | Options for `Bundler`. |
-| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.codeCov">codeCov</a></code> | <code>boolean</code> | Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v1 A secret is required for private repos. Configured with @codeCovTokenSecret. |
+| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.codeCov">codeCov</a></code> | <code>boolean</code> | Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v3 A secret is required for private repos. Configured with `@codeCovTokenSecret`. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.codeCovTokenSecret">codeCovTokenSecret</a></code> | <code>string</code> | Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.copyrightOwner">copyrightOwner</a></code> | <code>string</code> | License copyright owner. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.copyrightPeriod">copyrightPeriod</a></code> | <code>string</code> | The copyright years to put in the LICENSE file. |
@@ -157,6 +411,7 @@ const hybridModuleOptions: HybridModuleOptions = { ... }
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.mutableBuild">mutableBuild</a></code> | <code>boolean</code> | Automatically update files modified during builds to pull-request branches. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.npmignore">npmignore</a></code> | <code>string[]</code> | Additional entries to .npmignore. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.npmignoreEnabled">npmignoreEnabled</a></code> | <code>boolean</code> | Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs. |
+| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.npmIgnoreOptions">npmIgnoreOptions</a></code> | <code>projen.IgnoreFileOptions</code> | Configuration options for .npmignore file. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.package">package</a></code> | <code>boolean</code> | Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`). |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.prettier">prettier</a></code> | <code>boolean</code> | Setup prettier. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.prettierOptions">prettierOptions</a></code> | <code>projen.javascript.PrettierOptions</code> | Prettier options. |
@@ -172,7 +427,9 @@ const hybridModuleOptions: HybridModuleOptions = { ... }
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.workflowBootstrapSteps">workflowBootstrapSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | Workflow steps to use in order to bootstrap this repo. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.workflowGitIdentity">workflowGitIdentity</a></code> | <code>projen.github.GitIdentity</code> | The git identity to use in workflows. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.workflowNodeVersion">workflowNodeVersion</a></code> | <code>string</code> | The node version to use in GitHub workflows. |
+| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.workflowPackageCache">workflowPackageCache</a></code> | <code>boolean</code> | Enable Node.js package cache in GitHub workflows. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.disableTsconfig">disableTsconfig</a></code> | <code>boolean</code> | Do not generate a `tsconfig.json` file (used by jsii projects since tsconfig.json is generated by the jsii compiler). |
+| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.disableTsconfigDev">disableTsconfigDev</a></code> | <code>boolean</code> | Do not generate a `tsconfig.dev.json` file. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.docgen">docgen</a></code> | <code>boolean</code> | Docgen by Typedoc. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.docsDirectory">docsDirectory</a></code> | <code>string</code> | Docs directory. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.entrypointTypes">entrypointTypes</a></code> | <code>string</code> | The .d.ts file that includes the type declarations for this module. |
@@ -197,6 +454,7 @@ const hybridModuleOptions: HybridModuleOptions = { ... }
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.docgenFilePath">docgenFilePath</a></code> | <code>string</code> | File path for generated docs. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.dotnet">dotnet</a></code> | <code>projen.cdk.JsiiDotNetTarget</code> | *No description.* |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.excludeTypescript">excludeTypescript</a></code> | <code>string[]</code> | Accepts a list of glob patterns. |
+| <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.jsiiVersion">jsiiVersion</a></code> | <code>string</code> | Version of the jsii compiler to use. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.publishToGo">publishToGo</a></code> | <code>projen.cdk.JsiiGoTarget</code> | Publish Go bindings to a git repository. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.publishToMaven">publishToMaven</a></code> | <code>projen.cdk.JsiiJavaTarget</code> | Publish to maven. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModuleOptions.property.publishToNuget">publishToNuget</a></code> | <code>projen.cdk.JsiiDotNetTarget</code> | Publish to NuGet. |
@@ -236,6 +494,30 @@ public readonly commitGenerated: boolean;
 - *Default:* true
 
 Whether to commit the managed files by default.
+
+---
+
+##### `gitIgnoreOptions`<sup>Optional</sup> <a name="gitIgnoreOptions" id="projen-cdktf-hybrid-construct.HybridModuleOptions.property.gitIgnoreOptions"></a>
+
+```typescript
+public readonly gitIgnoreOptions: IgnoreFileOptions;
+```
+
+- *Type:* projen.IgnoreFileOptions
+
+Configuration options for .gitignore file.
+
+---
+
+##### `gitOptions`<sup>Optional</sup> <a name="gitOptions" id="projen-cdktf-hybrid-construct.HybridModuleOptions.property.gitOptions"></a>
+
+```typescript
+public readonly gitOptions: GitOptions;
+```
+
+- *Type:* projen.GitOptions
+
+Configuration options for git.
 
 ---
 
@@ -314,10 +596,10 @@ Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .pr
 ##### `projenrcJsonOptions`<sup>Optional</sup> <a name="projenrcJsonOptions" id="projen-cdktf-hybrid-construct.HybridModuleOptions.property.projenrcJsonOptions"></a>
 
 ```typescript
-public readonly projenrcJsonOptions: ProjenrcOptions;
+public readonly projenrcJsonOptions: ProjenrcJsonOptions;
 ```
 
-- *Type:* projen.ProjenrcOptions
+- *Type:* projen.ProjenrcJsonOptions
 - *Default:* default options
 
 Options for .projenrc.json.
@@ -402,7 +684,7 @@ public readonly clobber: boolean;
 ```
 
 - *Type:* boolean
-- *Default:* true
+- *Default:* true, but false for subprojects
 
 Add a `clobber` task which resets the repo to origin.
 
@@ -1047,6 +1329,19 @@ test your module against the lowest peer version required.
 
 ---
 
+##### `pnpmVersion`<sup>Optional</sup> <a name="pnpmVersion" id="projen-cdktf-hybrid-construct.HybridModuleOptions.property.pnpmVersion"></a>
+
+```typescript
+public readonly pnpmVersion: string;
+```
+
+- *Type:* string
+- *Default:* "7"
+
+The version of PNPM to use if using PNPM as a package manager.
+
+---
+
 ##### `repository`<sup>Optional</sup> <a name="repository" id="projen-cdktf-hybrid-construct.HybridModuleOptions.property.repository"></a>
 
 ```typescript
@@ -1086,7 +1381,9 @@ Options for privately hosted scoped packages.
 
 ---
 
-##### `scripts`<sup>Optional</sup> <a name="scripts" id="projen-cdktf-hybrid-construct.HybridModuleOptions.property.scripts"></a>
+##### ~~`scripts`~~<sup>Optional</sup> <a name="scripts" id="projen-cdktf-hybrid-construct.HybridModuleOptions.property.scripts"></a>
+
+- *Deprecated:* use `project.addTask()` or `package.setScript()`
 
 ```typescript
 public readonly scripts: {[ key: string ]: string};
@@ -1099,6 +1396,7 @@ npm scripts to include.
 
 If a script has the same name as a standard script,
 the standard script will be overwritten.
+Also adds the script as a task.
 
 ---
 
@@ -1229,6 +1527,19 @@ Define publishing tasks that can be executed manually as well as workflows.
 
 Normally, publishing only happens within automated workflows. Enable this
 in order to create a publishing task for each publishing activity.
+
+---
+
+##### `releasableCommits`<sup>Optional</sup> <a name="releasableCommits" id="projen-cdktf-hybrid-construct.HybridModuleOptions.property.releasableCommits"></a>
+
+```typescript
+public readonly releasableCommits: ReleasableCommits;
+```
+
+- *Type:* projen.ReleasableCommits
+- *Default:* ReleasableCommits.everyCommit()
+
+Find commits that should be considered releasable Used to decide if a release is required.
 
 ---
 
@@ -1495,7 +1806,7 @@ public readonly codeCov: boolean;
 - *Type:* boolean
 - *Default:* false
 
-Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v1 A secret is required for private repos. Configured with @codeCovTokenSecret.
+Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v3 A secret is required for private repos. Configured with `@codeCovTokenSecret`.
 
 ---
 
@@ -1675,6 +1986,18 @@ public readonly npmignoreEnabled: boolean;
 - *Default:* true
 
 Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
+
+---
+
+##### `npmIgnoreOptions`<sup>Optional</sup> <a name="npmIgnoreOptions" id="projen-cdktf-hybrid-construct.HybridModuleOptions.property.npmIgnoreOptions"></a>
+
+```typescript
+public readonly npmIgnoreOptions: IgnoreFileOptions;
+```
+
+- *Type:* projen.IgnoreFileOptions
+
+Configuration options for .npmignore file.
 
 ---
 
@@ -1875,6 +2198,19 @@ The node version to use in GitHub workflows.
 
 ---
 
+##### `workflowPackageCache`<sup>Optional</sup> <a name="workflowPackageCache" id="projen-cdktf-hybrid-construct.HybridModuleOptions.property.workflowPackageCache"></a>
+
+```typescript
+public readonly workflowPackageCache: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Enable Node.js package cache in GitHub workflows.
+
+---
+
 ##### `disableTsconfig`<sup>Optional</sup> <a name="disableTsconfig" id="projen-cdktf-hybrid-construct.HybridModuleOptions.property.disableTsconfig"></a>
 
 ```typescript
@@ -1885,6 +2221,19 @@ public readonly disableTsconfig: boolean;
 - *Default:* false
 
 Do not generate a `tsconfig.json` file (used by jsii projects since tsconfig.json is generated by the jsii compiler).
+
+---
+
+##### `disableTsconfigDev`<sup>Optional</sup> <a name="disableTsconfigDev" id="projen-cdktf-hybrid-construct.HybridModuleOptions.property.disableTsconfigDev"></a>
+
+```typescript
+public readonly disableTsconfigDev: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Do not generate a `tsconfig.dev.json` file.
 
 ---
 
@@ -2214,6 +2563,26 @@ that cannot be compiled with jsii's compiler settings.
 
 ---
 
+##### `jsiiVersion`<sup>Optional</sup> <a name="jsiiVersion" id="projen-cdktf-hybrid-construct.HybridModuleOptions.property.jsiiVersion"></a>
+
+```typescript
+public readonly jsiiVersion: string;
+```
+
+- *Type:* string
+- *Default:* "1.x"
+
+Version of the jsii compiler to use.
+
+Set to "*" if you want to manually manage the version of jsii in your
+project by managing updates to `package.json` on your own.
+
+NOTE: The jsii compiler releases since 5.0.0 are not semantically versioned
+and should remain on the same minor, so we recommend using a `~` dependency
+(e.g. `~5.0.0`).
+
+---
+
 ##### `publishToGo`<sup>Optional</sup> <a name="publishToGo" id="projen-cdktf-hybrid-construct.HybridModuleOptions.property.publishToGo"></a>
 
 ```typescript
@@ -2466,12 +2835,14 @@ const terraformModuleOptions: TerraformModuleOptions = { ... }
 | --- | --- | --- |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.name">name</a></code> | <code>string</code> | This is the name of your project. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.commitGenerated">commitGenerated</a></code> | <code>boolean</code> | Whether to commit the managed files by default. |
+| <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.gitIgnoreOptions">gitIgnoreOptions</a></code> | <code>projen.IgnoreFileOptions</code> | Configuration options for .gitignore file. |
+| <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.gitOptions">gitOptions</a></code> | <code>projen.GitOptions</code> | Configuration options for git. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.logging">logging</a></code> | <code>projen.LoggerOptions</code> | Configure logging options such as verbosity. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.outdir">outdir</a></code> | <code>string</code> | The root directory of the project. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.parent">parent</a></code> | <code>projen.Project</code> | The parent project, if this project is part of a bigger project. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.projenCommand">projenCommand</a></code> | <code>string</code> | The shell command to use in order to run the projen CLI. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.projenrcJson">projenrcJson</a></code> | <code>boolean</code> | Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation. |
-| <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.projenrcJsonOptions">projenrcJsonOptions</a></code> | <code>projen.ProjenrcOptions</code> | Options for .projenrc.json. |
+| <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.projenrcJsonOptions">projenrcJsonOptions</a></code> | <code>projen.ProjenrcJsonOptions</code> | Options for .projenrc.json. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.renovatebot">renovatebot</a></code> | <code>boolean</code> | Use renovatebot to handle dependency upgrades. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.renovatebotOptions">renovatebotOptions</a></code> | <code>projen.RenovatebotOptions</code> | Options for renovatebot. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.autoApproveOptions">autoApproveOptions</a></code> | <code>projen.github.AutoApproveOptions</code> | Enable and configure the 'auto approve' workflow. |
@@ -2520,6 +2891,7 @@ const terraformModuleOptions: TerraformModuleOptions = { ... }
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.packageName">packageName</a></code> | <code>string</code> | The "name" in package.json. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.peerDependencyOptions">peerDependencyOptions</a></code> | <code>projen.javascript.PeerDependencyOptions</code> | Options for `peerDeps`. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.peerDeps">peerDeps</a></code> | <code>string[]</code> | Peer dependencies for this module. |
+| <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.pnpmVersion">pnpmVersion</a></code> | <code>string</code> | The version of PNPM to use if using PNPM as a package manager. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.repository">repository</a></code> | <code>string</code> | The repository is the location where the actual code for your package lives. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.repositoryDirectory">repositoryDirectory</a></code> | <code>string</code> | If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.scopedPackagesOptions">scopedPackagesOptions</a></code> | <code>projen.javascript.ScopedPackagesOptions[]</code> | Options for privately hosted scoped packages. |
@@ -2533,6 +2905,7 @@ const terraformModuleOptions: TerraformModuleOptions = { ... }
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.prerelease">prerelease</a></code> | <code>string</code> | Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre"). |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.publishDryRun">publishDryRun</a></code> | <code>boolean</code> | Instead of actually publishing to package managers, just print the publishing command. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.publishTasks">publishTasks</a></code> | <code>boolean</code> | Define publishing tasks that can be executed manually as well as workflows. |
+| <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.releasableCommits">releasableCommits</a></code> | <code>projen.ReleasableCommits</code> | Find commits that should be considered releasable Used to decide if a release is required. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.releaseBranches">releaseBranches</a></code> | <code>{[ key: string ]: projen.release.BranchOptions}</code> | Defines additional release branches. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.releaseEveryCommit">releaseEveryCommit</a></code> | <code>boolean</code> | Automatically release new versions every commit to one of branches in `releaseBranches`. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.releaseFailureIssue">releaseFailureIssue</a></code> | <code>boolean</code> | Create a github issue on every failed publishing task. |
@@ -2551,7 +2924,7 @@ const terraformModuleOptions: TerraformModuleOptions = { ... }
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.buildWorkflow">buildWorkflow</a></code> | <code>boolean</code> | Define a GitHub workflow for building PRs. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.buildWorkflowTriggers">buildWorkflowTriggers</a></code> | <code>projen.github.workflows.Triggers</code> | Build workflow triggers. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.bundlerOptions">bundlerOptions</a></code> | <code>projen.javascript.BundlerOptions</code> | Options for `Bundler`. |
-| <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.codeCov">codeCov</a></code> | <code>boolean</code> | Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v1 A secret is required for private repos. Configured with @codeCovTokenSecret. |
+| <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.codeCov">codeCov</a></code> | <code>boolean</code> | Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v3 A secret is required for private repos. Configured with `@codeCovTokenSecret`. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.codeCovTokenSecret">codeCovTokenSecret</a></code> | <code>string</code> | Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.copyrightOwner">copyrightOwner</a></code> | <code>string</code> | License copyright owner. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.copyrightPeriod">copyrightPeriod</a></code> | <code>string</code> | The copyright years to put in the LICENSE file. |
@@ -2565,6 +2938,7 @@ const terraformModuleOptions: TerraformModuleOptions = { ... }
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.mutableBuild">mutableBuild</a></code> | <code>boolean</code> | Automatically update files modified during builds to pull-request branches. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.npmignore">npmignore</a></code> | <code>string[]</code> | Additional entries to .npmignore. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.npmignoreEnabled">npmignoreEnabled</a></code> | <code>boolean</code> | Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs. |
+| <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.npmIgnoreOptions">npmIgnoreOptions</a></code> | <code>projen.IgnoreFileOptions</code> | Configuration options for .npmignore file. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.package">package</a></code> | <code>boolean</code> | Defines a `package` task that will produce an npm tarball under the artifacts directory (e.g. `dist`). |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.prettier">prettier</a></code> | <code>boolean</code> | Setup prettier. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.prettierOptions">prettierOptions</a></code> | <code>projen.javascript.PrettierOptions</code> | Prettier options. |
@@ -2580,7 +2954,9 @@ const terraformModuleOptions: TerraformModuleOptions = { ... }
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.workflowBootstrapSteps">workflowBootstrapSteps</a></code> | <code>projen.github.workflows.JobStep[]</code> | Workflow steps to use in order to bootstrap this repo. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.workflowGitIdentity">workflowGitIdentity</a></code> | <code>projen.github.GitIdentity</code> | The git identity to use in workflows. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.workflowNodeVersion">workflowNodeVersion</a></code> | <code>string</code> | The node version to use in GitHub workflows. |
+| <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.workflowPackageCache">workflowPackageCache</a></code> | <code>boolean</code> | Enable Node.js package cache in GitHub workflows. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.disableTsconfig">disableTsconfig</a></code> | <code>boolean</code> | Do not generate a `tsconfig.json` file (used by jsii projects since tsconfig.json is generated by the jsii compiler). |
+| <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.disableTsconfigDev">disableTsconfigDev</a></code> | <code>boolean</code> | Do not generate a `tsconfig.dev.json` file. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.docgen">docgen</a></code> | <code>boolean</code> | Docgen by Typedoc. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.docsDirectory">docsDirectory</a></code> | <code>string</code> | Docs directory. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.entrypointTypes">entrypointTypes</a></code> | <code>string</code> | The .d.ts file that includes the type declarations for this module. |
@@ -2605,6 +2981,7 @@ const terraformModuleOptions: TerraformModuleOptions = { ... }
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.docgenFilePath">docgenFilePath</a></code> | <code>string</code> | File path for generated docs. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.dotnet">dotnet</a></code> | <code>projen.cdk.JsiiDotNetTarget</code> | *No description.* |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.excludeTypescript">excludeTypescript</a></code> | <code>string[]</code> | Accepts a list of glob patterns. |
+| <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.jsiiVersion">jsiiVersion</a></code> | <code>string</code> | Version of the jsii compiler to use. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.publishToGo">publishToGo</a></code> | <code>projen.cdk.JsiiGoTarget</code> | Publish Go bindings to a git repository. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.publishToMaven">publishToMaven</a></code> | <code>projen.cdk.JsiiJavaTarget</code> | Publish to maven. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModuleOptions.property.publishToNuget">publishToNuget</a></code> | <code>projen.cdk.JsiiDotNetTarget</code> | Publish to NuGet. |
@@ -2643,6 +3020,30 @@ public readonly commitGenerated: boolean;
 - *Default:* true
 
 Whether to commit the managed files by default.
+
+---
+
+##### `gitIgnoreOptions`<sup>Optional</sup> <a name="gitIgnoreOptions" id="projen-cdktf-hybrid-construct.TerraformModuleOptions.property.gitIgnoreOptions"></a>
+
+```typescript
+public readonly gitIgnoreOptions: IgnoreFileOptions;
+```
+
+- *Type:* projen.IgnoreFileOptions
+
+Configuration options for .gitignore file.
+
+---
+
+##### `gitOptions`<sup>Optional</sup> <a name="gitOptions" id="projen-cdktf-hybrid-construct.TerraformModuleOptions.property.gitOptions"></a>
+
+```typescript
+public readonly gitOptions: GitOptions;
+```
+
+- *Type:* projen.GitOptions
+
+Configuration options for git.
 
 ---
 
@@ -2721,10 +3122,10 @@ Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .pr
 ##### `projenrcJsonOptions`<sup>Optional</sup> <a name="projenrcJsonOptions" id="projen-cdktf-hybrid-construct.TerraformModuleOptions.property.projenrcJsonOptions"></a>
 
 ```typescript
-public readonly projenrcJsonOptions: ProjenrcOptions;
+public readonly projenrcJsonOptions: ProjenrcJsonOptions;
 ```
 
-- *Type:* projen.ProjenrcOptions
+- *Type:* projen.ProjenrcJsonOptions
 - *Default:* default options
 
 Options for .projenrc.json.
@@ -2809,7 +3210,7 @@ public readonly clobber: boolean;
 ```
 
 - *Type:* boolean
-- *Default:* true
+- *Default:* true, but false for subprojects
 
 Add a `clobber` task which resets the repo to origin.
 
@@ -3454,6 +3855,19 @@ test your module against the lowest peer version required.
 
 ---
 
+##### `pnpmVersion`<sup>Optional</sup> <a name="pnpmVersion" id="projen-cdktf-hybrid-construct.TerraformModuleOptions.property.pnpmVersion"></a>
+
+```typescript
+public readonly pnpmVersion: string;
+```
+
+- *Type:* string
+- *Default:* "7"
+
+The version of PNPM to use if using PNPM as a package manager.
+
+---
+
 ##### `repository`<sup>Optional</sup> <a name="repository" id="projen-cdktf-hybrid-construct.TerraformModuleOptions.property.repository"></a>
 
 ```typescript
@@ -3493,7 +3907,9 @@ Options for privately hosted scoped packages.
 
 ---
 
-##### `scripts`<sup>Optional</sup> <a name="scripts" id="projen-cdktf-hybrid-construct.TerraformModuleOptions.property.scripts"></a>
+##### ~~`scripts`~~<sup>Optional</sup> <a name="scripts" id="projen-cdktf-hybrid-construct.TerraformModuleOptions.property.scripts"></a>
+
+- *Deprecated:* use `project.addTask()` or `package.setScript()`
 
 ```typescript
 public readonly scripts: {[ key: string ]: string};
@@ -3506,6 +3922,7 @@ npm scripts to include.
 
 If a script has the same name as a standard script,
 the standard script will be overwritten.
+Also adds the script as a task.
 
 ---
 
@@ -3636,6 +4053,19 @@ Define publishing tasks that can be executed manually as well as workflows.
 
 Normally, publishing only happens within automated workflows. Enable this
 in order to create a publishing task for each publishing activity.
+
+---
+
+##### `releasableCommits`<sup>Optional</sup> <a name="releasableCommits" id="projen-cdktf-hybrid-construct.TerraformModuleOptions.property.releasableCommits"></a>
+
+```typescript
+public readonly releasableCommits: ReleasableCommits;
+```
+
+- *Type:* projen.ReleasableCommits
+- *Default:* ReleasableCommits.everyCommit()
+
+Find commits that should be considered releasable Used to decide if a release is required.
 
 ---
 
@@ -3902,7 +4332,7 @@ public readonly codeCov: boolean;
 - *Type:* boolean
 - *Default:* false
 
-Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v1 A secret is required for private repos. Configured with @codeCovTokenSecret.
+Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v3 A secret is required for private repos. Configured with `@codeCovTokenSecret`.
 
 ---
 
@@ -4082,6 +4512,18 @@ public readonly npmignoreEnabled: boolean;
 - *Default:* true
 
 Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs.
+
+---
+
+##### `npmIgnoreOptions`<sup>Optional</sup> <a name="npmIgnoreOptions" id="projen-cdktf-hybrid-construct.TerraformModuleOptions.property.npmIgnoreOptions"></a>
+
+```typescript
+public readonly npmIgnoreOptions: IgnoreFileOptions;
+```
+
+- *Type:* projen.IgnoreFileOptions
+
+Configuration options for .npmignore file.
 
 ---
 
@@ -4282,6 +4724,19 @@ The node version to use in GitHub workflows.
 
 ---
 
+##### `workflowPackageCache`<sup>Optional</sup> <a name="workflowPackageCache" id="projen-cdktf-hybrid-construct.TerraformModuleOptions.property.workflowPackageCache"></a>
+
+```typescript
+public readonly workflowPackageCache: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Enable Node.js package cache in GitHub workflows.
+
+---
+
 ##### `disableTsconfig`<sup>Optional</sup> <a name="disableTsconfig" id="projen-cdktf-hybrid-construct.TerraformModuleOptions.property.disableTsconfig"></a>
 
 ```typescript
@@ -4292,6 +4747,19 @@ public readonly disableTsconfig: boolean;
 - *Default:* false
 
 Do not generate a `tsconfig.json` file (used by jsii projects since tsconfig.json is generated by the jsii compiler).
+
+---
+
+##### `disableTsconfigDev`<sup>Optional</sup> <a name="disableTsconfigDev" id="projen-cdktf-hybrid-construct.TerraformModuleOptions.property.disableTsconfigDev"></a>
+
+```typescript
+public readonly disableTsconfigDev: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Do not generate a `tsconfig.dev.json` file.
 
 ---
 
@@ -4621,6 +5089,26 @@ that cannot be compiled with jsii's compiler settings.
 
 ---
 
+##### `jsiiVersion`<sup>Optional</sup> <a name="jsiiVersion" id="projen-cdktf-hybrid-construct.TerraformModuleOptions.property.jsiiVersion"></a>
+
+```typescript
+public readonly jsiiVersion: string;
+```
+
+- *Type:* string
+- *Default:* "1.x"
+
+Version of the jsii compiler to use.
+
+Set to "*" if you want to manually manage the version of jsii in your
+project by managing updates to `package.json` on your own.
+
+NOTE: The jsii compiler releases since 5.0.0 are not semantically versioned
+and should remain on the same minor, so we recommend using a `~` dependency
+(e.g. `~5.0.0`).
+
+---
+
 ##### `publishToGo`<sup>Optional</sup> <a name="publishToGo" id="projen-cdktf-hybrid-construct.TerraformModuleOptions.property.publishToGo"></a>
 
 ```typescript
@@ -4883,6 +5371,7 @@ new HybridModule(options: HybridModuleOptions)
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.addFields">addFields</a></code> | Directly set fields in `package.json`. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.addKeywords">addKeywords</a></code> | Adds keywords to package.json (deduplicated). |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.addPeerDeps">addPeerDeps</a></code> | Defines peer dependencies. |
+| <code><a href="#projen-cdktf-hybrid-construct.HybridModule.addScripts">addScripts</a></code> | Replaces the contents of multiple npm package.json scripts. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.addTestCommand">addTestCommand</a></code> | DEPRECATED. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.hasScript">hasScript</a></code> | Indicates if a script by the name name is defined. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.removeScript">removeScript</a></code> | Removes the npm script (always successful). |
@@ -5299,6 +5788,22 @@ add/upgrade`. If you wish to specify a version range use this syntax:
 
 ---
 
+##### `addScripts` <a name="addScripts" id="projen-cdktf-hybrid-construct.HybridModule.addScripts"></a>
+
+```typescript
+public addScripts(scripts: {[ key: string ]: string}): void
+```
+
+Replaces the contents of multiple npm package.json scripts.
+
+###### `scripts`<sup>Required</sup> <a name="scripts" id="projen-cdktf-hybrid-construct.HybridModule.addScripts.parameter.scripts"></a>
+
+- *Type:* {[ key: string ]: string}
+
+The scripts to set.
+
+---
+
 ##### ~~`addTestCommand`~~ <a name="addTestCommand" id="projen-cdktf-hybrid-construct.HybridModule.addTestCommand"></a>
 
 ```typescript
@@ -5313,7 +5818,7 @@ DEPRECATED.
 
 ---
 
-##### `hasScript` <a name="hasScript" id="projen-cdktf-hybrid-construct.HybridModule.hasScript"></a>
+##### ~~`hasScript`~~ <a name="hasScript" id="projen-cdktf-hybrid-construct.HybridModule.hasScript"></a>
 
 ```typescript
 public hasScript(name: string): boolean
@@ -5408,6 +5913,7 @@ The command to execute.
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.projectBuild">projectBuild</a></code> | <code>projen.ProjectBuild</code> | Manages the build process of the project. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.projenCommand">projenCommand</a></code> | <code>string</code> | The command to use in order to run the projen CLI. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.root">root</a></code> | <code>projen.Project</code> | The root project. |
+| <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.subprojects">subprojects</a></code> | <code>projen.Project[]</code> | Returns all the subprojects within this project. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.tasks">tasks</a></code> | <code>projen.Tasks</code> | Project tasks. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.testTask">testTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.defaultTask">defaultTask</a></code> | <code>projen.Task</code> | This is the "default" task, the one that executes "projen". |
@@ -5425,6 +5931,7 @@ The command to execute.
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.bundler">bundler</a></code> | <code>projen.javascript.Bundler</code> | *No description.* |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.entrypoint">entrypoint</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.manifest">manifest</a></code> | <code>any</code> | *No description.* |
+| <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.npmrc">npmrc</a></code> | <code>projen.javascript.NpmConfig</code> | The .npmrc file. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.package">package</a></code> | <code>projen.javascript.NodePackage</code> | API for managing the node package. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | The package manager to use. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.runScriptCommand">runScriptCommand</a></code> | <code>string</code> | The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the package manager). |
@@ -5432,7 +5939,7 @@ The command to execute.
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.buildWorkflow">buildWorkflow</a></code> | <code>projen.build.BuildWorkflow</code> | The PR build GitHub workflow. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.buildWorkflowJobId">buildWorkflowJobId</a></code> | <code>string</code> | The job ID of the build workflow. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.jest">jest</a></code> | <code>projen.javascript.Jest</code> | The Jest configuration (if enabled). |
-| <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.maxNodeVersion">maxNodeVersion</a></code> | <code>string</code> | Maximum node version required by this pacakge. |
+| <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.maxNodeVersion">maxNodeVersion</a></code> | <code>string</code> | Maximum node version required by this package. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.minNodeVersion">minNodeVersion</a></code> | <code>string</code> | Minimum node.js version required by this package. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.npmignore">npmignore</a></code> | <code>projen.IgnoreFile</code> | The .npmignore file. |
 | <code><a href="#projen-cdktf-hybrid-construct.HybridModule.property.prettier">prettier</a></code> | <code>projen.javascript.Prettier</code> | *No description.* |
@@ -5658,6 +6165,18 @@ The root project.
 
 ---
 
+##### `subprojects`<sup>Required</sup> <a name="subprojects" id="projen-cdktf-hybrid-construct.HybridModule.property.subprojects"></a>
+
+```typescript
+public readonly subprojects: Project[];
+```
+
+- *Type:* projen.Project[]
+
+Returns all the subprojects within this project.
+
+---
+
 ##### `tasks`<sup>Required</sup> <a name="tasks" id="projen-cdktf-hybrid-construct.HybridModule.property.tasks"></a>
 
 ```typescript
@@ -5877,6 +6396,18 @@ public readonly manifest: any;
 
 ---
 
+##### `npmrc`<sup>Required</sup> <a name="npmrc" id="projen-cdktf-hybrid-construct.HybridModule.property.npmrc"></a>
+
+```typescript
+public readonly npmrc: NpmConfig;
+```
+
+- *Type:* projen.javascript.NpmConfig
+
+The .npmrc file.
+
+---
+
 ##### `package`<sup>Required</sup> <a name="package" id="projen-cdktf-hybrid-construct.HybridModule.property.package"></a>
 
 ```typescript
@@ -5973,7 +6504,7 @@ public readonly maxNodeVersion: string;
 
 - *Type:* string
 
-Maximum node version required by this pacakge.
+Maximum node version required by this package.
 
 ---
 
@@ -6236,6 +6767,7 @@ new TerraformModule(options: TerraformModuleOptions)
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.addFields">addFields</a></code> | Directly set fields in `package.json`. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.addKeywords">addKeywords</a></code> | Adds keywords to package.json (deduplicated). |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.addPeerDeps">addPeerDeps</a></code> | Defines peer dependencies. |
+| <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.addScripts">addScripts</a></code> | Replaces the contents of multiple npm package.json scripts. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.addTestCommand">addTestCommand</a></code> | DEPRECATED. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.hasScript">hasScript</a></code> | Indicates if a script by the name name is defined. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.removeScript">removeScript</a></code> | Removes the npm script (always successful). |
@@ -6652,6 +7184,22 @@ add/upgrade`. If you wish to specify a version range use this syntax:
 
 ---
 
+##### `addScripts` <a name="addScripts" id="projen-cdktf-hybrid-construct.TerraformModule.addScripts"></a>
+
+```typescript
+public addScripts(scripts: {[ key: string ]: string}): void
+```
+
+Replaces the contents of multiple npm package.json scripts.
+
+###### `scripts`<sup>Required</sup> <a name="scripts" id="projen-cdktf-hybrid-construct.TerraformModule.addScripts.parameter.scripts"></a>
+
+- *Type:* {[ key: string ]: string}
+
+The scripts to set.
+
+---
+
 ##### ~~`addTestCommand`~~ <a name="addTestCommand" id="projen-cdktf-hybrid-construct.TerraformModule.addTestCommand"></a>
 
 ```typescript
@@ -6666,7 +7214,7 @@ DEPRECATED.
 
 ---
 
-##### `hasScript` <a name="hasScript" id="projen-cdktf-hybrid-construct.TerraformModule.hasScript"></a>
+##### ~~`hasScript`~~ <a name="hasScript" id="projen-cdktf-hybrid-construct.TerraformModule.hasScript"></a>
 
 ```typescript
 public hasScript(name: string): boolean
@@ -6761,6 +7309,7 @@ The command to execute.
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.projectBuild">projectBuild</a></code> | <code>projen.ProjectBuild</code> | Manages the build process of the project. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.projenCommand">projenCommand</a></code> | <code>string</code> | The command to use in order to run the projen CLI. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.root">root</a></code> | <code>projen.Project</code> | The root project. |
+| <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.subprojects">subprojects</a></code> | <code>projen.Project[]</code> | Returns all the subprojects within this project. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.tasks">tasks</a></code> | <code>projen.Tasks</code> | Project tasks. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.testTask">testTask</a></code> | <code>projen.Task</code> | *No description.* |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.defaultTask">defaultTask</a></code> | <code>projen.Task</code> | This is the "default" task, the one that executes "projen". |
@@ -6778,6 +7327,7 @@ The command to execute.
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.bundler">bundler</a></code> | <code>projen.javascript.Bundler</code> | *No description.* |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.entrypoint">entrypoint</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.manifest">manifest</a></code> | <code>any</code> | *No description.* |
+| <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.npmrc">npmrc</a></code> | <code>projen.javascript.NpmConfig</code> | The .npmrc file. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.package">package</a></code> | <code>projen.javascript.NodePackage</code> | API for managing the node package. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | The package manager to use. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.runScriptCommand">runScriptCommand</a></code> | <code>string</code> | The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the package manager). |
@@ -6785,7 +7335,7 @@ The command to execute.
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.buildWorkflow">buildWorkflow</a></code> | <code>projen.build.BuildWorkflow</code> | The PR build GitHub workflow. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.buildWorkflowJobId">buildWorkflowJobId</a></code> | <code>string</code> | The job ID of the build workflow. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.jest">jest</a></code> | <code>projen.javascript.Jest</code> | The Jest configuration (if enabled). |
-| <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.maxNodeVersion">maxNodeVersion</a></code> | <code>string</code> | Maximum node version required by this pacakge. |
+| <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.maxNodeVersion">maxNodeVersion</a></code> | <code>string</code> | Maximum node version required by this package. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.minNodeVersion">minNodeVersion</a></code> | <code>string</code> | Minimum node.js version required by this package. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.npmignore">npmignore</a></code> | <code>projen.IgnoreFile</code> | The .npmignore file. |
 | <code><a href="#projen-cdktf-hybrid-construct.TerraformModule.property.prettier">prettier</a></code> | <code>projen.javascript.Prettier</code> | *No description.* |
@@ -7011,6 +7561,18 @@ The root project.
 
 ---
 
+##### `subprojects`<sup>Required</sup> <a name="subprojects" id="projen-cdktf-hybrid-construct.TerraformModule.property.subprojects"></a>
+
+```typescript
+public readonly subprojects: Project[];
+```
+
+- *Type:* projen.Project[]
+
+Returns all the subprojects within this project.
+
+---
+
 ##### `tasks`<sup>Required</sup> <a name="tasks" id="projen-cdktf-hybrid-construct.TerraformModule.property.tasks"></a>
 
 ```typescript
@@ -7230,6 +7792,18 @@ public readonly manifest: any;
 
 ---
 
+##### `npmrc`<sup>Required</sup> <a name="npmrc" id="projen-cdktf-hybrid-construct.TerraformModule.property.npmrc"></a>
+
+```typescript
+public readonly npmrc: NpmConfig;
+```
+
+- *Type:* projen.javascript.NpmConfig
+
+The .npmrc file.
+
+---
+
 ##### `package`<sup>Required</sup> <a name="package" id="projen-cdktf-hybrid-construct.TerraformModule.property.package"></a>
 
 ```typescript
@@ -7326,7 +7900,7 @@ public readonly maxNodeVersion: string;
 
 - *Type:* string
 
-Maximum node version required by this pacakge.
+Maximum node version required by this package.
 
 ---
 
