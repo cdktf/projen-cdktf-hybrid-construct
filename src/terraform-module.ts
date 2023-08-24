@@ -88,7 +88,8 @@ describe("MyModule", () => {
     this.addDevDeps(
       `cdktf@${cdktfVersion}`,
       `cdktf-cli@${cdktfVersion}`,
-      "ts-node@>=10.9.1"
+      "ts-node@>=10.9.1",
+      "jsii-docgen@^9.0.0"
     );
     this.addKeywords("cdktf", "cdktf-hybrid");
 

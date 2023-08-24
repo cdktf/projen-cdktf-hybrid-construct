@@ -74,6 +74,7 @@
     },
     {
       "name": "jsii-docgen",
+      "version": "^9.0.0",
       "type": "build"
     },
     {
