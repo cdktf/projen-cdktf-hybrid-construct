@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
+import { expectSnapshot } from "./helper";
 import { defaults } from "../src/defaults";
 import { HybridModule } from "../src/index";
-import { expectSnapshot } from "./helper";
 
 describe("HybridModule", () => {
   it("snapshot", () => {

@@ -17,5 +17,6 @@ project {
     "**/test-reports/**",
     "**/dist/**",
     "examples/**", # this probably should have the headers, but I'm tired of fighting Projen
+    "test/helper.ts",
   ]
 }

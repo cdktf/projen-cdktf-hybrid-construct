@@ -32,6 +32,10 @@
       "type": "build"
     },
     {
+      "name": "comment-json",
+      "type": "build"
+    },
+    {
       "name": "eslint-config-prettier",
       "type": "build"
     },
