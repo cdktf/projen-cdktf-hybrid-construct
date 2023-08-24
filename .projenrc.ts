@@ -11,6 +11,16 @@ import { CustomizedLicense } from "./projenrc/customized-license";
 
 const name = "projen-cdktf-hybrid-construct";
 
+const githubActionPinnedVersions = {
+  "actions/checkout": "c85c95e3d7251135ab7dc9ce3241c5835cc595a9", // v3.5.3
+  "actions/download-artifact": "9bc31d5ccc31df68ecc42ccf4149144866c47d8a", // v3.0.2
+  "actions/setup-node": "64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c", // v3.6.0
+  "actions/upload-artifact": "0b7f8abb1508181956e8e162db84b466c27e18ce", // v3.1.2
+  "amannn/action-semantic-pull-request":
+    "c3cd5d1ea3580753008872425915e343e351ab54", // v5.2.0
+  "peter-evans/create-pull-request": "284f54f989303d2699d373481a0cfa13ad5a6666", // v5.0.1
+};
+
 const project = new JsiiProject({
   defaultReleaseBranch: "main",
   name,
@@ -39,21 +49,23 @@ const project = new JsiiProject({
     name: "team-tf-cdk",
     email: "github-team-tf-cdk@hashicorp.com",
   },
+  jsiiVersion: "^5.1.0",
 });
 project.tsconfig?.exclude?.push("src/exampleCode/**");
 project.tsconfig?.exclude?.push("example/**");
 project.tsconfig?.exclude?.push("examples/**");
 
-project.addPeerDeps("projen@>= 0.63.25");
+project.addPeerDeps("projen@>= 0.72.18");
 project.addBundledDeps("change-case");
 project.addDevDeps(
   "fs-extra",
   "glob",
-  "projen@0.63.25",
+  "projen@^0.72.18",
   "@types/fs-extra",
   "@types/glob",
   "@types/change-case",
-  "ts-node@10.9.1"
+  "ts-node@10.9.1",
+  "jsii-docgen@^9.0.0"
 );
 
 new CustomizedLicense(project);
@@ -85,5 +97,10 @@ project.buildWorkflow?.addPostBuildSteps(
   },
   { name: "Add headers using Copywrite tool", run: "copywrite headers" }
 );
+
+// Use pinned versions of github actions
+Object.entries(githubActionPinnedVersions).forEach(([action, sha]) => {
+  project.github?.actions.set(action, `${action}@${sha}`);
+});
 
 project.synth();

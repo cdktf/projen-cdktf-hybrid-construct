@@ -16,9 +16,6 @@ project {
     "**/coverage/**",
     "**/test-reports/**",
     "**/dist/**",
-    "examples/**/*.d.ts",
-    "examples/**/lib/**",
-    "examples/**/scripts/*.sh", # these probably should have the headers, but I'm tired of fighting with Projen
-    "examples/**/terraformModules.ts", # this probably should have the headers, but I'm tired of fighting Projen
+    "examples/**", # this probably should have the headers, but I'm tired of fighting Projen
   ]
 }
