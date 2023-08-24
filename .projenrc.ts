@@ -1,26 +1,16 @@
-import { IResolver, License } from "projen";
+/**
+ * Copyright (c) HashiCorp, Inc.
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 import { JsiiProject } from "projen/lib/cdk";
 import { NpmAccess, UpgradeDependenciesSchedule } from "projen/lib/javascript";
-import { TypeScriptProject } from "projen/lib/typescript";
-
-const SPDX = "MPL-2.0";
-
-class CustomizedLicense extends License {
-  constructor(project: TypeScriptProject) {
-    super(project, { spdx: SPDX });
-
-    project.addFields({ license: SPDX });
-  }
-
-  synthesizeContent(resolver: IResolver) {
-    return (
-      "Copyright (c) 2022 HashiCorp, Inc.\n\n" +
-      super.synthesizeContent(resolver)
-    );
-  }
-}
+import { AutoApprove } from "./projenrc/auto-approve";
+import { Automerge } from "./projenrc/automerge";
+import { CustomizedLicense } from "./projenrc/customized-license";
 
 const name = "projen-cdktf-hybrid-construct";
+
 const project = new JsiiProject({
   defaultReleaseBranch: "main",
   name,
@@ -37,14 +27,10 @@ const project = new JsiiProject({
   release: true,
   releaseToNpm: true,
   npmAccess: NpmAccess.PUBLIC,
-  autoApproveUpgrades: true,
-  autoApproveOptions: {
-    label: "auto-approve",
-    allowedUsernames: ["team-tf-cdk"],
-  },
+  mergify: false,
   depsUpgradeOptions: {
     workflowOptions: {
-      labels: ["auto-approve", "dependencies"],
+      labels: ["auto-approve", "automerge", "dependencies"],
       schedule: UpgradeDependenciesSchedule.WEEKLY,
     },
   },
@@ -71,6 +57,8 @@ project.addDevDeps(
 );
 
 new CustomizedLicense(project);
+new AutoApprove(project);
+new Automerge(project);
 
 project.addPackageIgnore("examples");
 
