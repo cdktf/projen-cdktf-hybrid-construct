@@ -5,19 +5,23 @@
 
 ### Eks <a name="Eks" id="my-module.Eks"></a>
 
+Defines an Eks based on a Terraform module.
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/~> 18.0 terraform-aws-modules/eks/aws}
+
 #### Initializers <a name="Initializers" id="my-module.Eks.Initializer"></a>
 
 ```typescript
 import { Eks } from 'my-module'
 
-new Eks(scope: Construct, id: string, options?: EksOptions)
+new Eks(scope: Construct, id: string, config?: EksConfig)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#my-module.Eks.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
 | <code><a href="#my-module.Eks.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#my-module.Eks.Initializer.parameter.options">options</a></code> | <code><a href="#my-module.EksOptions">EksOptions</a></code> | *No description.* |
+| <code><a href="#my-module.Eks.Initializer.parameter.config">config</a></code> | <code><a href="#my-module.EksConfig">EksConfig</a></code> | *No description.* |
 
 ---
 
@@ -33,9 +37,9 @@ new Eks(scope: Construct, id: string, options?: EksOptions)
 
 ---
 
-##### `options`<sup>Optional</sup> <a name="options" id="my-module.Eks.Initializer.parameter.options"></a>
+##### `config`<sup>Optional</sup> <a name="config" id="my-module.Eks.Initializer.parameter.config"></a>
 
-- *Type:* <a href="#my-module.EksOptions">EksOptions</a>
+- *Type:* <a href="#my-module.EksConfig">EksConfig</a>
 
 ---
 
@@ -158,6 +162,7 @@ public interpolationForOutput(moduleOutput: string): IResolvable
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#my-module.Eks.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#my-module.Eks.isTerraformElement">isTerraformElement</a></code> | *No description.* |
 
 ---
 
@@ -190,6 +195,20 @@ this type-testing method instead.
 - *Type:* any
 
 Any object.
+
+---
+
+##### `isTerraformElement` <a name="isTerraformElement" id="my-module.Eks.isTerraformElement"></a>
+
+```typescript
+import { Eks } from 'my-module'
+
+Eks.isTerraformElement(x: any)
+```
+
+###### `x`<sup>Required</sup> <a name="x" id="my-module.Eks.isTerraformElement.parameter.x"></a>
+
+- *Type:* any
 
 ---
 
@@ -1635,19 +1654,23 @@ public readonly vpcId: string;
 
 ### EksManagedNodegroup <a name="EksManagedNodegroup" id="my-module.EksManagedNodegroup"></a>
 
+Defines an EksManagedNodegroup based on a Terraform module.
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/~> 18.0/submodules/eks-managed-node-group terraform-aws-modules/eks/aws//modules/eks-managed-node-group}
+
 #### Initializers <a name="Initializers" id="my-module.EksManagedNodegroup.Initializer"></a>
 
 ```typescript
 import { EksManagedNodegroup } from 'my-module'
 
-new EksManagedNodegroup(scope: Construct, id: string, options?: EksManagedNodegroupOptions)
+new EksManagedNodegroup(scope: Construct, id: string, config?: EksManagedNodegroupConfig)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#my-module.EksManagedNodegroup.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
 | <code><a href="#my-module.EksManagedNodegroup.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#my-module.EksManagedNodegroup.Initializer.parameter.options">options</a></code> | <code><a href="#my-module.EksManagedNodegroupOptions">EksManagedNodegroupOptions</a></code> | *No description.* |
+| <code><a href="#my-module.EksManagedNodegroup.Initializer.parameter.config">config</a></code> | <code><a href="#my-module.EksManagedNodegroupConfig">EksManagedNodegroupConfig</a></code> | *No description.* |
 
 ---
 
@@ -1663,9 +1686,9 @@ new EksManagedNodegroup(scope: Construct, id: string, options?: EksManagedNodegr
 
 ---
 
-##### `options`<sup>Optional</sup> <a name="options" id="my-module.EksManagedNodegroup.Initializer.parameter.options"></a>
+##### `config`<sup>Optional</sup> <a name="config" id="my-module.EksManagedNodegroup.Initializer.parameter.config"></a>
 
-- *Type:* <a href="#my-module.EksManagedNodegroupOptions">EksManagedNodegroupOptions</a>
+- *Type:* <a href="#my-module.EksManagedNodegroupConfig">EksManagedNodegroupConfig</a>
 
 ---
 
@@ -1788,6 +1811,7 @@ public interpolationForOutput(moduleOutput: string): IResolvable
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#my-module.EksManagedNodegroup.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#my-module.EksManagedNodegroup.isTerraformElement">isTerraformElement</a></code> | *No description.* |
 
 ---
 
@@ -1820,6 +1844,20 @@ this type-testing method instead.
 - *Type:* any
 
 Any object.
+
+---
+
+##### `isTerraformElement` <a name="isTerraformElement" id="my-module.EksManagedNodegroup.isTerraformElement"></a>
+
+```typescript
+import { EksManagedNodegroup } from 'my-module'
+
+EksManagedNodegroup.isTerraformElement(x: any)
+```
+
+###### `x`<sup>Required</sup> <a name="x" id="my-module.EksManagedNodegroup.isTerraformElement.parameter.x"></a>
+
+- *Type:* any
 
 ---
 
@@ -2979,106 +3017,115 @@ public readonly vpcSecurityGroupIds: string[];
 
 ## Structs <a name="Structs" id="Structs"></a>
 
-### EksManagedNodegroupOptions <a name="EksManagedNodegroupOptions" id="my-module.EksManagedNodegroupOptions"></a>
+### EksConfig <a name="EksConfig" id="my-module.EksConfig"></a>
 
-#### Initializer <a name="Initializer" id="my-module.EksManagedNodegroupOptions.Initializer"></a>
+#### Initializer <a name="Initializer" id="my-module.EksConfig.Initializer"></a>
 
 ```typescript
-import { EksManagedNodegroupOptions } from 'my-module'
+import { EksConfig } from 'my-module'
 
-const eksManagedNodegroupOptions: EksManagedNodegroupOptions = { ... }
+const eksConfig: EksConfig = { ... }
 ```
 
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.dependsOn">dependsOn</a></code> | <code>cdktf.ITerraformDependable[]</code> | *No description.* |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.forEach">forEach</a></code> | <code>cdktf.ITerraformIterator</code> | *No description.* |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.providers">providers</a></code> | <code>cdktf.TerraformProvider \| cdktf.TerraformModuleProvider[]</code> | *No description.* |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.skipAssetCreationFromLocalModules">skipAssetCreationFromLocalModules</a></code> | <code>boolean</code> | *No description.* |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.amiId">amiId</a></code> | <code>string</code> | The AMI from which to launch the instance. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.amiReleaseVersion">amiReleaseVersion</a></code> | <code>string</code> | AMI version of the EKS Node Group. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.amiType">amiType</a></code> | <code>string</code> | Type of Amazon Machine Image (AMI) associated with the EKS Node Group. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.blockDeviceMappings">blockDeviceMappings</a></code> | <code>any</code> | Specify volumes to attach to the instance besides the volumes specified by the AMI. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.bootstrapExtraArgs">bootstrapExtraArgs</a></code> | <code>string</code> | Additional arguments passed to the bootstrap script. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.capacityReservationSpecification">capacityReservationSpecification</a></code> | <code>any</code> | Targeting for EC2 capacity reservations. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.capacityType">capacityType</a></code> | <code>string</code> | Type of capacity associated with the EKS Node Group. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.clusterAuthBase64">clusterAuthBase64</a></code> | <code>string</code> | Base64 encoded CA of associated EKS cluster. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.clusterEndpoint">clusterEndpoint</a></code> | <code>string</code> | Endpoint of associated EKS cluster. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.clusterIpFamily">clusterIpFamily</a></code> | <code>string</code> | The IP family used to assign Kubernetes pod and service addresses. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.clusterName">clusterName</a></code> | <code>string</code> | Name of associated EKS cluster. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.clusterPrimarySecurityGroupId">clusterPrimarySecurityGroupId</a></code> | <code>string</code> | The ID of the EKS cluster primary security group to associate with the instance(s). |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.clusterSecurityGroupId">clusterSecurityGroupId</a></code> | <code>string</code> | Cluster control plane security group ID. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.clusterServiceIpv4Cidr">clusterServiceIpv4Cidr</a></code> | <code>string</code> | The CIDR block to assign Kubernetes service IP addresses from. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.clusterVersion">clusterVersion</a></code> | <code>string</code> | Kubernetes version. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.cpuOptions">cpuOptions</a></code> | <code>{[ key: string ]: string}</code> | The CPU options for the instance. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.create">create</a></code> | <code>boolean</code> | Determines whether to create EKS managed node group or not. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.createIamRole">createIamRole</a></code> | <code>boolean</code> | Determines whether an IAM role is created or to use an existing IAM role. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.createLaunchTemplate">createLaunchTemplate</a></code> | <code>boolean</code> | Determines whether to create a launch template or not. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.createSecurityGroup">createSecurityGroup</a></code> | <code>boolean</code> | Determines whether to create a security group. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.creditSpecification">creditSpecification</a></code> | <code>{[ key: string ]: string}</code> | Customize the credit specification of the instance. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.desiredSize">desiredSize</a></code> | <code>number</code> | Desired number of instances/nodes. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.disableApiTermination">disableApiTermination</a></code> | <code>boolean</code> | If true, enables EC2 instance termination protection. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.diskSize">diskSize</a></code> | <code>number</code> | Disk size in GiB for nodes. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.ebsOptimized">ebsOptimized</a></code> | <code>boolean</code> | If true, the launched EC2 instance(s) will be EBS-optimized. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.elasticGpuSpecifications">elasticGpuSpecifications</a></code> | <code>{[ key: string ]: string}</code> | The elastic GPU to attach to the instance. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.elasticInferenceAccelerator">elasticInferenceAccelerator</a></code> | <code>{[ key: string ]: string}</code> | Configuration block containing an Elastic Inference Accelerator to attach to the instance. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.enableBootstrapUserData">enableBootstrapUserData</a></code> | <code>boolean</code> | Determines whether the bootstrap configurations are populated within the user data template. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.enableMonitoring">enableMonitoring</a></code> | <code>boolean</code> | Enables/disables detailed monitoring. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.enclaveOptions">enclaveOptions</a></code> | <code>{[ key: string ]: string}</code> | Enable Nitro Enclaves on launched instances. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.forceUpdateVersion">forceUpdateVersion</a></code> | <code>boolean</code> | Force version update if existing pods are unable to be drained due to a pod disruption budget issue. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.iamRoleAdditionalPolicies">iamRoleAdditionalPolicies</a></code> | <code>string[]</code> | Additional policies to be added to the IAM role. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.iamRoleArn">iamRoleArn</a></code> | <code>string</code> | Existing IAM role ARN for the node group. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.iamRoleAttachCniPolicy">iamRoleAttachCniPolicy</a></code> | <code>boolean</code> | Whether to attach the `AmazonEKS_CNI_Policy`/`AmazonEKS_CNI_IPv6_Policy` IAM policy to the IAM IAM role. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.iamRoleDescription">iamRoleDescription</a></code> | <code>string</code> | Description of the role. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.iamRoleName">iamRoleName</a></code> | <code>string</code> | Name to use on IAM role created. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.iamRolePath">iamRolePath</a></code> | <code>string</code> | IAM role path. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.iamRolePermissionsBoundary">iamRolePermissionsBoundary</a></code> | <code>string</code> | ARN of the policy that is used to set the permissions boundary for the IAM role. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.iamRoleTags">iamRoleTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the IAM role created. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.iamRoleUseNamePrefix">iamRoleUseNamePrefix</a></code> | <code>boolean</code> | Determines whether the IAM role name (`iam_role_name`) is used as a prefix. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.instanceMarketOptions">instanceMarketOptions</a></code> | <code>any</code> | The market (purchasing) option for the instance. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.instanceTypes">instanceTypes</a></code> | <code>string[]</code> | Set of instance types associated with the EKS Node Group. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.kernelId">kernelId</a></code> | <code>string</code> | The kernel ID. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.keyName">keyName</a></code> | <code>string</code> | The key name that should be used for the instance(s). |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.labels">labels</a></code> | <code>{[ key: string ]: string}</code> | Key-value map of Kubernetes labels. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.launchTemplateDefaultVersion">launchTemplateDefaultVersion</a></code> | <code>string</code> | Default version of the launch template. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.launchTemplateDescription">launchTemplateDescription</a></code> | <code>string</code> | Description of the launch template. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.launchTemplateName">launchTemplateName</a></code> | <code>string</code> | Launch template name - either to be created (`var.create_launch_template` = `true`) or existing (`var.create_launch_template` = `false`). |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.launchTemplateTags">launchTemplateTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the tag_specifications of launch template created. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.launchTemplateUseNamePrefix">launchTemplateUseNamePrefix</a></code> | <code>boolean</code> | Determines whether to use `launch_template_name` as is or create a unique name beginning with the `launch_template_name` as the prefix. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.launchTemplateVersion">launchTemplateVersion</a></code> | <code>string</code> | Launch template version number. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.licenseSpecifications">licenseSpecifications</a></code> | <code>{[ key: string ]: string}</code> | A list of license specifications to associate with. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.maxSize">maxSize</a></code> | <code>number</code> | Maximum number of instances/nodes. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.metadataOptions">metadataOptions</a></code> | <code>{[ key: string ]: string}</code> | Customize the metadata options for the instance. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.minSize">minSize</a></code> | <code>number</code> | Minimum number of instances/nodes. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.name">name</a></code> | <code>string</code> | Name of the EKS managed node group. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.networkInterfaces">networkInterfaces</a></code> | <code>any[]</code> | Customize network interfaces to be attached at instance boot time. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.placement">placement</a></code> | <code>{[ key: string ]: string}</code> | The placement of the instance. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.platform">platform</a></code> | <code>string</code> | Identifies if the OS platform is `bottlerocket` or `linux` based; |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.postBootstrapUserData">postBootstrapUserData</a></code> | <code>string</code> | User data that is appended to the user data script after of the EKS bootstrap script. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.preBootstrapUserData">preBootstrapUserData</a></code> | <code>string</code> | User data that is injected into the user data script ahead of the EKS bootstrap script. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.ramDiskId">ramDiskId</a></code> | <code>string</code> | The ID of the ram disk. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.remoteAccess">remoteAccess</a></code> | <code>any</code> | Configuration block with remote access settings. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.securityGroupDescription">securityGroupDescription</a></code> | <code>string</code> | Description for the security group created. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.securityGroupName">securityGroupName</a></code> | <code>string</code> | Name to use on security group created. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.securityGroupRules">securityGroupRules</a></code> | <code>any</code> | List of security group rules to add to the security group created. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.securityGroupTags">securityGroupTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the security group created. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.securityGroupUseNamePrefix">securityGroupUseNamePrefix</a></code> | <code>boolean</code> | Determines whether the security group name (`security_group_name`) is used as a prefix. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.subnetIds">subnetIds</a></code> | <code>string[]</code> | Identifiers of EC2 Subnets to associate with the EKS Node Group. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | A map of tags to add to all resources. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.taints">taints</a></code> | <code>any</code> | The Kubernetes taints to be applied to the nodes in the node group. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.timeouts">timeouts</a></code> | <code>{[ key: string ]: string}</code> | Create, update, and delete timeout configurations for the node group. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.updateConfig">updateConfig</a></code> | <code>{[ key: string ]: string}</code> | Configuration block of settings for max unavailable resources during node group updates. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.updateLaunchTemplateDefaultVersion">updateLaunchTemplateDefaultVersion</a></code> | <code>boolean</code> | Whether to update the launch templates default version on each update. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.useNamePrefix">useNamePrefix</a></code> | <code>boolean</code> | Determines whether to use `name` as is or create a unique name beginning with the `name` as the prefix. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.userDataTemplatePath">userDataTemplatePath</a></code> | <code>string</code> | Path to a local, custom user data template file to use when rendering user data. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.vpcId">vpcId</a></code> | <code>string</code> | ID of the VPC where the security group/nodes will be provisioned. |
-| <code><a href="#my-module.EksManagedNodegroupOptions.property.vpcSecurityGroupIds">vpcSecurityGroupIds</a></code> | <code>string[]</code> | A list of security group IDs to associate. |
+| <code><a href="#my-module.EksConfig.property.dependsOn">dependsOn</a></code> | <code>cdktf.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#my-module.EksConfig.property.forEach">forEach</a></code> | <code>cdktf.ITerraformIterator</code> | *No description.* |
+| <code><a href="#my-module.EksConfig.property.providers">providers</a></code> | <code>cdktf.TerraformProvider \| cdktf.TerraformModuleProvider[]</code> | *No description.* |
+| <code><a href="#my-module.EksConfig.property.skipAssetCreationFromLocalModules">skipAssetCreationFromLocalModules</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#my-module.EksConfig.property.attachClusterEncryptionPolicy">attachClusterEncryptionPolicy</a></code> | <code>boolean</code> | Indicates whether or not to attach an additional policy for the cluster IAM role to utilize the encryption key provided true. |
+| <code><a href="#my-module.EksConfig.property.awsAuthAccounts">awsAuthAccounts</a></code> | <code>any[]</code> | List of account maps to add to the aws-auth configmap. |
+| <code><a href="#my-module.EksConfig.property.awsAuthFargateProfilePodExecutionRoleArns">awsAuthFargateProfilePodExecutionRoleArns</a></code> | <code>string[]</code> | List of Fargate profile pod execution role ARNs to add to the aws-auth configmap. |
+| <code><a href="#my-module.EksConfig.property.awsAuthNodeIamRoleArnsNonWindows">awsAuthNodeIamRoleArnsNonWindows</a></code> | <code>string[]</code> | List of non-Windows based node IAM role ARNs to add to the aws-auth configmap. |
+| <code><a href="#my-module.EksConfig.property.awsAuthNodeIamRoleArnsWindows">awsAuthNodeIamRoleArnsWindows</a></code> | <code>string[]</code> | List of Windows based node IAM role ARNs to add to the aws-auth configmap. |
+| <code><a href="#my-module.EksConfig.property.awsAuthRoles">awsAuthRoles</a></code> | <code>any[]</code> | List of role maps to add to the aws-auth configmap. |
+| <code><a href="#my-module.EksConfig.property.awsAuthUsers">awsAuthUsers</a></code> | <code>any[]</code> | List of user maps to add to the aws-auth configmap. |
+| <code><a href="#my-module.EksConfig.property.cloudwatchLogGroupKmsKeyId">cloudwatchLogGroupKmsKeyId</a></code> | <code>string</code> | If a KMS Key ARN is set, this key will be used to encrypt the corresponding log group. |
+| <code><a href="#my-module.EksConfig.property.cloudwatchLogGroupRetentionInDays">cloudwatchLogGroupRetentionInDays</a></code> | <code>number</code> | Number of days to retain log events. |
+| <code><a href="#my-module.EksConfig.property.clusterAdditionalSecurityGroupIds">clusterAdditionalSecurityGroupIds</a></code> | <code>string[]</code> | List of additional, externally created security group IDs to attach to the cluster control plane. |
+| <code><a href="#my-module.EksConfig.property.clusterAddons">clusterAddons</a></code> | <code>any</code> | Map of cluster addon configurations to enable for the cluster. |
+| <code><a href="#my-module.EksConfig.property.clusterEnabledLogTypes">clusterEnabledLogTypes</a></code> | <code>string[]</code> | A list of the desired control plane logs to enable. |
+| <code><a href="#my-module.EksConfig.property.clusterEncryptionConfig">clusterEncryptionConfig</a></code> | <code>any[]</code> | Configuration block with encryption configuration for the cluster. |
+| <code><a href="#my-module.EksConfig.property.clusterEncryptionPolicyDescription">clusterEncryptionPolicyDescription</a></code> | <code>string</code> | Description of the cluster encryption policy created Cluster encryption policy to allow cluster role to utilize CMK provided. |
+| <code><a href="#my-module.EksConfig.property.clusterEncryptionPolicyName">clusterEncryptionPolicyName</a></code> | <code>string</code> | Name to use on cluster encryption policy created. |
+| <code><a href="#my-module.EksConfig.property.clusterEncryptionPolicyPath">clusterEncryptionPolicyPath</a></code> | <code>string</code> | Cluster encryption policy path. |
+| <code><a href="#my-module.EksConfig.property.clusterEncryptionPolicyTags">clusterEncryptionPolicyTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the cluster encryption policy created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksConfig.property.clusterEncryptionPolicyUseNamePrefix">clusterEncryptionPolicyUseNamePrefix</a></code> | <code>boolean</code> | Determines whether cluster encryption policy name (`cluster_encryption_policy_name`) is used as a prefix true. |
+| <code><a href="#my-module.EksConfig.property.clusterEndpointPrivateAccess">clusterEndpointPrivateAccess</a></code> | <code>boolean</code> | Indicates whether or not the Amazon EKS private API server endpoint is enabled. |
+| <code><a href="#my-module.EksConfig.property.clusterEndpointPublicAccess">clusterEndpointPublicAccess</a></code> | <code>boolean</code> | Indicates whether or not the Amazon EKS public API server endpoint is enabled true. |
+| <code><a href="#my-module.EksConfig.property.clusterEndpointPublicAccessCidrs">clusterEndpointPublicAccessCidrs</a></code> | <code>string[]</code> | List of CIDR blocks which can access the Amazon EKS public API server endpoint 0.0.0.0/0. |
+| <code><a href="#my-module.EksConfig.property.clusterIamRoleDnsSuffix">clusterIamRoleDnsSuffix</a></code> | <code>string</code> | Base DNS domain name for the current partition (e.g., amazonaws.com in AWS Commercial, amazonaws.com.cn in AWS China). |
+| <code><a href="#my-module.EksConfig.property.clusterIdentityProviders">clusterIdentityProviders</a></code> | <code>any</code> | Map of cluster identity provider configurations to enable for the cluster. |
+| <code><a href="#my-module.EksConfig.property.clusterIpFamily">clusterIpFamily</a></code> | <code>string</code> | The IP family used to assign Kubernetes pod and service addresses. |
+| <code><a href="#my-module.EksConfig.property.clusterName">clusterName</a></code> | <code>string</code> | Name of the EKS cluster. |
+| <code><a href="#my-module.EksConfig.property.clusterSecurityGroupAdditionalRules">clusterSecurityGroupAdditionalRules</a></code> | <code>any</code> | List of additional security group rules to add to the cluster security group created. |
+| <code><a href="#my-module.EksConfig.property.clusterSecurityGroupDescription">clusterSecurityGroupDescription</a></code> | <code>string</code> | Description of the cluster security group created EKS cluster security group. |
+| <code><a href="#my-module.EksConfig.property.clusterSecurityGroupId">clusterSecurityGroupId</a></code> | <code>string</code> | Existing security group ID to be attached to the cluster. |
+| <code><a href="#my-module.EksConfig.property.clusterSecurityGroupName">clusterSecurityGroupName</a></code> | <code>string</code> | Name to use on cluster security group created. |
+| <code><a href="#my-module.EksConfig.property.clusterSecurityGroupTags">clusterSecurityGroupTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the cluster security group created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksConfig.property.clusterSecurityGroupUseNamePrefix">clusterSecurityGroupUseNamePrefix</a></code> | <code>boolean</code> | Determines whether cluster security group name (`cluster_security_group_name`) is used as a prefix true. |
+| <code><a href="#my-module.EksConfig.property.clusterServiceIpv4Cidr">clusterServiceIpv4Cidr</a></code> | <code>string</code> | The CIDR block to assign Kubernetes service IP addresses from. |
+| <code><a href="#my-module.EksConfig.property.clusterTags">clusterTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the cluster [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksConfig.property.clusterTimeouts">clusterTimeouts</a></code> | <code>{[ key: string ]: string}</code> | Create, update, and delete timeout configurations for the cluster [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksConfig.property.clusterVersion">clusterVersion</a></code> | <code>string</code> | Kubernetes `<major>.<minor>` version to use for the EKS cluster (i.e.: `1.24`). |
+| <code><a href="#my-module.EksConfig.property.controlPlaneSubnetIds">controlPlaneSubnetIds</a></code> | <code>string[]</code> | A list of subnet IDs where the EKS cluster control plane (ENIs) will be provisioned. |
+| <code><a href="#my-module.EksConfig.property.create">create</a></code> | <code>boolean</code> | Controls if EKS resources should be created (affects nearly all resources) true. |
+| <code><a href="#my-module.EksConfig.property.createAwsAuthConfigmap">createAwsAuthConfigmap</a></code> | <code>boolean</code> | Determines whether to create the aws-auth configmap. |
+| <code><a href="#my-module.EksConfig.property.createCloudwatchLogGroup">createCloudwatchLogGroup</a></code> | <code>boolean</code> | Determines whether a log group is created by this module for the cluster logs. |
+| <code><a href="#my-module.EksConfig.property.createClusterPrimarySecurityGroupTags">createClusterPrimarySecurityGroupTags</a></code> | <code>boolean</code> | Indicates whether or not to tag the cluster's primary security group. |
+| <code><a href="#my-module.EksConfig.property.createClusterSecurityGroup">createClusterSecurityGroup</a></code> | <code>boolean</code> | Determines if a security group is created for the cluster or use the existing `cluster_security_group_id` true. |
+| <code><a href="#my-module.EksConfig.property.createCniIpv6IamPolicy">createCniIpv6IamPolicy</a></code> | <code>boolean</code> | Determines whether to create an [`AmazonEKS_CNI_IPv6_Policy`](https://docs.aws.amazon.com/eks/latest/userguide/cni-iam-role.html#cni-iam-role-create-ipv6-policy). |
+| <code><a href="#my-module.EksConfig.property.createIamRole">createIamRole</a></code> | <code>boolean</code> | Determines whether a an IAM role is created or to use an existing IAM role true. |
+| <code><a href="#my-module.EksConfig.property.createKmsKey">createKmsKey</a></code> | <code>boolean</code> | Controls if a KMS key for cluster encryption should be created. |
+| <code><a href="#my-module.EksConfig.property.createNodeSecurityGroup">createNodeSecurityGroup</a></code> | <code>boolean</code> | Determines whether to create a security group for the node groups or use the existing `node_security_group_id` true. |
+| <code><a href="#my-module.EksConfig.property.customOidcThumbprints">customOidcThumbprints</a></code> | <code>string[]</code> | Additional list of server certificate thumbprints for the OpenID Connect (OIDC) identity provider's server certificate(s). |
+| <code><a href="#my-module.EksConfig.property.eksManagedNodeGroupDefaults">eksManagedNodeGroupDefaults</a></code> | <code>any</code> | Map of EKS managed node group default configurations [object Object]. |
+| <code><a href="#my-module.EksConfig.property.eksManagedNodeGroups">eksManagedNodeGroups</a></code> | <code>any</code> | Map of EKS managed node group definitions to create [object Object]. |
+| <code><a href="#my-module.EksConfig.property.enableIrsa">enableIrsa</a></code> | <code>boolean</code> | Determines whether to create an OpenID Connect Provider for EKS to enable IRSA true. |
+| <code><a href="#my-module.EksConfig.property.enableKmsKeyRotation">enableKmsKeyRotation</a></code> | <code>boolean</code> | Specifies whether key rotation is enabled. |
+| <code><a href="#my-module.EksConfig.property.fargateProfileDefaults">fargateProfileDefaults</a></code> | <code>any</code> | Map of Fargate Profile default configurations [object Object]. |
+| <code><a href="#my-module.EksConfig.property.fargateProfiles">fargateProfiles</a></code> | <code>any</code> | Map of Fargate Profile definitions to create [object Object]. |
+| <code><a href="#my-module.EksConfig.property.iamRoleAdditionalPolicies">iamRoleAdditionalPolicies</a></code> | <code>string[]</code> | Additional policies to be added to the IAM role. |
+| <code><a href="#my-module.EksConfig.property.iamRoleArn">iamRoleArn</a></code> | <code>string</code> | Existing IAM role ARN for the cluster. |
+| <code><a href="#my-module.EksConfig.property.iamRoleDescription">iamRoleDescription</a></code> | <code>string</code> | Description of the role. |
+| <code><a href="#my-module.EksConfig.property.iamRoleName">iamRoleName</a></code> | <code>string</code> | Name to use on IAM role created. |
+| <code><a href="#my-module.EksConfig.property.iamRolePath">iamRolePath</a></code> | <code>string</code> | Cluster IAM role path. |
+| <code><a href="#my-module.EksConfig.property.iamRolePermissionsBoundary">iamRolePermissionsBoundary</a></code> | <code>string</code> | ARN of the policy that is used to set the permissions boundary for the IAM role. |
+| <code><a href="#my-module.EksConfig.property.iamRoleTags">iamRoleTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the IAM role created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksConfig.property.iamRoleUseNamePrefix">iamRoleUseNamePrefix</a></code> | <code>boolean</code> | Determines whether the IAM role name (`iam_role_name`) is used as a prefix true. |
+| <code><a href="#my-module.EksConfig.property.kmsKeyAdministrators">kmsKeyAdministrators</a></code> | <code>string[]</code> | A list of IAM ARNs for [key administrators](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#key-policy-default-allow-administrators). If no value is provided, the current caller identity is used to ensure at least one key admin is available. |
+| <code><a href="#my-module.EksConfig.property.kmsKeyAliases">kmsKeyAliases</a></code> | <code>string[]</code> | A list of aliases to create. |
+| <code><a href="#my-module.EksConfig.property.kmsKeyDeletionWindowInDays">kmsKeyDeletionWindowInDays</a></code> | <code>number</code> | The waiting period, specified in number of days. |
+| <code><a href="#my-module.EksConfig.property.kmsKeyDescription">kmsKeyDescription</a></code> | <code>string</code> | The description of the key as viewed in AWS console. |
+| <code><a href="#my-module.EksConfig.property.kmsKeyEnableDefaultPolicy">kmsKeyEnableDefaultPolicy</a></code> | <code>boolean</code> | Specifies whether to enable the default key policy. |
+| <code><a href="#my-module.EksConfig.property.kmsKeyOverridePolicyDocuments">kmsKeyOverridePolicyDocuments</a></code> | <code>string[]</code> | List of IAM policy documents that are merged together into the exported document. |
+| <code><a href="#my-module.EksConfig.property.kmsKeyOwners">kmsKeyOwners</a></code> | <code>string[]</code> | A list of IAM ARNs for those who will have full key permissions (`kms:*`). |
+| <code><a href="#my-module.EksConfig.property.kmsKeyServiceUsers">kmsKeyServiceUsers</a></code> | <code>string[]</code> | A list of IAM ARNs for [key service users](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#key-policy-service-integration). |
+| <code><a href="#my-module.EksConfig.property.kmsKeySourcePolicyDocuments">kmsKeySourcePolicyDocuments</a></code> | <code>string[]</code> | List of IAM policy documents that are merged together into the exported document. |
+| <code><a href="#my-module.EksConfig.property.kmsKeyUsers">kmsKeyUsers</a></code> | <code>string[]</code> | A list of IAM ARNs for [key users](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#key-policy-default-allow-users). |
+| <code><a href="#my-module.EksConfig.property.manageAwsAuthConfigmap">manageAwsAuthConfigmap</a></code> | <code>boolean</code> | Determines whether to manage the aws-auth configmap. |
+| <code><a href="#my-module.EksConfig.property.nodeSecurityGroupAdditionalRules">nodeSecurityGroupAdditionalRules</a></code> | <code>any</code> | List of additional security group rules to add to the node security group created. |
+| <code><a href="#my-module.EksConfig.property.nodeSecurityGroupDescription">nodeSecurityGroupDescription</a></code> | <code>string</code> | Description of the node security group created EKS node shared security group. |
+| <code><a href="#my-module.EksConfig.property.nodeSecurityGroupId">nodeSecurityGroupId</a></code> | <code>string</code> | ID of an existing security group to attach to the node groups created. |
+| <code><a href="#my-module.EksConfig.property.nodeSecurityGroupName">nodeSecurityGroupName</a></code> | <code>string</code> | Name to use on node security group created. |
+| <code><a href="#my-module.EksConfig.property.nodeSecurityGroupNtpIpv4CidrBlock">nodeSecurityGroupNtpIpv4CidrBlock</a></code> | <code>string[]</code> | IPv4 CIDR block to allow NTP egress. |
+| <code><a href="#my-module.EksConfig.property.nodeSecurityGroupNtpIpv6CidrBlock">nodeSecurityGroupNtpIpv6CidrBlock</a></code> | <code>string[]</code> | IPv4 CIDR block to allow NTP egress. |
+| <code><a href="#my-module.EksConfig.property.nodeSecurityGroupTags">nodeSecurityGroupTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the node security group created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksConfig.property.nodeSecurityGroupUseNamePrefix">nodeSecurityGroupUseNamePrefix</a></code> | <code>boolean</code> | Determines whether node security group name (`node_security_group_name`) is used as a prefix true. |
+| <code><a href="#my-module.EksConfig.property.openidConnectAudiences">openidConnectAudiences</a></code> | <code>string[]</code> | List of OpenID Connect audience client IDs to add to the IRSA provider. |
+| <code><a href="#my-module.EksConfig.property.prefixSeparator">prefixSeparator</a></code> | <code>string</code> | The separator to use between the prefix and the generated timestamp for resource names -. |
+| <code><a href="#my-module.EksConfig.property.putinKhuylo">putinKhuylo</a></code> | <code>boolean</code> | Do you agree that Putin doesn't respect Ukrainian sovereignty and territorial integrity? |
+| <code><a href="#my-module.EksConfig.property.selfManagedNodeGroupDefaults">selfManagedNodeGroupDefaults</a></code> | <code>any</code> | Map of self-managed node group default configurations [object Object]. |
+| <code><a href="#my-module.EksConfig.property.selfManagedNodeGroups">selfManagedNodeGroups</a></code> | <code>any</code> | Map of self-managed node group definitions to create [object Object]. |
+| <code><a href="#my-module.EksConfig.property.subnetIds">subnetIds</a></code> | <code>string[]</code> | A list of subnet IDs where the nodes/node groups will be provisioned. |
+| <code><a href="#my-module.EksConfig.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | A map of tags to add to all resources [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksConfig.property.vpcId">vpcId</a></code> | <code>string</code> | ID of the VPC where the cluster and its nodes will be provisioned. |
 
 ---
 
-##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="my-module.EksManagedNodegroupOptions.property.dependsOn"></a>
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="my-module.EksConfig.property.dependsOn"></a>
 
 ```typescript
 public readonly dependsOn: ITerraformDependable[];
@@ -3088,7 +3135,7 @@ public readonly dependsOn: ITerraformDependable[];
 
 ---
 
-##### `forEach`<sup>Optional</sup> <a name="forEach" id="my-module.EksManagedNodegroupOptions.property.forEach"></a>
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="my-module.EksConfig.property.forEach"></a>
 
 ```typescript
 public readonly forEach: ITerraformIterator;
@@ -3098,7 +3145,7 @@ public readonly forEach: ITerraformIterator;
 
 ---
 
-##### `providers`<sup>Optional</sup> <a name="providers" id="my-module.EksManagedNodegroupOptions.property.providers"></a>
+##### `providers`<sup>Optional</sup> <a name="providers" id="my-module.EksConfig.property.providers"></a>
 
 ```typescript
 public readonly providers: TerraformProvider | TerraformModuleProvider[];
@@ -3108,7 +3155,7 @@ public readonly providers: TerraformProvider | TerraformModuleProvider[];
 
 ---
 
-##### `skipAssetCreationFromLocalModules`<sup>Optional</sup> <a name="skipAssetCreationFromLocalModules" id="my-module.EksManagedNodegroupOptions.property.skipAssetCreationFromLocalModules"></a>
+##### `skipAssetCreationFromLocalModules`<sup>Optional</sup> <a name="skipAssetCreationFromLocalModules" id="my-module.EksConfig.property.skipAssetCreationFromLocalModules"></a>
 
 ```typescript
 public readonly skipAssetCreationFromLocalModules: boolean;
@@ -3118,128 +3165,297 @@ public readonly skipAssetCreationFromLocalModules: boolean;
 
 ---
 
-##### `amiId`<sup>Optional</sup> <a name="amiId" id="my-module.EksManagedNodegroupOptions.property.amiId"></a>
+##### `attachClusterEncryptionPolicy`<sup>Optional</sup> <a name="attachClusterEncryptionPolicy" id="my-module.EksConfig.property.attachClusterEncryptionPolicy"></a>
 
 ```typescript
-public readonly amiId: string;
+public readonly attachClusterEncryptionPolicy: boolean;
+```
+
+- *Type:* boolean
+
+Indicates whether or not to attach an additional policy for the cluster IAM role to utilize the encryption key provided true.
+
+---
+
+##### `awsAuthAccounts`<sup>Optional</sup> <a name="awsAuthAccounts" id="my-module.EksConfig.property.awsAuthAccounts"></a>
+
+```typescript
+public readonly awsAuthAccounts: any[];
+```
+
+- *Type:* any[]
+
+List of account maps to add to the aws-auth configmap.
+
+---
+
+##### `awsAuthFargateProfilePodExecutionRoleArns`<sup>Optional</sup> <a name="awsAuthFargateProfilePodExecutionRoleArns" id="my-module.EksConfig.property.awsAuthFargateProfilePodExecutionRoleArns"></a>
+
+```typescript
+public readonly awsAuthFargateProfilePodExecutionRoleArns: string[];
+```
+
+- *Type:* string[]
+
+List of Fargate profile pod execution role ARNs to add to the aws-auth configmap.
+
+---
+
+##### `awsAuthNodeIamRoleArnsNonWindows`<sup>Optional</sup> <a name="awsAuthNodeIamRoleArnsNonWindows" id="my-module.EksConfig.property.awsAuthNodeIamRoleArnsNonWindows"></a>
+
+```typescript
+public readonly awsAuthNodeIamRoleArnsNonWindows: string[];
+```
+
+- *Type:* string[]
+
+List of non-Windows based node IAM role ARNs to add to the aws-auth configmap.
+
+---
+
+##### `awsAuthNodeIamRoleArnsWindows`<sup>Optional</sup> <a name="awsAuthNodeIamRoleArnsWindows" id="my-module.EksConfig.property.awsAuthNodeIamRoleArnsWindows"></a>
+
+```typescript
+public readonly awsAuthNodeIamRoleArnsWindows: string[];
+```
+
+- *Type:* string[]
+
+List of Windows based node IAM role ARNs to add to the aws-auth configmap.
+
+---
+
+##### `awsAuthRoles`<sup>Optional</sup> <a name="awsAuthRoles" id="my-module.EksConfig.property.awsAuthRoles"></a>
+
+```typescript
+public readonly awsAuthRoles: any[];
+```
+
+- *Type:* any[]
+
+List of role maps to add to the aws-auth configmap.
+
+---
+
+##### `awsAuthUsers`<sup>Optional</sup> <a name="awsAuthUsers" id="my-module.EksConfig.property.awsAuthUsers"></a>
+
+```typescript
+public readonly awsAuthUsers: any[];
+```
+
+- *Type:* any[]
+
+List of user maps to add to the aws-auth configmap.
+
+---
+
+##### `cloudwatchLogGroupKmsKeyId`<sup>Optional</sup> <a name="cloudwatchLogGroupKmsKeyId" id="my-module.EksConfig.property.cloudwatchLogGroupKmsKeyId"></a>
+
+```typescript
+public readonly cloudwatchLogGroupKmsKeyId: string;
 ```
 
 - *Type:* string
 
-The AMI from which to launch the instance.
+If a KMS Key ARN is set, this key will be used to encrypt the corresponding log group.
 
-If not supplied, EKS will use its own default image
+Please be sure that the KMS Key has an appropriate key policy (https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/encrypt-log-data-kms.html)
 
 ---
 
-##### `amiReleaseVersion`<sup>Optional</sup> <a name="amiReleaseVersion" id="my-module.EksManagedNodegroupOptions.property.amiReleaseVersion"></a>
+##### `cloudwatchLogGroupRetentionInDays`<sup>Optional</sup> <a name="cloudwatchLogGroupRetentionInDays" id="my-module.EksConfig.property.cloudwatchLogGroupRetentionInDays"></a>
 
 ```typescript
-public readonly amiReleaseVersion: string;
+public readonly cloudwatchLogGroupRetentionInDays: number;
 ```
 
-- *Type:* string
+- *Type:* number
 
-AMI version of the EKS Node Group.
+Number of days to retain log events.
 
-Defaults to latest version for Kubernetes version
+Default retention - 90 days
+90
 
 ---
 
-##### `amiType`<sup>Optional</sup> <a name="amiType" id="my-module.EksManagedNodegroupOptions.property.amiType"></a>
+##### `clusterAdditionalSecurityGroupIds`<sup>Optional</sup> <a name="clusterAdditionalSecurityGroupIds" id="my-module.EksConfig.property.clusterAdditionalSecurityGroupIds"></a>
 
 ```typescript
-public readonly amiType: string;
+public readonly clusterAdditionalSecurityGroupIds: string[];
 ```
 
-- *Type:* string
+- *Type:* string[]
 
-Type of Amazon Machine Image (AMI) associated with the EKS Node Group.
-
-Valid values are `AL2_x86_64`, `AL2_x86_64_GPU`, `AL2_ARM_64`, `CUSTOM`, `BOTTLEROCKET_ARM_64`, `BOTTLEROCKET_x86_64`
+List of additional, externally created security group IDs to attach to the cluster control plane.
 
 ---
 
-##### `blockDeviceMappings`<sup>Optional</sup> <a name="blockDeviceMappings" id="my-module.EksManagedNodegroupOptions.property.blockDeviceMappings"></a>
+##### `clusterAddons`<sup>Optional</sup> <a name="clusterAddons" id="my-module.EksConfig.property.clusterAddons"></a>
 
 ```typescript
-public readonly blockDeviceMappings: any;
+public readonly clusterAddons: any;
 ```
 
 - *Type:* any
-- *Default:* [object Object]
 
-Specify volumes to attach to the instance besides the volumes specified by the AMI.
+Map of cluster addon configurations to enable for the cluster.
+
+Addon name can be the map keys or set with `name`
+[object Object]
 
 ---
 
-##### `bootstrapExtraArgs`<sup>Optional</sup> <a name="bootstrapExtraArgs" id="my-module.EksManagedNodegroupOptions.property.bootstrapExtraArgs"></a>
+##### `clusterEnabledLogTypes`<sup>Optional</sup> <a name="clusterEnabledLogTypes" id="my-module.EksConfig.property.clusterEnabledLogTypes"></a>
 
 ```typescript
-public readonly bootstrapExtraArgs: string;
+public readonly clusterEnabledLogTypes: string[];
+```
+
+- *Type:* string[]
+
+A list of the desired control plane logs to enable.
+
+For more information, see Amazon EKS Control Plane Logging documentation (https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
+audit,api,authenticator
+
+---
+
+##### `clusterEncryptionConfig`<sup>Optional</sup> <a name="clusterEncryptionConfig" id="my-module.EksConfig.property.clusterEncryptionConfig"></a>
+
+```typescript
+public readonly clusterEncryptionConfig: any[];
+```
+
+- *Type:* any[]
+
+Configuration block with encryption configuration for the cluster.
+
+---
+
+##### `clusterEncryptionPolicyDescription`<sup>Optional</sup> <a name="clusterEncryptionPolicyDescription" id="my-module.EksConfig.property.clusterEncryptionPolicyDescription"></a>
+
+```typescript
+public readonly clusterEncryptionPolicyDescription: string;
 ```
 
 - *Type:* string
 
-Additional arguments passed to the bootstrap script.
-
-When `platform` = `bottlerocket`; these are additional [settings](https://github.com/bottlerocket-os/bottlerocket#settings) that are provided to the Bottlerocket user data
+Description of the cluster encryption policy created Cluster encryption policy to allow cluster role to utilize CMK provided.
 
 ---
 
-##### `capacityReservationSpecification`<sup>Optional</sup> <a name="capacityReservationSpecification" id="my-module.EksManagedNodegroupOptions.property.capacityReservationSpecification"></a>
+##### `clusterEncryptionPolicyName`<sup>Optional</sup> <a name="clusterEncryptionPolicyName" id="my-module.EksConfig.property.clusterEncryptionPolicyName"></a>
 
 ```typescript
-public readonly capacityReservationSpecification: any;
+public readonly clusterEncryptionPolicyName: string;
+```
+
+- *Type:* string
+
+Name to use on cluster encryption policy created.
+
+---
+
+##### `clusterEncryptionPolicyPath`<sup>Optional</sup> <a name="clusterEncryptionPolicyPath" id="my-module.EksConfig.property.clusterEncryptionPolicyPath"></a>
+
+```typescript
+public readonly clusterEncryptionPolicyPath: string;
+```
+
+- *Type:* string
+
+Cluster encryption policy path.
+
+---
+
+##### `clusterEncryptionPolicyTags`<sup>Optional</sup> <a name="clusterEncryptionPolicyTags" id="my-module.EksConfig.property.clusterEncryptionPolicyTags"></a>
+
+```typescript
+public readonly clusterEncryptionPolicyTags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+A map of additional tags to add to the cluster encryption policy created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+
+---
+
+##### `clusterEncryptionPolicyUseNamePrefix`<sup>Optional</sup> <a name="clusterEncryptionPolicyUseNamePrefix" id="my-module.EksConfig.property.clusterEncryptionPolicyUseNamePrefix"></a>
+
+```typescript
+public readonly clusterEncryptionPolicyUseNamePrefix: boolean;
+```
+
+- *Type:* boolean
+
+Determines whether cluster encryption policy name (`cluster_encryption_policy_name`) is used as a prefix true.
+
+---
+
+##### `clusterEndpointPrivateAccess`<sup>Optional</sup> <a name="clusterEndpointPrivateAccess" id="my-module.EksConfig.property.clusterEndpointPrivateAccess"></a>
+
+```typescript
+public readonly clusterEndpointPrivateAccess: boolean;
+```
+
+- *Type:* boolean
+
+Indicates whether or not the Amazon EKS private API server endpoint is enabled.
+
+---
+
+##### `clusterEndpointPublicAccess`<sup>Optional</sup> <a name="clusterEndpointPublicAccess" id="my-module.EksConfig.property.clusterEndpointPublicAccess"></a>
+
+```typescript
+public readonly clusterEndpointPublicAccess: boolean;
+```
+
+- *Type:* boolean
+
+Indicates whether or not the Amazon EKS public API server endpoint is enabled true.
+
+---
+
+##### `clusterEndpointPublicAccessCidrs`<sup>Optional</sup> <a name="clusterEndpointPublicAccessCidrs" id="my-module.EksConfig.property.clusterEndpointPublicAccessCidrs"></a>
+
+```typescript
+public readonly clusterEndpointPublicAccessCidrs: string[];
+```
+
+- *Type:* string[]
+
+List of CIDR blocks which can access the Amazon EKS public API server endpoint 0.0.0.0/0.
+
+---
+
+##### `clusterIamRoleDnsSuffix`<sup>Optional</sup> <a name="clusterIamRoleDnsSuffix" id="my-module.EksConfig.property.clusterIamRoleDnsSuffix"></a>
+
+```typescript
+public readonly clusterIamRoleDnsSuffix: string;
+```
+
+- *Type:* string
+
+Base DNS domain name for the current partition (e.g., amazonaws.com in AWS Commercial, amazonaws.com.cn in AWS China).
+
+---
+
+##### `clusterIdentityProviders`<sup>Optional</sup> <a name="clusterIdentityProviders" id="my-module.EksConfig.property.clusterIdentityProviders"></a>
+
+```typescript
+public readonly clusterIdentityProviders: any;
 ```
 
 - *Type:* any
-- *Default:* [object Object]
 
-Targeting for EC2 capacity reservations.
+Map of cluster identity provider configurations to enable for the cluster.
 
----
-
-##### `capacityType`<sup>Optional</sup> <a name="capacityType" id="my-module.EksManagedNodegroupOptions.property.capacityType"></a>
-
-```typescript
-public readonly capacityType: string;
-```
-
-- *Type:* string
-- *Default:* ON_DEMAND
-
-Type of capacity associated with the EKS Node Group.
-
-Valid values: `ON_DEMAND`, `SPOT`
+Note - this is different/separate from IRSA
+[object Object]
 
 ---
 
-##### `clusterAuthBase64`<sup>Optional</sup> <a name="clusterAuthBase64" id="my-module.EksManagedNodegroupOptions.property.clusterAuthBase64"></a>
-
-```typescript
-public readonly clusterAuthBase64: string;
-```
-
-- *Type:* string
-
-Base64 encoded CA of associated EKS cluster.
-
----
-
-##### `clusterEndpoint`<sup>Optional</sup> <a name="clusterEndpoint" id="my-module.EksManagedNodegroupOptions.property.clusterEndpoint"></a>
-
-```typescript
-public readonly clusterEndpoint: string;
-```
-
-- *Type:* string
-
-Endpoint of associated EKS cluster.
-
----
-
-##### `clusterIpFamily`<sup>Optional</sup> <a name="clusterIpFamily" id="my-module.EksManagedNodegroupOptions.property.clusterIpFamily"></a>
+##### `clusterIpFamily`<sup>Optional</sup> <a name="clusterIpFamily" id="my-module.EksConfig.property.clusterIpFamily"></a>
 
 ```typescript
 public readonly clusterIpFamily: string;
@@ -3249,11 +3465,11 @@ public readonly clusterIpFamily: string;
 
 The IP family used to assign Kubernetes pod and service addresses.
 
-Valid values are `ipv4` (default) and `ipv6`
+Valid values are `ipv4` (default) and `ipv6`. You can only specify an IP family when you create a cluster, changing this value will force a new cluster to be created
 
 ---
 
-##### `clusterName`<sup>Optional</sup> <a name="clusterName" id="my-module.EksManagedNodegroupOptions.property.clusterName"></a>
+##### `clusterName`<sup>Optional</sup> <a name="clusterName" id="my-module.EksConfig.property.clusterName"></a>
 
 ```typescript
 public readonly clusterName: string;
@@ -3261,25 +3477,38 @@ public readonly clusterName: string;
 
 - *Type:* string
 
-Name of associated EKS cluster.
+Name of the EKS cluster.
 
 ---
 
-##### `clusterPrimarySecurityGroupId`<sup>Optional</sup> <a name="clusterPrimarySecurityGroupId" id="my-module.EksManagedNodegroupOptions.property.clusterPrimarySecurityGroupId"></a>
+##### `clusterSecurityGroupAdditionalRules`<sup>Optional</sup> <a name="clusterSecurityGroupAdditionalRules" id="my-module.EksConfig.property.clusterSecurityGroupAdditionalRules"></a>
 
 ```typescript
-public readonly clusterPrimarySecurityGroupId: string;
+public readonly clusterSecurityGroupAdditionalRules: any;
+```
+
+- *Type:* any
+
+List of additional security group rules to add to the cluster security group created.
+
+Set `source_node_security_group = true` inside rules to set the `node_security_group` as source
+[object Object]
+
+---
+
+##### `clusterSecurityGroupDescription`<sup>Optional</sup> <a name="clusterSecurityGroupDescription" id="my-module.EksConfig.property.clusterSecurityGroupDescription"></a>
+
+```typescript
+public readonly clusterSecurityGroupDescription: string;
 ```
 
 - *Type:* string
 
-The ID of the EKS cluster primary security group to associate with the instance(s).
-
-This is the security group that is automatically created by the EKS service
+Description of the cluster security group created EKS cluster security group.
 
 ---
 
-##### `clusterSecurityGroupId`<sup>Optional</sup> <a name="clusterSecurityGroupId" id="my-module.EksManagedNodegroupOptions.property.clusterSecurityGroupId"></a>
+##### `clusterSecurityGroupId`<sup>Optional</sup> <a name="clusterSecurityGroupId" id="my-module.EksConfig.property.clusterSecurityGroupId"></a>
 
 ```typescript
 public readonly clusterSecurityGroupId: string;
@@ -3287,11 +3516,49 @@ public readonly clusterSecurityGroupId: string;
 
 - *Type:* string
 
-Cluster control plane security group ID.
+Existing security group ID to be attached to the cluster.
+
+Required if `create_cluster_security_group` = `false`
 
 ---
 
-##### `clusterServiceIpv4Cidr`<sup>Optional</sup> <a name="clusterServiceIpv4Cidr" id="my-module.EksManagedNodegroupOptions.property.clusterServiceIpv4Cidr"></a>
+##### `clusterSecurityGroupName`<sup>Optional</sup> <a name="clusterSecurityGroupName" id="my-module.EksConfig.property.clusterSecurityGroupName"></a>
+
+```typescript
+public readonly clusterSecurityGroupName: string;
+```
+
+- *Type:* string
+
+Name to use on cluster security group created.
+
+---
+
+##### `clusterSecurityGroupTags`<sup>Optional</sup> <a name="clusterSecurityGroupTags" id="my-module.EksConfig.property.clusterSecurityGroupTags"></a>
+
+```typescript
+public readonly clusterSecurityGroupTags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+A map of additional tags to add to the cluster security group created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+
+---
+
+##### `clusterSecurityGroupUseNamePrefix`<sup>Optional</sup> <a name="clusterSecurityGroupUseNamePrefix" id="my-module.EksConfig.property.clusterSecurityGroupUseNamePrefix"></a>
+
+```typescript
+public readonly clusterSecurityGroupUseNamePrefix: boolean;
+```
+
+- *Type:* boolean
+
+Determines whether cluster security group name (`cluster_security_group_name`) is used as a prefix true.
+
+---
+
+##### `clusterServiceIpv4Cidr`<sup>Optional</sup> <a name="clusterServiceIpv4Cidr" id="my-module.EksConfig.property.clusterServiceIpv4Cidr"></a>
 
 ```typescript
 public readonly clusterServiceIpv4Cidr: string;
@@ -3305,7 +3572,1030 @@ If you don't specify a block, Kubernetes assigns addresses from either the 10.10
 
 ---
 
-##### `clusterVersion`<sup>Optional</sup> <a name="clusterVersion" id="my-module.EksManagedNodegroupOptions.property.clusterVersion"></a>
+##### `clusterTags`<sup>Optional</sup> <a name="clusterTags" id="my-module.EksConfig.property.clusterTags"></a>
+
+```typescript
+public readonly clusterTags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+A map of additional tags to add to the cluster [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+
+---
+
+##### `clusterTimeouts`<sup>Optional</sup> <a name="clusterTimeouts" id="my-module.EksConfig.property.clusterTimeouts"></a>
+
+```typescript
+public readonly clusterTimeouts: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Create, update, and delete timeout configurations for the cluster [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+
+---
+
+##### `clusterVersion`<sup>Optional</sup> <a name="clusterVersion" id="my-module.EksConfig.property.clusterVersion"></a>
+
+```typescript
+public readonly clusterVersion: string;
+```
+
+- *Type:* string
+
+Kubernetes `<major>.<minor>` version to use for the EKS cluster (i.e.: `1.24`).
+
+---
+
+##### `controlPlaneSubnetIds`<sup>Optional</sup> <a name="controlPlaneSubnetIds" id="my-module.EksConfig.property.controlPlaneSubnetIds"></a>
+
+```typescript
+public readonly controlPlaneSubnetIds: string[];
+```
+
+- *Type:* string[]
+
+A list of subnet IDs where the EKS cluster control plane (ENIs) will be provisioned.
+
+Used for expanding the pool of subnets used by nodes/node groups without replacing the EKS control plane
+
+---
+
+##### `create`<sup>Optional</sup> <a name="create" id="my-module.EksConfig.property.create"></a>
+
+```typescript
+public readonly create: boolean;
+```
+
+- *Type:* boolean
+
+Controls if EKS resources should be created (affects nearly all resources) true.
+
+---
+
+##### `createAwsAuthConfigmap`<sup>Optional</sup> <a name="createAwsAuthConfigmap" id="my-module.EksConfig.property.createAwsAuthConfigmap"></a>
+
+```typescript
+public readonly createAwsAuthConfigmap: boolean;
+```
+
+- *Type:* boolean
+
+Determines whether to create the aws-auth configmap.
+
+NOTE - this is only intended for scenarios where the configmap does not exist (i.e. - when using only self-managed node groups). Most users should use `manage_aws_auth_configmap`
+
+---
+
+##### `createCloudwatchLogGroup`<sup>Optional</sup> <a name="createCloudwatchLogGroup" id="my-module.EksConfig.property.createCloudwatchLogGroup"></a>
+
+```typescript
+public readonly createCloudwatchLogGroup: boolean;
+```
+
+- *Type:* boolean
+
+Determines whether a log group is created by this module for the cluster logs.
+
+If not, AWS will automatically create one if logging is enabled
+true
+
+---
+
+##### `createClusterPrimarySecurityGroupTags`<sup>Optional</sup> <a name="createClusterPrimarySecurityGroupTags" id="my-module.EksConfig.property.createClusterPrimarySecurityGroupTags"></a>
+
+```typescript
+public readonly createClusterPrimarySecurityGroupTags: boolean;
+```
+
+- *Type:* boolean
+
+Indicates whether or not to tag the cluster's primary security group.
+
+This security group is created by the EKS service, not the module, and therefore tagging is handled after cluster creation
+true
+
+---
+
+##### `createClusterSecurityGroup`<sup>Optional</sup> <a name="createClusterSecurityGroup" id="my-module.EksConfig.property.createClusterSecurityGroup"></a>
+
+```typescript
+public readonly createClusterSecurityGroup: boolean;
+```
+
+- *Type:* boolean
+
+Determines if a security group is created for the cluster or use the existing `cluster_security_group_id` true.
+
+---
+
+##### `createCniIpv6IamPolicy`<sup>Optional</sup> <a name="createCniIpv6IamPolicy" id="my-module.EksConfig.property.createCniIpv6IamPolicy"></a>
+
+```typescript
+public readonly createCniIpv6IamPolicy: boolean;
+```
+
+- *Type:* boolean
+
+Determines whether to create an [`AmazonEKS_CNI_IPv6_Policy`](https://docs.aws.amazon.com/eks/latest/userguide/cni-iam-role.html#cni-iam-role-create-ipv6-policy).
+
+---
+
+##### `createIamRole`<sup>Optional</sup> <a name="createIamRole" id="my-module.EksConfig.property.createIamRole"></a>
+
+```typescript
+public readonly createIamRole: boolean;
+```
+
+- *Type:* boolean
+
+Determines whether a an IAM role is created or to use an existing IAM role true.
+
+---
+
+##### `createKmsKey`<sup>Optional</sup> <a name="createKmsKey" id="my-module.EksConfig.property.createKmsKey"></a>
+
+```typescript
+public readonly createKmsKey: boolean;
+```
+
+- *Type:* boolean
+
+Controls if a KMS key for cluster encryption should be created.
+
+---
+
+##### `createNodeSecurityGroup`<sup>Optional</sup> <a name="createNodeSecurityGroup" id="my-module.EksConfig.property.createNodeSecurityGroup"></a>
+
+```typescript
+public readonly createNodeSecurityGroup: boolean;
+```
+
+- *Type:* boolean
+
+Determines whether to create a security group for the node groups or use the existing `node_security_group_id` true.
+
+---
+
+##### `customOidcThumbprints`<sup>Optional</sup> <a name="customOidcThumbprints" id="my-module.EksConfig.property.customOidcThumbprints"></a>
+
+```typescript
+public readonly customOidcThumbprints: string[];
+```
+
+- *Type:* string[]
+
+Additional list of server certificate thumbprints for the OpenID Connect (OIDC) identity provider's server certificate(s).
+
+---
+
+##### `eksManagedNodeGroupDefaults`<sup>Optional</sup> <a name="eksManagedNodeGroupDefaults" id="my-module.EksConfig.property.eksManagedNodeGroupDefaults"></a>
+
+```typescript
+public readonly eksManagedNodeGroupDefaults: any;
+```
+
+- *Type:* any
+
+Map of EKS managed node group default configurations [object Object].
+
+---
+
+##### `eksManagedNodeGroups`<sup>Optional</sup> <a name="eksManagedNodeGroups" id="my-module.EksConfig.property.eksManagedNodeGroups"></a>
+
+```typescript
+public readonly eksManagedNodeGroups: any;
+```
+
+- *Type:* any
+
+Map of EKS managed node group definitions to create [object Object].
+
+---
+
+##### `enableIrsa`<sup>Optional</sup> <a name="enableIrsa" id="my-module.EksConfig.property.enableIrsa"></a>
+
+```typescript
+public readonly enableIrsa: boolean;
+```
+
+- *Type:* boolean
+
+Determines whether to create an OpenID Connect Provider for EKS to enable IRSA true.
+
+---
+
+##### `enableKmsKeyRotation`<sup>Optional</sup> <a name="enableKmsKeyRotation" id="my-module.EksConfig.property.enableKmsKeyRotation"></a>
+
+```typescript
+public readonly enableKmsKeyRotation: boolean;
+```
+
+- *Type:* boolean
+
+Specifies whether key rotation is enabled.
+
+Defaults to `true`
+true
+
+---
+
+##### `fargateProfileDefaults`<sup>Optional</sup> <a name="fargateProfileDefaults" id="my-module.EksConfig.property.fargateProfileDefaults"></a>
+
+```typescript
+public readonly fargateProfileDefaults: any;
+```
+
+- *Type:* any
+
+Map of Fargate Profile default configurations [object Object].
+
+---
+
+##### `fargateProfiles`<sup>Optional</sup> <a name="fargateProfiles" id="my-module.EksConfig.property.fargateProfiles"></a>
+
+```typescript
+public readonly fargateProfiles: any;
+```
+
+- *Type:* any
+
+Map of Fargate Profile definitions to create [object Object].
+
+---
+
+##### `iamRoleAdditionalPolicies`<sup>Optional</sup> <a name="iamRoleAdditionalPolicies" id="my-module.EksConfig.property.iamRoleAdditionalPolicies"></a>
+
+```typescript
+public readonly iamRoleAdditionalPolicies: string[];
+```
+
+- *Type:* string[]
+
+Additional policies to be added to the IAM role.
+
+---
+
+##### `iamRoleArn`<sup>Optional</sup> <a name="iamRoleArn" id="my-module.EksConfig.property.iamRoleArn"></a>
+
+```typescript
+public readonly iamRoleArn: string;
+```
+
+- *Type:* string
+
+Existing IAM role ARN for the cluster.
+
+Required if `create_iam_role` is set to `false`
+
+---
+
+##### `iamRoleDescription`<sup>Optional</sup> <a name="iamRoleDescription" id="my-module.EksConfig.property.iamRoleDescription"></a>
+
+```typescript
+public readonly iamRoleDescription: string;
+```
+
+- *Type:* string
+
+Description of the role.
+
+---
+
+##### `iamRoleName`<sup>Optional</sup> <a name="iamRoleName" id="my-module.EksConfig.property.iamRoleName"></a>
+
+```typescript
+public readonly iamRoleName: string;
+```
+
+- *Type:* string
+
+Name to use on IAM role created.
+
+---
+
+##### `iamRolePath`<sup>Optional</sup> <a name="iamRolePath" id="my-module.EksConfig.property.iamRolePath"></a>
+
+```typescript
+public readonly iamRolePath: string;
+```
+
+- *Type:* string
+
+Cluster IAM role path.
+
+---
+
+##### `iamRolePermissionsBoundary`<sup>Optional</sup> <a name="iamRolePermissionsBoundary" id="my-module.EksConfig.property.iamRolePermissionsBoundary"></a>
+
+```typescript
+public readonly iamRolePermissionsBoundary: string;
+```
+
+- *Type:* string
+
+ARN of the policy that is used to set the permissions boundary for the IAM role.
+
+---
+
+##### `iamRoleTags`<sup>Optional</sup> <a name="iamRoleTags" id="my-module.EksConfig.property.iamRoleTags"></a>
+
+```typescript
+public readonly iamRoleTags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+A map of additional tags to add to the IAM role created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+
+---
+
+##### `iamRoleUseNamePrefix`<sup>Optional</sup> <a name="iamRoleUseNamePrefix" id="my-module.EksConfig.property.iamRoleUseNamePrefix"></a>
+
+```typescript
+public readonly iamRoleUseNamePrefix: boolean;
+```
+
+- *Type:* boolean
+
+Determines whether the IAM role name (`iam_role_name`) is used as a prefix true.
+
+---
+
+##### `kmsKeyAdministrators`<sup>Optional</sup> <a name="kmsKeyAdministrators" id="my-module.EksConfig.property.kmsKeyAdministrators"></a>
+
+```typescript
+public readonly kmsKeyAdministrators: string[];
+```
+
+- *Type:* string[]
+
+A list of IAM ARNs for [key administrators](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#key-policy-default-allow-administrators). If no value is provided, the current caller identity is used to ensure at least one key admin is available.
+
+---
+
+##### `kmsKeyAliases`<sup>Optional</sup> <a name="kmsKeyAliases" id="my-module.EksConfig.property.kmsKeyAliases"></a>
+
+```typescript
+public readonly kmsKeyAliases: string[];
+```
+
+- *Type:* string[]
+
+A list of aliases to create.
+
+Note - due to the use of `toset()`, values must be static strings and not computed values
+
+---
+
+##### `kmsKeyDeletionWindowInDays`<sup>Optional</sup> <a name="kmsKeyDeletionWindowInDays" id="my-module.EksConfig.property.kmsKeyDeletionWindowInDays"></a>
+
+```typescript
+public readonly kmsKeyDeletionWindowInDays: number;
+```
+
+- *Type:* number
+
+The waiting period, specified in number of days.
+
+After the waiting period ends, AWS KMS deletes the KMS key. If you specify a value, it must be between `7` and `30`, inclusive. If you do not specify a value, it defaults to `30`
+
+---
+
+##### `kmsKeyDescription`<sup>Optional</sup> <a name="kmsKeyDescription" id="my-module.EksConfig.property.kmsKeyDescription"></a>
+
+```typescript
+public readonly kmsKeyDescription: string;
+```
+
+- *Type:* string
+
+The description of the key as viewed in AWS console.
+
+---
+
+##### `kmsKeyEnableDefaultPolicy`<sup>Optional</sup> <a name="kmsKeyEnableDefaultPolicy" id="my-module.EksConfig.property.kmsKeyEnableDefaultPolicy"></a>
+
+```typescript
+public readonly kmsKeyEnableDefaultPolicy: boolean;
+```
+
+- *Type:* boolean
+
+Specifies whether to enable the default key policy.
+
+Defaults to `false`
+
+---
+
+##### `kmsKeyOverridePolicyDocuments`<sup>Optional</sup> <a name="kmsKeyOverridePolicyDocuments" id="my-module.EksConfig.property.kmsKeyOverridePolicyDocuments"></a>
+
+```typescript
+public readonly kmsKeyOverridePolicyDocuments: string[];
+```
+
+- *Type:* string[]
+
+List of IAM policy documents that are merged together into the exported document.
+
+In merging, statements with non-blank `sid`s will override statements with the same `sid`
+
+---
+
+##### `kmsKeyOwners`<sup>Optional</sup> <a name="kmsKeyOwners" id="my-module.EksConfig.property.kmsKeyOwners"></a>
+
+```typescript
+public readonly kmsKeyOwners: string[];
+```
+
+- *Type:* string[]
+
+A list of IAM ARNs for those who will have full key permissions (`kms:*`).
+
+---
+
+##### `kmsKeyServiceUsers`<sup>Optional</sup> <a name="kmsKeyServiceUsers" id="my-module.EksConfig.property.kmsKeyServiceUsers"></a>
+
+```typescript
+public readonly kmsKeyServiceUsers: string[];
+```
+
+- *Type:* string[]
+
+A list of IAM ARNs for [key service users](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#key-policy-service-integration).
+
+---
+
+##### `kmsKeySourcePolicyDocuments`<sup>Optional</sup> <a name="kmsKeySourcePolicyDocuments" id="my-module.EksConfig.property.kmsKeySourcePolicyDocuments"></a>
+
+```typescript
+public readonly kmsKeySourcePolicyDocuments: string[];
+```
+
+- *Type:* string[]
+
+List of IAM policy documents that are merged together into the exported document.
+
+Statements must have unique `sid`s
+
+---
+
+##### `kmsKeyUsers`<sup>Optional</sup> <a name="kmsKeyUsers" id="my-module.EksConfig.property.kmsKeyUsers"></a>
+
+```typescript
+public readonly kmsKeyUsers: string[];
+```
+
+- *Type:* string[]
+
+A list of IAM ARNs for [key users](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#key-policy-default-allow-users).
+
+---
+
+##### `manageAwsAuthConfigmap`<sup>Optional</sup> <a name="manageAwsAuthConfigmap" id="my-module.EksConfig.property.manageAwsAuthConfigmap"></a>
+
+```typescript
+public readonly manageAwsAuthConfigmap: boolean;
+```
+
+- *Type:* boolean
+
+Determines whether to manage the aws-auth configmap.
+
+---
+
+##### `nodeSecurityGroupAdditionalRules`<sup>Optional</sup> <a name="nodeSecurityGroupAdditionalRules" id="my-module.EksConfig.property.nodeSecurityGroupAdditionalRules"></a>
+
+```typescript
+public readonly nodeSecurityGroupAdditionalRules: any;
+```
+
+- *Type:* any
+
+List of additional security group rules to add to the node security group created.
+
+Set `source_cluster_security_group = true` inside rules to set the `cluster_security_group` as source
+[object Object]
+
+---
+
+##### `nodeSecurityGroupDescription`<sup>Optional</sup> <a name="nodeSecurityGroupDescription" id="my-module.EksConfig.property.nodeSecurityGroupDescription"></a>
+
+```typescript
+public readonly nodeSecurityGroupDescription: string;
+```
+
+- *Type:* string
+
+Description of the node security group created EKS node shared security group.
+
+---
+
+##### `nodeSecurityGroupId`<sup>Optional</sup> <a name="nodeSecurityGroupId" id="my-module.EksConfig.property.nodeSecurityGroupId"></a>
+
+```typescript
+public readonly nodeSecurityGroupId: string;
+```
+
+- *Type:* string
+
+ID of an existing security group to attach to the node groups created.
+
+---
+
+##### `nodeSecurityGroupName`<sup>Optional</sup> <a name="nodeSecurityGroupName" id="my-module.EksConfig.property.nodeSecurityGroupName"></a>
+
+```typescript
+public readonly nodeSecurityGroupName: string;
+```
+
+- *Type:* string
+
+Name to use on node security group created.
+
+---
+
+##### `nodeSecurityGroupNtpIpv4CidrBlock`<sup>Optional</sup> <a name="nodeSecurityGroupNtpIpv4CidrBlock" id="my-module.EksConfig.property.nodeSecurityGroupNtpIpv4CidrBlock"></a>
+
+```typescript
+public readonly nodeSecurityGroupNtpIpv4CidrBlock: string[];
+```
+
+- *Type:* string[]
+
+IPv4 CIDR block to allow NTP egress.
+
+Default is public IP space, but [Amazon Time Sync Service](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html) can be used as well with `["169.254.169.123/32"]`
+0.0.0.0/0
+
+---
+
+##### `nodeSecurityGroupNtpIpv6CidrBlock`<sup>Optional</sup> <a name="nodeSecurityGroupNtpIpv6CidrBlock" id="my-module.EksConfig.property.nodeSecurityGroupNtpIpv6CidrBlock"></a>
+
+```typescript
+public readonly nodeSecurityGroupNtpIpv6CidrBlock: string[];
+```
+
+- *Type:* string[]
+
+IPv4 CIDR block to allow NTP egress.
+
+Default is public IP space, but [Amazon Time Sync Service](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html) can be used as well with `["fd00:ec2::123/128"]`
+::/0
+
+---
+
+##### `nodeSecurityGroupTags`<sup>Optional</sup> <a name="nodeSecurityGroupTags" id="my-module.EksConfig.property.nodeSecurityGroupTags"></a>
+
+```typescript
+public readonly nodeSecurityGroupTags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+A map of additional tags to add to the node security group created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+
+---
+
+##### `nodeSecurityGroupUseNamePrefix`<sup>Optional</sup> <a name="nodeSecurityGroupUseNamePrefix" id="my-module.EksConfig.property.nodeSecurityGroupUseNamePrefix"></a>
+
+```typescript
+public readonly nodeSecurityGroupUseNamePrefix: boolean;
+```
+
+- *Type:* boolean
+
+Determines whether node security group name (`node_security_group_name`) is used as a prefix true.
+
+---
+
+##### `openidConnectAudiences`<sup>Optional</sup> <a name="openidConnectAudiences" id="my-module.EksConfig.property.openidConnectAudiences"></a>
+
+```typescript
+public readonly openidConnectAudiences: string[];
+```
+
+- *Type:* string[]
+
+List of OpenID Connect audience client IDs to add to the IRSA provider.
+
+---
+
+##### `prefixSeparator`<sup>Optional</sup> <a name="prefixSeparator" id="my-module.EksConfig.property.prefixSeparator"></a>
+
+```typescript
+public readonly prefixSeparator: string;
+```
+
+- *Type:* string
+
+The separator to use between the prefix and the generated timestamp for resource names -.
+
+---
+
+##### `putinKhuylo`<sup>Optional</sup> <a name="putinKhuylo" id="my-module.EksConfig.property.putinKhuylo"></a>
+
+```typescript
+public readonly putinKhuylo: boolean;
+```
+
+- *Type:* boolean
+
+Do you agree that Putin doesn't respect Ukrainian sovereignty and territorial integrity?
+
+More info: https://en.wikipedia.org/wiki/Putin_khuylo!
+true
+
+---
+
+##### `selfManagedNodeGroupDefaults`<sup>Optional</sup> <a name="selfManagedNodeGroupDefaults" id="my-module.EksConfig.property.selfManagedNodeGroupDefaults"></a>
+
+```typescript
+public readonly selfManagedNodeGroupDefaults: any;
+```
+
+- *Type:* any
+
+Map of self-managed node group default configurations [object Object].
+
+---
+
+##### `selfManagedNodeGroups`<sup>Optional</sup> <a name="selfManagedNodeGroups" id="my-module.EksConfig.property.selfManagedNodeGroups"></a>
+
+```typescript
+public readonly selfManagedNodeGroups: any;
+```
+
+- *Type:* any
+
+Map of self-managed node group definitions to create [object Object].
+
+---
+
+##### `subnetIds`<sup>Optional</sup> <a name="subnetIds" id="my-module.EksConfig.property.subnetIds"></a>
+
+```typescript
+public readonly subnetIds: string[];
+```
+
+- *Type:* string[]
+
+A list of subnet IDs where the nodes/node groups will be provisioned.
+
+If `control_plane_subnet_ids` is not provided, the EKS cluster control plane (ENIs) will be provisioned in these subnets
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="my-module.EksConfig.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+A map of tags to add to all resources [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+
+---
+
+##### `vpcId`<sup>Optional</sup> <a name="vpcId" id="my-module.EksConfig.property.vpcId"></a>
+
+```typescript
+public readonly vpcId: string;
+```
+
+- *Type:* string
+
+ID of the VPC where the cluster and its nodes will be provisioned.
+
+---
+
+### EksManagedNodegroupConfig <a name="EksManagedNodegroupConfig" id="my-module.EksManagedNodegroupConfig"></a>
+
+#### Initializer <a name="Initializer" id="my-module.EksManagedNodegroupConfig.Initializer"></a>
+
+```typescript
+import { EksManagedNodegroupConfig } from 'my-module'
+
+const eksManagedNodegroupConfig: EksManagedNodegroupConfig = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.dependsOn">dependsOn</a></code> | <code>cdktf.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.forEach">forEach</a></code> | <code>cdktf.ITerraformIterator</code> | *No description.* |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.providers">providers</a></code> | <code>cdktf.TerraformProvider \| cdktf.TerraformModuleProvider[]</code> | *No description.* |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.skipAssetCreationFromLocalModules">skipAssetCreationFromLocalModules</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.amiId">amiId</a></code> | <code>string</code> | The AMI from which to launch the instance. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.amiReleaseVersion">amiReleaseVersion</a></code> | <code>string</code> | AMI version of the EKS Node Group. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.amiType">amiType</a></code> | <code>string</code> | Type of Amazon Machine Image (AMI) associated with the EKS Node Group. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.blockDeviceMappings">blockDeviceMappings</a></code> | <code>any</code> | Specify volumes to attach to the instance besides the volumes specified by the AMI [object Object]. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.bootstrapExtraArgs">bootstrapExtraArgs</a></code> | <code>string</code> | Additional arguments passed to the bootstrap script. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.capacityReservationSpecification">capacityReservationSpecification</a></code> | <code>any</code> | Targeting for EC2 capacity reservations [object Object]. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.capacityType">capacityType</a></code> | <code>string</code> | Type of capacity associated with the EKS Node Group. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.clusterAuthBase64">clusterAuthBase64</a></code> | <code>string</code> | Base64 encoded CA of associated EKS cluster. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.clusterEndpoint">clusterEndpoint</a></code> | <code>string</code> | Endpoint of associated EKS cluster. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.clusterIpFamily">clusterIpFamily</a></code> | <code>string</code> | The IP family used to assign Kubernetes pod and service addresses. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.clusterName">clusterName</a></code> | <code>string</code> | Name of associated EKS cluster. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.clusterPrimarySecurityGroupId">clusterPrimarySecurityGroupId</a></code> | <code>string</code> | The ID of the EKS cluster primary security group to associate with the instance(s). |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.clusterSecurityGroupId">clusterSecurityGroupId</a></code> | <code>string</code> | Cluster control plane security group ID. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.clusterServiceIpv4Cidr">clusterServiceIpv4Cidr</a></code> | <code>string</code> | The CIDR block to assign Kubernetes service IP addresses from. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.clusterVersion">clusterVersion</a></code> | <code>string</code> | Kubernetes version. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.cpuOptions">cpuOptions</a></code> | <code>{[ key: string ]: string}</code> | The CPU options for the instance [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.create">create</a></code> | <code>boolean</code> | Determines whether to create EKS managed node group or not true. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.createIamRole">createIamRole</a></code> | <code>boolean</code> | Determines whether an IAM role is created or to use an existing IAM role true. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.createLaunchTemplate">createLaunchTemplate</a></code> | <code>boolean</code> | Determines whether to create a launch template or not. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.createSecurityGroup">createSecurityGroup</a></code> | <code>boolean</code> | Determines whether to create a security group true. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.creditSpecification">creditSpecification</a></code> | <code>{[ key: string ]: string}</code> | Customize the credit specification of the instance [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.desiredSize">desiredSize</a></code> | <code>number</code> | Desired number of instances/nodes 1. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.disableApiTermination">disableApiTermination</a></code> | <code>boolean</code> | If true, enables EC2 instance termination protection. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.diskSize">diskSize</a></code> | <code>number</code> | Disk size in GiB for nodes. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.ebsOptimized">ebsOptimized</a></code> | <code>boolean</code> | If true, the launched EC2 instance(s) will be EBS-optimized. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.elasticGpuSpecifications">elasticGpuSpecifications</a></code> | <code>{[ key: string ]: string}</code> | The elastic GPU to attach to the instance [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.elasticInferenceAccelerator">elasticInferenceAccelerator</a></code> | <code>{[ key: string ]: string}</code> | Configuration block containing an Elastic Inference Accelerator to attach to the instance [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.enableBootstrapUserData">enableBootstrapUserData</a></code> | <code>boolean</code> | Determines whether the bootstrap configurations are populated within the user data template. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.enableMonitoring">enableMonitoring</a></code> | <code>boolean</code> | Enables/disables detailed monitoring true. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.enclaveOptions">enclaveOptions</a></code> | <code>{[ key: string ]: string}</code> | Enable Nitro Enclaves on launched instances [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.forceUpdateVersion">forceUpdateVersion</a></code> | <code>boolean</code> | Force version update if existing pods are unable to be drained due to a pod disruption budget issue. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.iamRoleAdditionalPolicies">iamRoleAdditionalPolicies</a></code> | <code>string[]</code> | Additional policies to be added to the IAM role. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.iamRoleArn">iamRoleArn</a></code> | <code>string</code> | Existing IAM role ARN for the node group. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.iamRoleAttachCniPolicy">iamRoleAttachCniPolicy</a></code> | <code>boolean</code> | Whether to attach the `AmazonEKS_CNI_Policy`/`AmazonEKS_CNI_IPv6_Policy` IAM policy to the IAM IAM role. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.iamRoleDescription">iamRoleDescription</a></code> | <code>string</code> | Description of the role. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.iamRoleName">iamRoleName</a></code> | <code>string</code> | Name to use on IAM role created. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.iamRolePath">iamRolePath</a></code> | <code>string</code> | IAM role path. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.iamRolePermissionsBoundary">iamRolePermissionsBoundary</a></code> | <code>string</code> | ARN of the policy that is used to set the permissions boundary for the IAM role. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.iamRoleTags">iamRoleTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the IAM role created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.iamRoleUseNamePrefix">iamRoleUseNamePrefix</a></code> | <code>boolean</code> | Determines whether the IAM role name (`iam_role_name`) is used as a prefix true. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.instanceMarketOptions">instanceMarketOptions</a></code> | <code>any</code> | The market (purchasing) option for the instance [object Object]. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.instanceTypes">instanceTypes</a></code> | <code>string[]</code> | Set of instance types associated with the EKS Node Group. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.kernelId">kernelId</a></code> | <code>string</code> | The kernel ID. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.keyName">keyName</a></code> | <code>string</code> | The key name that should be used for the instance(s). |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.labels">labels</a></code> | <code>{[ key: string ]: string}</code> | Key-value map of Kubernetes labels. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.launchTemplateDefaultVersion">launchTemplateDefaultVersion</a></code> | <code>string</code> | Default version of the launch template. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.launchTemplateDescription">launchTemplateDescription</a></code> | <code>string</code> | Description of the launch template. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.launchTemplateName">launchTemplateName</a></code> | <code>string</code> | Launch template name - either to be created (`var.create_launch_template` = `true`) or existing (`var.create_launch_template` = `false`). |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.launchTemplateTags">launchTemplateTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the tag_specifications of launch template created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.launchTemplateUseNamePrefix">launchTemplateUseNamePrefix</a></code> | <code>boolean</code> | Determines whether to use `launch_template_name` as is or create a unique name beginning with the `launch_template_name` as the prefix true. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.launchTemplateVersion">launchTemplateVersion</a></code> | <code>string</code> | Launch template version number. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.licenseSpecifications">licenseSpecifications</a></code> | <code>{[ key: string ]: string}</code> | A list of license specifications to associate with [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.maxSize">maxSize</a></code> | <code>number</code> | Maximum number of instances/nodes 3. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.metadataOptions">metadataOptions</a></code> | <code>{[ key: string ]: string}</code> | Customize the metadata options for the instance [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.minSize">minSize</a></code> | <code>number</code> | Minimum number of instances/nodes. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.name">name</a></code> | <code>string</code> | Name of the EKS managed node group. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.networkInterfaces">networkInterfaces</a></code> | <code>any[]</code> | Customize network interfaces to be attached at instance boot time. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.placement">placement</a></code> | <code>{[ key: string ]: string}</code> | The placement of the instance [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.platform">platform</a></code> | <code>string</code> | Identifies if the OS platform is `bottlerocket` or `linux` based; |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.postBootstrapUserData">postBootstrapUserData</a></code> | <code>string</code> | User data that is appended to the user data script after of the EKS bootstrap script. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.preBootstrapUserData">preBootstrapUserData</a></code> | <code>string</code> | User data that is injected into the user data script ahead of the EKS bootstrap script. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.ramDiskId">ramDiskId</a></code> | <code>string</code> | The ID of the ram disk. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.remoteAccess">remoteAccess</a></code> | <code>any</code> | Configuration block with remote access settings [object Object]. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.securityGroupDescription">securityGroupDescription</a></code> | <code>string</code> | Description for the security group created EKS managed node group security group. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.securityGroupName">securityGroupName</a></code> | <code>string</code> | Name to use on security group created. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.securityGroupRules">securityGroupRules</a></code> | <code>any</code> | List of security group rules to add to the security group created [object Object]. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.securityGroupTags">securityGroupTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the security group created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.securityGroupUseNamePrefix">securityGroupUseNamePrefix</a></code> | <code>boolean</code> | Determines whether the security group name (`security_group_name`) is used as a prefix true. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.subnetIds">subnetIds</a></code> | <code>string[]</code> | Identifiers of EC2 Subnets to associate with the EKS Node Group. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | A map of tags to add to all resources [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.taints">taints</a></code> | <code>any</code> | The Kubernetes taints to be applied to the nodes in the node group. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.timeouts">timeouts</a></code> | <code>{[ key: string ]: string}</code> | Create, update, and delete timeout configurations for the node group [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.updateConfig">updateConfig</a></code> | <code>{[ key: string ]: string}</code> | Configuration block of settings for max unavailable resources during node group updates [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.updateLaunchTemplateDefaultVersion">updateLaunchTemplateDefaultVersion</a></code> | <code>boolean</code> | Whether to update the launch templates default version on each update. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.useNamePrefix">useNamePrefix</a></code> | <code>boolean</code> | Determines whether to use `name` as is or create a unique name beginning with the `name` as the prefix true. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.userDataTemplatePath">userDataTemplatePath</a></code> | <code>string</code> | Path to a local, custom user data template file to use when rendering user data. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.vpcId">vpcId</a></code> | <code>string</code> | ID of the VPC where the security group/nodes will be provisioned. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.vpcSecurityGroupIds">vpcSecurityGroupIds</a></code> | <code>string[]</code> | A list of security group IDs to associate. |
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="my-module.EksManagedNodegroupConfig.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktf.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="my-module.EksManagedNodegroupConfig.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktf.ITerraformIterator
+
+---
+
+##### `providers`<sup>Optional</sup> <a name="providers" id="my-module.EksManagedNodegroupConfig.property.providers"></a>
+
+```typescript
+public readonly providers: TerraformProvider | TerraformModuleProvider[];
+```
+
+- *Type:* cdktf.TerraformProvider | cdktf.TerraformModuleProvider[]
+
+---
+
+##### `skipAssetCreationFromLocalModules`<sup>Optional</sup> <a name="skipAssetCreationFromLocalModules" id="my-module.EksManagedNodegroupConfig.property.skipAssetCreationFromLocalModules"></a>
+
+```typescript
+public readonly skipAssetCreationFromLocalModules: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `amiId`<sup>Optional</sup> <a name="amiId" id="my-module.EksManagedNodegroupConfig.property.amiId"></a>
+
+```typescript
+public readonly amiId: string;
+```
+
+- *Type:* string
+
+The AMI from which to launch the instance.
+
+If not supplied, EKS will use its own default image
+
+---
+
+##### `amiReleaseVersion`<sup>Optional</sup> <a name="amiReleaseVersion" id="my-module.EksManagedNodegroupConfig.property.amiReleaseVersion"></a>
+
+```typescript
+public readonly amiReleaseVersion: string;
+```
+
+- *Type:* string
+
+AMI version of the EKS Node Group.
+
+Defaults to latest version for Kubernetes version
+
+---
+
+##### `amiType`<sup>Optional</sup> <a name="amiType" id="my-module.EksManagedNodegroupConfig.property.amiType"></a>
+
+```typescript
+public readonly amiType: string;
+```
+
+- *Type:* string
+
+Type of Amazon Machine Image (AMI) associated with the EKS Node Group.
+
+Valid values are `AL2_x86_64`, `AL2_x86_64_GPU`, `AL2_ARM_64`, `CUSTOM`, `BOTTLEROCKET_ARM_64`, `BOTTLEROCKET_x86_64`
+
+---
+
+##### `blockDeviceMappings`<sup>Optional</sup> <a name="blockDeviceMappings" id="my-module.EksManagedNodegroupConfig.property.blockDeviceMappings"></a>
+
+```typescript
+public readonly blockDeviceMappings: any;
+```
+
+- *Type:* any
+
+Specify volumes to attach to the instance besides the volumes specified by the AMI [object Object].
+
+---
+
+##### `bootstrapExtraArgs`<sup>Optional</sup> <a name="bootstrapExtraArgs" id="my-module.EksManagedNodegroupConfig.property.bootstrapExtraArgs"></a>
+
+```typescript
+public readonly bootstrapExtraArgs: string;
+```
+
+- *Type:* string
+
+Additional arguments passed to the bootstrap script.
+
+When `platform` = `bottlerocket`; these are additional [settings](https://github.com/bottlerocket-os/bottlerocket#settings) that are provided to the Bottlerocket user data
+
+---
+
+##### `capacityReservationSpecification`<sup>Optional</sup> <a name="capacityReservationSpecification" id="my-module.EksManagedNodegroupConfig.property.capacityReservationSpecification"></a>
+
+```typescript
+public readonly capacityReservationSpecification: any;
+```
+
+- *Type:* any
+
+Targeting for EC2 capacity reservations [object Object].
+
+---
+
+##### `capacityType`<sup>Optional</sup> <a name="capacityType" id="my-module.EksManagedNodegroupConfig.property.capacityType"></a>
+
+```typescript
+public readonly capacityType: string;
+```
+
+- *Type:* string
+
+Type of capacity associated with the EKS Node Group.
+
+Valid values: `ON_DEMAND`, `SPOT`
+ON_DEMAND
+
+---
+
+##### `clusterAuthBase64`<sup>Optional</sup> <a name="clusterAuthBase64" id="my-module.EksManagedNodegroupConfig.property.clusterAuthBase64"></a>
+
+```typescript
+public readonly clusterAuthBase64: string;
+```
+
+- *Type:* string
+
+Base64 encoded CA of associated EKS cluster.
+
+---
+
+##### `clusterEndpoint`<sup>Optional</sup> <a name="clusterEndpoint" id="my-module.EksManagedNodegroupConfig.property.clusterEndpoint"></a>
+
+```typescript
+public readonly clusterEndpoint: string;
+```
+
+- *Type:* string
+
+Endpoint of associated EKS cluster.
+
+---
+
+##### `clusterIpFamily`<sup>Optional</sup> <a name="clusterIpFamily" id="my-module.EksManagedNodegroupConfig.property.clusterIpFamily"></a>
+
+```typescript
+public readonly clusterIpFamily: string;
+```
+
+- *Type:* string
+
+The IP family used to assign Kubernetes pod and service addresses.
+
+Valid values are `ipv4` (default) and `ipv6`
+
+---
+
+##### `clusterName`<sup>Optional</sup> <a name="clusterName" id="my-module.EksManagedNodegroupConfig.property.clusterName"></a>
+
+```typescript
+public readonly clusterName: string;
+```
+
+- *Type:* string
+
+Name of associated EKS cluster.
+
+---
+
+##### `clusterPrimarySecurityGroupId`<sup>Optional</sup> <a name="clusterPrimarySecurityGroupId" id="my-module.EksManagedNodegroupConfig.property.clusterPrimarySecurityGroupId"></a>
+
+```typescript
+public readonly clusterPrimarySecurityGroupId: string;
+```
+
+- *Type:* string
+
+The ID of the EKS cluster primary security group to associate with the instance(s).
+
+This is the security group that is automatically created by the EKS service
+
+---
+
+##### `clusterSecurityGroupId`<sup>Optional</sup> <a name="clusterSecurityGroupId" id="my-module.EksManagedNodegroupConfig.property.clusterSecurityGroupId"></a>
+
+```typescript
+public readonly clusterSecurityGroupId: string;
+```
+
+- *Type:* string
+
+Cluster control plane security group ID.
+
+---
+
+##### `clusterServiceIpv4Cidr`<sup>Optional</sup> <a name="clusterServiceIpv4Cidr" id="my-module.EksManagedNodegroupConfig.property.clusterServiceIpv4Cidr"></a>
+
+```typescript
+public readonly clusterServiceIpv4Cidr: string;
+```
+
+- *Type:* string
+
+The CIDR block to assign Kubernetes service IP addresses from.
+
+If you don't specify a block, Kubernetes assigns addresses from either the 10.100.0.0/16 or 172.20.0.0/16 CIDR blocks
+
+---
+
+##### `clusterVersion`<sup>Optional</sup> <a name="clusterVersion" id="my-module.EksManagedNodegroupConfig.property.clusterVersion"></a>
 
 ```typescript
 public readonly clusterVersion: string;
@@ -3319,100 +4609,94 @@ Defaults to EKS Cluster Kubernetes version
 
 ---
 
-##### `cpuOptions`<sup>Optional</sup> <a name="cpuOptions" id="my-module.EksManagedNodegroupOptions.property.cpuOptions"></a>
+##### `cpuOptions`<sup>Optional</sup> <a name="cpuOptions" id="my-module.EksManagedNodegroupConfig.property.cpuOptions"></a>
 
 ```typescript
 public readonly cpuOptions: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
-The CPU options for the instance.
+The CPU options for the instance [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
-##### `create`<sup>Optional</sup> <a name="create" id="my-module.EksManagedNodegroupOptions.property.create"></a>
+##### `create`<sup>Optional</sup> <a name="create" id="my-module.EksManagedNodegroupConfig.property.create"></a>
 
 ```typescript
 public readonly create: boolean;
 ```
 
 - *Type:* boolean
-- *Default:* true
 
-Determines whether to create EKS managed node group or not.
+Determines whether to create EKS managed node group or not true.
 
 ---
 
-##### `createIamRole`<sup>Optional</sup> <a name="createIamRole" id="my-module.EksManagedNodegroupOptions.property.createIamRole"></a>
+##### `createIamRole`<sup>Optional</sup> <a name="createIamRole" id="my-module.EksManagedNodegroupConfig.property.createIamRole"></a>
 
 ```typescript
 public readonly createIamRole: boolean;
 ```
 
 - *Type:* boolean
-- *Default:* true
 
-Determines whether an IAM role is created or to use an existing IAM role.
+Determines whether an IAM role is created or to use an existing IAM role true.
 
 ---
 
-##### `createLaunchTemplate`<sup>Optional</sup> <a name="createLaunchTemplate" id="my-module.EksManagedNodegroupOptions.property.createLaunchTemplate"></a>
+##### `createLaunchTemplate`<sup>Optional</sup> <a name="createLaunchTemplate" id="my-module.EksManagedNodegroupConfig.property.createLaunchTemplate"></a>
 
 ```typescript
 public readonly createLaunchTemplate: boolean;
 ```
 
 - *Type:* boolean
-- *Default:* true
 
 Determines whether to create a launch template or not.
 
 If set to `false`, EKS will use its own default launch template
+true
 
 ---
 
-##### `createSecurityGroup`<sup>Optional</sup> <a name="createSecurityGroup" id="my-module.EksManagedNodegroupOptions.property.createSecurityGroup"></a>
+##### `createSecurityGroup`<sup>Optional</sup> <a name="createSecurityGroup" id="my-module.EksManagedNodegroupConfig.property.createSecurityGroup"></a>
 
 ```typescript
 public readonly createSecurityGroup: boolean;
 ```
 
 - *Type:* boolean
-- *Default:* true
 
-Determines whether to create a security group.
+Determines whether to create a security group true.
 
 ---
 
-##### `creditSpecification`<sup>Optional</sup> <a name="creditSpecification" id="my-module.EksManagedNodegroupOptions.property.creditSpecification"></a>
+##### `creditSpecification`<sup>Optional</sup> <a name="creditSpecification" id="my-module.EksManagedNodegroupConfig.property.creditSpecification"></a>
 
 ```typescript
 public readonly creditSpecification: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
-Customize the credit specification of the instance.
+Customize the credit specification of the instance [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
-##### `desiredSize`<sup>Optional</sup> <a name="desiredSize" id="my-module.EksManagedNodegroupOptions.property.desiredSize"></a>
+##### `desiredSize`<sup>Optional</sup> <a name="desiredSize" id="my-module.EksManagedNodegroupConfig.property.desiredSize"></a>
 
 ```typescript
 public readonly desiredSize: number;
 ```
 
 - *Type:* number
-- *Default:* 1
 
-Desired number of instances/nodes.
+Desired number of instances/nodes 1.
 
 ---
 
-##### `disableApiTermination`<sup>Optional</sup> <a name="disableApiTermination" id="my-module.EksManagedNodegroupOptions.property.disableApiTermination"></a>
+##### `disableApiTermination`<sup>Optional</sup> <a name="disableApiTermination" id="my-module.EksManagedNodegroupConfig.property.disableApiTermination"></a>
 
 ```typescript
 public readonly disableApiTermination: boolean;
@@ -3424,7 +4708,7 @@ If true, enables EC2 instance termination protection.
 
 ---
 
-##### `diskSize`<sup>Optional</sup> <a name="diskSize" id="my-module.EksManagedNodegroupOptions.property.diskSize"></a>
+##### `diskSize`<sup>Optional</sup> <a name="diskSize" id="my-module.EksManagedNodegroupConfig.property.diskSize"></a>
 
 ```typescript
 public readonly diskSize: number;
@@ -3438,7 +4722,7 @@ Defaults to `20`
 
 ---
 
-##### `ebsOptimized`<sup>Optional</sup> <a name="ebsOptimized" id="my-module.EksManagedNodegroupOptions.property.ebsOptimized"></a>
+##### `ebsOptimized`<sup>Optional</sup> <a name="ebsOptimized" id="my-module.EksManagedNodegroupConfig.property.ebsOptimized"></a>
 
 ```typescript
 public readonly ebsOptimized: boolean;
@@ -3450,33 +4734,31 @@ If true, the launched EC2 instance(s) will be EBS-optimized.
 
 ---
 
-##### `elasticGpuSpecifications`<sup>Optional</sup> <a name="elasticGpuSpecifications" id="my-module.EksManagedNodegroupOptions.property.elasticGpuSpecifications"></a>
+##### `elasticGpuSpecifications`<sup>Optional</sup> <a name="elasticGpuSpecifications" id="my-module.EksManagedNodegroupConfig.property.elasticGpuSpecifications"></a>
 
 ```typescript
 public readonly elasticGpuSpecifications: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
-The elastic GPU to attach to the instance.
+The elastic GPU to attach to the instance [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
-##### `elasticInferenceAccelerator`<sup>Optional</sup> <a name="elasticInferenceAccelerator" id="my-module.EksManagedNodegroupOptions.property.elasticInferenceAccelerator"></a>
+##### `elasticInferenceAccelerator`<sup>Optional</sup> <a name="elasticInferenceAccelerator" id="my-module.EksManagedNodegroupConfig.property.elasticInferenceAccelerator"></a>
 
 ```typescript
 public readonly elasticInferenceAccelerator: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
-Configuration block containing an Elastic Inference Accelerator to attach to the instance.
+Configuration block containing an Elastic Inference Accelerator to attach to the instance [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
-##### `enableBootstrapUserData`<sup>Optional</sup> <a name="enableBootstrapUserData" id="my-module.EksManagedNodegroupOptions.property.enableBootstrapUserData"></a>
+##### `enableBootstrapUserData`<sup>Optional</sup> <a name="enableBootstrapUserData" id="my-module.EksManagedNodegroupConfig.property.enableBootstrapUserData"></a>
 
 ```typescript
 public readonly enableBootstrapUserData: boolean;
@@ -3490,33 +4772,31 @@ Only valid when using a custom AMI via `ami_id`
 
 ---
 
-##### `enableMonitoring`<sup>Optional</sup> <a name="enableMonitoring" id="my-module.EksManagedNodegroupOptions.property.enableMonitoring"></a>
+##### `enableMonitoring`<sup>Optional</sup> <a name="enableMonitoring" id="my-module.EksManagedNodegroupConfig.property.enableMonitoring"></a>
 
 ```typescript
 public readonly enableMonitoring: boolean;
 ```
 
 - *Type:* boolean
-- *Default:* true
 
-Enables/disables detailed monitoring.
+Enables/disables detailed monitoring true.
 
 ---
 
-##### `enclaveOptions`<sup>Optional</sup> <a name="enclaveOptions" id="my-module.EksManagedNodegroupOptions.property.enclaveOptions"></a>
+##### `enclaveOptions`<sup>Optional</sup> <a name="enclaveOptions" id="my-module.EksManagedNodegroupConfig.property.enclaveOptions"></a>
 
 ```typescript
 public readonly enclaveOptions: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
-Enable Nitro Enclaves on launched instances.
+Enable Nitro Enclaves on launched instances [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
-##### `forceUpdateVersion`<sup>Optional</sup> <a name="forceUpdateVersion" id="my-module.EksManagedNodegroupOptions.property.forceUpdateVersion"></a>
+##### `forceUpdateVersion`<sup>Optional</sup> <a name="forceUpdateVersion" id="my-module.EksManagedNodegroupConfig.property.forceUpdateVersion"></a>
 
 ```typescript
 public readonly forceUpdateVersion: boolean;
@@ -3528,7 +4808,7 @@ Force version update if existing pods are unable to be drained due to a pod disr
 
 ---
 
-##### `iamRoleAdditionalPolicies`<sup>Optional</sup> <a name="iamRoleAdditionalPolicies" id="my-module.EksManagedNodegroupOptions.property.iamRoleAdditionalPolicies"></a>
+##### `iamRoleAdditionalPolicies`<sup>Optional</sup> <a name="iamRoleAdditionalPolicies" id="my-module.EksManagedNodegroupConfig.property.iamRoleAdditionalPolicies"></a>
 
 ```typescript
 public readonly iamRoleAdditionalPolicies: string[];
@@ -3540,7 +4820,7 @@ Additional policies to be added to the IAM role.
 
 ---
 
-##### `iamRoleArn`<sup>Optional</sup> <a name="iamRoleArn" id="my-module.EksManagedNodegroupOptions.property.iamRoleArn"></a>
+##### `iamRoleArn`<sup>Optional</sup> <a name="iamRoleArn" id="my-module.EksManagedNodegroupConfig.property.iamRoleArn"></a>
 
 ```typescript
 public readonly iamRoleArn: string;
@@ -3554,22 +4834,22 @@ Required if `create_iam_role` is set to `false`
 
 ---
 
-##### `iamRoleAttachCniPolicy`<sup>Optional</sup> <a name="iamRoleAttachCniPolicy" id="my-module.EksManagedNodegroupOptions.property.iamRoleAttachCniPolicy"></a>
+##### `iamRoleAttachCniPolicy`<sup>Optional</sup> <a name="iamRoleAttachCniPolicy" id="my-module.EksManagedNodegroupConfig.property.iamRoleAttachCniPolicy"></a>
 
 ```typescript
 public readonly iamRoleAttachCniPolicy: boolean;
 ```
 
 - *Type:* boolean
-- *Default:* true
 
 Whether to attach the `AmazonEKS_CNI_Policy`/`AmazonEKS_CNI_IPv6_Policy` IAM policy to the IAM IAM role.
 
 WARNING: If set `false` the permissions must be assigned to the `aws-node` DaemonSet pods via another method or nodes will not be able to join the cluster
+true
 
 ---
 
-##### `iamRoleDescription`<sup>Optional</sup> <a name="iamRoleDescription" id="my-module.EksManagedNodegroupOptions.property.iamRoleDescription"></a>
+##### `iamRoleDescription`<sup>Optional</sup> <a name="iamRoleDescription" id="my-module.EksManagedNodegroupConfig.property.iamRoleDescription"></a>
 
 ```typescript
 public readonly iamRoleDescription: string;
@@ -3581,7 +4861,7 @@ Description of the role.
 
 ---
 
-##### `iamRoleName`<sup>Optional</sup> <a name="iamRoleName" id="my-module.EksManagedNodegroupOptions.property.iamRoleName"></a>
+##### `iamRoleName`<sup>Optional</sup> <a name="iamRoleName" id="my-module.EksManagedNodegroupConfig.property.iamRoleName"></a>
 
 ```typescript
 public readonly iamRoleName: string;
@@ -3593,7 +4873,7 @@ Name to use on IAM role created.
 
 ---
 
-##### `iamRolePath`<sup>Optional</sup> <a name="iamRolePath" id="my-module.EksManagedNodegroupOptions.property.iamRolePath"></a>
+##### `iamRolePath`<sup>Optional</sup> <a name="iamRolePath" id="my-module.EksManagedNodegroupConfig.property.iamRolePath"></a>
 
 ```typescript
 public readonly iamRolePath: string;
@@ -3605,7 +4885,7 @@ IAM role path.
 
 ---
 
-##### `iamRolePermissionsBoundary`<sup>Optional</sup> <a name="iamRolePermissionsBoundary" id="my-module.EksManagedNodegroupOptions.property.iamRolePermissionsBoundary"></a>
+##### `iamRolePermissionsBoundary`<sup>Optional</sup> <a name="iamRolePermissionsBoundary" id="my-module.EksManagedNodegroupConfig.property.iamRolePermissionsBoundary"></a>
 
 ```typescript
 public readonly iamRolePermissionsBoundary: string;
@@ -3617,46 +4897,43 @@ ARN of the policy that is used to set the permissions boundary for the IAM role.
 
 ---
 
-##### `iamRoleTags`<sup>Optional</sup> <a name="iamRoleTags" id="my-module.EksManagedNodegroupOptions.property.iamRoleTags"></a>
+##### `iamRoleTags`<sup>Optional</sup> <a name="iamRoleTags" id="my-module.EksManagedNodegroupConfig.property.iamRoleTags"></a>
 
 ```typescript
 public readonly iamRoleTags: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
-A map of additional tags to add to the IAM role created.
+A map of additional tags to add to the IAM role created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
-##### `iamRoleUseNamePrefix`<sup>Optional</sup> <a name="iamRoleUseNamePrefix" id="my-module.EksManagedNodegroupOptions.property.iamRoleUseNamePrefix"></a>
+##### `iamRoleUseNamePrefix`<sup>Optional</sup> <a name="iamRoleUseNamePrefix" id="my-module.EksManagedNodegroupConfig.property.iamRoleUseNamePrefix"></a>
 
 ```typescript
 public readonly iamRoleUseNamePrefix: boolean;
 ```
 
 - *Type:* boolean
-- *Default:* true
 
-Determines whether the IAM role name (`iam_role_name`) is used as a prefix.
+Determines whether the IAM role name (`iam_role_name`) is used as a prefix true.
 
 ---
 
-##### `instanceMarketOptions`<sup>Optional</sup> <a name="instanceMarketOptions" id="my-module.EksManagedNodegroupOptions.property.instanceMarketOptions"></a>
+##### `instanceMarketOptions`<sup>Optional</sup> <a name="instanceMarketOptions" id="my-module.EksManagedNodegroupConfig.property.instanceMarketOptions"></a>
 
 ```typescript
 public readonly instanceMarketOptions: any;
 ```
 
 - *Type:* any
-- *Default:* [object Object]
 
-The market (purchasing) option for the instance.
+The market (purchasing) option for the instance [object Object].
 
 ---
 
-##### `instanceTypes`<sup>Optional</sup> <a name="instanceTypes" id="my-module.EksManagedNodegroupOptions.property.instanceTypes"></a>
+##### `instanceTypes`<sup>Optional</sup> <a name="instanceTypes" id="my-module.EksManagedNodegroupConfig.property.instanceTypes"></a>
 
 ```typescript
 public readonly instanceTypes: string[];
@@ -3670,7 +4947,7 @@ Defaults to `["t3.medium"]`
 
 ---
 
-##### `kernelId`<sup>Optional</sup> <a name="kernelId" id="my-module.EksManagedNodegroupOptions.property.kernelId"></a>
+##### `kernelId`<sup>Optional</sup> <a name="kernelId" id="my-module.EksManagedNodegroupConfig.property.kernelId"></a>
 
 ```typescript
 public readonly kernelId: string;
@@ -3682,7 +4959,7 @@ The kernel ID.
 
 ---
 
-##### `keyName`<sup>Optional</sup> <a name="keyName" id="my-module.EksManagedNodegroupOptions.property.keyName"></a>
+##### `keyName`<sup>Optional</sup> <a name="keyName" id="my-module.EksManagedNodegroupConfig.property.keyName"></a>
 
 ```typescript
 public readonly keyName: string;
@@ -3694,7 +4971,7 @@ The key name that should be used for the instance(s).
 
 ---
 
-##### `labels`<sup>Optional</sup> <a name="labels" id="my-module.EksManagedNodegroupOptions.property.labels"></a>
+##### `labels`<sup>Optional</sup> <a name="labels" id="my-module.EksManagedNodegroupConfig.property.labels"></a>
 
 ```typescript
 public readonly labels: {[ key: string ]: string};
@@ -3709,7 +4986,7 @@ The property type contains a map, they have special handling, please see {@link 
 
 ---
 
-##### `launchTemplateDefaultVersion`<sup>Optional</sup> <a name="launchTemplateDefaultVersion" id="my-module.EksManagedNodegroupOptions.property.launchTemplateDefaultVersion"></a>
+##### `launchTemplateDefaultVersion`<sup>Optional</sup> <a name="launchTemplateDefaultVersion" id="my-module.EksManagedNodegroupConfig.property.launchTemplateDefaultVersion"></a>
 
 ```typescript
 public readonly launchTemplateDefaultVersion: string;
@@ -3721,7 +4998,7 @@ Default version of the launch template.
 
 ---
 
-##### `launchTemplateDescription`<sup>Optional</sup> <a name="launchTemplateDescription" id="my-module.EksManagedNodegroupOptions.property.launchTemplateDescription"></a>
+##### `launchTemplateDescription`<sup>Optional</sup> <a name="launchTemplateDescription" id="my-module.EksManagedNodegroupConfig.property.launchTemplateDescription"></a>
 
 ```typescript
 public readonly launchTemplateDescription: string;
@@ -3733,7 +5010,7 @@ Description of the launch template.
 
 ---
 
-##### `launchTemplateName`<sup>Optional</sup> <a name="launchTemplateName" id="my-module.EksManagedNodegroupOptions.property.launchTemplateName"></a>
+##### `launchTemplateName`<sup>Optional</sup> <a name="launchTemplateName" id="my-module.EksManagedNodegroupConfig.property.launchTemplateName"></a>
 
 ```typescript
 public readonly launchTemplateName: string;
@@ -3745,33 +5022,31 @@ Launch template name - either to be created (`var.create_launch_template` = `tru
 
 ---
 
-##### `launchTemplateTags`<sup>Optional</sup> <a name="launchTemplateTags" id="my-module.EksManagedNodegroupOptions.property.launchTemplateTags"></a>
+##### `launchTemplateTags`<sup>Optional</sup> <a name="launchTemplateTags" id="my-module.EksManagedNodegroupConfig.property.launchTemplateTags"></a>
 
 ```typescript
 public readonly launchTemplateTags: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
-A map of additional tags to add to the tag_specifications of launch template created.
+A map of additional tags to add to the tag_specifications of launch template created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
-##### `launchTemplateUseNamePrefix`<sup>Optional</sup> <a name="launchTemplateUseNamePrefix" id="my-module.EksManagedNodegroupOptions.property.launchTemplateUseNamePrefix"></a>
+##### `launchTemplateUseNamePrefix`<sup>Optional</sup> <a name="launchTemplateUseNamePrefix" id="my-module.EksManagedNodegroupConfig.property.launchTemplateUseNamePrefix"></a>
 
 ```typescript
 public readonly launchTemplateUseNamePrefix: boolean;
 ```
 
 - *Type:* boolean
-- *Default:* true
 
-Determines whether to use `launch_template_name` as is or create a unique name beginning with the `launch_template_name` as the prefix.
+Determines whether to use `launch_template_name` as is or create a unique name beginning with the `launch_template_name` as the prefix true.
 
 ---
 
-##### `launchTemplateVersion`<sup>Optional</sup> <a name="launchTemplateVersion" id="my-module.EksManagedNodegroupOptions.property.launchTemplateVersion"></a>
+##### `launchTemplateVersion`<sup>Optional</sup> <a name="launchTemplateVersion" id="my-module.EksManagedNodegroupConfig.property.launchTemplateVersion"></a>
 
 ```typescript
 public readonly launchTemplateVersion: string;
@@ -3785,46 +5060,43 @@ The default is `$Default`
 
 ---
 
-##### `licenseSpecifications`<sup>Optional</sup> <a name="licenseSpecifications" id="my-module.EksManagedNodegroupOptions.property.licenseSpecifications"></a>
+##### `licenseSpecifications`<sup>Optional</sup> <a name="licenseSpecifications" id="my-module.EksManagedNodegroupConfig.property.licenseSpecifications"></a>
 
 ```typescript
 public readonly licenseSpecifications: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
-A list of license specifications to associate with.
+A list of license specifications to associate with [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
-##### `maxSize`<sup>Optional</sup> <a name="maxSize" id="my-module.EksManagedNodegroupOptions.property.maxSize"></a>
+##### `maxSize`<sup>Optional</sup> <a name="maxSize" id="my-module.EksManagedNodegroupConfig.property.maxSize"></a>
 
 ```typescript
 public readonly maxSize: number;
 ```
 
 - *Type:* number
-- *Default:* 3
 
-Maximum number of instances/nodes.
+Maximum number of instances/nodes 3.
 
 ---
 
-##### `metadataOptions`<sup>Optional</sup> <a name="metadataOptions" id="my-module.EksManagedNodegroupOptions.property.metadataOptions"></a>
+##### `metadataOptions`<sup>Optional</sup> <a name="metadataOptions" id="my-module.EksManagedNodegroupConfig.property.metadataOptions"></a>
 
 ```typescript
 public readonly metadataOptions: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
-Customize the metadata options for the instance.
+Customize the metadata options for the instance [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
-##### `minSize`<sup>Optional</sup> <a name="minSize" id="my-module.EksManagedNodegroupOptions.property.minSize"></a>
+##### `minSize`<sup>Optional</sup> <a name="minSize" id="my-module.EksManagedNodegroupConfig.property.minSize"></a>
 
 ```typescript
 public readonly minSize: number;
@@ -3836,7 +5108,7 @@ Minimum number of instances/nodes.
 
 ---
 
-##### `name`<sup>Optional</sup> <a name="name" id="my-module.EksManagedNodegroupOptions.property.name"></a>
+##### `name`<sup>Optional</sup> <a name="name" id="my-module.EksManagedNodegroupConfig.property.name"></a>
 
 ```typescript
 public readonly name: string;
@@ -3848,7 +5120,7 @@ Name of the EKS managed node group.
 
 ---
 
-##### `networkInterfaces`<sup>Optional</sup> <a name="networkInterfaces" id="my-module.EksManagedNodegroupOptions.property.networkInterfaces"></a>
+##### `networkInterfaces`<sup>Optional</sup> <a name="networkInterfaces" id="my-module.EksManagedNodegroupConfig.property.networkInterfaces"></a>
 
 ```typescript
 public readonly networkInterfaces: any[];
@@ -3860,35 +5132,34 @@ Customize network interfaces to be attached at instance boot time.
 
 ---
 
-##### `placement`<sup>Optional</sup> <a name="placement" id="my-module.EksManagedNodegroupOptions.property.placement"></a>
+##### `placement`<sup>Optional</sup> <a name="placement" id="my-module.EksManagedNodegroupConfig.property.placement"></a>
 
 ```typescript
 public readonly placement: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
-The placement of the instance.
+The placement of the instance [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
-##### `platform`<sup>Optional</sup> <a name="platform" id="my-module.EksManagedNodegroupOptions.property.platform"></a>
+##### `platform`<sup>Optional</sup> <a name="platform" id="my-module.EksManagedNodegroupConfig.property.platform"></a>
 
 ```typescript
 public readonly platform: string;
 ```
 
 - *Type:* string
-- *Default:* linux
 
 Identifies if the OS platform is `bottlerocket` or `linux` based;
 
 `windows` is not supported
+linux
 
 ---
 
-##### `postBootstrapUserData`<sup>Optional</sup> <a name="postBootstrapUserData" id="my-module.EksManagedNodegroupOptions.property.postBootstrapUserData"></a>
+##### `postBootstrapUserData`<sup>Optional</sup> <a name="postBootstrapUserData" id="my-module.EksManagedNodegroupConfig.property.postBootstrapUserData"></a>
 
 ```typescript
 public readonly postBootstrapUserData: string;
@@ -3902,7 +5173,7 @@ Not used when `platform` = `bottlerocket`
 
 ---
 
-##### `preBootstrapUserData`<sup>Optional</sup> <a name="preBootstrapUserData" id="my-module.EksManagedNodegroupOptions.property.preBootstrapUserData"></a>
+##### `preBootstrapUserData`<sup>Optional</sup> <a name="preBootstrapUserData" id="my-module.EksManagedNodegroupConfig.property.preBootstrapUserData"></a>
 
 ```typescript
 public readonly preBootstrapUserData: string;
@@ -3916,7 +5187,7 @@ Not used when `platform` = `bottlerocket`
 
 ---
 
-##### `ramDiskId`<sup>Optional</sup> <a name="ramDiskId" id="my-module.EksManagedNodegroupOptions.property.ramDiskId"></a>
+##### `ramDiskId`<sup>Optional</sup> <a name="ramDiskId" id="my-module.EksManagedNodegroupConfig.property.ramDiskId"></a>
 
 ```typescript
 public readonly ramDiskId: string;
@@ -3928,33 +5199,31 @@ The ID of the ram disk.
 
 ---
 
-##### `remoteAccess`<sup>Optional</sup> <a name="remoteAccess" id="my-module.EksManagedNodegroupOptions.property.remoteAccess"></a>
+##### `remoteAccess`<sup>Optional</sup> <a name="remoteAccess" id="my-module.EksManagedNodegroupConfig.property.remoteAccess"></a>
 
 ```typescript
 public readonly remoteAccess: any;
 ```
 
 - *Type:* any
-- *Default:* [object Object]
 
-Configuration block with remote access settings.
+Configuration block with remote access settings [object Object].
 
 ---
 
-##### `securityGroupDescription`<sup>Optional</sup> <a name="securityGroupDescription" id="my-module.EksManagedNodegroupOptions.property.securityGroupDescription"></a>
+##### `securityGroupDescription`<sup>Optional</sup> <a name="securityGroupDescription" id="my-module.EksManagedNodegroupConfig.property.securityGroupDescription"></a>
 
 ```typescript
 public readonly securityGroupDescription: string;
 ```
 
 - *Type:* string
-- *Default:* EKS managed node group security group
 
-Description for the security group created.
+Description for the security group created EKS managed node group security group.
 
 ---
 
-##### `securityGroupName`<sup>Optional</sup> <a name="securityGroupName" id="my-module.EksManagedNodegroupOptions.property.securityGroupName"></a>
+##### `securityGroupName`<sup>Optional</sup> <a name="securityGroupName" id="my-module.EksManagedNodegroupConfig.property.securityGroupName"></a>
 
 ```typescript
 public readonly securityGroupName: string;
@@ -3966,46 +5235,43 @@ Name to use on security group created.
 
 ---
 
-##### `securityGroupRules`<sup>Optional</sup> <a name="securityGroupRules" id="my-module.EksManagedNodegroupOptions.property.securityGroupRules"></a>
+##### `securityGroupRules`<sup>Optional</sup> <a name="securityGroupRules" id="my-module.EksManagedNodegroupConfig.property.securityGroupRules"></a>
 
 ```typescript
 public readonly securityGroupRules: any;
 ```
 
 - *Type:* any
-- *Default:* [object Object]
 
-List of security group rules to add to the security group created.
+List of security group rules to add to the security group created [object Object].
 
 ---
 
-##### `securityGroupTags`<sup>Optional</sup> <a name="securityGroupTags" id="my-module.EksManagedNodegroupOptions.property.securityGroupTags"></a>
+##### `securityGroupTags`<sup>Optional</sup> <a name="securityGroupTags" id="my-module.EksManagedNodegroupConfig.property.securityGroupTags"></a>
 
 ```typescript
 public readonly securityGroupTags: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
-A map of additional tags to add to the security group created.
+A map of additional tags to add to the security group created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
-##### `securityGroupUseNamePrefix`<sup>Optional</sup> <a name="securityGroupUseNamePrefix" id="my-module.EksManagedNodegroupOptions.property.securityGroupUseNamePrefix"></a>
+##### `securityGroupUseNamePrefix`<sup>Optional</sup> <a name="securityGroupUseNamePrefix" id="my-module.EksManagedNodegroupConfig.property.securityGroupUseNamePrefix"></a>
 
 ```typescript
 public readonly securityGroupUseNamePrefix: boolean;
 ```
 
 - *Type:* boolean
-- *Default:* true
 
-Determines whether the security group name (`security_group_name`) is used as a prefix.
+Determines whether the security group name (`security_group_name`) is used as a prefix true.
 
 ---
 
-##### `subnetIds`<sup>Optional</sup> <a name="subnetIds" id="my-module.EksManagedNodegroupOptions.property.subnetIds"></a>
+##### `subnetIds`<sup>Optional</sup> <a name="subnetIds" id="my-module.EksManagedNodegroupConfig.property.subnetIds"></a>
 
 ```typescript
 public readonly subnetIds: string[];
@@ -4019,89 +5285,85 @@ These subnets must have the following resource tag: `kubernetes.io/cluster/CLUST
 
 ---
 
-##### `tags`<sup>Optional</sup> <a name="tags" id="my-module.EksManagedNodegroupOptions.property.tags"></a>
+##### `tags`<sup>Optional</sup> <a name="tags" id="my-module.EksManagedNodegroupConfig.property.tags"></a>
 
 ```typescript
 public readonly tags: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
-A map of tags to add to all resources.
+A map of tags to add to all resources [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
-##### `taints`<sup>Optional</sup> <a name="taints" id="my-module.EksManagedNodegroupOptions.property.taints"></a>
+##### `taints`<sup>Optional</sup> <a name="taints" id="my-module.EksManagedNodegroupConfig.property.taints"></a>
 
 ```typescript
 public readonly taints: any;
 ```
 
 - *Type:* any
-- *Default:* [object Object]
 
 The Kubernetes taints to be applied to the nodes in the node group.
 
 Maximum of 50 taints per node group
+[object Object]
 
 ---
 
-##### `timeouts`<sup>Optional</sup> <a name="timeouts" id="my-module.EksManagedNodegroupOptions.property.timeouts"></a>
+##### `timeouts`<sup>Optional</sup> <a name="timeouts" id="my-module.EksManagedNodegroupConfig.property.timeouts"></a>
 
 ```typescript
 public readonly timeouts: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
-Create, update, and delete timeout configurations for the node group.
+Create, update, and delete timeout configurations for the node group [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
-##### `updateConfig`<sup>Optional</sup> <a name="updateConfig" id="my-module.EksManagedNodegroupOptions.property.updateConfig"></a>
+##### `updateConfig`<sup>Optional</sup> <a name="updateConfig" id="my-module.EksManagedNodegroupConfig.property.updateConfig"></a>
 
 ```typescript
 public readonly updateConfig: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
 
-Configuration block of settings for max unavailable resources during node group updates.
+Configuration block of settings for max unavailable resources during node group updates [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
-##### `updateLaunchTemplateDefaultVersion`<sup>Optional</sup> <a name="updateLaunchTemplateDefaultVersion" id="my-module.EksManagedNodegroupOptions.property.updateLaunchTemplateDefaultVersion"></a>
+##### `updateLaunchTemplateDefaultVersion`<sup>Optional</sup> <a name="updateLaunchTemplateDefaultVersion" id="my-module.EksManagedNodegroupConfig.property.updateLaunchTemplateDefaultVersion"></a>
 
 ```typescript
 public readonly updateLaunchTemplateDefaultVersion: boolean;
 ```
 
 - *Type:* boolean
-- *Default:* true
 
 Whether to update the launch templates default version on each update.
 
 Conflicts with `launch_template_default_version`
+true
 
 ---
 
-##### `useNamePrefix`<sup>Optional</sup> <a name="useNamePrefix" id="my-module.EksManagedNodegroupOptions.property.useNamePrefix"></a>
+##### `useNamePrefix`<sup>Optional</sup> <a name="useNamePrefix" id="my-module.EksManagedNodegroupConfig.property.useNamePrefix"></a>
 
 ```typescript
 public readonly useNamePrefix: boolean;
 ```
 
 - *Type:* boolean
-- *Default:* true
 
-Determines whether to use `name` as is or create a unique name beginning with the `name` as the prefix.
+Determines whether to use `name` as is or create a unique name beginning with the `name` as the prefix true.
 
 ---
 
-##### `userDataTemplatePath`<sup>Optional</sup> <a name="userDataTemplatePath" id="my-module.EksManagedNodegroupOptions.property.userDataTemplatePath"></a>
+##### `userDataTemplatePath`<sup>Optional</sup> <a name="userDataTemplatePath" id="my-module.EksManagedNodegroupConfig.property.userDataTemplatePath"></a>
 
 ```typescript
 public readonly userDataTemplatePath: string;
@@ -4113,7 +5375,7 @@ Path to a local, custom user data template file to use when rendering user data.
 
 ---
 
-##### `vpcId`<sup>Optional</sup> <a name="vpcId" id="my-module.EksManagedNodegroupOptions.property.vpcId"></a>
+##### `vpcId`<sup>Optional</sup> <a name="vpcId" id="my-module.EksManagedNodegroupConfig.property.vpcId"></a>
 
 ```typescript
 public readonly vpcId: string;
@@ -4125,7 +5387,7 @@ ID of the VPC where the security group/nodes will be provisioned.
 
 ---
 
-##### `vpcSecurityGroupIds`<sup>Optional</sup> <a name="vpcSecurityGroupIds" id="my-module.EksManagedNodegroupOptions.property.vpcSecurityGroupIds"></a>
+##### `vpcSecurityGroupIds`<sup>Optional</sup> <a name="vpcSecurityGroupIds" id="my-module.EksManagedNodegroupConfig.property.vpcSecurityGroupIds"></a>
 
 ```typescript
 public readonly vpcSecurityGroupIds: string[];
@@ -4134,1289 +5396,6 @@ public readonly vpcSecurityGroupIds: string[];
 - *Type:* string[]
 
 A list of security group IDs to associate.
-
----
-
-### EksOptions <a name="EksOptions" id="my-module.EksOptions"></a>
-
-#### Initializer <a name="Initializer" id="my-module.EksOptions.Initializer"></a>
-
-```typescript
-import { EksOptions } from 'my-module'
-
-const eksOptions: EksOptions = { ... }
-```
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#my-module.EksOptions.property.dependsOn">dependsOn</a></code> | <code>cdktf.ITerraformDependable[]</code> | *No description.* |
-| <code><a href="#my-module.EksOptions.property.forEach">forEach</a></code> | <code>cdktf.ITerraformIterator</code> | *No description.* |
-| <code><a href="#my-module.EksOptions.property.providers">providers</a></code> | <code>cdktf.TerraformProvider \| cdktf.TerraformModuleProvider[]</code> | *No description.* |
-| <code><a href="#my-module.EksOptions.property.skipAssetCreationFromLocalModules">skipAssetCreationFromLocalModules</a></code> | <code>boolean</code> | *No description.* |
-| <code><a href="#my-module.EksOptions.property.attachClusterEncryptionPolicy">attachClusterEncryptionPolicy</a></code> | <code>boolean</code> | Indicates whether or not to attach an additional policy for the cluster IAM role to utilize the encryption key provided. |
-| <code><a href="#my-module.EksOptions.property.awsAuthAccounts">awsAuthAccounts</a></code> | <code>any[]</code> | List of account maps to add to the aws-auth configmap. |
-| <code><a href="#my-module.EksOptions.property.awsAuthFargateProfilePodExecutionRoleArns">awsAuthFargateProfilePodExecutionRoleArns</a></code> | <code>string[]</code> | List of Fargate profile pod execution role ARNs to add to the aws-auth configmap. |
-| <code><a href="#my-module.EksOptions.property.awsAuthNodeIamRoleArnsNonWindows">awsAuthNodeIamRoleArnsNonWindows</a></code> | <code>string[]</code> | List of non-Windows based node IAM role ARNs to add to the aws-auth configmap. |
-| <code><a href="#my-module.EksOptions.property.awsAuthNodeIamRoleArnsWindows">awsAuthNodeIamRoleArnsWindows</a></code> | <code>string[]</code> | List of Windows based node IAM role ARNs to add to the aws-auth configmap. |
-| <code><a href="#my-module.EksOptions.property.awsAuthRoles">awsAuthRoles</a></code> | <code>any[]</code> | List of role maps to add to the aws-auth configmap. |
-| <code><a href="#my-module.EksOptions.property.awsAuthUsers">awsAuthUsers</a></code> | <code>any[]</code> | List of user maps to add to the aws-auth configmap. |
-| <code><a href="#my-module.EksOptions.property.cloudwatchLogGroupKmsKeyId">cloudwatchLogGroupKmsKeyId</a></code> | <code>string</code> | If a KMS Key ARN is set, this key will be used to encrypt the corresponding log group. |
-| <code><a href="#my-module.EksOptions.property.cloudwatchLogGroupRetentionInDays">cloudwatchLogGroupRetentionInDays</a></code> | <code>number</code> | Number of days to retain log events. |
-| <code><a href="#my-module.EksOptions.property.clusterAdditionalSecurityGroupIds">clusterAdditionalSecurityGroupIds</a></code> | <code>string[]</code> | List of additional, externally created security group IDs to attach to the cluster control plane. |
-| <code><a href="#my-module.EksOptions.property.clusterAddons">clusterAddons</a></code> | <code>any</code> | Map of cluster addon configurations to enable for the cluster. |
-| <code><a href="#my-module.EksOptions.property.clusterEnabledLogTypes">clusterEnabledLogTypes</a></code> | <code>string[]</code> | A list of the desired control plane logs to enable. |
-| <code><a href="#my-module.EksOptions.property.clusterEncryptionConfig">clusterEncryptionConfig</a></code> | <code>any[]</code> | Configuration block with encryption configuration for the cluster. |
-| <code><a href="#my-module.EksOptions.property.clusterEncryptionPolicyDescription">clusterEncryptionPolicyDescription</a></code> | <code>string</code> | Description of the cluster encryption policy created. |
-| <code><a href="#my-module.EksOptions.property.clusterEncryptionPolicyName">clusterEncryptionPolicyName</a></code> | <code>string</code> | Name to use on cluster encryption policy created. |
-| <code><a href="#my-module.EksOptions.property.clusterEncryptionPolicyPath">clusterEncryptionPolicyPath</a></code> | <code>string</code> | Cluster encryption policy path. |
-| <code><a href="#my-module.EksOptions.property.clusterEncryptionPolicyTags">clusterEncryptionPolicyTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the cluster encryption policy created. |
-| <code><a href="#my-module.EksOptions.property.clusterEncryptionPolicyUseNamePrefix">clusterEncryptionPolicyUseNamePrefix</a></code> | <code>boolean</code> | Determines whether cluster encryption policy name (`cluster_encryption_policy_name`) is used as a prefix. |
-| <code><a href="#my-module.EksOptions.property.clusterEndpointPrivateAccess">clusterEndpointPrivateAccess</a></code> | <code>boolean</code> | Indicates whether or not the Amazon EKS private API server endpoint is enabled. |
-| <code><a href="#my-module.EksOptions.property.clusterEndpointPublicAccess">clusterEndpointPublicAccess</a></code> | <code>boolean</code> | Indicates whether or not the Amazon EKS public API server endpoint is enabled. |
-| <code><a href="#my-module.EksOptions.property.clusterEndpointPublicAccessCidrs">clusterEndpointPublicAccessCidrs</a></code> | <code>string[]</code> | List of CIDR blocks which can access the Amazon EKS public API server endpoint. |
-| <code><a href="#my-module.EksOptions.property.clusterIamRoleDnsSuffix">clusterIamRoleDnsSuffix</a></code> | <code>string</code> | Base DNS domain name for the current partition (e.g., amazonaws.com in AWS Commercial, amazonaws.com.cn in AWS China). |
-| <code><a href="#my-module.EksOptions.property.clusterIdentityProviders">clusterIdentityProviders</a></code> | <code>any</code> | Map of cluster identity provider configurations to enable for the cluster. |
-| <code><a href="#my-module.EksOptions.property.clusterIpFamily">clusterIpFamily</a></code> | <code>string</code> | The IP family used to assign Kubernetes pod and service addresses. |
-| <code><a href="#my-module.EksOptions.property.clusterName">clusterName</a></code> | <code>string</code> | Name of the EKS cluster. |
-| <code><a href="#my-module.EksOptions.property.clusterSecurityGroupAdditionalRules">clusterSecurityGroupAdditionalRules</a></code> | <code>any</code> | List of additional security group rules to add to the cluster security group created. |
-| <code><a href="#my-module.EksOptions.property.clusterSecurityGroupDescription">clusterSecurityGroupDescription</a></code> | <code>string</code> | Description of the cluster security group created. |
-| <code><a href="#my-module.EksOptions.property.clusterSecurityGroupId">clusterSecurityGroupId</a></code> | <code>string</code> | Existing security group ID to be attached to the cluster. |
-| <code><a href="#my-module.EksOptions.property.clusterSecurityGroupName">clusterSecurityGroupName</a></code> | <code>string</code> | Name to use on cluster security group created. |
-| <code><a href="#my-module.EksOptions.property.clusterSecurityGroupTags">clusterSecurityGroupTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the cluster security group created. |
-| <code><a href="#my-module.EksOptions.property.clusterSecurityGroupUseNamePrefix">clusterSecurityGroupUseNamePrefix</a></code> | <code>boolean</code> | Determines whether cluster security group name (`cluster_security_group_name`) is used as a prefix. |
-| <code><a href="#my-module.EksOptions.property.clusterServiceIpv4Cidr">clusterServiceIpv4Cidr</a></code> | <code>string</code> | The CIDR block to assign Kubernetes service IP addresses from. |
-| <code><a href="#my-module.EksOptions.property.clusterTags">clusterTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the cluster. |
-| <code><a href="#my-module.EksOptions.property.clusterTimeouts">clusterTimeouts</a></code> | <code>{[ key: string ]: string}</code> | Create, update, and delete timeout configurations for the cluster. |
-| <code><a href="#my-module.EksOptions.property.clusterVersion">clusterVersion</a></code> | <code>string</code> | Kubernetes `<major>.<minor>` version to use for the EKS cluster (i.e.: `1.24`). |
-| <code><a href="#my-module.EksOptions.property.controlPlaneSubnetIds">controlPlaneSubnetIds</a></code> | <code>string[]</code> | A list of subnet IDs where the EKS cluster control plane (ENIs) will be provisioned. |
-| <code><a href="#my-module.EksOptions.property.create">create</a></code> | <code>boolean</code> | Controls if EKS resources should be created (affects nearly all resources). |
-| <code><a href="#my-module.EksOptions.property.createAwsAuthConfigmap">createAwsAuthConfigmap</a></code> | <code>boolean</code> | Determines whether to create the aws-auth configmap. |
-| <code><a href="#my-module.EksOptions.property.createCloudwatchLogGroup">createCloudwatchLogGroup</a></code> | <code>boolean</code> | Determines whether a log group is created by this module for the cluster logs. |
-| <code><a href="#my-module.EksOptions.property.createClusterPrimarySecurityGroupTags">createClusterPrimarySecurityGroupTags</a></code> | <code>boolean</code> | Indicates whether or not to tag the cluster's primary security group. |
-| <code><a href="#my-module.EksOptions.property.createClusterSecurityGroup">createClusterSecurityGroup</a></code> | <code>boolean</code> | Determines if a security group is created for the cluster or use the existing `cluster_security_group_id`. |
-| <code><a href="#my-module.EksOptions.property.createCniIpv6IamPolicy">createCniIpv6IamPolicy</a></code> | <code>boolean</code> | Determines whether to create an [`AmazonEKS_CNI_IPv6_Policy`](https://docs.aws.amazon.com/eks/latest/userguide/cni-iam-role.html#cni-iam-role-create-ipv6-policy). |
-| <code><a href="#my-module.EksOptions.property.createIamRole">createIamRole</a></code> | <code>boolean</code> | Determines whether a an IAM role is created or to use an existing IAM role. |
-| <code><a href="#my-module.EksOptions.property.createKmsKey">createKmsKey</a></code> | <code>boolean</code> | Controls if a KMS key for cluster encryption should be created. |
-| <code><a href="#my-module.EksOptions.property.createNodeSecurityGroup">createNodeSecurityGroup</a></code> | <code>boolean</code> | Determines whether to create a security group for the node groups or use the existing `node_security_group_id`. |
-| <code><a href="#my-module.EksOptions.property.customOidcThumbprints">customOidcThumbprints</a></code> | <code>string[]</code> | Additional list of server certificate thumbprints for the OpenID Connect (OIDC) identity provider's server certificate(s). |
-| <code><a href="#my-module.EksOptions.property.eksManagedNodeGroupDefaults">eksManagedNodeGroupDefaults</a></code> | <code>any</code> | Map of EKS managed node group default configurations. |
-| <code><a href="#my-module.EksOptions.property.eksManagedNodeGroups">eksManagedNodeGroups</a></code> | <code>any</code> | Map of EKS managed node group definitions to create. |
-| <code><a href="#my-module.EksOptions.property.enableIrsa">enableIrsa</a></code> | <code>boolean</code> | Determines whether to create an OpenID Connect Provider for EKS to enable IRSA. |
-| <code><a href="#my-module.EksOptions.property.enableKmsKeyRotation">enableKmsKeyRotation</a></code> | <code>boolean</code> | Specifies whether key rotation is enabled. |
-| <code><a href="#my-module.EksOptions.property.fargateProfileDefaults">fargateProfileDefaults</a></code> | <code>any</code> | Map of Fargate Profile default configurations. |
-| <code><a href="#my-module.EksOptions.property.fargateProfiles">fargateProfiles</a></code> | <code>any</code> | Map of Fargate Profile definitions to create. |
-| <code><a href="#my-module.EksOptions.property.iamRoleAdditionalPolicies">iamRoleAdditionalPolicies</a></code> | <code>string[]</code> | Additional policies to be added to the IAM role. |
-| <code><a href="#my-module.EksOptions.property.iamRoleArn">iamRoleArn</a></code> | <code>string</code> | Existing IAM role ARN for the cluster. |
-| <code><a href="#my-module.EksOptions.property.iamRoleDescription">iamRoleDescription</a></code> | <code>string</code> | Description of the role. |
-| <code><a href="#my-module.EksOptions.property.iamRoleName">iamRoleName</a></code> | <code>string</code> | Name to use on IAM role created. |
-| <code><a href="#my-module.EksOptions.property.iamRolePath">iamRolePath</a></code> | <code>string</code> | Cluster IAM role path. |
-| <code><a href="#my-module.EksOptions.property.iamRolePermissionsBoundary">iamRolePermissionsBoundary</a></code> | <code>string</code> | ARN of the policy that is used to set the permissions boundary for the IAM role. |
-| <code><a href="#my-module.EksOptions.property.iamRoleTags">iamRoleTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the IAM role created. |
-| <code><a href="#my-module.EksOptions.property.iamRoleUseNamePrefix">iamRoleUseNamePrefix</a></code> | <code>boolean</code> | Determines whether the IAM role name (`iam_role_name`) is used as a prefix. |
-| <code><a href="#my-module.EksOptions.property.kmsKeyAdministrators">kmsKeyAdministrators</a></code> | <code>string[]</code> | A list of IAM ARNs for [key administrators](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#key-policy-default-allow-administrators). If no value is provided, the current caller identity is used to ensure at least one key admin is available. |
-| <code><a href="#my-module.EksOptions.property.kmsKeyAliases">kmsKeyAliases</a></code> | <code>string[]</code> | A list of aliases to create. |
-| <code><a href="#my-module.EksOptions.property.kmsKeyDeletionWindowInDays">kmsKeyDeletionWindowInDays</a></code> | <code>number</code> | The waiting period, specified in number of days. |
-| <code><a href="#my-module.EksOptions.property.kmsKeyDescription">kmsKeyDescription</a></code> | <code>string</code> | The description of the key as viewed in AWS console. |
-| <code><a href="#my-module.EksOptions.property.kmsKeyEnableDefaultPolicy">kmsKeyEnableDefaultPolicy</a></code> | <code>boolean</code> | Specifies whether to enable the default key policy. |
-| <code><a href="#my-module.EksOptions.property.kmsKeyOverridePolicyDocuments">kmsKeyOverridePolicyDocuments</a></code> | <code>string[]</code> | List of IAM policy documents that are merged together into the exported document. |
-| <code><a href="#my-module.EksOptions.property.kmsKeyOwners">kmsKeyOwners</a></code> | <code>string[]</code> | A list of IAM ARNs for those who will have full key permissions (`kms:*`). |
-| <code><a href="#my-module.EksOptions.property.kmsKeyServiceUsers">kmsKeyServiceUsers</a></code> | <code>string[]</code> | A list of IAM ARNs for [key service users](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#key-policy-service-integration). |
-| <code><a href="#my-module.EksOptions.property.kmsKeySourcePolicyDocuments">kmsKeySourcePolicyDocuments</a></code> | <code>string[]</code> | List of IAM policy documents that are merged together into the exported document. |
-| <code><a href="#my-module.EksOptions.property.kmsKeyUsers">kmsKeyUsers</a></code> | <code>string[]</code> | A list of IAM ARNs for [key users](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#key-policy-default-allow-users). |
-| <code><a href="#my-module.EksOptions.property.manageAwsAuthConfigmap">manageAwsAuthConfigmap</a></code> | <code>boolean</code> | Determines whether to manage the aws-auth configmap. |
-| <code><a href="#my-module.EksOptions.property.nodeSecurityGroupAdditionalRules">nodeSecurityGroupAdditionalRules</a></code> | <code>any</code> | List of additional security group rules to add to the node security group created. |
-| <code><a href="#my-module.EksOptions.property.nodeSecurityGroupDescription">nodeSecurityGroupDescription</a></code> | <code>string</code> | Description of the node security group created. |
-| <code><a href="#my-module.EksOptions.property.nodeSecurityGroupId">nodeSecurityGroupId</a></code> | <code>string</code> | ID of an existing security group to attach to the node groups created. |
-| <code><a href="#my-module.EksOptions.property.nodeSecurityGroupName">nodeSecurityGroupName</a></code> | <code>string</code> | Name to use on node security group created. |
-| <code><a href="#my-module.EksOptions.property.nodeSecurityGroupNtpIpv4CidrBlock">nodeSecurityGroupNtpIpv4CidrBlock</a></code> | <code>string[]</code> | IPv4 CIDR block to allow NTP egress. |
-| <code><a href="#my-module.EksOptions.property.nodeSecurityGroupNtpIpv6CidrBlock">nodeSecurityGroupNtpIpv6CidrBlock</a></code> | <code>string[]</code> | IPv4 CIDR block to allow NTP egress. |
-| <code><a href="#my-module.EksOptions.property.nodeSecurityGroupTags">nodeSecurityGroupTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the node security group created. |
-| <code><a href="#my-module.EksOptions.property.nodeSecurityGroupUseNamePrefix">nodeSecurityGroupUseNamePrefix</a></code> | <code>boolean</code> | Determines whether node security group name (`node_security_group_name`) is used as a prefix. |
-| <code><a href="#my-module.EksOptions.property.openidConnectAudiences">openidConnectAudiences</a></code> | <code>string[]</code> | List of OpenID Connect audience client IDs to add to the IRSA provider. |
-| <code><a href="#my-module.EksOptions.property.prefixSeparator">prefixSeparator</a></code> | <code>string</code> | The separator to use between the prefix and the generated timestamp for resource names. |
-| <code><a href="#my-module.EksOptions.property.putinKhuylo">putinKhuylo</a></code> | <code>boolean</code> | Do you agree that Putin doesn't respect Ukrainian sovereignty and territorial integrity? |
-| <code><a href="#my-module.EksOptions.property.selfManagedNodeGroupDefaults">selfManagedNodeGroupDefaults</a></code> | <code>any</code> | Map of self-managed node group default configurations. |
-| <code><a href="#my-module.EksOptions.property.selfManagedNodeGroups">selfManagedNodeGroups</a></code> | <code>any</code> | Map of self-managed node group definitions to create. |
-| <code><a href="#my-module.EksOptions.property.subnetIds">subnetIds</a></code> | <code>string[]</code> | A list of subnet IDs where the nodes/node groups will be provisioned. |
-| <code><a href="#my-module.EksOptions.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | A map of tags to add to all resources. |
-| <code><a href="#my-module.EksOptions.property.vpcId">vpcId</a></code> | <code>string</code> | ID of the VPC where the cluster and its nodes will be provisioned. |
-
----
-
-##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="my-module.EksOptions.property.dependsOn"></a>
-
-```typescript
-public readonly dependsOn: ITerraformDependable[];
-```
-
-- *Type:* cdktf.ITerraformDependable[]
-
----
-
-##### `forEach`<sup>Optional</sup> <a name="forEach" id="my-module.EksOptions.property.forEach"></a>
-
-```typescript
-public readonly forEach: ITerraformIterator;
-```
-
-- *Type:* cdktf.ITerraformIterator
-
----
-
-##### `providers`<sup>Optional</sup> <a name="providers" id="my-module.EksOptions.property.providers"></a>
-
-```typescript
-public readonly providers: TerraformProvider | TerraformModuleProvider[];
-```
-
-- *Type:* cdktf.TerraformProvider | cdktf.TerraformModuleProvider[]
-
----
-
-##### `skipAssetCreationFromLocalModules`<sup>Optional</sup> <a name="skipAssetCreationFromLocalModules" id="my-module.EksOptions.property.skipAssetCreationFromLocalModules"></a>
-
-```typescript
-public readonly skipAssetCreationFromLocalModules: boolean;
-```
-
-- *Type:* boolean
-
----
-
-##### `attachClusterEncryptionPolicy`<sup>Optional</sup> <a name="attachClusterEncryptionPolicy" id="my-module.EksOptions.property.attachClusterEncryptionPolicy"></a>
-
-```typescript
-public readonly attachClusterEncryptionPolicy: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Indicates whether or not to attach an additional policy for the cluster IAM role to utilize the encryption key provided.
-
----
-
-##### `awsAuthAccounts`<sup>Optional</sup> <a name="awsAuthAccounts" id="my-module.EksOptions.property.awsAuthAccounts"></a>
-
-```typescript
-public readonly awsAuthAccounts: any[];
-```
-
-- *Type:* any[]
-
-List of account maps to add to the aws-auth configmap.
-
----
-
-##### `awsAuthFargateProfilePodExecutionRoleArns`<sup>Optional</sup> <a name="awsAuthFargateProfilePodExecutionRoleArns" id="my-module.EksOptions.property.awsAuthFargateProfilePodExecutionRoleArns"></a>
-
-```typescript
-public readonly awsAuthFargateProfilePodExecutionRoleArns: string[];
-```
-
-- *Type:* string[]
-
-List of Fargate profile pod execution role ARNs to add to the aws-auth configmap.
-
----
-
-##### `awsAuthNodeIamRoleArnsNonWindows`<sup>Optional</sup> <a name="awsAuthNodeIamRoleArnsNonWindows" id="my-module.EksOptions.property.awsAuthNodeIamRoleArnsNonWindows"></a>
-
-```typescript
-public readonly awsAuthNodeIamRoleArnsNonWindows: string[];
-```
-
-- *Type:* string[]
-
-List of non-Windows based node IAM role ARNs to add to the aws-auth configmap.
-
----
-
-##### `awsAuthNodeIamRoleArnsWindows`<sup>Optional</sup> <a name="awsAuthNodeIamRoleArnsWindows" id="my-module.EksOptions.property.awsAuthNodeIamRoleArnsWindows"></a>
-
-```typescript
-public readonly awsAuthNodeIamRoleArnsWindows: string[];
-```
-
-- *Type:* string[]
-
-List of Windows based node IAM role ARNs to add to the aws-auth configmap.
-
----
-
-##### `awsAuthRoles`<sup>Optional</sup> <a name="awsAuthRoles" id="my-module.EksOptions.property.awsAuthRoles"></a>
-
-```typescript
-public readonly awsAuthRoles: any[];
-```
-
-- *Type:* any[]
-
-List of role maps to add to the aws-auth configmap.
-
----
-
-##### `awsAuthUsers`<sup>Optional</sup> <a name="awsAuthUsers" id="my-module.EksOptions.property.awsAuthUsers"></a>
-
-```typescript
-public readonly awsAuthUsers: any[];
-```
-
-- *Type:* any[]
-
-List of user maps to add to the aws-auth configmap.
-
----
-
-##### `cloudwatchLogGroupKmsKeyId`<sup>Optional</sup> <a name="cloudwatchLogGroupKmsKeyId" id="my-module.EksOptions.property.cloudwatchLogGroupKmsKeyId"></a>
-
-```typescript
-public readonly cloudwatchLogGroupKmsKeyId: string;
-```
-
-- *Type:* string
-
-If a KMS Key ARN is set, this key will be used to encrypt the corresponding log group.
-
-Please be sure that the KMS Key has an appropriate key policy (https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/encrypt-log-data-kms.html)
-
----
-
-##### `cloudwatchLogGroupRetentionInDays`<sup>Optional</sup> <a name="cloudwatchLogGroupRetentionInDays" id="my-module.EksOptions.property.cloudwatchLogGroupRetentionInDays"></a>
-
-```typescript
-public readonly cloudwatchLogGroupRetentionInDays: number;
-```
-
-- *Type:* number
-- *Default:* 90
-
-Number of days to retain log events.
-
-Default retention - 90 days
-
----
-
-##### `clusterAdditionalSecurityGroupIds`<sup>Optional</sup> <a name="clusterAdditionalSecurityGroupIds" id="my-module.EksOptions.property.clusterAdditionalSecurityGroupIds"></a>
-
-```typescript
-public readonly clusterAdditionalSecurityGroupIds: string[];
-```
-
-- *Type:* string[]
-
-List of additional, externally created security group IDs to attach to the cluster control plane.
-
----
-
-##### `clusterAddons`<sup>Optional</sup> <a name="clusterAddons" id="my-module.EksOptions.property.clusterAddons"></a>
-
-```typescript
-public readonly clusterAddons: any;
-```
-
-- *Type:* any
-- *Default:* [object Object]
-
-Map of cluster addon configurations to enable for the cluster.
-
-Addon name can be the map keys or set with `name`
-
----
-
-##### `clusterEnabledLogTypes`<sup>Optional</sup> <a name="clusterEnabledLogTypes" id="my-module.EksOptions.property.clusterEnabledLogTypes"></a>
-
-```typescript
-public readonly clusterEnabledLogTypes: string[];
-```
-
-- *Type:* string[]
-- *Default:* audit,api,authenticator
-
-A list of the desired control plane logs to enable.
-
-For more information, see Amazon EKS Control Plane Logging documentation (https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
-
----
-
-##### `clusterEncryptionConfig`<sup>Optional</sup> <a name="clusterEncryptionConfig" id="my-module.EksOptions.property.clusterEncryptionConfig"></a>
-
-```typescript
-public readonly clusterEncryptionConfig: any[];
-```
-
-- *Type:* any[]
-
-Configuration block with encryption configuration for the cluster.
-
----
-
-##### `clusterEncryptionPolicyDescription`<sup>Optional</sup> <a name="clusterEncryptionPolicyDescription" id="my-module.EksOptions.property.clusterEncryptionPolicyDescription"></a>
-
-```typescript
-public readonly clusterEncryptionPolicyDescription: string;
-```
-
-- *Type:* string
-- *Default:* Cluster encryption policy to allow cluster role to utilize CMK provided
-
-Description of the cluster encryption policy created.
-
----
-
-##### `clusterEncryptionPolicyName`<sup>Optional</sup> <a name="clusterEncryptionPolicyName" id="my-module.EksOptions.property.clusterEncryptionPolicyName"></a>
-
-```typescript
-public readonly clusterEncryptionPolicyName: string;
-```
-
-- *Type:* string
-
-Name to use on cluster encryption policy created.
-
----
-
-##### `clusterEncryptionPolicyPath`<sup>Optional</sup> <a name="clusterEncryptionPolicyPath" id="my-module.EksOptions.property.clusterEncryptionPolicyPath"></a>
-
-```typescript
-public readonly clusterEncryptionPolicyPath: string;
-```
-
-- *Type:* string
-
-Cluster encryption policy path.
-
----
-
-##### `clusterEncryptionPolicyTags`<sup>Optional</sup> <a name="clusterEncryptionPolicyTags" id="my-module.EksOptions.property.clusterEncryptionPolicyTags"></a>
-
-```typescript
-public readonly clusterEncryptionPolicyTags: {[ key: string ]: string};
-```
-
-- *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
-
-A map of additional tags to add to the cluster encryption policy created.
-
----
-
-##### `clusterEncryptionPolicyUseNamePrefix`<sup>Optional</sup> <a name="clusterEncryptionPolicyUseNamePrefix" id="my-module.EksOptions.property.clusterEncryptionPolicyUseNamePrefix"></a>
-
-```typescript
-public readonly clusterEncryptionPolicyUseNamePrefix: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Determines whether cluster encryption policy name (`cluster_encryption_policy_name`) is used as a prefix.
-
----
-
-##### `clusterEndpointPrivateAccess`<sup>Optional</sup> <a name="clusterEndpointPrivateAccess" id="my-module.EksOptions.property.clusterEndpointPrivateAccess"></a>
-
-```typescript
-public readonly clusterEndpointPrivateAccess: boolean;
-```
-
-- *Type:* boolean
-
-Indicates whether or not the Amazon EKS private API server endpoint is enabled.
-
----
-
-##### `clusterEndpointPublicAccess`<sup>Optional</sup> <a name="clusterEndpointPublicAccess" id="my-module.EksOptions.property.clusterEndpointPublicAccess"></a>
-
-```typescript
-public readonly clusterEndpointPublicAccess: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Indicates whether or not the Amazon EKS public API server endpoint is enabled.
-
----
-
-##### `clusterEndpointPublicAccessCidrs`<sup>Optional</sup> <a name="clusterEndpointPublicAccessCidrs" id="my-module.EksOptions.property.clusterEndpointPublicAccessCidrs"></a>
-
-```typescript
-public readonly clusterEndpointPublicAccessCidrs: string[];
-```
-
-- *Type:* string[]
-- *Default:* 0.0.0.0/0
-
-List of CIDR blocks which can access the Amazon EKS public API server endpoint.
-
----
-
-##### `clusterIamRoleDnsSuffix`<sup>Optional</sup> <a name="clusterIamRoleDnsSuffix" id="my-module.EksOptions.property.clusterIamRoleDnsSuffix"></a>
-
-```typescript
-public readonly clusterIamRoleDnsSuffix: string;
-```
-
-- *Type:* string
-
-Base DNS domain name for the current partition (e.g., amazonaws.com in AWS Commercial, amazonaws.com.cn in AWS China).
-
----
-
-##### `clusterIdentityProviders`<sup>Optional</sup> <a name="clusterIdentityProviders" id="my-module.EksOptions.property.clusterIdentityProviders"></a>
-
-```typescript
-public readonly clusterIdentityProviders: any;
-```
-
-- *Type:* any
-- *Default:* [object Object]
-
-Map of cluster identity provider configurations to enable for the cluster.
-
-Note - this is different/separate from IRSA
-
----
-
-##### `clusterIpFamily`<sup>Optional</sup> <a name="clusterIpFamily" id="my-module.EksOptions.property.clusterIpFamily"></a>
-
-```typescript
-public readonly clusterIpFamily: string;
-```
-
-- *Type:* string
-
-The IP family used to assign Kubernetes pod and service addresses.
-
-Valid values are `ipv4` (default) and `ipv6`. You can only specify an IP family when you create a cluster, changing this value will force a new cluster to be created
-
----
-
-##### `clusterName`<sup>Optional</sup> <a name="clusterName" id="my-module.EksOptions.property.clusterName"></a>
-
-```typescript
-public readonly clusterName: string;
-```
-
-- *Type:* string
-
-Name of the EKS cluster.
-
----
-
-##### `clusterSecurityGroupAdditionalRules`<sup>Optional</sup> <a name="clusterSecurityGroupAdditionalRules" id="my-module.EksOptions.property.clusterSecurityGroupAdditionalRules"></a>
-
-```typescript
-public readonly clusterSecurityGroupAdditionalRules: any;
-```
-
-- *Type:* any
-- *Default:* [object Object]
-
-List of additional security group rules to add to the cluster security group created.
-
-Set `source_node_security_group = true` inside rules to set the `node_security_group` as source
-
----
-
-##### `clusterSecurityGroupDescription`<sup>Optional</sup> <a name="clusterSecurityGroupDescription" id="my-module.EksOptions.property.clusterSecurityGroupDescription"></a>
-
-```typescript
-public readonly clusterSecurityGroupDescription: string;
-```
-
-- *Type:* string
-- *Default:* EKS cluster security group
-
-Description of the cluster security group created.
-
----
-
-##### `clusterSecurityGroupId`<sup>Optional</sup> <a name="clusterSecurityGroupId" id="my-module.EksOptions.property.clusterSecurityGroupId"></a>
-
-```typescript
-public readonly clusterSecurityGroupId: string;
-```
-
-- *Type:* string
-
-Existing security group ID to be attached to the cluster.
-
-Required if `create_cluster_security_group` = `false`
-
----
-
-##### `clusterSecurityGroupName`<sup>Optional</sup> <a name="clusterSecurityGroupName" id="my-module.EksOptions.property.clusterSecurityGroupName"></a>
-
-```typescript
-public readonly clusterSecurityGroupName: string;
-```
-
-- *Type:* string
-
-Name to use on cluster security group created.
-
----
-
-##### `clusterSecurityGroupTags`<sup>Optional</sup> <a name="clusterSecurityGroupTags" id="my-module.EksOptions.property.clusterSecurityGroupTags"></a>
-
-```typescript
-public readonly clusterSecurityGroupTags: {[ key: string ]: string};
-```
-
-- *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
-
-A map of additional tags to add to the cluster security group created.
-
----
-
-##### `clusterSecurityGroupUseNamePrefix`<sup>Optional</sup> <a name="clusterSecurityGroupUseNamePrefix" id="my-module.EksOptions.property.clusterSecurityGroupUseNamePrefix"></a>
-
-```typescript
-public readonly clusterSecurityGroupUseNamePrefix: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Determines whether cluster security group name (`cluster_security_group_name`) is used as a prefix.
-
----
-
-##### `clusterServiceIpv4Cidr`<sup>Optional</sup> <a name="clusterServiceIpv4Cidr" id="my-module.EksOptions.property.clusterServiceIpv4Cidr"></a>
-
-```typescript
-public readonly clusterServiceIpv4Cidr: string;
-```
-
-- *Type:* string
-
-The CIDR block to assign Kubernetes service IP addresses from.
-
-If you don't specify a block, Kubernetes assigns addresses from either the 10.100.0.0/16 or 172.20.0.0/16 CIDR blocks
-
----
-
-##### `clusterTags`<sup>Optional</sup> <a name="clusterTags" id="my-module.EksOptions.property.clusterTags"></a>
-
-```typescript
-public readonly clusterTags: {[ key: string ]: string};
-```
-
-- *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
-
-A map of additional tags to add to the cluster.
-
----
-
-##### `clusterTimeouts`<sup>Optional</sup> <a name="clusterTimeouts" id="my-module.EksOptions.property.clusterTimeouts"></a>
-
-```typescript
-public readonly clusterTimeouts: {[ key: string ]: string};
-```
-
-- *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
-
-Create, update, and delete timeout configurations for the cluster.
-
----
-
-##### `clusterVersion`<sup>Optional</sup> <a name="clusterVersion" id="my-module.EksOptions.property.clusterVersion"></a>
-
-```typescript
-public readonly clusterVersion: string;
-```
-
-- *Type:* string
-
-Kubernetes `<major>.<minor>` version to use for the EKS cluster (i.e.: `1.24`).
-
----
-
-##### `controlPlaneSubnetIds`<sup>Optional</sup> <a name="controlPlaneSubnetIds" id="my-module.EksOptions.property.controlPlaneSubnetIds"></a>
-
-```typescript
-public readonly controlPlaneSubnetIds: string[];
-```
-
-- *Type:* string[]
-
-A list of subnet IDs where the EKS cluster control plane (ENIs) will be provisioned.
-
-Used for expanding the pool of subnets used by nodes/node groups without replacing the EKS control plane
-
----
-
-##### `create`<sup>Optional</sup> <a name="create" id="my-module.EksOptions.property.create"></a>
-
-```typescript
-public readonly create: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Controls if EKS resources should be created (affects nearly all resources).
-
----
-
-##### `createAwsAuthConfigmap`<sup>Optional</sup> <a name="createAwsAuthConfigmap" id="my-module.EksOptions.property.createAwsAuthConfigmap"></a>
-
-```typescript
-public readonly createAwsAuthConfigmap: boolean;
-```
-
-- *Type:* boolean
-
-Determines whether to create the aws-auth configmap.
-
-NOTE - this is only intended for scenarios where the configmap does not exist (i.e. - when using only self-managed node groups). Most users should use `manage_aws_auth_configmap`
-
----
-
-##### `createCloudwatchLogGroup`<sup>Optional</sup> <a name="createCloudwatchLogGroup" id="my-module.EksOptions.property.createCloudwatchLogGroup"></a>
-
-```typescript
-public readonly createCloudwatchLogGroup: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Determines whether a log group is created by this module for the cluster logs.
-
-If not, AWS will automatically create one if logging is enabled
-
----
-
-##### `createClusterPrimarySecurityGroupTags`<sup>Optional</sup> <a name="createClusterPrimarySecurityGroupTags" id="my-module.EksOptions.property.createClusterPrimarySecurityGroupTags"></a>
-
-```typescript
-public readonly createClusterPrimarySecurityGroupTags: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Indicates whether or not to tag the cluster's primary security group.
-
-This security group is created by the EKS service, not the module, and therefore tagging is handled after cluster creation
-
----
-
-##### `createClusterSecurityGroup`<sup>Optional</sup> <a name="createClusterSecurityGroup" id="my-module.EksOptions.property.createClusterSecurityGroup"></a>
-
-```typescript
-public readonly createClusterSecurityGroup: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Determines if a security group is created for the cluster or use the existing `cluster_security_group_id`.
-
----
-
-##### `createCniIpv6IamPolicy`<sup>Optional</sup> <a name="createCniIpv6IamPolicy" id="my-module.EksOptions.property.createCniIpv6IamPolicy"></a>
-
-```typescript
-public readonly createCniIpv6IamPolicy: boolean;
-```
-
-- *Type:* boolean
-
-Determines whether to create an [`AmazonEKS_CNI_IPv6_Policy`](https://docs.aws.amazon.com/eks/latest/userguide/cni-iam-role.html#cni-iam-role-create-ipv6-policy).
-
----
-
-##### `createIamRole`<sup>Optional</sup> <a name="createIamRole" id="my-module.EksOptions.property.createIamRole"></a>
-
-```typescript
-public readonly createIamRole: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Determines whether a an IAM role is created or to use an existing IAM role.
-
----
-
-##### `createKmsKey`<sup>Optional</sup> <a name="createKmsKey" id="my-module.EksOptions.property.createKmsKey"></a>
-
-```typescript
-public readonly createKmsKey: boolean;
-```
-
-- *Type:* boolean
-
-Controls if a KMS key for cluster encryption should be created.
-
----
-
-##### `createNodeSecurityGroup`<sup>Optional</sup> <a name="createNodeSecurityGroup" id="my-module.EksOptions.property.createNodeSecurityGroup"></a>
-
-```typescript
-public readonly createNodeSecurityGroup: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Determines whether to create a security group for the node groups or use the existing `node_security_group_id`.
-
----
-
-##### `customOidcThumbprints`<sup>Optional</sup> <a name="customOidcThumbprints" id="my-module.EksOptions.property.customOidcThumbprints"></a>
-
-```typescript
-public readonly customOidcThumbprints: string[];
-```
-
-- *Type:* string[]
-
-Additional list of server certificate thumbprints for the OpenID Connect (OIDC) identity provider's server certificate(s).
-
----
-
-##### `eksManagedNodeGroupDefaults`<sup>Optional</sup> <a name="eksManagedNodeGroupDefaults" id="my-module.EksOptions.property.eksManagedNodeGroupDefaults"></a>
-
-```typescript
-public readonly eksManagedNodeGroupDefaults: any;
-```
-
-- *Type:* any
-- *Default:* [object Object]
-
-Map of EKS managed node group default configurations.
-
----
-
-##### `eksManagedNodeGroups`<sup>Optional</sup> <a name="eksManagedNodeGroups" id="my-module.EksOptions.property.eksManagedNodeGroups"></a>
-
-```typescript
-public readonly eksManagedNodeGroups: any;
-```
-
-- *Type:* any
-- *Default:* [object Object]
-
-Map of EKS managed node group definitions to create.
-
----
-
-##### `enableIrsa`<sup>Optional</sup> <a name="enableIrsa" id="my-module.EksOptions.property.enableIrsa"></a>
-
-```typescript
-public readonly enableIrsa: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Determines whether to create an OpenID Connect Provider for EKS to enable IRSA.
-
----
-
-##### `enableKmsKeyRotation`<sup>Optional</sup> <a name="enableKmsKeyRotation" id="my-module.EksOptions.property.enableKmsKeyRotation"></a>
-
-```typescript
-public readonly enableKmsKeyRotation: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Specifies whether key rotation is enabled.
-
-Defaults to `true`
-
----
-
-##### `fargateProfileDefaults`<sup>Optional</sup> <a name="fargateProfileDefaults" id="my-module.EksOptions.property.fargateProfileDefaults"></a>
-
-```typescript
-public readonly fargateProfileDefaults: any;
-```
-
-- *Type:* any
-- *Default:* [object Object]
-
-Map of Fargate Profile default configurations.
-
----
-
-##### `fargateProfiles`<sup>Optional</sup> <a name="fargateProfiles" id="my-module.EksOptions.property.fargateProfiles"></a>
-
-```typescript
-public readonly fargateProfiles: any;
-```
-
-- *Type:* any
-- *Default:* [object Object]
-
-Map of Fargate Profile definitions to create.
-
----
-
-##### `iamRoleAdditionalPolicies`<sup>Optional</sup> <a name="iamRoleAdditionalPolicies" id="my-module.EksOptions.property.iamRoleAdditionalPolicies"></a>
-
-```typescript
-public readonly iamRoleAdditionalPolicies: string[];
-```
-
-- *Type:* string[]
-
-Additional policies to be added to the IAM role.
-
----
-
-##### `iamRoleArn`<sup>Optional</sup> <a name="iamRoleArn" id="my-module.EksOptions.property.iamRoleArn"></a>
-
-```typescript
-public readonly iamRoleArn: string;
-```
-
-- *Type:* string
-
-Existing IAM role ARN for the cluster.
-
-Required if `create_iam_role` is set to `false`
-
----
-
-##### `iamRoleDescription`<sup>Optional</sup> <a name="iamRoleDescription" id="my-module.EksOptions.property.iamRoleDescription"></a>
-
-```typescript
-public readonly iamRoleDescription: string;
-```
-
-- *Type:* string
-
-Description of the role.
-
----
-
-##### `iamRoleName`<sup>Optional</sup> <a name="iamRoleName" id="my-module.EksOptions.property.iamRoleName"></a>
-
-```typescript
-public readonly iamRoleName: string;
-```
-
-- *Type:* string
-
-Name to use on IAM role created.
-
----
-
-##### `iamRolePath`<sup>Optional</sup> <a name="iamRolePath" id="my-module.EksOptions.property.iamRolePath"></a>
-
-```typescript
-public readonly iamRolePath: string;
-```
-
-- *Type:* string
-
-Cluster IAM role path.
-
----
-
-##### `iamRolePermissionsBoundary`<sup>Optional</sup> <a name="iamRolePermissionsBoundary" id="my-module.EksOptions.property.iamRolePermissionsBoundary"></a>
-
-```typescript
-public readonly iamRolePermissionsBoundary: string;
-```
-
-- *Type:* string
-
-ARN of the policy that is used to set the permissions boundary for the IAM role.
-
----
-
-##### `iamRoleTags`<sup>Optional</sup> <a name="iamRoleTags" id="my-module.EksOptions.property.iamRoleTags"></a>
-
-```typescript
-public readonly iamRoleTags: {[ key: string ]: string};
-```
-
-- *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
-
-A map of additional tags to add to the IAM role created.
-
----
-
-##### `iamRoleUseNamePrefix`<sup>Optional</sup> <a name="iamRoleUseNamePrefix" id="my-module.EksOptions.property.iamRoleUseNamePrefix"></a>
-
-```typescript
-public readonly iamRoleUseNamePrefix: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Determines whether the IAM role name (`iam_role_name`) is used as a prefix.
-
----
-
-##### `kmsKeyAdministrators`<sup>Optional</sup> <a name="kmsKeyAdministrators" id="my-module.EksOptions.property.kmsKeyAdministrators"></a>
-
-```typescript
-public readonly kmsKeyAdministrators: string[];
-```
-
-- *Type:* string[]
-
-A list of IAM ARNs for [key administrators](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#key-policy-default-allow-administrators). If no value is provided, the current caller identity is used to ensure at least one key admin is available.
-
----
-
-##### `kmsKeyAliases`<sup>Optional</sup> <a name="kmsKeyAliases" id="my-module.EksOptions.property.kmsKeyAliases"></a>
-
-```typescript
-public readonly kmsKeyAliases: string[];
-```
-
-- *Type:* string[]
-
-A list of aliases to create.
-
-Note - due to the use of `toset()`, values must be static strings and not computed values
-
----
-
-##### `kmsKeyDeletionWindowInDays`<sup>Optional</sup> <a name="kmsKeyDeletionWindowInDays" id="my-module.EksOptions.property.kmsKeyDeletionWindowInDays"></a>
-
-```typescript
-public readonly kmsKeyDeletionWindowInDays: number;
-```
-
-- *Type:* number
-
-The waiting period, specified in number of days.
-
-After the waiting period ends, AWS KMS deletes the KMS key. If you specify a value, it must be between `7` and `30`, inclusive. If you do not specify a value, it defaults to `30`
-
----
-
-##### `kmsKeyDescription`<sup>Optional</sup> <a name="kmsKeyDescription" id="my-module.EksOptions.property.kmsKeyDescription"></a>
-
-```typescript
-public readonly kmsKeyDescription: string;
-```
-
-- *Type:* string
-
-The description of the key as viewed in AWS console.
-
----
-
-##### `kmsKeyEnableDefaultPolicy`<sup>Optional</sup> <a name="kmsKeyEnableDefaultPolicy" id="my-module.EksOptions.property.kmsKeyEnableDefaultPolicy"></a>
-
-```typescript
-public readonly kmsKeyEnableDefaultPolicy: boolean;
-```
-
-- *Type:* boolean
-
-Specifies whether to enable the default key policy.
-
-Defaults to `false`
-
----
-
-##### `kmsKeyOverridePolicyDocuments`<sup>Optional</sup> <a name="kmsKeyOverridePolicyDocuments" id="my-module.EksOptions.property.kmsKeyOverridePolicyDocuments"></a>
-
-```typescript
-public readonly kmsKeyOverridePolicyDocuments: string[];
-```
-
-- *Type:* string[]
-
-List of IAM policy documents that are merged together into the exported document.
-
-In merging, statements with non-blank `sid`s will override statements with the same `sid`
-
----
-
-##### `kmsKeyOwners`<sup>Optional</sup> <a name="kmsKeyOwners" id="my-module.EksOptions.property.kmsKeyOwners"></a>
-
-```typescript
-public readonly kmsKeyOwners: string[];
-```
-
-- *Type:* string[]
-
-A list of IAM ARNs for those who will have full key permissions (`kms:*`).
-
----
-
-##### `kmsKeyServiceUsers`<sup>Optional</sup> <a name="kmsKeyServiceUsers" id="my-module.EksOptions.property.kmsKeyServiceUsers"></a>
-
-```typescript
-public readonly kmsKeyServiceUsers: string[];
-```
-
-- *Type:* string[]
-
-A list of IAM ARNs for [key service users](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#key-policy-service-integration).
-
----
-
-##### `kmsKeySourcePolicyDocuments`<sup>Optional</sup> <a name="kmsKeySourcePolicyDocuments" id="my-module.EksOptions.property.kmsKeySourcePolicyDocuments"></a>
-
-```typescript
-public readonly kmsKeySourcePolicyDocuments: string[];
-```
-
-- *Type:* string[]
-
-List of IAM policy documents that are merged together into the exported document.
-
-Statements must have unique `sid`s
-
----
-
-##### `kmsKeyUsers`<sup>Optional</sup> <a name="kmsKeyUsers" id="my-module.EksOptions.property.kmsKeyUsers"></a>
-
-```typescript
-public readonly kmsKeyUsers: string[];
-```
-
-- *Type:* string[]
-
-A list of IAM ARNs for [key users](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#key-policy-default-allow-users).
-
----
-
-##### `manageAwsAuthConfigmap`<sup>Optional</sup> <a name="manageAwsAuthConfigmap" id="my-module.EksOptions.property.manageAwsAuthConfigmap"></a>
-
-```typescript
-public readonly manageAwsAuthConfigmap: boolean;
-```
-
-- *Type:* boolean
-
-Determines whether to manage the aws-auth configmap.
-
----
-
-##### `nodeSecurityGroupAdditionalRules`<sup>Optional</sup> <a name="nodeSecurityGroupAdditionalRules" id="my-module.EksOptions.property.nodeSecurityGroupAdditionalRules"></a>
-
-```typescript
-public readonly nodeSecurityGroupAdditionalRules: any;
-```
-
-- *Type:* any
-- *Default:* [object Object]
-
-List of additional security group rules to add to the node security group created.
-
-Set `source_cluster_security_group = true` inside rules to set the `cluster_security_group` as source
-
----
-
-##### `nodeSecurityGroupDescription`<sup>Optional</sup> <a name="nodeSecurityGroupDescription" id="my-module.EksOptions.property.nodeSecurityGroupDescription"></a>
-
-```typescript
-public readonly nodeSecurityGroupDescription: string;
-```
-
-- *Type:* string
-- *Default:* EKS node shared security group
-
-Description of the node security group created.
-
----
-
-##### `nodeSecurityGroupId`<sup>Optional</sup> <a name="nodeSecurityGroupId" id="my-module.EksOptions.property.nodeSecurityGroupId"></a>
-
-```typescript
-public readonly nodeSecurityGroupId: string;
-```
-
-- *Type:* string
-
-ID of an existing security group to attach to the node groups created.
-
----
-
-##### `nodeSecurityGroupName`<sup>Optional</sup> <a name="nodeSecurityGroupName" id="my-module.EksOptions.property.nodeSecurityGroupName"></a>
-
-```typescript
-public readonly nodeSecurityGroupName: string;
-```
-
-- *Type:* string
-
-Name to use on node security group created.
-
----
-
-##### `nodeSecurityGroupNtpIpv4CidrBlock`<sup>Optional</sup> <a name="nodeSecurityGroupNtpIpv4CidrBlock" id="my-module.EksOptions.property.nodeSecurityGroupNtpIpv4CidrBlock"></a>
-
-```typescript
-public readonly nodeSecurityGroupNtpIpv4CidrBlock: string[];
-```
-
-- *Type:* string[]
-- *Default:* 0.0.0.0/0
-
-IPv4 CIDR block to allow NTP egress.
-
-Default is public IP space, but [Amazon Time Sync Service](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html) can be used as well with `["169.254.169.123/32"]`
-
----
-
-##### `nodeSecurityGroupNtpIpv6CidrBlock`<sup>Optional</sup> <a name="nodeSecurityGroupNtpIpv6CidrBlock" id="my-module.EksOptions.property.nodeSecurityGroupNtpIpv6CidrBlock"></a>
-
-```typescript
-public readonly nodeSecurityGroupNtpIpv6CidrBlock: string[];
-```
-
-- *Type:* string[]
-- *Default:* ::/0
-
-IPv4 CIDR block to allow NTP egress.
-
-Default is public IP space, but [Amazon Time Sync Service](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html) can be used as well with `["fd00:ec2::123/128"]`
-
----
-
-##### `nodeSecurityGroupTags`<sup>Optional</sup> <a name="nodeSecurityGroupTags" id="my-module.EksOptions.property.nodeSecurityGroupTags"></a>
-
-```typescript
-public readonly nodeSecurityGroupTags: {[ key: string ]: string};
-```
-
-- *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
-
-A map of additional tags to add to the node security group created.
-
----
-
-##### `nodeSecurityGroupUseNamePrefix`<sup>Optional</sup> <a name="nodeSecurityGroupUseNamePrefix" id="my-module.EksOptions.property.nodeSecurityGroupUseNamePrefix"></a>
-
-```typescript
-public readonly nodeSecurityGroupUseNamePrefix: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Determines whether node security group name (`node_security_group_name`) is used as a prefix.
-
----
-
-##### `openidConnectAudiences`<sup>Optional</sup> <a name="openidConnectAudiences" id="my-module.EksOptions.property.openidConnectAudiences"></a>
-
-```typescript
-public readonly openidConnectAudiences: string[];
-```
-
-- *Type:* string[]
-
-List of OpenID Connect audience client IDs to add to the IRSA provider.
-
----
-
-##### `prefixSeparator`<sup>Optional</sup> <a name="prefixSeparator" id="my-module.EksOptions.property.prefixSeparator"></a>
-
-```typescript
-public readonly prefixSeparator: string;
-```
-
-- *Type:* string
-- *Default:* 
-
-The separator to use between the prefix and the generated timestamp for resource names.
-
----
-
-##### `putinKhuylo`<sup>Optional</sup> <a name="putinKhuylo" id="my-module.EksOptions.property.putinKhuylo"></a>
-
-```typescript
-public readonly putinKhuylo: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Do you agree that Putin doesn't respect Ukrainian sovereignty and territorial integrity?
-
-More info: https://en.wikipedia.org/wiki/Putin_khuylo!
-
----
-
-##### `selfManagedNodeGroupDefaults`<sup>Optional</sup> <a name="selfManagedNodeGroupDefaults" id="my-module.EksOptions.property.selfManagedNodeGroupDefaults"></a>
-
-```typescript
-public readonly selfManagedNodeGroupDefaults: any;
-```
-
-- *Type:* any
-- *Default:* [object Object]
-
-Map of self-managed node group default configurations.
-
----
-
-##### `selfManagedNodeGroups`<sup>Optional</sup> <a name="selfManagedNodeGroups" id="my-module.EksOptions.property.selfManagedNodeGroups"></a>
-
-```typescript
-public readonly selfManagedNodeGroups: any;
-```
-
-- *Type:* any
-- *Default:* [object Object]
-
-Map of self-managed node group definitions to create.
-
----
-
-##### `subnetIds`<sup>Optional</sup> <a name="subnetIds" id="my-module.EksOptions.property.subnetIds"></a>
-
-```typescript
-public readonly subnetIds: string[];
-```
-
-- *Type:* string[]
-
-A list of subnet IDs where the nodes/node groups will be provisioned.
-
-If `control_plane_subnet_ids` is not provided, the EKS cluster control plane (ENIs) will be provisioned in these subnets
-
----
-
-##### `tags`<sup>Optional</sup> <a name="tags" id="my-module.EksOptions.property.tags"></a>
-
-```typescript
-public readonly tags: {[ key: string ]: string};
-```
-
-- *Type:* {[ key: string ]: string}
-- *Default:* [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}
-
-A map of tags to add to all resources.
-
----
-
-##### `vpcId`<sup>Optional</sup> <a name="vpcId" id="my-module.EksOptions.property.vpcId"></a>
-
-```typescript
-public readonly vpcId: string;
-```
-
-- *Type:* string
-
-ID of the VPC where the cluster and its nodes will be provisioned.
 
 ---
 

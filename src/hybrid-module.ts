@@ -29,7 +29,7 @@ export interface TerraformExamplesOption {
 export interface HybridModuleOptions extends ConstructLibraryOptions {
   /**
    * Minimum target version of this library.
-   * @default "0.15.0"
+   * @default "0.18.0"
    * @featured
    */
   readonly cdktfVersion?: string;
@@ -103,7 +103,7 @@ describe("MyConstruct", () => {
 const moduleSrcCode = `
 import { App } from "cdktf";
 import { Construct } from "constructs";
-import { TFModuleStack } from "cdktf-tf-module-stack";
+import { TFModuleStack } from "@cdktf/tf-module-stack";
 import { MyConstruct } from "./index";
 
 class MyAwesomeModule extends TFModuleStack {
@@ -178,7 +178,7 @@ export class HybridModule extends JsiiProject {
       postBuildSteps: [],
     });
     const constructVersion = options.constructVersion || "10.0.107";
-    const cdktfVersion = options.cdktfVersion || "0.15.0";
+    const cdktfVersion = options.cdktfVersion || "0.18.0";
 
     console.log({ cdktfVersion, constructVersion });
     this.addPeerDeps(`constructs@${constructVersion}`, `cdktf@${cdktfVersion}`);
@@ -191,7 +191,7 @@ export class HybridModule extends JsiiProject {
     this.setScript("terraform:test", "./scripts/tf-module-test.sh");
 
     // Module Entrypoint
-    this.addDeps("cdktf-tf-module-stack@>=0.2.0");
+    this.addDeps("@cdktf/tf-module-stack@>=3.0.0");
     const moduleDocs = `
 # My Awesome Module
 

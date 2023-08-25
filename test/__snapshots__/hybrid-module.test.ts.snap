@@ -843,15 +843,15 @@ Object {
     "organization": false,
   },
   "dependencies": Object {
-    "cdktf-tf-module-stack": ">=0.2.0",
+    "@cdktf/tf-module-stack": ">=3.0.0",
   },
   "devDependencies": Object {
     "@types/jest": "*",
     "@types/node": "^16",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
-    "cdktf": "0.15.0",
-    "cdktf-cli": "0.15.0",
+    "cdktf": "0.18.0",
+    "cdktf-cli": "0.18.0",
     "constructs": "10.0.107",
     "eslint": "^8",
     "eslint-config-prettier": "*",
@@ -936,7 +936,7 @@ Object {
   "main": "lib/index.js",
   "name": "my-module",
   "peerDependencies": Object {
-    "cdktf": "0.15.0",
+    "cdktf": "0.18.0",
     "constructs": "10.0.107",
   },
   "repository": Object {
@@ -1099,7 +1099,7 @@ module \\"eks_managed_node_group\\" {
 exports[`HybridModule snapshot: src/tfModules.ts 1`] = `
 "import { App } from \\"cdktf\\";
 import { Construct } from \\"constructs\\";
-import { TFModuleStack } from \\"cdktf-tf-module-stack\\";
+import { TFModuleStack } from \\"@cdktf/tf-module-stack\\";
 import { MyConstruct } from \\"./index\\";
 
 class MyAwesomeModule extends TFModuleStack {
