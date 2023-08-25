@@ -103,7 +103,7 @@ describe("MyConstruct", () => {
 const moduleSrcCode = `
 import { App } from "cdktf";
 import { Construct } from "constructs";
-import { TFModuleStack } from "cdktf-tf-module-stack";
+import { TFModuleStack } from "@cdktf/tf-module-stack";
 import { MyConstruct } from "./index";
 
 class MyAwesomeModule extends TFModuleStack {
@@ -191,7 +191,7 @@ export class HybridModule extends JsiiProject {
     this.setScript("terraform:test", "./scripts/tf-module-test.sh");
 
     // Module Entrypoint
-    this.addDeps("cdktf-tf-module-stack@>=0.2.0");
+    this.addDeps("@cdktf/tf-module-stack@>=3.0.0");
     const moduleDocs = `
 # My Awesome Module
 

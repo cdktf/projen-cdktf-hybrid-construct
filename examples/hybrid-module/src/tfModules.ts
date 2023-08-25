@@ -1,5 +1,5 @@
+import { TFModuleStack } from "@cdktf/tf-module-stack";
 import { App } from "cdktf";
-import { TFModuleStack } from "cdktf-tf-module-stack";
 import { Construct } from "constructs";
 import { MyConstruct } from "./index";
 

@@ -414,6 +414,11 @@
     fs-extra "^8.1.0"
     jsii-srcmak "^0.1.951"
 
+"@cdktf/tf-module-stack@>=3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@cdktf/tf-module-stack/-/tf-module-stack-3.0.0.tgz#19f10e40efe21d7a53a3b92a7fc7ae2f3d46fd80"
+  integrity sha512-FRI4yVztX5TAke4wl/ACaLJeIQczmWv4YS4J6QFfCed/opaQcWm1Flwo3M0qUIuQy2cF1Tg//8yPwgS+WXocmg==
+
 "@colors/colors@1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
@@ -2078,11 +2083,6 @@ cdktf-cli@0.18.0:
     yargs "^17.6"
     yoga-layout-prebuilt "^1.10.0"
     zod "^1.11.17"
-
-cdktf-tf-module-stack@>=0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/cdktf-tf-module-stack/-/cdktf-tf-module-stack-0.2.0.tgz#5d823ed84f9777b4f7a091f9febcc695780242fc"
-  integrity sha512-d5G4s6msyh3QZvrrMjpidqsovu6yprN2JQbaCXGMed88cL3W+D9/tA/E5e3nZonOmsoweYnHwWwGvygWtuloFQ==
 
 cdktf@0.18.0:
   version "0.18.0"
