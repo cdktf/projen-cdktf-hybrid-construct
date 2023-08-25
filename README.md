@@ -2,6 +2,11 @@
 
 Projen template for CDKTF Constructs that should also be used as Terraform Modules and for republishing Terraform Modules as Constructs.
 
+## Compatibility
+
+- `cdktf` >= 0.15.0
+- `constructs` >= 10.0.107
+
 ## Usage
 
 ### `HybridModule`

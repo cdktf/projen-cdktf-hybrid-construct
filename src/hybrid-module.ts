@@ -29,14 +29,14 @@ export interface TerraformExamplesOption {
 export interface HybridModuleOptions extends ConstructLibraryOptions {
   /**
    * Minimum target version of this library.
-   * @default "^0.13.0"
+   * @default "0.15.0"
    * @featured
    */
   readonly cdktfVersion?: string;
 
   /**
    * Construct version to use
-   * @default "^10.0.12"
+   * @default "^10.0.107"
    */
   readonly constructVersion?: string;
 
