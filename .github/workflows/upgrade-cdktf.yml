@@ -49,7 +49,7 @@ jobs:
             This PR initiates the upgrade of CDKTF from version `${{ steps.current_version.outputs.value }}` to version `${{ steps.latest_version.outputs.value }}`.
             Unfortunately, not everything can be automated, and the following steps need to be completed manually:
              
-            - [ ] Update `@cdktf/tf-module-stack` to a version compatible with `cdktf@${{ steps.latest_version.outputs.value }}` [here](https://github.com/cdktf/projen-cdktf-hybrid-construct/blob/ad6fff04398e309fa5f09e12b1c658f1a51937d5/src/hybrid-module.ts#L194). Look up the version [here](https://www.npmjs.com/package/@cdktf/tf-module-stack?activeTab=versions).
+            - [ ] Update `@cdktf/tf-module-stack` to a version compatible with `cdktf@${{ steps.latest_version.outputs.value }}` [here](https://github.com/cdktf/projen-cdktf-hybrid-construct/blob/62c33dca3eaa249b519edd82fa0889ffcd12c6eb/src/hybrid-module.ts#L194). Look up the version [here](https://www.npmjs.com/package/@cdktf/tf-module-stack?activeTab=versions).
             - [ ] Run `npx projen build`
              
             Please checkout this PR, complete the above steps, push the changes to this branch, and then mark this PR as ready for review to complete the upgrade. Thanks!
