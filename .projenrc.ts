@@ -8,6 +8,7 @@ import { NpmAccess, UpgradeDependenciesSchedule } from "projen/lib/javascript";
 import { AutoApprove } from "./projenrc/auto-approve";
 import { Automerge } from "./projenrc/automerge";
 import { CustomizedLicense } from "./projenrc/customized-license";
+import { UpgradeCDKTF } from "./projenrc/upgrade-cdktf";
 
 const name = "projen-cdktf-hybrid-construct";
 
@@ -72,6 +73,7 @@ project.addDevDeps(
 new CustomizedLicense(project);
 new AutoApprove(project);
 new Automerge(project);
+new UpgradeCDKTF(project);
 
 project.addPackageIgnore("examples");
 
