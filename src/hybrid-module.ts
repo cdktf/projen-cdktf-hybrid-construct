@@ -29,7 +29,7 @@ export interface TerraformExamplesOption {
 export interface HybridModuleOptions extends ConstructLibraryOptions {
   /**
    * Minimum target version of this library.
-   * @default "0.15.0"
+   * @default "0.18.0"
    * @featured
    */
   readonly cdktfVersion?: string;
@@ -178,7 +178,7 @@ export class HybridModule extends JsiiProject {
       postBuildSteps: [],
     });
     const constructVersion = options.constructVersion || "10.0.107";
-    const cdktfVersion = options.cdktfVersion || "0.15.0";
+    const cdktfVersion = options.cdktfVersion || "0.18.0";
 
     console.log({ cdktfVersion, constructVersion });
     this.addPeerDeps(`constructs@${constructVersion}`, `cdktf@${cdktfVersion}`);

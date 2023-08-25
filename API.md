@@ -4,7 +4,7 @@ Projen template for CDKTF Constructs that should also be used as Terraform Modul
 
 ## Compatibility
 
-- `cdktf` >= 0.15.0
+- `cdktf` >= 0.18.0
 - `constructs` >= 10.0.107
 
 ## Usage
@@ -2694,7 +2694,7 @@ public readonly cdktfVersion: string;
 ```
 
 - *Type:* string
-- *Default:* "0.15.0"
+- *Default:* "0.18.0"
 
 Minimum target version of this library.
 
@@ -5232,7 +5232,7 @@ public readonly cdktfVersion: string;
 ```
 
 - *Type:* string
-- *Default:* "0.15.0"
+- *Default:* "0.18.0"
 
 Minimum target version of this library.
 

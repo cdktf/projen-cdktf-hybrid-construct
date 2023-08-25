@@ -850,8 +850,8 @@ Object {
     "@types/node": "^16",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
-    "cdktf": "0.15.0",
-    "cdktf-cli": "0.15.0",
+    "cdktf": "0.18.0",
+    "cdktf-cli": "0.18.0",
     "constructs": "10.0.107",
     "eslint": "^8",
     "eslint-config-prettier": "*",
@@ -936,7 +936,7 @@ Object {
   "main": "lib/index.js",
   "name": "my-module",
   "peerDependencies": Object {
-    "cdktf": "0.15.0",
+    "cdktf": "0.18.0",
     "constructs": "10.0.107",
   },
   "repository": Object {
