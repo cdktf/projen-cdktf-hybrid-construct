@@ -121,12 +121,13 @@ Object.entries(githubActionPinnedVersions).forEach(([action, sha]) => {
   project.github?.actions.set(action, `${action}@${sha}`);
 });
 
-const releaseWorkflow = project.tryFindObjectFile(".github/workflows/release.yml");
+const releaseWorkflow = project.tryFindObjectFile(
+  ".github/workflows/release.yml"
+);
 releaseWorkflow?.addOverride("on.push", {
-  branches: [
-    "main",
-  ],
-  "paths-ignore": [ // don't do a release if the change was only to these files/directories
+  branches: ["main"],
+  "paths-ignore": [
+    // don't do a release if the change was only to these files/directories
     "examples/**",
     ".github/ISSUE_TEMPLATE/**",
     ".github/CODEOWNERS",
