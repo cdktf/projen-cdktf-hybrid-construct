@@ -99,10 +99,12 @@ project.addTask("upgrade:terraform", {
   cwd: "./examples/terraform-module",
 });
 project.removeTask("post-upgrade");
-project.addTask("post-upgrade", {
+const upgradeTask = project.addTask("post-upgrade", {
   description: "Runs after upgrading dependencies",
-  exec: "yarn compile && yarn projen upgrade:hybrid && yarn projen upgrade:terraform",
+  exec: "yarn build",
 });
+upgradeTask.exec("yarn projen upgrade:hybrid");
+upgradeTask.exec("yarn projen upgrade:terraform");
 
 project.testTask.exec("yarn buildExample");
 
