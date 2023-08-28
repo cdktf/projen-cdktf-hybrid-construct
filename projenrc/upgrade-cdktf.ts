@@ -36,6 +36,10 @@ export class UpgradeCDKTF {
             run: "yarn install",
           },
           {
+            name: "Install examples",
+            run: `ls -d examples/* | xargs -I {} bash -c "cd '{}' && yarn"`,
+          },
+          {
             name: "Get current CDKTF version",
             id: "current_version",
             run: [
@@ -64,8 +68,13 @@ export class UpgradeCDKTF {
             run: "scripts/update-cdktf.sh ${{ steps.latest_version.outputs.value }}",
           },
           {
+            name: "Check if there are any changes",
+            id: "get_changes",
+            run: `echo "changed=$(git status --porcelain | wc -l)" >> $GITHUB_OUTPUT`,
+          },
+          {
             name: "Create draft pull request",
-            if: "steps.current_version.outputs.short != steps.latest_version.outputs.short",
+            if: "steps.get_changes.outputs.changed != 0",
             uses: "peter-evans/create-pull-request@v3",
             with: {
               "commit-message":
