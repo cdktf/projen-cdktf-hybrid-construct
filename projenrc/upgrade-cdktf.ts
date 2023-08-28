@@ -36,10 +36,14 @@ export class UpgradeCDKTF {
             run: "yarn install",
           },
           {
+            name: "Install examples",
+            run: `ls -d examples/* | xargs -I {} bash -c "cd '{}' && yarn"`,
+          },
+          {
             name: "Get current CDKTF version",
             id: "current_version",
             run: [
-              `OLD_VERSION=$(cd examples/hybrid-module && yarn && npm list cdktf --depth=0 --json | jq -r '.dependencies.cdktf.version')`,
+              `OLD_VERSION=$(cd examples/hybrid-module && npm list cdktf --depth=0 --json | jq -r '.dependencies.cdktf.version')`,
               `OLD_VERSION_SHORT=$(cut -d "." -f 2 <<< "$OLD_VERSION")`,
               `echo "value=$OLD_VERSION" >> $GITHUB_OUTPUT`,
               `echo "short=$OLD_VERSION_SHORT" >> $GITHUB_OUTPUT`,
