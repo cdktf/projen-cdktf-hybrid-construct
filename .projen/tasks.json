@@ -215,7 +215,13 @@
       "description": "Runs after upgrading dependencies",
       "steps": [
         {
-          "exec": "yarn projen upgrade:hybrid && yarn projen upgrade:terraform"
+          "exec": "yarn compile"
+        },
+        {
+          "exec": "yarn projen upgrade:hybrid"
+        },
+        {
+          "exec": "yarn projen upgrade:terraform"
         }
       ]
     },
