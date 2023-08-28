@@ -39,7 +39,7 @@ export class UpgradeCDKTF {
             name: "Get current CDKTF version",
             id: "current_version",
             run: [
-              `OLD_VERSION=$(cd examples/hybrid-module && npm list cdktf --depth=0 --json | jq -r '.dependencies.cdktf.version')`,
+              `OLD_VERSION=$(cd examples/hybrid-module && yarn && npm list cdktf --depth=0 --json | jq -r '.dependencies.cdktf.version')`,
               `OLD_VERSION_SHORT=$(cut -d "." -f 2 <<< "$OLD_VERSION")`,
               `echo "value=$OLD_VERSION" >> $GITHUB_OUTPUT`,
               `echo "short=$OLD_VERSION_SHORT" >> $GITHUB_OUTPUT`,
@@ -64,8 +64,13 @@ export class UpgradeCDKTF {
             run: "scripts/update-cdktf.sh ${{ steps.latest_version.outputs.value }}",
           },
           {
+            name: "Check if there are any changes",
+            id: "get_changes",
+            run: `echo "changed=$(git status --porcelain | wc -l)" >> $GITHUB_OUTPUT`,
+          },
+          {
             name: "Create draft pull request",
-            if: "steps.current_version.outputs.short != steps.latest_version.outputs.short",
+            if: "steps.get_changes.outputs.changed != 0",
             uses: "peter-evans/create-pull-request@v3",
             with: {
               "commit-message":
