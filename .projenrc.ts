@@ -67,7 +67,6 @@ project.addDevDeps(
   "@types/glob",
   "@types/change-case",
   "ts-node@10.9.1",
-  "jsii-docgen@^9.0.0",
   "comment-json"
 );
 
