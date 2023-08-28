@@ -101,7 +101,7 @@ project.addTask("upgrade:terraform", {
 project.removeTask("post-upgrade");
 const upgradeTask = project.addTask("post-upgrade", {
   description: "Runs after upgrading dependencies",
-  exec: "yarn build",
+  exec: "yarn compile",
 });
 upgradeTask.exec("yarn projen upgrade:hybrid");
 upgradeTask.exec("yarn projen upgrade:terraform");

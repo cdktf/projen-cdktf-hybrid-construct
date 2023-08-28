@@ -215,7 +215,7 @@
       "description": "Runs after upgrading dependencies",
       "steps": [
         {
-          "exec": "yarn build"
+          "exec": "yarn compile"
         },
         {
           "exec": "yarn projen upgrade:hybrid"
