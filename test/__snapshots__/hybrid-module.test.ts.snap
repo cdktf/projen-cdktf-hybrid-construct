@@ -843,7 +843,7 @@ Object {
     "organization": false,
   },
   "dependencies": Object {
-    "@cdktf/tf-module-stack": ">=3.0.0",
+    "@cdktf/tf-module-stack": ">=4.0.0",
   },
   "devDependencies": Object {
     "@types/jest": "*",

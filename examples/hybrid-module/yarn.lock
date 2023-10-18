@@ -467,10 +467,10 @@
     "@cdktf/commons" "0.19.0"
     fs-extra "^11.1.1"
 
-"@cdktf/tf-module-stack@>=3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@cdktf/tf-module-stack/-/tf-module-stack-3.0.0.tgz#19f10e40efe21d7a53a3b92a7fc7ae2f3d46fd80"
-  integrity sha512-FRI4yVztX5TAke4wl/ACaLJeIQczmWv4YS4J6QFfCed/opaQcWm1Flwo3M0qUIuQy2cF1Tg//8yPwgS+WXocmg==
+"@cdktf/tf-module-stack@>=4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@cdktf/tf-module-stack/-/tf-module-stack-4.0.0.tgz#78f6b31507562dd1b0b1a395983f8505945cab48"
+  integrity sha512-XcKOs0h4f2j99bxdfGEaabkJCV/K8YQ16f92Zz6pKJ/HTf+cPSLRsjbMLy5hurHrgOY4cxbhtoTAM4WqpyhbUA==
 
 "@colors/colors@1.5.0":
   version "1.5.0"
