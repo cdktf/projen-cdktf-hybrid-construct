@@ -4,7 +4,7 @@ Projen template for CDKTF Constructs that should also be used as Terraform Modul
 
 ## Compatibility
 
-- `cdktf` >= 0.18.0
+- `cdktf` >= 0.19.0
 - `constructs` >= 10.0.107
 
 ## Usage
