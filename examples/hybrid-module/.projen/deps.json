@@ -21,12 +21,12 @@
     },
     {
       "name": "cdktf-cli",
-      "version": "0.18.0",
+      "version": "0.19.0",
       "type": "build"
     },
     {
       "name": "cdktf",
-      "version": "0.18.0",
+      "version": "0.19.0",
       "type": "build"
     },
     {
@@ -124,7 +124,7 @@
     },
     {
       "name": "cdktf",
-      "version": "0.18.0",
+      "version": "0.19.0",
       "type": "peer"
     },
     {
@@ -134,7 +134,7 @@
     },
     {
       "name": "@cdktf/tf-module-stack",
-      "version": ">=3.0.0",
+      "version": ">=4.0.0",
       "type": "runtime"
     }
   ],

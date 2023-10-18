@@ -3051,7 +3051,7 @@ const eksConfig: EksConfig = { ... }
 | <code><a href="#my-module.EksConfig.property.clusterEncryptionPolicyDescription">clusterEncryptionPolicyDescription</a></code> | <code>string</code> | Description of the cluster encryption policy created Cluster encryption policy to allow cluster role to utilize CMK provided. |
 | <code><a href="#my-module.EksConfig.property.clusterEncryptionPolicyName">clusterEncryptionPolicyName</a></code> | <code>string</code> | Name to use on cluster encryption policy created. |
 | <code><a href="#my-module.EksConfig.property.clusterEncryptionPolicyPath">clusterEncryptionPolicyPath</a></code> | <code>string</code> | Cluster encryption policy path. |
-| <code><a href="#my-module.EksConfig.property.clusterEncryptionPolicyTags">clusterEncryptionPolicyTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the cluster encryption policy created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksConfig.property.clusterEncryptionPolicyTags">clusterEncryptionPolicyTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the cluster encryption policy created The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
 | <code><a href="#my-module.EksConfig.property.clusterEncryptionPolicyUseNamePrefix">clusterEncryptionPolicyUseNamePrefix</a></code> | <code>boolean</code> | Determines whether cluster encryption policy name (`cluster_encryption_policy_name`) is used as a prefix true. |
 | <code><a href="#my-module.EksConfig.property.clusterEndpointPrivateAccess">clusterEndpointPrivateAccess</a></code> | <code>boolean</code> | Indicates whether or not the Amazon EKS private API server endpoint is enabled. |
 | <code><a href="#my-module.EksConfig.property.clusterEndpointPublicAccess">clusterEndpointPublicAccess</a></code> | <code>boolean</code> | Indicates whether or not the Amazon EKS public API server endpoint is enabled true. |
@@ -3064,11 +3064,11 @@ const eksConfig: EksConfig = { ... }
 | <code><a href="#my-module.EksConfig.property.clusterSecurityGroupDescription">clusterSecurityGroupDescription</a></code> | <code>string</code> | Description of the cluster security group created EKS cluster security group. |
 | <code><a href="#my-module.EksConfig.property.clusterSecurityGroupId">clusterSecurityGroupId</a></code> | <code>string</code> | Existing security group ID to be attached to the cluster. |
 | <code><a href="#my-module.EksConfig.property.clusterSecurityGroupName">clusterSecurityGroupName</a></code> | <code>string</code> | Name to use on cluster security group created. |
-| <code><a href="#my-module.EksConfig.property.clusterSecurityGroupTags">clusterSecurityGroupTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the cluster security group created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksConfig.property.clusterSecurityGroupTags">clusterSecurityGroupTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the cluster security group created The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
 | <code><a href="#my-module.EksConfig.property.clusterSecurityGroupUseNamePrefix">clusterSecurityGroupUseNamePrefix</a></code> | <code>boolean</code> | Determines whether cluster security group name (`cluster_security_group_name`) is used as a prefix true. |
 | <code><a href="#my-module.EksConfig.property.clusterServiceIpv4Cidr">clusterServiceIpv4Cidr</a></code> | <code>string</code> | The CIDR block to assign Kubernetes service IP addresses from. |
-| <code><a href="#my-module.EksConfig.property.clusterTags">clusterTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the cluster [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
-| <code><a href="#my-module.EksConfig.property.clusterTimeouts">clusterTimeouts</a></code> | <code>{[ key: string ]: string}</code> | Create, update, and delete timeout configurations for the cluster [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksConfig.property.clusterTags">clusterTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the cluster The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksConfig.property.clusterTimeouts">clusterTimeouts</a></code> | <code>{[ key: string ]: string}</code> | Create, update, and delete timeout configurations for the cluster The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
 | <code><a href="#my-module.EksConfig.property.clusterVersion">clusterVersion</a></code> | <code>string</code> | Kubernetes `<major>.<minor>` version to use for the EKS cluster (i.e.: `1.24`). |
 | <code><a href="#my-module.EksConfig.property.controlPlaneSubnetIds">controlPlaneSubnetIds</a></code> | <code>string[]</code> | A list of subnet IDs where the EKS cluster control plane (ENIs) will be provisioned. |
 | <code><a href="#my-module.EksConfig.property.create">create</a></code> | <code>boolean</code> | Controls if EKS resources should be created (affects nearly all resources) true. |
@@ -3081,19 +3081,19 @@ const eksConfig: EksConfig = { ... }
 | <code><a href="#my-module.EksConfig.property.createKmsKey">createKmsKey</a></code> | <code>boolean</code> | Controls if a KMS key for cluster encryption should be created. |
 | <code><a href="#my-module.EksConfig.property.createNodeSecurityGroup">createNodeSecurityGroup</a></code> | <code>boolean</code> | Determines whether to create a security group for the node groups or use the existing `node_security_group_id` true. |
 | <code><a href="#my-module.EksConfig.property.customOidcThumbprints">customOidcThumbprints</a></code> | <code>string[]</code> | Additional list of server certificate thumbprints for the OpenID Connect (OIDC) identity provider's server certificate(s). |
-| <code><a href="#my-module.EksConfig.property.eksManagedNodeGroupDefaults">eksManagedNodeGroupDefaults</a></code> | <code>any</code> | Map of EKS managed node group default configurations [object Object]. |
-| <code><a href="#my-module.EksConfig.property.eksManagedNodeGroups">eksManagedNodeGroups</a></code> | <code>any</code> | Map of EKS managed node group definitions to create [object Object]. |
+| <code><a href="#my-module.EksConfig.property.eksManagedNodeGroupDefaults">eksManagedNodeGroupDefaults</a></code> | <code>any</code> | Map of EKS managed node group default configurations. |
+| <code><a href="#my-module.EksConfig.property.eksManagedNodeGroups">eksManagedNodeGroups</a></code> | <code>any</code> | Map of EKS managed node group definitions to create. |
 | <code><a href="#my-module.EksConfig.property.enableIrsa">enableIrsa</a></code> | <code>boolean</code> | Determines whether to create an OpenID Connect Provider for EKS to enable IRSA true. |
 | <code><a href="#my-module.EksConfig.property.enableKmsKeyRotation">enableKmsKeyRotation</a></code> | <code>boolean</code> | Specifies whether key rotation is enabled. |
-| <code><a href="#my-module.EksConfig.property.fargateProfileDefaults">fargateProfileDefaults</a></code> | <code>any</code> | Map of Fargate Profile default configurations [object Object]. |
-| <code><a href="#my-module.EksConfig.property.fargateProfiles">fargateProfiles</a></code> | <code>any</code> | Map of Fargate Profile definitions to create [object Object]. |
+| <code><a href="#my-module.EksConfig.property.fargateProfileDefaults">fargateProfileDefaults</a></code> | <code>any</code> | Map of Fargate Profile default configurations. |
+| <code><a href="#my-module.EksConfig.property.fargateProfiles">fargateProfiles</a></code> | <code>any</code> | Map of Fargate Profile definitions to create. |
 | <code><a href="#my-module.EksConfig.property.iamRoleAdditionalPolicies">iamRoleAdditionalPolicies</a></code> | <code>string[]</code> | Additional policies to be added to the IAM role. |
 | <code><a href="#my-module.EksConfig.property.iamRoleArn">iamRoleArn</a></code> | <code>string</code> | Existing IAM role ARN for the cluster. |
 | <code><a href="#my-module.EksConfig.property.iamRoleDescription">iamRoleDescription</a></code> | <code>string</code> | Description of the role. |
 | <code><a href="#my-module.EksConfig.property.iamRoleName">iamRoleName</a></code> | <code>string</code> | Name to use on IAM role created. |
 | <code><a href="#my-module.EksConfig.property.iamRolePath">iamRolePath</a></code> | <code>string</code> | Cluster IAM role path. |
 | <code><a href="#my-module.EksConfig.property.iamRolePermissionsBoundary">iamRolePermissionsBoundary</a></code> | <code>string</code> | ARN of the policy that is used to set the permissions boundary for the IAM role. |
-| <code><a href="#my-module.EksConfig.property.iamRoleTags">iamRoleTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the IAM role created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksConfig.property.iamRoleTags">iamRoleTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the IAM role created The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
 | <code><a href="#my-module.EksConfig.property.iamRoleUseNamePrefix">iamRoleUseNamePrefix</a></code> | <code>boolean</code> | Determines whether the IAM role name (`iam_role_name`) is used as a prefix true. |
 | <code><a href="#my-module.EksConfig.property.kmsKeyAdministrators">kmsKeyAdministrators</a></code> | <code>string[]</code> | A list of IAM ARNs for [key administrators](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#key-policy-default-allow-administrators). If no value is provided, the current caller identity is used to ensure at least one key admin is available. |
 | <code><a href="#my-module.EksConfig.property.kmsKeyAliases">kmsKeyAliases</a></code> | <code>string[]</code> | A list of aliases to create. |
@@ -3112,15 +3112,15 @@ const eksConfig: EksConfig = { ... }
 | <code><a href="#my-module.EksConfig.property.nodeSecurityGroupName">nodeSecurityGroupName</a></code> | <code>string</code> | Name to use on node security group created. |
 | <code><a href="#my-module.EksConfig.property.nodeSecurityGroupNtpIpv4CidrBlock">nodeSecurityGroupNtpIpv4CidrBlock</a></code> | <code>string[]</code> | IPv4 CIDR block to allow NTP egress. |
 | <code><a href="#my-module.EksConfig.property.nodeSecurityGroupNtpIpv6CidrBlock">nodeSecurityGroupNtpIpv6CidrBlock</a></code> | <code>string[]</code> | IPv4 CIDR block to allow NTP egress. |
-| <code><a href="#my-module.EksConfig.property.nodeSecurityGroupTags">nodeSecurityGroupTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the node security group created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksConfig.property.nodeSecurityGroupTags">nodeSecurityGroupTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the node security group created The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
 | <code><a href="#my-module.EksConfig.property.nodeSecurityGroupUseNamePrefix">nodeSecurityGroupUseNamePrefix</a></code> | <code>boolean</code> | Determines whether node security group name (`node_security_group_name`) is used as a prefix true. |
 | <code><a href="#my-module.EksConfig.property.openidConnectAudiences">openidConnectAudiences</a></code> | <code>string[]</code> | List of OpenID Connect audience client IDs to add to the IRSA provider. |
 | <code><a href="#my-module.EksConfig.property.prefixSeparator">prefixSeparator</a></code> | <code>string</code> | The separator to use between the prefix and the generated timestamp for resource names -. |
 | <code><a href="#my-module.EksConfig.property.putinKhuylo">putinKhuylo</a></code> | <code>boolean</code> | Do you agree that Putin doesn't respect Ukrainian sovereignty and territorial integrity? |
-| <code><a href="#my-module.EksConfig.property.selfManagedNodeGroupDefaults">selfManagedNodeGroupDefaults</a></code> | <code>any</code> | Map of self-managed node group default configurations [object Object]. |
-| <code><a href="#my-module.EksConfig.property.selfManagedNodeGroups">selfManagedNodeGroups</a></code> | <code>any</code> | Map of self-managed node group definitions to create [object Object]. |
+| <code><a href="#my-module.EksConfig.property.selfManagedNodeGroupDefaults">selfManagedNodeGroupDefaults</a></code> | <code>any</code> | Map of self-managed node group default configurations. |
+| <code><a href="#my-module.EksConfig.property.selfManagedNodeGroups">selfManagedNodeGroups</a></code> | <code>any</code> | Map of self-managed node group definitions to create. |
 | <code><a href="#my-module.EksConfig.property.subnetIds">subnetIds</a></code> | <code>string[]</code> | A list of subnet IDs where the nodes/node groups will be provisioned. |
-| <code><a href="#my-module.EksConfig.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | A map of tags to add to all resources [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksConfig.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | A map of tags to add to all resources The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
 | <code><a href="#my-module.EksConfig.property.vpcId">vpcId</a></code> | <code>string</code> | ID of the VPC where the cluster and its nodes will be provisioned. |
 
 ---
@@ -3301,7 +3301,6 @@ public readonly clusterAddons: any;
 Map of cluster addon configurations to enable for the cluster.
 
 Addon name can be the map keys or set with `name`
-[object Object]
 
 ---
 
@@ -3316,7 +3315,9 @@ public readonly clusterEnabledLogTypes: string[];
 A list of the desired control plane logs to enable.
 
 For more information, see Amazon EKS Control Plane Logging documentation (https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
-audit,api,authenticator
+audit
+api
+authenticator
 
 ---
 
@@ -3376,7 +3377,7 @@ public readonly clusterEncryptionPolicyTags: {[ key: string ]: string};
 
 - *Type:* {[ key: string ]: string}
 
-A map of additional tags to add to the cluster encryption policy created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+A map of additional tags to add to the cluster encryption policy created The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
@@ -3451,7 +3452,6 @@ public readonly clusterIdentityProviders: any;
 Map of cluster identity provider configurations to enable for the cluster.
 
 Note - this is different/separate from IRSA
-[object Object]
 
 ---
 
@@ -3492,7 +3492,6 @@ public readonly clusterSecurityGroupAdditionalRules: any;
 List of additional security group rules to add to the cluster security group created.
 
 Set `source_node_security_group = true` inside rules to set the `node_security_group` as source
-[object Object]
 
 ---
 
@@ -3542,7 +3541,7 @@ public readonly clusterSecurityGroupTags: {[ key: string ]: string};
 
 - *Type:* {[ key: string ]: string}
 
-A map of additional tags to add to the cluster security group created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+A map of additional tags to add to the cluster security group created The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
@@ -3580,7 +3579,7 @@ public readonly clusterTags: {[ key: string ]: string};
 
 - *Type:* {[ key: string ]: string}
 
-A map of additional tags to add to the cluster [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+A map of additional tags to add to the cluster The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
@@ -3592,7 +3591,7 @@ public readonly clusterTimeouts: {[ key: string ]: string};
 
 - *Type:* {[ key: string ]: string}
 
-Create, update, and delete timeout configurations for the cluster [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+Create, update, and delete timeout configurations for the cluster The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
@@ -3758,7 +3757,7 @@ public readonly eksManagedNodeGroupDefaults: any;
 
 - *Type:* any
 
-Map of EKS managed node group default configurations [object Object].
+Map of EKS managed node group default configurations.
 
 ---
 
@@ -3770,7 +3769,7 @@ public readonly eksManagedNodeGroups: any;
 
 - *Type:* any
 
-Map of EKS managed node group definitions to create [object Object].
+Map of EKS managed node group definitions to create.
 
 ---
 
@@ -3809,7 +3808,7 @@ public readonly fargateProfileDefaults: any;
 
 - *Type:* any
 
-Map of Fargate Profile default configurations [object Object].
+Map of Fargate Profile default configurations.
 
 ---
 
@@ -3821,7 +3820,7 @@ public readonly fargateProfiles: any;
 
 - *Type:* any
 
-Map of Fargate Profile definitions to create [object Object].
+Map of Fargate Profile definitions to create.
 
 ---
 
@@ -3907,7 +3906,7 @@ public readonly iamRoleTags: {[ key: string ]: string};
 
 - *Type:* {[ key: string ]: string}
 
-A map of additional tags to add to the IAM role created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+A map of additional tags to add to the IAM role created The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
@@ -4076,7 +4075,6 @@ public readonly nodeSecurityGroupAdditionalRules: any;
 List of additional security group rules to add to the node security group created.
 
 Set `source_cluster_security_group = true` inside rules to set the `cluster_security_group` as source
-[object Object]
 
 ---
 
@@ -4154,7 +4152,7 @@ public readonly nodeSecurityGroupTags: {[ key: string ]: string};
 
 - *Type:* {[ key: string ]: string}
 
-A map of additional tags to add to the node security group created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+A map of additional tags to add to the node security group created The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
@@ -4217,7 +4215,7 @@ public readonly selfManagedNodeGroupDefaults: any;
 
 - *Type:* any
 
-Map of self-managed node group default configurations [object Object].
+Map of self-managed node group default configurations.
 
 ---
 
@@ -4229,7 +4227,7 @@ public readonly selfManagedNodeGroups: any;
 
 - *Type:* any
 
-Map of self-managed node group definitions to create [object Object].
+Map of self-managed node group definitions to create.
 
 ---
 
@@ -4255,7 +4253,7 @@ public readonly tags: {[ key: string ]: string};
 
 - *Type:* {[ key: string ]: string}
 
-A map of tags to add to all resources [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+A map of tags to add to all resources The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
@@ -4292,9 +4290,9 @@ const eksManagedNodegroupConfig: EksManagedNodegroupConfig = { ... }
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.amiId">amiId</a></code> | <code>string</code> | The AMI from which to launch the instance. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.amiReleaseVersion">amiReleaseVersion</a></code> | <code>string</code> | AMI version of the EKS Node Group. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.amiType">amiType</a></code> | <code>string</code> | Type of Amazon Machine Image (AMI) associated with the EKS Node Group. |
-| <code><a href="#my-module.EksManagedNodegroupConfig.property.blockDeviceMappings">blockDeviceMappings</a></code> | <code>any</code> | Specify volumes to attach to the instance besides the volumes specified by the AMI [object Object]. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.blockDeviceMappings">blockDeviceMappings</a></code> | <code>any</code> | Specify volumes to attach to the instance besides the volumes specified by the AMI. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.bootstrapExtraArgs">bootstrapExtraArgs</a></code> | <code>string</code> | Additional arguments passed to the bootstrap script. |
-| <code><a href="#my-module.EksManagedNodegroupConfig.property.capacityReservationSpecification">capacityReservationSpecification</a></code> | <code>any</code> | Targeting for EC2 capacity reservations [object Object]. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.capacityReservationSpecification">capacityReservationSpecification</a></code> | <code>any</code> | Targeting for EC2 capacity reservations. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.capacityType">capacityType</a></code> | <code>string</code> | Type of capacity associated with the EKS Node Group. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.clusterAuthBase64">clusterAuthBase64</a></code> | <code>string</code> | Base64 encoded CA of associated EKS cluster. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.clusterEndpoint">clusterEndpoint</a></code> | <code>string</code> | Endpoint of associated EKS cluster. |
@@ -4304,21 +4302,21 @@ const eksManagedNodegroupConfig: EksManagedNodegroupConfig = { ... }
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.clusterSecurityGroupId">clusterSecurityGroupId</a></code> | <code>string</code> | Cluster control plane security group ID. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.clusterServiceIpv4Cidr">clusterServiceIpv4Cidr</a></code> | <code>string</code> | The CIDR block to assign Kubernetes service IP addresses from. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.clusterVersion">clusterVersion</a></code> | <code>string</code> | Kubernetes version. |
-| <code><a href="#my-module.EksManagedNodegroupConfig.property.cpuOptions">cpuOptions</a></code> | <code>{[ key: string ]: string}</code> | The CPU options for the instance [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.cpuOptions">cpuOptions</a></code> | <code>{[ key: string ]: string}</code> | The CPU options for the instance The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.create">create</a></code> | <code>boolean</code> | Determines whether to create EKS managed node group or not true. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.createIamRole">createIamRole</a></code> | <code>boolean</code> | Determines whether an IAM role is created or to use an existing IAM role true. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.createLaunchTemplate">createLaunchTemplate</a></code> | <code>boolean</code> | Determines whether to create a launch template or not. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.createSecurityGroup">createSecurityGroup</a></code> | <code>boolean</code> | Determines whether to create a security group true. |
-| <code><a href="#my-module.EksManagedNodegroupConfig.property.creditSpecification">creditSpecification</a></code> | <code>{[ key: string ]: string}</code> | Customize the credit specification of the instance [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.creditSpecification">creditSpecification</a></code> | <code>{[ key: string ]: string}</code> | Customize the credit specification of the instance The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.desiredSize">desiredSize</a></code> | <code>number</code> | Desired number of instances/nodes 1. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.disableApiTermination">disableApiTermination</a></code> | <code>boolean</code> | If true, enables EC2 instance termination protection. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.diskSize">diskSize</a></code> | <code>number</code> | Disk size in GiB for nodes. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.ebsOptimized">ebsOptimized</a></code> | <code>boolean</code> | If true, the launched EC2 instance(s) will be EBS-optimized. |
-| <code><a href="#my-module.EksManagedNodegroupConfig.property.elasticGpuSpecifications">elasticGpuSpecifications</a></code> | <code>{[ key: string ]: string}</code> | The elastic GPU to attach to the instance [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
-| <code><a href="#my-module.EksManagedNodegroupConfig.property.elasticInferenceAccelerator">elasticInferenceAccelerator</a></code> | <code>{[ key: string ]: string}</code> | Configuration block containing an Elastic Inference Accelerator to attach to the instance [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.elasticGpuSpecifications">elasticGpuSpecifications</a></code> | <code>{[ key: string ]: string}</code> | The elastic GPU to attach to the instance The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.elasticInferenceAccelerator">elasticInferenceAccelerator</a></code> | <code>{[ key: string ]: string}</code> | Configuration block containing an Elastic Inference Accelerator to attach to the instance The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.enableBootstrapUserData">enableBootstrapUserData</a></code> | <code>boolean</code> | Determines whether the bootstrap configurations are populated within the user data template. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.enableMonitoring">enableMonitoring</a></code> | <code>boolean</code> | Enables/disables detailed monitoring true. |
-| <code><a href="#my-module.EksManagedNodegroupConfig.property.enclaveOptions">enclaveOptions</a></code> | <code>{[ key: string ]: string}</code> | Enable Nitro Enclaves on launched instances [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.enclaveOptions">enclaveOptions</a></code> | <code>{[ key: string ]: string}</code> | Enable Nitro Enclaves on launched instances The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.forceUpdateVersion">forceUpdateVersion</a></code> | <code>boolean</code> | Force version update if existing pods are unable to be drained due to a pod disruption budget issue. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.iamRoleAdditionalPolicies">iamRoleAdditionalPolicies</a></code> | <code>string[]</code> | Additional policies to be added to the IAM role. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.iamRoleArn">iamRoleArn</a></code> | <code>string</code> | Existing IAM role ARN for the node group. |
@@ -4327,9 +4325,9 @@ const eksManagedNodegroupConfig: EksManagedNodegroupConfig = { ... }
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.iamRoleName">iamRoleName</a></code> | <code>string</code> | Name to use on IAM role created. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.iamRolePath">iamRolePath</a></code> | <code>string</code> | IAM role path. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.iamRolePermissionsBoundary">iamRolePermissionsBoundary</a></code> | <code>string</code> | ARN of the policy that is used to set the permissions boundary for the IAM role. |
-| <code><a href="#my-module.EksManagedNodegroupConfig.property.iamRoleTags">iamRoleTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the IAM role created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.iamRoleTags">iamRoleTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the IAM role created The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.iamRoleUseNamePrefix">iamRoleUseNamePrefix</a></code> | <code>boolean</code> | Determines whether the IAM role name (`iam_role_name`) is used as a prefix true. |
-| <code><a href="#my-module.EksManagedNodegroupConfig.property.instanceMarketOptions">instanceMarketOptions</a></code> | <code>any</code> | The market (purchasing) option for the instance [object Object]. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.instanceMarketOptions">instanceMarketOptions</a></code> | <code>any</code> | The market (purchasing) option for the instance. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.instanceTypes">instanceTypes</a></code> | <code>string[]</code> | Set of instance types associated with the EKS Node Group. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.kernelId">kernelId</a></code> | <code>string</code> | The kernel ID. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.keyName">keyName</a></code> | <code>string</code> | The key name that should be used for the instance(s). |
@@ -4337,31 +4335,31 @@ const eksManagedNodegroupConfig: EksManagedNodegroupConfig = { ... }
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.launchTemplateDefaultVersion">launchTemplateDefaultVersion</a></code> | <code>string</code> | Default version of the launch template. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.launchTemplateDescription">launchTemplateDescription</a></code> | <code>string</code> | Description of the launch template. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.launchTemplateName">launchTemplateName</a></code> | <code>string</code> | Launch template name - either to be created (`var.create_launch_template` = `true`) or existing (`var.create_launch_template` = `false`). |
-| <code><a href="#my-module.EksManagedNodegroupConfig.property.launchTemplateTags">launchTemplateTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the tag_specifications of launch template created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.launchTemplateTags">launchTemplateTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the tag_specifications of launch template created The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.launchTemplateUseNamePrefix">launchTemplateUseNamePrefix</a></code> | <code>boolean</code> | Determines whether to use `launch_template_name` as is or create a unique name beginning with the `launch_template_name` as the prefix true. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.launchTemplateVersion">launchTemplateVersion</a></code> | <code>string</code> | Launch template version number. |
-| <code><a href="#my-module.EksManagedNodegroupConfig.property.licenseSpecifications">licenseSpecifications</a></code> | <code>{[ key: string ]: string}</code> | A list of license specifications to associate with [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.licenseSpecifications">licenseSpecifications</a></code> | <code>{[ key: string ]: string}</code> | A list of license specifications to associate with The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.maxSize">maxSize</a></code> | <code>number</code> | Maximum number of instances/nodes 3. |
-| <code><a href="#my-module.EksManagedNodegroupConfig.property.metadataOptions">metadataOptions</a></code> | <code>{[ key: string ]: string}</code> | Customize the metadata options for the instance [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.metadataOptions">metadataOptions</a></code> | <code>{[ key: string ]: string}</code> | Customize the metadata options for the instance The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.minSize">minSize</a></code> | <code>number</code> | Minimum number of instances/nodes. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.name">name</a></code> | <code>string</code> | Name of the EKS managed node group. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.networkInterfaces">networkInterfaces</a></code> | <code>any[]</code> | Customize network interfaces to be attached at instance boot time. |
-| <code><a href="#my-module.EksManagedNodegroupConfig.property.placement">placement</a></code> | <code>{[ key: string ]: string}</code> | The placement of the instance [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.placement">placement</a></code> | <code>{[ key: string ]: string}</code> | The placement of the instance The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.platform">platform</a></code> | <code>string</code> | Identifies if the OS platform is `bottlerocket` or `linux` based; |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.postBootstrapUserData">postBootstrapUserData</a></code> | <code>string</code> | User data that is appended to the user data script after of the EKS bootstrap script. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.preBootstrapUserData">preBootstrapUserData</a></code> | <code>string</code> | User data that is injected into the user data script ahead of the EKS bootstrap script. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.ramDiskId">ramDiskId</a></code> | <code>string</code> | The ID of the ram disk. |
-| <code><a href="#my-module.EksManagedNodegroupConfig.property.remoteAccess">remoteAccess</a></code> | <code>any</code> | Configuration block with remote access settings [object Object]. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.remoteAccess">remoteAccess</a></code> | <code>any</code> | Configuration block with remote access settings. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.securityGroupDescription">securityGroupDescription</a></code> | <code>string</code> | Description for the security group created EKS managed node group security group. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.securityGroupName">securityGroupName</a></code> | <code>string</code> | Name to use on security group created. |
-| <code><a href="#my-module.EksManagedNodegroupConfig.property.securityGroupRules">securityGroupRules</a></code> | <code>any</code> | List of security group rules to add to the security group created [object Object]. |
-| <code><a href="#my-module.EksManagedNodegroupConfig.property.securityGroupTags">securityGroupTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the security group created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.securityGroupRules">securityGroupRules</a></code> | <code>any</code> | List of security group rules to add to the security group created. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.securityGroupTags">securityGroupTags</a></code> | <code>{[ key: string ]: string}</code> | A map of additional tags to add to the security group created The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.securityGroupUseNamePrefix">securityGroupUseNamePrefix</a></code> | <code>boolean</code> | Determines whether the security group name (`security_group_name`) is used as a prefix true. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.subnetIds">subnetIds</a></code> | <code>string[]</code> | Identifiers of EC2 Subnets to associate with the EKS Node Group. |
-| <code><a href="#my-module.EksManagedNodegroupConfig.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | A map of tags to add to all resources [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | A map of tags to add to all resources The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.taints">taints</a></code> | <code>any</code> | The Kubernetes taints to be applied to the nodes in the node group. |
-| <code><a href="#my-module.EksManagedNodegroupConfig.property.timeouts">timeouts</a></code> | <code>{[ key: string ]: string}</code> | Create, update, and delete timeout configurations for the node group [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
-| <code><a href="#my-module.EksManagedNodegroupConfig.property.updateConfig">updateConfig</a></code> | <code>{[ key: string ]: string}</code> | Configuration block of settings for max unavailable resources during node group updates [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.timeouts">timeouts</a></code> | <code>{[ key: string ]: string}</code> | Create, update, and delete timeout configurations for the node group The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
+| <code><a href="#my-module.EksManagedNodegroupConfig.property.updateConfig">updateConfig</a></code> | <code>{[ key: string ]: string}</code> | Configuration block of settings for max unavailable resources during node group updates The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.updateLaunchTemplateDefaultVersion">updateLaunchTemplateDefaultVersion</a></code> | <code>boolean</code> | Whether to update the launch templates default version on each update. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.useNamePrefix">useNamePrefix</a></code> | <code>boolean</code> | Determines whether to use `name` as is or create a unique name beginning with the `name` as the prefix true. |
 | <code><a href="#my-module.EksManagedNodegroupConfig.property.userDataTemplatePath">userDataTemplatePath</a></code> | <code>string</code> | Path to a local, custom user data template file to use when rendering user data. |
@@ -4460,7 +4458,7 @@ public readonly blockDeviceMappings: any;
 
 - *Type:* any
 
-Specify volumes to attach to the instance besides the volumes specified by the AMI [object Object].
+Specify volumes to attach to the instance besides the volumes specified by the AMI.
 
 ---
 
@@ -4486,7 +4484,7 @@ public readonly capacityReservationSpecification: any;
 
 - *Type:* any
 
-Targeting for EC2 capacity reservations [object Object].
+Targeting for EC2 capacity reservations.
 
 ---
 
@@ -4617,7 +4615,7 @@ public readonly cpuOptions: {[ key: string ]: string};
 
 - *Type:* {[ key: string ]: string}
 
-The CPU options for the instance [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+The CPU options for the instance The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
@@ -4680,7 +4678,7 @@ public readonly creditSpecification: {[ key: string ]: string};
 
 - *Type:* {[ key: string ]: string}
 
-Customize the credit specification of the instance [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+Customize the credit specification of the instance The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
@@ -4742,7 +4740,7 @@ public readonly elasticGpuSpecifications: {[ key: string ]: string};
 
 - *Type:* {[ key: string ]: string}
 
-The elastic GPU to attach to the instance [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+The elastic GPU to attach to the instance The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
@@ -4754,7 +4752,7 @@ public readonly elasticInferenceAccelerator: {[ key: string ]: string};
 
 - *Type:* {[ key: string ]: string}
 
-Configuration block containing an Elastic Inference Accelerator to attach to the instance [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+Configuration block containing an Elastic Inference Accelerator to attach to the instance The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
@@ -4792,7 +4790,7 @@ public readonly enclaveOptions: {[ key: string ]: string};
 
 - *Type:* {[ key: string ]: string}
 
-Enable Nitro Enclaves on launched instances [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+Enable Nitro Enclaves on launched instances The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
@@ -4905,7 +4903,7 @@ public readonly iamRoleTags: {[ key: string ]: string};
 
 - *Type:* {[ key: string ]: string}
 
-A map of additional tags to add to the IAM role created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+A map of additional tags to add to the IAM role created The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
@@ -4929,7 +4927,7 @@ public readonly instanceMarketOptions: any;
 
 - *Type:* any
 
-The market (purchasing) option for the instance [object Object].
+The market (purchasing) option for the instance.
 
 ---
 
@@ -5030,7 +5028,7 @@ public readonly launchTemplateTags: {[ key: string ]: string};
 
 - *Type:* {[ key: string ]: string}
 
-A map of additional tags to add to the tag_specifications of launch template created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+A map of additional tags to add to the tag_specifications of launch template created The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
@@ -5068,7 +5066,7 @@ public readonly licenseSpecifications: {[ key: string ]: string};
 
 - *Type:* {[ key: string ]: string}
 
-A list of license specifications to associate with [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+A list of license specifications to associate with The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
@@ -5092,7 +5090,7 @@ public readonly metadataOptions: {[ key: string ]: string};
 
 - *Type:* {[ key: string ]: string}
 
-Customize the metadata options for the instance [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+Customize the metadata options for the instance The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
@@ -5140,7 +5138,7 @@ public readonly placement: {[ key: string ]: string};
 
 - *Type:* {[ key: string ]: string}
 
-The placement of the instance [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+The placement of the instance The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
@@ -5207,7 +5205,7 @@ public readonly remoteAccess: any;
 
 - *Type:* any
 
-Configuration block with remote access settings [object Object].
+Configuration block with remote access settings.
 
 ---
 
@@ -5243,7 +5241,7 @@ public readonly securityGroupRules: any;
 
 - *Type:* any
 
-List of security group rules to add to the security group created [object Object].
+List of security group rules to add to the security group created.
 
 ---
 
@@ -5255,7 +5253,7 @@ public readonly securityGroupTags: {[ key: string ]: string};
 
 - *Type:* {[ key: string ]: string}
 
-A map of additional tags to add to the security group created [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+A map of additional tags to add to the security group created The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
@@ -5293,7 +5291,7 @@ public readonly tags: {[ key: string ]: string};
 
 - *Type:* {[ key: string ]: string}
 
-A map of tags to add to all resources [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+A map of tags to add to all resources The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
@@ -5308,7 +5306,6 @@ public readonly taints: any;
 The Kubernetes taints to be applied to the nodes in the node group.
 
 Maximum of 50 taints per node group
-[object Object]
 
 ---
 
@@ -5320,7 +5317,7 @@ public readonly timeouts: {[ key: string ]: string};
 
 - *Type:* {[ key: string ]: string}
 
-Create, update, and delete timeout configurations for the node group [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+Create, update, and delete timeout configurations for the node group The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 
@@ -5332,7 +5329,7 @@ public readonly updateConfig: {[ key: string ]: string};
 
 - *Type:* {[ key: string ]: string}
 
-Configuration block of settings for max unavailable resources during node group updates [object Object] The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
+Configuration block of settings for max unavailable resources during node group updates The property type contains a map, they have special handling, please see {@link cdk.tf /module-map-inputs the docs}.
 
 ---
 

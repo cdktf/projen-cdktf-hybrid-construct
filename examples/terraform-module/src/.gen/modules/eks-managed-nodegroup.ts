@@ -17,7 +17,6 @@ export interface EksManagedNodegroupConfig extends TerraformModuleUserConfig {
   readonly amiType?: string;
   /**
   * Specify volumes to attach to the instance besides the volumes specified by the AMI
-  * [object Object]
   */
   readonly blockDeviceMappings?: any;
   /**
@@ -26,7 +25,6 @@ export interface EksManagedNodegroupConfig extends TerraformModuleUserConfig {
   readonly bootstrapExtraArgs?: string;
   /**
   * Targeting for EC2 capacity reservations
-  * [object Object]
   */
   readonly capacityReservationSpecification?: any;
   /**
@@ -68,7 +66,6 @@ export interface EksManagedNodegroupConfig extends TerraformModuleUserConfig {
   readonly clusterVersion?: string;
   /**
   * The CPU options for the instance
-  * [object Object]
   * The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
   */
   readonly cpuOptions?: { [key: string]: string };
@@ -94,7 +91,6 @@ export interface EksManagedNodegroupConfig extends TerraformModuleUserConfig {
   readonly createSecurityGroup?: boolean;
   /**
   * Customize the credit specification of the instance
-  * [object Object]
   * The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
   */
   readonly creditSpecification?: { [key: string]: string };
@@ -117,13 +113,11 @@ export interface EksManagedNodegroupConfig extends TerraformModuleUserConfig {
   readonly ebsOptimized?: boolean;
   /**
   * The elastic GPU to attach to the instance
-  * [object Object]
   * The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
   */
   readonly elasticGpuSpecifications?: { [key: string]: string };
   /**
   * Configuration block containing an Elastic Inference Accelerator to attach to the instance
-  * [object Object]
   * The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
   */
   readonly elasticInferenceAccelerator?: { [key: string]: string };
@@ -138,7 +132,6 @@ export interface EksManagedNodegroupConfig extends TerraformModuleUserConfig {
   readonly enableMonitoring?: boolean;
   /**
   * Enable Nitro Enclaves on launched instances
-  * [object Object]
   * The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
   */
   readonly enclaveOptions?: { [key: string]: string };
@@ -148,7 +141,7 @@ export interface EksManagedNodegroupConfig extends TerraformModuleUserConfig {
   readonly forceUpdateVersion?: boolean;
   /**
   * Additional policies to be added to the IAM role
-  * 
+  *
   */
   readonly iamRoleAdditionalPolicies?: string[];
   /**
@@ -178,7 +171,6 @@ export interface EksManagedNodegroupConfig extends TerraformModuleUserConfig {
   readonly iamRolePermissionsBoundary?: string;
   /**
   * A map of additional tags to add to the IAM role created
-  * [object Object]
   * The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
   */
   readonly iamRoleTags?: { [key: string]: string };
@@ -189,7 +181,6 @@ export interface EksManagedNodegroupConfig extends TerraformModuleUserConfig {
   readonly iamRoleUseNamePrefix?: boolean;
   /**
   * The market (purchasing) option for the instance
-  * [object Object]
   */
   readonly instanceMarketOptions?: any;
   /**
@@ -223,7 +214,6 @@ export interface EksManagedNodegroupConfig extends TerraformModuleUserConfig {
   readonly launchTemplateName?: string;
   /**
   * A map of additional tags to add to the tag_specifications of launch template created
-  * [object Object]
   * The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
   */
   readonly launchTemplateTags?: { [key: string]: string };
@@ -238,7 +228,6 @@ export interface EksManagedNodegroupConfig extends TerraformModuleUserConfig {
   readonly launchTemplateVersion?: string;
   /**
   * A list of license specifications to associate with
-  * [object Object]
   * The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
   */
   readonly licenseSpecifications?: { [key: string]: string };
@@ -249,7 +238,6 @@ export interface EksManagedNodegroupConfig extends TerraformModuleUserConfig {
   readonly maxSize?: number;
   /**
   * Customize the metadata options for the instance
-  * [object Object]
   * The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
   */
   readonly metadataOptions?: { [key: string]: string };
@@ -263,12 +251,11 @@ export interface EksManagedNodegroupConfig extends TerraformModuleUserConfig {
   readonly name?: string;
   /**
   * Customize network interfaces to be attached at instance boot time
-  * 
+  *
   */
   readonly networkInterfaces?: any[];
   /**
   * The placement of the instance
-  * [object Object]
   * The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
   */
   readonly placement?: { [key: string]: string };
@@ -291,7 +278,6 @@ export interface EksManagedNodegroupConfig extends TerraformModuleUserConfig {
   readonly ramDiskId?: string;
   /**
   * Configuration block with remote access settings
-  * [object Object]
   */
   readonly remoteAccess?: any;
   /**
@@ -305,12 +291,10 @@ export interface EksManagedNodegroupConfig extends TerraformModuleUserConfig {
   readonly securityGroupName?: string;
   /**
   * List of security group rules to add to the security group created
-  * [object Object]
   */
   readonly securityGroupRules?: any;
   /**
   * A map of additional tags to add to the security group created
-  * [object Object]
   * The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
   */
   readonly securityGroupTags?: { [key: string]: string };
@@ -325,24 +309,20 @@ export interface EksManagedNodegroupConfig extends TerraformModuleUserConfig {
   readonly subnetIds?: string[];
   /**
   * A map of tags to add to all resources
-  * [object Object]
   * The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
   */
   readonly tags?: { [key: string]: string };
   /**
   * The Kubernetes taints to be applied to the nodes in the node group. Maximum of 50 taints per node group
-  * [object Object]
   */
   readonly taints?: any;
   /**
   * Create, update, and delete timeout configurations for the node group
-  * [object Object]
   * The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
   */
   readonly timeouts?: { [key: string]: string };
   /**
   * Configuration block of settings for max unavailable resources during node group updates
-  * [object Object]
   * The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
   */
   readonly updateConfig?: { [key: string]: string };
@@ -366,7 +346,7 @@ export interface EksManagedNodegroupConfig extends TerraformModuleUserConfig {
   readonly vpcId?: string;
   /**
   * A list of security group IDs to associate
-  * 
+  *
   */
   readonly vpcSecurityGroupIds?: string[];
 }
