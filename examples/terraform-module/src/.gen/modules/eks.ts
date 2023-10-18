@@ -10,32 +10,32 @@ export interface EksConfig extends TerraformModuleUserConfig {
   readonly attachClusterEncryptionPolicy?: boolean;
   /**
   * List of account maps to add to the aws-auth configmap
-  * 
+  *
   */
   readonly awsAuthAccounts?: any[];
   /**
   * List of Fargate profile pod execution role ARNs to add to the aws-auth configmap
-  * 
+  *
   */
   readonly awsAuthFargateProfilePodExecutionRoleArns?: string[];
   /**
   * List of non-Windows based node IAM role ARNs to add to the aws-auth configmap
-  * 
+  *
   */
   readonly awsAuthNodeIamRoleArnsNonWindows?: string[];
   /**
   * List of Windows based node IAM role ARNs to add to the aws-auth configmap
-  * 
+  *
   */
   readonly awsAuthNodeIamRoleArnsWindows?: string[];
   /**
   * List of role maps to add to the aws-auth configmap
-  * 
+  *
   */
   readonly awsAuthRoles?: any[];
   /**
   * List of user maps to add to the aws-auth configmap
-  * 
+  *
   */
   readonly awsAuthUsers?: any[];
   /**
@@ -49,22 +49,23 @@ export interface EksConfig extends TerraformModuleUserConfig {
   readonly cloudwatchLogGroupRetentionInDays?: number;
   /**
   * List of additional, externally created security group IDs to attach to the cluster control plane
-  * 
+  *
   */
   readonly clusterAdditionalSecurityGroupIds?: string[];
   /**
   * Map of cluster addon configurations to enable for the cluster. Addon name can be the map keys or set with `name`
-  * [object Object]
   */
   readonly clusterAddons?: any;
   /**
   * A list of the desired control plane logs to enable. For more information, see Amazon EKS Control Plane Logging documentation (https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
-  * audit,api,authenticator
+  * audit
+  * api
+  * authenticator
   */
   readonly clusterEnabledLogTypes?: string[];
   /**
   * Configuration block with encryption configuration for the cluster
-  * 
+  *
   */
   readonly clusterEncryptionConfig?: any[];
   /**
@@ -82,7 +83,6 @@ export interface EksConfig extends TerraformModuleUserConfig {
   readonly clusterEncryptionPolicyPath?: string;
   /**
   * A map of additional tags to add to the cluster encryption policy created
-  * [object Object]
   * The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
   */
   readonly clusterEncryptionPolicyTags?: { [key: string]: string };
@@ -111,7 +111,6 @@ export interface EksConfig extends TerraformModuleUserConfig {
   readonly clusterIamRoleDnsSuffix?: string;
   /**
   * Map of cluster identity provider configurations to enable for the cluster. Note - this is different/separate from IRSA
-  * [object Object]
   */
   readonly clusterIdentityProviders?: any;
   /**
@@ -124,7 +123,6 @@ export interface EksConfig extends TerraformModuleUserConfig {
   readonly clusterName?: string;
   /**
   * List of additional security group rules to add to the cluster security group created. Set `source_node_security_group = true` inside rules to set the `node_security_group` as source
-  * [object Object]
   */
   readonly clusterSecurityGroupAdditionalRules?: any;
   /**
@@ -142,7 +140,6 @@ export interface EksConfig extends TerraformModuleUserConfig {
   readonly clusterSecurityGroupName?: string;
   /**
   * A map of additional tags to add to the cluster security group created
-  * [object Object]
   * The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
   */
   readonly clusterSecurityGroupTags?: { [key: string]: string };
@@ -157,13 +154,11 @@ export interface EksConfig extends TerraformModuleUserConfig {
   readonly clusterServiceIpv4Cidr?: string;
   /**
   * A map of additional tags to add to the cluster
-  * [object Object]
   * The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
   */
   readonly clusterTags?: { [key: string]: string };
   /**
   * Create, update, and delete timeout configurations for the cluster
-  * [object Object]
   * The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
   */
   readonly clusterTimeouts?: { [key: string]: string };
@@ -173,7 +168,7 @@ export interface EksConfig extends TerraformModuleUserConfig {
   readonly clusterVersion?: string;
   /**
   * A list of subnet IDs where the EKS cluster control plane (ENIs) will be provisioned. Used for expanding the pool of subnets used by nodes/node groups without replacing the EKS control plane
-  * 
+  *
   */
   readonly controlPlaneSubnetIds?: string[];
   /**
@@ -220,17 +215,15 @@ export interface EksConfig extends TerraformModuleUserConfig {
   readonly createNodeSecurityGroup?: boolean;
   /**
   * Additional list of server certificate thumbprints for the OpenID Connect (OIDC) identity provider's server certificate(s)
-  * 
+  *
   */
   readonly customOidcThumbprints?: string[];
   /**
   * Map of EKS managed node group default configurations
-  * [object Object]
   */
   readonly eksManagedNodeGroupDefaults?: any;
   /**
   * Map of EKS managed node group definitions to create
-  * [object Object]
   */
   readonly eksManagedNodeGroups?: any;
   /**
@@ -245,17 +238,15 @@ export interface EksConfig extends TerraformModuleUserConfig {
   readonly enableKmsKeyRotation?: boolean;
   /**
   * Map of Fargate Profile default configurations
-  * [object Object]
   */
   readonly fargateProfileDefaults?: any;
   /**
   * Map of Fargate Profile definitions to create
-  * [object Object]
   */
   readonly fargateProfiles?: any;
   /**
   * Additional policies to be added to the IAM role
-  * 
+  *
   */
   readonly iamRoleAdditionalPolicies?: string[];
   /**
@@ -280,7 +271,6 @@ export interface EksConfig extends TerraformModuleUserConfig {
   readonly iamRolePermissionsBoundary?: string;
   /**
   * A map of additional tags to add to the IAM role created
-  * [object Object]
   * The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
   */
   readonly iamRoleTags?: { [key: string]: string };
@@ -291,12 +281,12 @@ export interface EksConfig extends TerraformModuleUserConfig {
   readonly iamRoleUseNamePrefix?: boolean;
   /**
   * A list of IAM ARNs for [key administrators](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#key-policy-default-allow-administrators). If no value is provided, the current caller identity is used to ensure at least one key admin is available
-  * 
+  *
   */
   readonly kmsKeyAdministrators?: string[];
   /**
   * A list of aliases to create. Note - due to the use of `toset()`, values must be static strings and not computed values
-  * 
+  *
   */
   readonly kmsKeyAliases?: string[];
   /**
@@ -313,27 +303,27 @@ export interface EksConfig extends TerraformModuleUserConfig {
   readonly kmsKeyEnableDefaultPolicy?: boolean;
   /**
   * List of IAM policy documents that are merged together into the exported document. In merging, statements with non-blank `sid`s will override statements with the same `sid`
-  * 
+  *
   */
   readonly kmsKeyOverridePolicyDocuments?: string[];
   /**
   * A list of IAM ARNs for those who will have full key permissions (`kms:*`)
-  * 
+  *
   */
   readonly kmsKeyOwners?: string[];
   /**
   * A list of IAM ARNs for [key service users](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#key-policy-service-integration)
-  * 
+  *
   */
   readonly kmsKeyServiceUsers?: string[];
   /**
   * List of IAM policy documents that are merged together into the exported document. Statements must have unique `sid`s
-  * 
+  *
   */
   readonly kmsKeySourcePolicyDocuments?: string[];
   /**
   * A list of IAM ARNs for [key users](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#key-policy-default-allow-users)
-  * 
+  *
   */
   readonly kmsKeyUsers?: string[];
   /**
@@ -342,7 +332,6 @@ export interface EksConfig extends TerraformModuleUserConfig {
   readonly manageAwsAuthConfigmap?: boolean;
   /**
   * List of additional security group rules to add to the node security group created. Set `source_cluster_security_group = true` inside rules to set the `cluster_security_group` as source
-  * [object Object]
   */
   readonly nodeSecurityGroupAdditionalRules?: any;
   /**
@@ -370,7 +359,6 @@ export interface EksConfig extends TerraformModuleUserConfig {
   readonly nodeSecurityGroupNtpIpv6CidrBlock?: string[];
   /**
   * A map of additional tags to add to the node security group created
-  * [object Object]
   * The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
   */
   readonly nodeSecurityGroupTags?: { [key: string]: string };
@@ -381,7 +369,7 @@ export interface EksConfig extends TerraformModuleUserConfig {
   readonly nodeSecurityGroupUseNamePrefix?: boolean;
   /**
   * List of OpenID Connect audience client IDs to add to the IRSA provider
-  * 
+  *
   */
   readonly openidConnectAudiences?: string[];
   /**
@@ -396,22 +384,19 @@ export interface EksConfig extends TerraformModuleUserConfig {
   readonly putinKhuylo?: boolean;
   /**
   * Map of self-managed node group default configurations
-  * [object Object]
   */
   readonly selfManagedNodeGroupDefaults?: any;
   /**
   * Map of self-managed node group definitions to create
-  * [object Object]
   */
   readonly selfManagedNodeGroups?: any;
   /**
   * A list of subnet IDs where the nodes/node groups will be provisioned. If `control_plane_subnet_ids` is not provided, the EKS cluster control plane (ENIs) will be provisioned in these subnets
-  * 
+  *
   */
   readonly subnetIds?: string[];
   /**
   * A map of tags to add to all resources
-  * [object Object]
   * The property type contains a map, they have special handling, please see {@link cdk.tf/module-map-inputs the docs}
   */
   readonly tags?: { [key: string]: string };
