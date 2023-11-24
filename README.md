@@ -1,6 +1,18 @@
 # Projen-CDKTF-Hybrid-Construct
 
+![Status: Tech Preview](https://img.shields.io/badge/status-experimental-EAAA32) [![Releases](https://img.shields.io/github/release/cdktf/projen-cdktf-hybrid-construct.svg)](https://github.com/cdktf/projen-cdktf-hybrid-construct/releases)
+[![LICENSE](https://img.shields.io/github/license/cdktf/projen-cdktf-hybrid-construct.svg)](https://github.com/cdktf/projen-cdktf-hybrid-construct/blob/main/LICENSE)
+[![build](https://github.com/cdktf/projen-cdktf-hybrid-construct/actions/workflows/build.yml/badge.svg)](https://github.com/cdktf/projen-cdktf-hybrid-construct/actions/workflows/build.yml)
+
 Projen template for CDKTF Constructs that should also be used as Terraform Modules and for republishing Terraform Modules as Constructs.
+
+_projen-cdktf-hybrid-construct_ is in technical preview, which means it's a community supported project. It still requires extensive testing and polishing to mature into a HashiCorp officially supported project. Please [file issues](https://github.com/cdktf/projen-cdktf-hybrid-construct/issues/new/choose) generously and detail your experience while using the library. We welcome your feedback.
+
+By using the software in this repository, you acknowledge that: 
+* _projen-cdktf-hybrid-construct_ is still in development, may change, and has not been released as a commercial product by HashiCorp and is not currently supported in any way by HashiCorp.
+* _projen-cdktf-hybrid-construct_ is provided on an "as-is" basis, and may include bugs, errors, or other issues.
+* _projen-cdktf-hybrid-construct_ is NOT INTENDED FOR PRODUCTION USE, use of the Software may result in unexpected results, loss of data, or other unexpected results, and HashiCorp disclaims any and all liability resulting from use of _projen-cdktf-hybrid-construct_.
+* HashiCorp reserves all rights to make all decisions about the features, functionality and commercial release (or non-release) of _projen-cdktf-hybrid-construct_, at any time and without any obligation or liability whatsoever.
 
 ## Compatibility
 
