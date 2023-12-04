@@ -176,16 +176,22 @@ export class HybridModule extends JsiiProject {
         lintProjenRc: false,
       }),
       postBuildSteps: [],
+      jsiiVersion: "~5.2.0",
+      typescriptVersion: "~5.2.0", // should always be the same major/minor as JSII
     });
     const constructVersion = options.constructVersion || "10.0.107";
     const cdktfVersion = options.cdktfVersion || "0.19.0";
 
     console.log({ cdktfVersion, constructVersion });
-    this.addPeerDeps(`constructs@${constructVersion}`, `cdktf@${cdktfVersion}`);
+    this.addPeerDeps(
+      `constructs@>=${constructVersion}`,
+      `cdktf@>=${cdktfVersion}`
+    );
     this.addDevDeps(
-      `cdktf-cli@${cdktfVersion}`,
+      `cdktf@~${cdktfVersion}`,
+      `cdktf-cli@~${cdktfVersion}`,
       "ts-node@>=10.9.1",
-      "jsii-docgen@^9.0.0"
+      "jsii-docgen@^10.0.0"
     );
     this.addKeywords("cdk", "cdktf", "cdktf-hybrid", "terraform");
     this.setScript("terraform:test", "./scripts/tf-module-test.sh");
