@@ -305,13 +305,13 @@
           "exec": "yarn upgrade npm-check-updates"
         },
         {
-          "exec": "npm-check-updates --upgrade --target=minor --filter=@types/change-case,@types/fs-extra,@types/glob,@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,comment-json,eslint-config-prettier,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,eslint,fs-extra,glob,jest,jest-junit,jsii-diff,jsii-docgen,jsii-pacmak,npm-check-updates,prettier,standard-version,ts-jest,typescript,change-case"
+          "exec": "npm-check-updates --upgrade --target=minor --filter=@types/change-case,@types/fs-extra,@types/glob,@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,comment-json,eslint-config-prettier,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,eslint,fs-extra,glob,jest,jest-junit,jsii-diff,jsii-docgen,jsii-pacmak,npm-check-updates,prettier,standard-version,ts-jest,change-case"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @types/change-case @types/fs-extra @types/glob @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser comment-json eslint-config-prettier eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint fs-extra glob jest jest-junit jsii-diff jsii-docgen jsii-pacmak npm-check-updates prettier standard-version ts-jest typescript change-case"
+          "exec": "yarn upgrade @types/change-case @types/fs-extra @types/glob @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser comment-json eslint-config-prettier eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint fs-extra glob jest jest-junit jsii-diff jsii-docgen jsii-pacmak npm-check-updates prettier standard-version ts-jest change-case"
         },
         {
           "exec": "npx projen"

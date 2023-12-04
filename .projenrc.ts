@@ -52,6 +52,7 @@ const project = new JsiiProject({
     email: "github-team-tf-cdk@hashicorp.com",
   },
   jsiiVersion: "~5.2.0",
+  typescriptVersion: "~5.2.0", // should always be the same major/minor as JSII
   pullRequestTemplate: false,
 });
 project.tsconfig?.exclude?.push("src/exampleCode/**");
