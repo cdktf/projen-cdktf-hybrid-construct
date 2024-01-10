@@ -843,7 +843,7 @@ exports[`HybridModule snapshot: package.json 1`] = `
     "organization": false,
   },
   "dependencies": {
-    "@cdktf/tf-module-stack": ">=4.0.0",
+    "@cdktf/tf-module-stack": ">=5.0.0",
   },
   "devDependencies": {
     "@types/jest": "*",
