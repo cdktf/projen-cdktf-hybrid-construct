@@ -961,4 +961,19 @@ export class EksManagedNodegroup extends TerraformModule {
   protected synthesizeAttributes() {
     return this.inputs;
   }
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    return Object.fromEntries(
+      Object.entries(this.inputs)
+        .filter(([, val]) => val !== undefined)
+        .map(([key, val]) => {
+          return [
+            key,
+            {
+              value: val,
+              type: "any",
+            },
+          ];
+        })
+    );
+  }
 }

@@ -50,6 +50,7 @@ new Eks(scope: Construct, id: string, config?: EksConfig)
 | <code><a href="#my-module.Eks.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#my-module.Eks.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#my-module.Eks.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
+| <code><a href="#my-module.Eks.toHclTerraform">toHclTerraform</a></code> | *No description.* |
 | <code><a href="#my-module.Eks.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#my-module.Eks.toTerraform">toTerraform</a></code> | *No description.* |
 | <code><a href="#my-module.Eks.addProvider">addProvider</a></code> | *No description.* |
@@ -107,6 +108,12 @@ public resetOverrideLogicalId(): void
 ```
 
 Resets a previously passed logical Id to use the auto-generated logical id again.
+
+##### `toHclTerraform` <a name="toHclTerraform" id="my-module.Eks.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): any
+```
 
 ##### `toMetadata` <a name="toMetadata" id="my-module.Eks.toMetadata"></a>
 
@@ -1699,6 +1706,7 @@ new EksManagedNodegroup(scope: Construct, id: string, config?: EksManagedNodegro
 | <code><a href="#my-module.EksManagedNodegroup.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#my-module.EksManagedNodegroup.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#my-module.EksManagedNodegroup.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
+| <code><a href="#my-module.EksManagedNodegroup.toHclTerraform">toHclTerraform</a></code> | *No description.* |
 | <code><a href="#my-module.EksManagedNodegroup.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#my-module.EksManagedNodegroup.toTerraform">toTerraform</a></code> | *No description.* |
 | <code><a href="#my-module.EksManagedNodegroup.addProvider">addProvider</a></code> | *No description.* |
@@ -1756,6 +1764,12 @@ public resetOverrideLogicalId(): void
 ```
 
 Resets a previously passed logical Id to use the auto-generated logical id again.
+
+##### `toHclTerraform` <a name="toHclTerraform" id="my-module.EksManagedNodegroup.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): any
+```
 
 ##### `toMetadata` <a name="toMetadata" id="my-module.EksManagedNodegroup.toMetadata"></a>
 

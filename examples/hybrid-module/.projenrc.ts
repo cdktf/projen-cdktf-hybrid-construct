@@ -13,7 +13,7 @@ const project = new HybridModule({
   author: "Daniel Schmidt",
   authorAddress: "danielmschmidt92@gmail.com",
   repositoryUrl: "github.com/DanielMSchmidt/my-module",
-  cdktfVersion: "0.19.0",
+  cdktfVersion: "0.20.0",
   outdir: ".",
   terraformExamples: {
     enabled: true,

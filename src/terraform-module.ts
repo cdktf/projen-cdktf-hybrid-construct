@@ -20,7 +20,7 @@ export interface TerraformVersionConstraint {
 export interface TerraformModuleOptions extends ConstructLibraryOptions {
   /**
    * Minimum target version of this library.
-   * @default "0.19.0"
+   * @default "0.20.0"
    * @featured
    */
   readonly cdktfVersion?: string;
@@ -64,7 +64,7 @@ export class TerraformModule extends ConstructLibrary {
       typescriptVersion: "~5.2.0", // should always be the same major/minor as JSII
     });
     const constructVersion = options.constructVersion || "10.0.107";
-    const cdktfVersion = options.cdktfVersion || "0.19.0";
+    const cdktfVersion = options.cdktfVersion || "0.20.0";
 
     const constructSrcCode = `
 // Re-Export module bindings
