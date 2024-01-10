@@ -2439,7 +2439,7 @@ public readonly cdktfVersion: string;
 ```
 
 - *Type:* string
-- *Default:* "0.19.0"
+- *Default:* "0.20.0"
 
 Minimum target version of this library.
 
@@ -4977,7 +4977,7 @@ public readonly cdktfVersion: string;
 ```
 
 - *Type:* string
-- *Default:* "0.19.0"
+- *Default:* "0.20.0"
 
 Minimum target version of this library.
 
