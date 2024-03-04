@@ -27,7 +27,7 @@ If you want to write a CDKTF construct and also publish it as a Terraform Module
 
 You can initialize such a project using `npx projen new --from projen-cdktf-hybrid-construct hybrid-module`.
 
-A configutation might look like this:
+A configuration might look like this:
 
 ```js
 const { HybridModule } = require("projen-cdktf-hybrid-construct");
