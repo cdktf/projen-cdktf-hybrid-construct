@@ -44,7 +44,7 @@ jobs:
         run: echo "changed=$(git status --porcelain | wc -l)" >> $GITHUB_OUTPUT
       - name: Create draft pull request
         if: steps.get_changes.outputs.changed != 0
-        uses: peter-evans/create-pull-request@153407881ec5c347639a548ade7d8ad1d6740e38
+        uses: peter-evans/create-pull-request@a4f52f8033a6168103c2538976c07b467e8163bc
         with:
           commit-message: "chore!: upgrade to cdktf ${{ steps.latest_version.outputs.value }}"
           branch: auto/upgrade-cdktf-${{ steps.latest_version.outputs.short }}
