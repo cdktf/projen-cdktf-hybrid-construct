@@ -30,7 +30,6 @@ jspm_packages/
 *.tgz
 .yarn-integrity
 .cache
-!/.projenrc.js
 /test-reports/
 junit.xml
 /coverage/
@@ -42,7 +41,6 @@ junit.xml
 !/.github/pull_request_template.md
 !/.prettierignore
 !/.prettierrc.json
-!/.npmrc
 !/test/
 !/tsconfig.dev.json
 !/src/
@@ -55,10 +53,11 @@ tsconfig.json
 !/terraform/provider.tf
 terraform/.terraform
 terraform/.terraform.lock.hcl
-!/./scripts/tf-module-test.sh
+!/scripts/tf-module-test.sh
 construct-examples/cdktf.out
 src/.gen
 src/cdktf.out
 src/modules
 !/scripts/copy-modules.sh
 lib/
+!/.projenrc.ts

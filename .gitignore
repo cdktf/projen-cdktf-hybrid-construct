@@ -30,7 +30,6 @@ jspm_packages/
 .yarn-integrity
 .cache
 .idea/
-!/.projenrc.js
 /test-reports/
 junit.xml
 /coverage/
@@ -41,7 +40,6 @@ junit.xml
 !/.github/workflows/upgrade-main.yml
 !/.prettierignore
 !/.prettierrc.json
-!/.npmrc
 !/test/
 !/tsconfig.dev.json
 !/src/
@@ -55,3 +53,4 @@ tsconfig.json
 !/.github/workflows/auto-approve.yml
 !/.github/workflows/automerge.yml
 !/.github/workflows/upgrade-cdktf.yml
+!/.projenrc.ts

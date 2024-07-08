@@ -60,12 +60,12 @@ project.tsconfig?.exclude?.push("src/exampleCode/**");
 project.tsconfig?.exclude?.push("example/**");
 project.tsconfig?.exclude?.push("examples/**");
 
-project.addPeerDeps("projen@>= 0.72.18");
+project.addPeerDeps("projen@>= 0.79.3", "constructs@^10.3.0");
 project.addBundledDeps("change-case");
 project.addDevDeps(
   "fs-extra",
   "glob",
-  "projen@^0.72.18",
+  "projen@^0.79.3",
   "@types/fs-extra",
   "@types/glob",
   "@types/change-case",
