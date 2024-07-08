@@ -152,7 +152,8 @@
       "description": "Runs eslint against the codebase",
       "steps": [
         {
-          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern src test build-tools projenrc .projenrc.ts"
+          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern $@ src test build-tools projenrc .projenrc.ts",
+          "receiveArgs": true
         }
       ]
     },
@@ -302,16 +303,13 @@
       },
       "steps": [
         {
-          "exec": "yarn upgrade npm-check-updates"
-        },
-        {
-          "exec": "npm-check-updates --upgrade --target=minor --filter=@types/change-case,@types/fs-extra,@types/glob,@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,comment-json,eslint-config-prettier,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,eslint,fs-extra,glob,jest,jest-junit,jsii-diff,jsii-docgen,jsii-pacmak,npm-check-updates,prettier,standard-version,ts-jest,change-case"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/change-case,@types/fs-extra,@types/glob,@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,comment-json,constructs,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,eslint,fs-extra,glob,jest,jest-junit,jsii-diff,jsii-docgen,jsii-pacmak,prettier,projen,standard-version,ts-jest,change-case"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @types/change-case @types/fs-extra @types/glob @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser comment-json eslint-config-prettier eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint fs-extra glob jest jest-junit jsii-diff jsii-docgen jsii-pacmak npm-check-updates prettier standard-version ts-jest change-case"
+          "exec": "yarn upgrade @types/change-case @types/fs-extra @types/glob @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser comment-json constructs eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint fs-extra glob jest jest-junit jsii-diff jsii-docgen jsii-pacmak prettier projen standard-version ts-jest change-case"
         },
         {
           "exec": "npx projen"

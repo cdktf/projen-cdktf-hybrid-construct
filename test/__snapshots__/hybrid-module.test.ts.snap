@@ -8,7 +8,6 @@ exports[`HybridModule snapshot: .eslintrc.json 1`] = `
   },
   "extends": [
     "plugin:import/typescript",
-    "prettier",
     "plugin:prettier/recommended",
   ],
   "ignorePatterns": [
@@ -40,7 +39,6 @@ exports[`HybridModule snapshot: .eslintrc.json 1`] = `
   "plugins": [
     "@typescript-eslint",
     "import",
-    "prettier",
   ],
   "root": true,
   "rules": {
@@ -125,9 +123,6 @@ exports[`HybridModule snapshot: .eslintrc.json 1`] = `
     "no-trailing-spaces": [
       "error",
     ],
-    "prettier/prettier": [
-      "error",
-    ],
   },
   "settings": {
     "import/parsers": {
@@ -161,7 +156,6 @@ exports[`HybridModule snapshot: .gitattributes 1`] = `
 /.github/workflows/upgrade-main.yml linguist-generated
 /.gitignore linguist-generated
 /.npmignore linguist-generated
-/.npmrc linguist-generated
 /.prettierignore linguist-generated
 /.prettierrc.json linguist-generated
 /.projen/** linguist-generated
@@ -269,7 +263,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.x
       - name: Download build artifacts
         uses: actions/download-artifact@v3
         with:
@@ -338,6 +332,7 @@ jobs:
       contents: write
     outputs:
       latest_commit: \${{ steps.git_remote.outputs.latest_commit }}
+      tag_exists: \${{ steps.check_tag_exists.outputs.exists }}
     env:
       CI: "true"
     steps:
@@ -353,9 +348,17 @@ jobs:
         run: yarn install --check-files --frozen-lockfile
       - name: release
         run: npx projen release
+      - name: Check if version has already been tagged
+        id: check_tag_exists
+        run: |-
+          TAG=$(cat dist/dist/releasetag.txt)
+          ([ ! -z "$TAG" ] && git ls-remote -q --exit-code --tags origin $TAG && (echo "exists=true" >> $GITHUB_OUTPUT)) || (echo "exists=false" >> $GITHUB_OUTPUT)
+          cat $GITHUB_OUTPUT
       - name: Check for new commits
         id: git_remote
-        run: echo "latest_commit=$(git ls-remote origin -h \${{ github.ref }} | cut -f1)" >> $GITHUB_OUTPUT
+        run: |-
+          echo "latest_commit=$(git ls-remote origin -h \${{ github.ref }} | cut -f1)" >> $GITHUB_OUTPUT
+          cat $GITHUB_OUTPUT
       - name: Backup artifact permissions
         if: \${{ steps.git_remote.outputs.latest_commit == github.sha }}
         run: cd dist && getfacl -R . > permissions-backup.acl
@@ -372,11 +375,11 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    if: needs.release.outputs.latest_commit == github.sha
+    if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.x
       - name: Download build artifacts
         uses: actions/download-artifact@v3
         with:
@@ -401,11 +404,11 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-    if: needs.release.outputs.latest_commit == github.sha
+    if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.x
       - name: Download build artifacts
         uses: actions/download-artifact@v3
         with:
@@ -554,7 +557,6 @@ jspm_packages/
 *.tgz
 .yarn-integrity
 .cache
-!/.projenrc.js
 /test-reports/
 junit.xml
 /coverage/
@@ -566,7 +568,6 @@ junit.xml
 !/.github/pull_request_template.md
 !/.prettierignore
 !/.prettierrc.json
-!/.npmrc
 !/test/
 !/tsconfig.dev.json
 !/src/
@@ -579,12 +580,13 @@ tsconfig.json
 !/terraform/provider.tf
 terraform/.terraform
 terraform/.terraform.lock.hcl
-!/./scripts/tf-module-test.sh
+!/scripts/tf-module-test.sh
 construct-examples/cdktf.out
 src/.gen
 src/cdktf.out
 src/modules
 !/scripts/copy-modules.sh
+!/.projenrc.ts
 "
 `;
 
@@ -597,6 +599,8 @@ junit.xml
 permissions-backup.acl
 /dist/changelog.md
 /dist/version.txt
+/.prettierignore
+/.prettierrc.json
 /test/
 /tsconfig.dev.json
 /src/
@@ -612,6 +616,8 @@ dist
 tsconfig.tsbuildinfo
 /.eslintrc.json
 !.jsii
+/.gitattributes
+/.projenrc.ts
 "
 `;
 
@@ -847,15 +853,14 @@ exports[`HybridModule snapshot: package.json 1`] = `
   },
   "devDependencies": {
     "@types/jest": "*",
-    "@types/node": "^16",
-    "@typescript-eslint/eslint-plugin": "^5",
-    "@typescript-eslint/parser": "^5",
+    "@types/node": "^18",
+    "@typescript-eslint/eslint-plugin": "^6",
+    "@typescript-eslint/parser": "^6",
     "cdktf": "0.20.0",
     "cdktf-cli": "~0.20.0",
     "constructs": "10.0.107",
     "eslint": "^8",
     "eslint-config-prettier": "*",
-    "eslint-import-resolver-node": "*",
     "eslint-import-resolver-typescript": "*",
     "eslint-plugin-import": "*",
     "eslint-plugin-prettier": "*",
@@ -866,7 +871,6 @@ exports[`HybridModule snapshot: package.json 1`] = `
     "jsii-docgen": "^10.0.0",
     "jsii-pacmak": "*",
     "jsii-rosetta": "~5.2.0",
-    "npm-check-updates": "^16",
     "prettier": "*",
     "projen": "*",
     "standard-version": "^9",
@@ -890,12 +894,6 @@ exports[`HybridModule snapshot: package.json 1`] = `
       "cobertura",
       "text",
     ],
-    "globals": {
-      "ts-jest": {
-        "tsconfig": "tsconfig.dev.json",
-      },
-    },
-    "preset": "ts-jest",
     "reporters": [
       "default",
       [
@@ -914,6 +912,14 @@ exports[`HybridModule snapshot: package.json 1`] = `
       "<rootDir>/terraform",
       "dist",
     ],
+    "transform": {
+      "^.+\\.[t]sx?$": [
+        "ts-jest",
+        {
+          "tsconfig": "tsconfig.dev.json",
+        },
+      ],
+    },
     "watchPathIgnorePatterns": [
       "/node_modules/",
     ],
@@ -1186,7 +1192,6 @@ exports[`HybridModule snapshot: tsconfig.dev.json 1`] = `
     "node_modules",
   ],
   "include": [
-    ".projenrc.js",
     "src/**/*.ts",
     "test/**/*.ts",
     ".projenrc.ts",

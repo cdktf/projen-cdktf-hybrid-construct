@@ -6,17 +6,17 @@
     },
     {
       "name": "@types/node",
-      "version": "^16",
+      "version": "^18",
       "type": "build"
     },
     {
       "name": "@typescript-eslint/eslint-plugin",
-      "version": "^5",
+      "version": "^6",
       "type": "build"
     },
     {
       "name": "@typescript-eslint/parser",
-      "version": "^5",
+      "version": "^6",
       "type": "build"
     },
     {
@@ -26,20 +26,16 @@
     },
     {
       "name": "cdktf",
-      "version": "0.20.0",
+      "version": "~0.20.0",
       "type": "build"
     },
     {
       "name": "constructs",
-      "version": "10.0.107",
+      "version": "^10.0.0",
       "type": "build"
     },
     {
       "name": "eslint-config-prettier",
-      "type": "build"
-    },
-    {
-      "name": "eslint-import-resolver-node",
       "type": "build"
     },
     {
@@ -89,11 +85,6 @@
     {
       "name": "jsii",
       "version": "~5.2.0",
-      "type": "build"
-    },
-    {
-      "name": "npm-check-updates",
-      "version": "^16",
       "type": "build"
     },
     {
