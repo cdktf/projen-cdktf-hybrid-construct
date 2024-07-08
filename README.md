@@ -17,7 +17,7 @@ By using the software in this repository, you acknowledge that:
 ## Compatibility
 
 - `cdktf` >= 0.20.0
-- `constructs` >= 10.0.107
+- `constructs` >= 10.3.0
 
 ## Usage
 
