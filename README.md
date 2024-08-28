@@ -18,6 +18,7 @@ By using the software in this repository, you acknowledge that:
 
 - `cdktf` >= 0.20.0
 - `constructs` >= 10.3.0
+- `projen` >= 0.85.0
 
 ## Usage
 
