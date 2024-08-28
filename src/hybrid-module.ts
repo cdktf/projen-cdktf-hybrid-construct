@@ -179,7 +179,7 @@ export class HybridModule extends JsiiProject {
       jsiiVersion: "~5.4.0",
       typescriptVersion: "~5.4.0", // should always be the same major/minor as JSII
     });
-    const constructVersion = options.constructVersion || "10.0.107";
+    const constructVersion = options.constructVersion || "10.3.0";
     const cdktfVersion = options.cdktfVersion || "0.20.0";
 
     console.log({ cdktfVersion, constructVersion });
