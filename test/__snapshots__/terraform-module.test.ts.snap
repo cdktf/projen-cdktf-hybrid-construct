@@ -1413,7 +1413,7 @@ exports[`TerraformModule snapshot: package.json 1`] = `
     "@typescript-eslint/parser": "^7",
     "cdktf": "0.20.0",
     "cdktf-cli": "~0.20.0",
-    "constructs": "10.3.0",
+    "constructs": "10.4.2",
     "eslint": "^8",
     "eslint-config-prettier": "*",
     "eslint-import-resolver-typescript": "*",
@@ -1496,7 +1496,7 @@ exports[`TerraformModule snapshot: package.json 1`] = `
   "name": "my-module",
   "peerDependencies": {
     "cdktf": ">=0.20.0",
-    "constructs": ">=10.3.0",
+    "constructs": ">=10.4.2",
   },
   "publishConfig": {
     "access": "public",
