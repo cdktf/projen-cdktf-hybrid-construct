@@ -63,7 +63,7 @@ export class TerraformModule extends ConstructLibrary {
       jsiiVersion: "~5.4.0",
       typescriptVersion: "~5.4.0", // should always be the same major/minor as JSII
     });
-    const constructVersion = options.constructVersion || "10.3.0";
+    const constructVersion = options.constructVersion || "10.4.2";
     const cdktfVersion = options.cdktfVersion || "0.20.0";
 
     const constructSrcCode = `

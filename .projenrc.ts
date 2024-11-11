@@ -60,7 +60,7 @@ project.tsconfig?.exclude?.push("src/exampleCode/**");
 project.tsconfig?.exclude?.push("example/**");
 project.tsconfig?.exclude?.push("examples/**");
 
-project.addPeerDeps("projen@>= 0.85.0", "constructs@^10.3.0");
+project.addPeerDeps("projen@>= 0.85.0", "constructs@^10.4.2");
 project.addBundledDeps("change-case");
 project.addDevDeps(
   "fs-extra",
