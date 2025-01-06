@@ -4,6 +4,7 @@
  */
 
 import { JsiiProject } from "projen/lib/cdk";
+import { JobStep } from "projen/lib/github/workflows-model";
 import { NpmAccess, UpgradeDependenciesSchedule } from "projen/lib/javascript";
 import { AutoApprove } from "./projenrc/auto-approve";
 import { Automerge } from "./projenrc/automerge";
@@ -21,6 +22,7 @@ const githubActionPinnedVersions = {
   "amannn/action-semantic-pull-request":
     "0723387faaf9b38adef4775cd42cfd5155ed6017", // v5.5.3
   "hashicorp/setup-copywrite": "32638da2d4e81d56a0764aa1547882fc4d209636", // v1.1.3
+  "hashicorp/setup-terraform": "b9cd54a3c349d3f38e8881555d616ced269862dd", // v3.1.2
   "peter-evans/create-pull-request": "c5a7806660adbe173f04e3e038b0ccdcd758773c", // v6.1.0
 };
 
@@ -122,6 +124,15 @@ project.buildWorkflow?.addPostBuildSteps(
   },
   { name: "Add headers using Copywrite tool", run: "copywrite headers" }
 );
+
+const buildSteps = (project.buildWorkflow as any).preBuildSteps as JobStep[];
+buildSteps.push({
+  name: "Setup Terraform",
+  uses: "hashicorp/setup-terraform",
+  with: {
+    terraform_wrapper: false,
+  },
+});
 
 // Use pinned versions of github actions
 Object.entries(githubActionPinnedVersions).forEach(([action, sha]) => {

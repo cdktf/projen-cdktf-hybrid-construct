@@ -5,6 +5,7 @@
 
 import { JsonFile, SampleDir, TextFile } from "projen";
 import { ConstructLibrary, ConstructLibraryOptions } from "projen/lib/cdk";
+import { JobStep } from "projen/lib/github/workflows-model";
 
 import { defaults } from "./defaults";
 
@@ -126,5 +127,14 @@ describe("MyModule", () => {
     });
 
     this.preCompileTask.exec(`npx cdktf get`, { cwd: this.srcdir });
+
+    const buildSteps = (this.buildWorkflow as any).preBuildSteps as JobStep[];
+    buildSteps.push({
+      name: "Setup Terraform",
+      uses: "hashicorp/setup-terraform",
+      with: {
+        terraform_wrapper: false,
+      },
+    });
   }
 }

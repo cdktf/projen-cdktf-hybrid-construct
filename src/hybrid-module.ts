@@ -6,6 +6,7 @@
 import * as path from "path";
 import { FileBase, IResolver, Project, SampleDir } from "projen";
 import { JsiiProject, ConstructLibraryOptions } from "projen/lib/cdk";
+import { JobStep } from "projen/lib/github/workflows-model";
 import { defaults } from "./defaults";
 
 export interface ConstructExamplesOption {
@@ -373,6 +374,15 @@ app.synth();
       });
       this.gitignore.addPatterns(`${constructExampleFolder}/cdktf.out`);
     }
+
+    const buildSteps = (this.buildWorkflow as any).preBuildSteps as JobStep[];
+    buildSteps.push({
+      name: "Setup Terraform",
+      uses: "hashicorp/setup-terraform",
+      with: {
+        terraform_wrapper: false,
+      },
+    });
 
     this.gitignore.addPatterns("src/.gen", "src/cdktf.out", "src/modules");
     this.compileTask.prependExec("npx cdktf get", {
