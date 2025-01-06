@@ -1,5 +1,5 @@
 {
-  "cdktf": "0.20.10",
+  "cdktf": "0.20.11",
   "providers": {
     "eks": "~> 18.0",
     "eks-managed-nodegroup": "~> 18.0"
