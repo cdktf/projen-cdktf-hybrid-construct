@@ -34,6 +34,13 @@ export class UpgradeProjen {
             uses: "actions/checkout@v3",
           },
           {
+            name: "Setup Terraform",
+            uses: "hashicorp/setup-terraform",
+            with: {
+              terraform_wrapper: false,
+            },
+          },
+          {
             name: "Setup Node.js",
             uses: "actions/setup-node@v3",
           },
