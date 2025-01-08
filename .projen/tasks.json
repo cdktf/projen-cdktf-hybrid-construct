@@ -58,14 +58,15 @@
         "CHANGELOG": "dist/changelog.md",
         "BUMPFILE": "dist/version.txt",
         "RELEASETAG": "dist/releasetag.txt",
-        "RELEASE_TAG_PREFIX": ""
+        "RELEASE_TAG_PREFIX": "",
+        "BUMP_PACKAGE": "commit-and-tag-version@^12"
       },
       "steps": [
         {
           "builtin": "release/bump-version"
         }
       ],
-      "condition": "! git log --oneline -1 | grep -q \"chore(release):\""
+      "condition": "git log --oneline -1 | grep -qv \"chore(release):\""
     },
     "clobber": {
       "name": "clobber",
@@ -180,7 +181,7 @@
       "description": "Creates the distribution package",
       "steps": [
         {
-          "exec": "rsync -a . .repo --exclude .git --exclude node_modules && rm -rf dist && mv .repo dist",
+          "spawn": "package:js",
           "condition": "node -e \"if (!process.env.CI) process.exit(1)\""
         },
         {
@@ -292,7 +293,8 @@
         "CHANGELOG": "dist/changelog.md",
         "BUMPFILE": "dist/version.txt",
         "RELEASETAG": "dist/releasetag.txt",
-        "RELEASE_TAG_PREFIX": ""
+        "RELEASE_TAG_PREFIX": "",
+        "BUMP_PACKAGE": "commit-and-tag-version@^12"
       },
       "steps": [
         {
@@ -308,13 +310,13 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/change-case,@types/fs-extra,@types/glob,@types/jest,@types/semver,comment-json,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,fs-extra,glob,jest,jsii-diff,jsii-docgen,jsii-pacmak,prettier,semver,ts-jest,change-case"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/change-case,@types/fs-extra,@types/glob,@types/jest,@types/semver,comment-json,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,fs-extra,glob,jest,jsii-diff,jsii-pacmak,prettier,semver,ts-jest,change-case"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @types/change-case @types/fs-extra @types/glob @types/jest @types/node @types/semver @typescript-eslint/eslint-plugin @typescript-eslint/parser comment-json constructs eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint fs-extra glob jest jest-junit jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii prettier projen semver standard-version ts-jest ts-node typescript change-case"
+          "exec": "yarn upgrade @types/change-case @types/fs-extra @types/glob @types/jest @types/node @types/semver @typescript-eslint/eslint-plugin @typescript-eslint/parser comment-json commit-and-tag-version constructs eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint fs-extra glob jest jest-junit jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii prettier projen semver ts-jest ts-node typescript change-case"
         },
         {
           "exec": "npx projen"
