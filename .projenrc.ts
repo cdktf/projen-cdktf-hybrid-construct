@@ -125,14 +125,18 @@ project.buildWorkflow?.addPostBuildSteps(
   { name: "Add headers using Copywrite tool", run: "copywrite headers" }
 );
 
-const buildSteps = (project.buildWorkflow as any).preBuildSteps as JobStep[];
-buildSteps.push({
+const setupTerraformStep = {
   name: "Setup Terraform",
   uses: "hashicorp/setup-terraform",
   with: {
     terraform_wrapper: false,
   },
-});
+};
+const buildSteps = (project.buildWorkflow as any).preBuildSteps as JobStep[];
+const releaseSteps = (project.release as any).defaultBranch.workflow.jobs
+  .release.steps;
+buildSteps.push(setupTerraformStep);
+releaseSteps.splice(1, 0, setupTerraformStep);
 
 // Use pinned versions of github actions
 Object.entries(githubActionPinnedVersions).forEach(([action, sha]) => {
