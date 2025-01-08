@@ -12,6 +12,7 @@
 /.github/workflows/upgrade-cdktf.yml linguist-generated
 /.github/workflows/upgrade-jsii-typescript.yml linguist-generated
 /.github/workflows/upgrade-main.yml linguist-generated
+/.github/workflows/upgrade-projen.yml linguist-generated
 /.gitignore linguist-generated
 /.npmignore linguist-generated
 /.prettierignore linguist-generated

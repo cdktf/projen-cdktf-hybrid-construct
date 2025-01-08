@@ -11,6 +11,7 @@ import { Automerge } from "./projenrc/automerge";
 import { CustomizedLicense } from "./projenrc/customized-license";
 import { UpgradeCDKTF } from "./projenrc/upgrade-cdktf";
 import { UpgradeJSIIAndTypeScript } from "./projenrc/upgrade-jsii-typescript";
+import { UpgradeProjen } from "./projenrc/upgrade-projen";
 
 const name = "projen-cdktf-hybrid-construct";
 /** JSII and TSII should always use the same major/minor version range */
@@ -86,6 +87,7 @@ new AutoApprove(project);
 new Automerge(project);
 new UpgradeCDKTF(project);
 new UpgradeJSIIAndTypeScript(project, typescriptVersion);
+new UpgradeProjen(project);
 
 project.addTask("buildExample", {
   exec: "yarn buildExample:hybrid && yarn buildExample:terraform",
