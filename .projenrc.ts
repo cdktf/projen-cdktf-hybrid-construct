@@ -10,8 +10,11 @@ import { AutoApprove } from "./projenrc/auto-approve";
 import { Automerge } from "./projenrc/automerge";
 import { CustomizedLicense } from "./projenrc/customized-license";
 import { UpgradeCDKTF } from "./projenrc/upgrade-cdktf";
+import { UpgradeJSIIAndTypeScript } from "./projenrc/upgrade-jsii-typescript";
 
 const name = "projen-cdktf-hybrid-construct";
+/** JSII and TSII should always use the same major/minor version range */
+const typescriptVersion = "~5.4.0";
 
 const githubActionPinnedVersions = {
   "actions/checkout": "692973e3d937129bcbf40652eb9f2f61becf3332", // v4.1.7
@@ -54,8 +57,8 @@ const project = new JsiiProject({
     name: "team-tf-cdk",
     email: "github-team-tf-cdk@hashicorp.com",
   },
-  jsiiVersion: "~5.4.0",
-  typescriptVersion: "~5.4.0", // should always be the same major/minor as JSII
+  typescriptVersion,
+  jsiiVersion: typescriptVersion,
   pullRequestTemplate: false,
 });
 project.tsconfig?.exclude?.push("src/exampleCode/**");
@@ -68,6 +71,8 @@ project.addDevDeps(
   "fs-extra",
   "glob",
   "projen@^0.85.0",
+  "semver",
+  "@types/semver",
   "@types/fs-extra",
   "@types/glob",
   "@types/change-case",
@@ -79,6 +84,7 @@ new CustomizedLicense(project);
 new AutoApprove(project);
 new Automerge(project);
 new UpgradeCDKTF(project);
+new UpgradeJSIIAndTypeScript(project, typescriptVersion);
 
 project.addTask("buildExample", {
   exec: "yarn buildExample:hybrid && yarn buildExample:terraform",
