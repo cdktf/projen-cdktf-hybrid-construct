@@ -9,6 +9,9 @@ on:
     branches:
       - main
   workflow_dispatch: {}
+concurrency:
+  group: \${{ github.workflow }}
+  cancel-in-progress: false
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -39,7 +42,7 @@ jobs:
       - name: Check if version has already been tagged
         id: check_tag_exists
         run: |-
-          TAG=$(cat dist/dist/releasetag.txt)
+          TAG=$(cat dist/releasetag.txt)
           ([ ! -z "$TAG" ] && git ls-remote -q --exit-code --tags origin $TAG && (echo "exists=true" >> $GITHUB_OUTPUT)) || (echo "exists=false" >> $GITHUB_OUTPUT)
           cat $GITHUB_OUTPUT
       - name: Check for new commits
@@ -53,7 +56,7 @@ jobs:
         continue-on-error: true
       - name: Upload artifact
         if: \${{ steps.git_remote.outputs.latest_commit == github.sha }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.4.0
         with:
           name: build-artifact
           path: dist
@@ -71,7 +74,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: lts/*
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -80,10 +83,6 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
-      - name: Prepare Repository
-        run: mv dist .repo
-      - name: Collect GitHub Metadata
-        run: mv .repo/dist dist
       - name: Release
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
@@ -101,7 +100,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: lts/*
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -110,13 +109,19 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
-      - name: Prepare Repository
-        run: mv dist .repo
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: .repo
       - name: Install Dependencies
         run: cd .repo && yarn install --check-files --frozen-lockfile
+      - name: Extract build artifact
+        run: tar --strip-components=1 -xzvf dist/js/*.tgz -C .repo
+      - name: Move build artifact out of the way
+        run: mv dist dist.old
       - name: Create js artifact
         run: cd .repo && npx projen package:js
-      - name: Collect js Artifact
+      - name: Collect js artifact
         run: mv .repo/dist dist
       - name: Release
         env:
@@ -135,7 +140,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: lts/*
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
@@ -147,13 +152,19 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
-      - name: Prepare Repository
-        run: mv dist .repo
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: .repo
       - name: Install Dependencies
         run: cd .repo && yarn install --check-files --frozen-lockfile
+      - name: Extract build artifact
+        run: tar --strip-components=1 -xzvf dist/js/*.tgz -C .repo
+      - name: Move build artifact out of the way
+        run: mv dist dist.old
       - name: Create python artifact
         run: cd .repo && npx projen package:python
-      - name: Collect python Artifact
+      - name: Collect python artifact
         run: mv .repo/dist dist
       - name: Release
         env:
@@ -173,6 +184,9 @@ on:
     branches:
       - main
   workflow_dispatch: {}
+concurrency:
+  group: \${{ github.workflow }}
+  cancel-in-progress: false
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -203,7 +217,7 @@ jobs:
       - name: Check if version has already been tagged
         id: check_tag_exists
         run: |-
-          TAG=$(cat dist/dist/releasetag.txt)
+          TAG=$(cat dist/releasetag.txt)
           ([ ! -z "$TAG" ] && git ls-remote -q --exit-code --tags origin $TAG && (echo "exists=true" >> $GITHUB_OUTPUT)) || (echo "exists=false" >> $GITHUB_OUTPUT)
           cat $GITHUB_OUTPUT
       - name: Check for new commits
@@ -217,7 +231,7 @@ jobs:
         continue-on-error: true
       - name: Upload artifact
         if: \${{ steps.git_remote.outputs.latest_commit == github.sha }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.4.0
         with:
           name: build-artifact
           path: dist
@@ -235,7 +249,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: lts/*
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -244,10 +258,6 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
-      - name: Prepare Repository
-        run: mv dist .repo
-      - name: Collect GitHub Metadata
-        run: mv .repo/dist dist
       - name: Release
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
@@ -265,7 +275,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: lts/*
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -274,13 +284,19 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
-      - name: Prepare Repository
-        run: mv dist .repo
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: .repo
       - name: Install Dependencies
         run: cd .repo && yarn install --check-files --frozen-lockfile
+      - name: Extract build artifact
+        run: tar --strip-components=1 -xzvf dist/js/*.tgz -C .repo
+      - name: Move build artifact out of the way
+        run: mv dist dist.old
       - name: Create js artifact
         run: cd .repo && npx projen package:js
-      - name: Collect js Artifact
+      - name: Collect js artifact
         run: mv .repo/dist dist
       - name: Release
         env:
@@ -303,7 +319,7 @@ jobs:
           java-version: "11"
       - uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: lts/*
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -312,13 +328,19 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
-      - name: Prepare Repository
-        run: mv dist .repo
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: .repo
       - name: Install Dependencies
         run: cd .repo && yarn install --check-files --frozen-lockfile
+      - name: Extract build artifact
+        run: tar --strip-components=1 -xzvf dist/js/*.tgz -C .repo
+      - name: Move build artifact out of the way
+        run: mv dist dist.old
       - name: Create java artifact
         run: cd .repo && npx projen package:java
-      - name: Collect java Artifact
+      - name: Collect java artifact
         run: mv .repo/dist dist
       - name: Release
         env:
@@ -339,6 +361,9 @@ on:
     branches:
       - main
   workflow_dispatch: {}
+concurrency:
+  group: \${{ github.workflow }}
+  cancel-in-progress: false
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -369,7 +394,7 @@ jobs:
       - name: Check if version has already been tagged
         id: check_tag_exists
         run: |-
-          TAG=$(cat dist/dist/releasetag.txt)
+          TAG=$(cat dist/releasetag.txt)
           ([ ! -z "$TAG" ] && git ls-remote -q --exit-code --tags origin $TAG && (echo "exists=true" >> $GITHUB_OUTPUT)) || (echo "exists=false" >> $GITHUB_OUTPUT)
           cat $GITHUB_OUTPUT
       - name: Check for new commits
@@ -383,7 +408,7 @@ jobs:
         continue-on-error: true
       - name: Upload artifact
         if: \${{ steps.git_remote.outputs.latest_commit == github.sha }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.4.0
         with:
           name: build-artifact
           path: dist
@@ -403,7 +428,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: lts/*
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -412,10 +437,6 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
-      - name: Prepare Repository
-        run: mv dist .repo
-      - name: Collect GitHub Metadata
-        run: mv .repo/dist dist
       - name: Release
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
@@ -433,7 +454,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: lts/*
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -442,13 +463,19 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
-      - name: Prepare Repository
-        run: mv dist .repo
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: .repo
       - name: Install Dependencies
         run: cd .repo && yarn install --check-files --frozen-lockfile
+      - name: Extract build artifact
+        run: tar --strip-components=1 -xzvf dist/js/*.tgz -C .repo
+      - name: Move build artifact out of the way
+        run: mv dist dist.old
       - name: Create js artifact
         run: cd .repo && npx projen package:js
-      - name: Collect js Artifact
+      - name: Collect js artifact
         run: mv .repo/dist dist
       - name: Release
         env:
@@ -471,7 +498,7 @@ jobs:
           java-version: "11"
       - uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: lts/*
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -480,13 +507,19 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
-      - name: Prepare Repository
-        run: mv dist .repo
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: .repo
       - name: Install Dependencies
         run: cd .repo && yarn install --check-files --frozen-lockfile
+      - name: Extract build artifact
+        run: tar --strip-components=1 -xzvf dist/js/*.tgz -C .repo
+      - name: Move build artifact out of the way
+        run: mv dist dist.old
       - name: Create java artifact
         run: cd .repo && npx projen package:java
-      - name: Collect java Artifact
+      - name: Collect java artifact
         run: mv .repo/dist dist
       - name: Release
         env:
@@ -506,7 +539,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: lts/*
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
@@ -518,13 +551,19 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
-      - name: Prepare Repository
-        run: mv dist .repo
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: .repo
       - name: Install Dependencies
         run: cd .repo && yarn install --check-files --frozen-lockfile
+      - name: Extract build artifact
+        run: tar --strip-components=1 -xzvf dist/js/*.tgz -C .repo
+      - name: Move build artifact out of the way
+        run: mv dist dist.old
       - name: Create python artifact
         run: cd .repo && npx projen package:python
-      - name: Collect python Artifact
+      - name: Collect python artifact
         run: mv .repo/dist dist
       - name: Release
         env:
@@ -541,7 +580,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: lts/*
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 6.x
@@ -553,13 +592,19 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
-      - name: Prepare Repository
-        run: mv dist .repo
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: .repo
       - name: Install Dependencies
         run: cd .repo && yarn install --check-files --frozen-lockfile
+      - name: Extract build artifact
+        run: tar --strip-components=1 -xzvf dist/js/*.tgz -C .repo
+      - name: Move build artifact out of the way
+        run: mv dist dist.old
       - name: Create dotnet artifact
         run: cd .repo && npx projen package:dotnet
-      - name: Collect dotnet Artifact
+      - name: Collect dotnet artifact
         run: mv .repo/dist dist
       - name: Release
         env:
@@ -713,6 +758,7 @@ exports[`TerraformModule snapshot: .eslintrc.json 1`] = `
 exports[`TerraformModule snapshot: .gitattributes 1`] = `
 "# ~~ Generated by projen. To modify, edit .projenrc.ts and run "npx projen".
 
+* text=auto eol=lf
 *.snap linguist-generated
 /.eslintrc.json linguist-generated
 /.gitattributes linguist-generated
@@ -774,26 +820,26 @@ jobs:
         id: self_mutation
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo "self_mutation_happened=true" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo "self_mutation_happened=true" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.self_mutation.outputs.self_mutation_happened
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.4.0
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
       - name: Fail build on mutation
         if: steps.self_mutation.outputs.self_mutation_happened
         run: |-
           echo "::error::Files were changed during build (see build log). If this was triggered from a fork, you will need to update your branch."
-          cat .repo.patch
+          cat repo.patch
           exit 1
       - name: Backup artifact permissions
         run: cd dist && getfacl -R . > permissions-backup.acl
         continue-on-error: true
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.4.0
         with:
           name: build-artifact
           path: dist
@@ -814,10 +860,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo "Empty patch. Skipping."'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
         run: |-
           git config user.name "github-actions"
@@ -832,12 +878,13 @@ jobs:
   package-js:
     needs: build
     runs-on: ubuntu-latest
-    permissions: {}
-    if: "! needs.build.outputs.self_mutation_happened"
+    permissions:
+      contents: read
+    if: \${{ !needs.build.outputs.self_mutation_happened }}
     steps:
       - uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: lts/*
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -846,13 +893,21 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
-      - name: Prepare Repository
-        run: mv dist .repo
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: \${{ github.event.pull_request.head.ref }}
+          repository: \${{ github.event.pull_request.head.repo.full_name }}
+          path: .repo
       - name: Install Dependencies
         run: cd .repo && yarn install --check-files --frozen-lockfile
+      - name: Extract build artifact
+        run: tar --strip-components=1 -xzvf dist/js/*.tgz -C .repo
+      - name: Move build artifact out of the way
+        run: mv dist dist.old
       - name: Create js artifact
         run: cd .repo && npx projen package:js
-      - name: Collect js Artifact
+      - name: Collect js artifact
         run: mv .repo/dist dist
 "
 `;
@@ -898,6 +953,9 @@ on:
     branches:
       - main
   workflow_dispatch: {}
+concurrency:
+  group: \${{ github.workflow }}
+  cancel-in-progress: false
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -928,7 +986,7 @@ jobs:
       - name: Check if version has already been tagged
         id: check_tag_exists
         run: |-
-          TAG=$(cat dist/dist/releasetag.txt)
+          TAG=$(cat dist/releasetag.txt)
           ([ ! -z "$TAG" ] && git ls-remote -q --exit-code --tags origin $TAG && (echo "exists=true" >> $GITHUB_OUTPUT)) || (echo "exists=false" >> $GITHUB_OUTPUT)
           cat $GITHUB_OUTPUT
       - name: Check for new commits
@@ -942,7 +1000,7 @@ jobs:
         continue-on-error: true
       - name: Upload artifact
         if: \${{ steps.git_remote.outputs.latest_commit == github.sha }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.4.0
         with:
           name: build-artifact
           path: dist
@@ -959,7 +1017,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: lts/*
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -968,10 +1026,6 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
-      - name: Prepare Repository
-        run: mv dist .repo
-      - name: Collect GitHub Metadata
-        run: mv .repo/dist dist
       - name: Release
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
@@ -989,7 +1043,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: lts/*
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -998,13 +1052,19 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
-      - name: Prepare Repository
-        run: mv dist .repo
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: .repo
       - name: Install Dependencies
         run: cd .repo && yarn install --check-files --frozen-lockfile
+      - name: Extract build artifact
+        run: tar --strip-components=1 -xzvf dist/js/*.tgz -C .repo
+      - name: Move build artifact out of the way
+        run: mv dist dist.old
       - name: Create js artifact
         run: cd .repo && npx projen package:js
-      - name: Collect js Artifact
+      - name: Collect js artifact
         run: mv .repo/dist dist
       - name: Release
         env:
@@ -1045,14 +1105,14 @@ jobs:
         id: create_patch
         run: |-
           git add .
-          git diff --staged --patch --exit-code > .repo.patch || echo "patch_created=true" >> $GITHUB_OUTPUT
+          git diff --staged --patch --exit-code > repo.patch || echo "patch_created=true" >> $GITHUB_OUTPUT
         working-directory: ./
       - name: Upload patch
         if: steps.create_patch.outputs.patch_created
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.4.0
         with:
-          name: .repo.patch
-          path: .repo.patch
+          name: repo.patch
+          path: repo.patch
           overwrite: true
   pr:
     name: Create Pull Request
@@ -1069,10 +1129,10 @@ jobs:
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
-          name: .repo.patch
+          name: repo.patch
           path: \${{ runner.temp }}
       - name: Apply patch
-        run: '[ -s \${{ runner.temp }}/.repo.patch ] && git apply \${{ runner.temp }}/.repo.patch || echo "Empty patch. Skipping."'
+        run: '[ -s \${{ runner.temp }}/repo.patch ] && git apply \${{ runner.temp }}/repo.patch || echo "Empty patch. Skipping."'
       - name: Set git identity
         run: |-
           git config user.name "github-actions"
@@ -1428,11 +1488,12 @@ exports[`TerraformModule snapshot: package.json 1`] = `
   },
   "devDependencies": {
     "@types/jest": "*",
-    "@types/node": "^18",
+    "@types/node": "ts5.4",
     "@typescript-eslint/eslint-plugin": "^7",
     "@typescript-eslint/parser": "^7",
     "cdktf": "0.20.0",
     "cdktf-cli": "~0.20.0",
+    "commit-and-tag-version": "^12",
     "constructs": "10.4.2",
     "eslint": "^8",
     "eslint-config-prettier": "*",
@@ -1448,7 +1509,6 @@ exports[`TerraformModule snapshot: package.json 1`] = `
     "jsii-rosetta": "~5.4.0",
     "prettier": "*",
     "projen": "*",
-    "standard-version": "^9",
     "ts-jest": "*",
     "ts-node": ">=10.9.1",
     "typescript": "~5.4.0",
