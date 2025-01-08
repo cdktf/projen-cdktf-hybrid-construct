@@ -128,13 +128,17 @@ describe("MyModule", () => {
 
     this.preCompileTask.exec(`npx cdktf get`, { cwd: this.srcdir });
 
-    const buildSteps = (this.buildWorkflow as any).preBuildSteps as JobStep[];
-    buildSteps.push({
+    const setupTerraformStep = {
       name: "Setup Terraform",
       uses: "hashicorp/setup-terraform",
       with: {
         terraform_wrapper: false,
       },
-    });
+    };
+    const buildSteps = (this.buildWorkflow as any).preBuildSteps as JobStep[];
+    const releaseSteps = (this.release as any).defaultBranch.workflow.jobs
+      .release.steps;
+    buildSteps.push(setupTerraformStep);
+    releaseSteps.splice(1, 0, setupTerraformStep);
   }
 }

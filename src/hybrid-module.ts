@@ -375,14 +375,18 @@ app.synth();
       this.gitignore.addPatterns(`${constructExampleFolder}/cdktf.out`);
     }
 
-    const buildSteps = (this.buildWorkflow as any).preBuildSteps as JobStep[];
-    buildSteps.push({
+    const setupTerraformStep = {
       name: "Setup Terraform",
       uses: "hashicorp/setup-terraform",
       with: {
         terraform_wrapper: false,
       },
-    });
+    };
+    const buildSteps = (this.buildWorkflow as any).preBuildSteps as JobStep[];
+    const releaseSteps = (this.release as any).defaultBranch.workflow.jobs
+      .release.steps;
+    buildSteps.push(setupTerraformStep);
+    releaseSteps.splice(1, 0, setupTerraformStep);
 
     this.gitignore.addPatterns("src/.gen", "src/cdktf.out", "src/modules");
     this.compileTask.prependExec("npx cdktf get", {
