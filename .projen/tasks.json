@@ -308,13 +308,13 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/change-case,@types/fs-extra,@types/glob,@types/jest,comment-json,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,fs-extra,glob,jest,jsii-diff,jsii-docgen,jsii-pacmak,prettier,ts-jest,change-case"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/change-case,@types/fs-extra,@types/glob,@types/jest,@types/semver,comment-json,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,fs-extra,glob,jest,jsii-diff,jsii-docgen,jsii-pacmak,prettier,semver,ts-jest,change-case"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @types/change-case @types/fs-extra @types/glob @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser comment-json constructs eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint fs-extra glob jest jest-junit jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii prettier projen standard-version ts-jest ts-node typescript change-case"
+          "exec": "yarn upgrade @types/change-case @types/fs-extra @types/glob @types/jest @types/node @types/semver @typescript-eslint/eslint-plugin @typescript-eslint/parser comment-json constructs eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint fs-extra glob jest jest-junit jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii prettier projen semver standard-version ts-jest ts-node typescript change-case"
         },
         {
           "exec": "npx projen"
