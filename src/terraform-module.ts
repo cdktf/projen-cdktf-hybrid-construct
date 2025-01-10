@@ -59,6 +59,9 @@ export class TerraformModule extends ConstructLibrary {
       ...options,
       eslintOptions: Object.assign({}, options.eslintOptions, {
         lintProjenRc: false,
+        // Necessary due to this bug: https://github.com/projen/projen/issues/3950#issuecomment-2483442005
+        // If this bug gets fixed, the below line should be able to be removed
+        fileExtensions: [],
       }),
       postBuildSteps: [],
       jsiiVersion: "~5.5.0",
