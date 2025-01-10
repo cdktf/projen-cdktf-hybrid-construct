@@ -63,6 +63,12 @@ const project = new JsiiProject({
   typescriptVersion,
   jsiiVersion: typescriptVersion,
   pullRequestTemplate: false,
+  // Necessary due to this bug: https://github.com/projen/projen/issues/3950#issuecomment-2483442005
+  // If this bug gets fixed, the below `eslintOptions` section should be able to be removed
+  eslintOptions: {
+    fileExtensions: [],
+    dirs: ["src", "test", "projenrc", ".projenrc.ts"],
+  },
 });
 project.tsconfig?.exclude?.push("src/exampleCode/**");
 project.tsconfig?.exclude?.push("example/**");
