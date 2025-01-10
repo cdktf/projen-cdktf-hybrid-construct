@@ -143,6 +143,11 @@
     },
     {
       "name": "constructs",
+      "version": "10.3.0",
+      "type": "override"
+    },
+    {
+      "name": "constructs",
       "version": ">= 10.3.0",
       "type": "peer"
     },

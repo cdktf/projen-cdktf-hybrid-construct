@@ -86,6 +86,10 @@ project.addDevDeps(
   "ts-node@10.9.1",
   "comment-json"
 );
+// This gets rid of the following error during the build » package » package-all » package:js step:
+// Error: Conflicting versions of constructs in type system: previously loaded 10.3.0, trying to load 10.4.2
+// It is not clear why the above error occurs; none of our other Projen projects have this problem
+project.package.addPackageResolutions(`constructs@${constructsVersion}`);
 
 new CustomizedLicense(project);
 new AutoApprove(project);
