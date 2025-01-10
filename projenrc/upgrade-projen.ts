@@ -16,7 +16,7 @@ export class UpgradeProjen {
     if (!workflow) throw new Error("no workflow defined");
 
     workflow.on({
-      schedule: [{ cron: "13 2 10 * *" }], // Runs once a month
+      schedule: [{ cron: "13 2 10 */2 *" }], // Runs every other month
       workflowDispatch: {}, // allow manual triggering
     });
 
@@ -62,7 +62,7 @@ export class UpgradeProjen {
           },
           {
             name: "Run upgrade script",
-            run: "scripts/update-projen.sh $NEW_VERSION",
+            run: "scripts/update-projen.sh ${{ steps.latest_version.outputs.value }}",
           },
           {
             name: "Create Pull Request",
