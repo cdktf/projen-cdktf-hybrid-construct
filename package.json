@@ -50,7 +50,7 @@
     "@typescript-eslint/parser": "^7",
     "comment-json": "^4.2.5",
     "commit-and-tag-version": "^12",
-    "constructs": "10.4.2",
+    "constructs": "10.3.0",
     "eslint": "^8",
     "eslint-config-prettier": "^8.10.0",
     "eslint-import-resolver-typescript": "^2.7.1",
@@ -73,7 +73,7 @@
     "typescript": "~5.5.0"
   },
   "peerDependencies": {
-    "constructs": "^10.4.2",
+    "constructs": ">= 10.3.0",
     "projen": ">= 0.88.0"
   },
   "dependencies": {
@@ -82,6 +82,9 @@
   "bundledDependencies": [
     "change-case"
   ],
+  "resolutions": {
+    "constructs": "10.3.0"
+  },
   "main": "lib/index.js",
   "license": "MPL-2.0",
   "publishConfig": {

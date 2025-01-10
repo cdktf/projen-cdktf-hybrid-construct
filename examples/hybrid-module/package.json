@@ -42,7 +42,7 @@
     "cdktf": "0.20.0",
     "cdktf-cli": "~0.20.0",
     "commit-and-tag-version": "^12",
-    "constructs": "10.4.2",
+    "constructs": "10.3.0",
     "eslint": "^8",
     "eslint-config-prettier": "^8.10.0",
     "eslint-import-resolver-typescript": "^2.7.1",
@@ -63,7 +63,7 @@
   },
   "peerDependencies": {
     "cdktf": ">=0.20.0",
-    "constructs": ">=10.4.2"
+    "constructs": ">=10.3.0"
   },
   "dependencies": {
     "@cdktf/tf-module-stack": ">=5.0.0"

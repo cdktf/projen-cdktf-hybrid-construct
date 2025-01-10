@@ -14,7 +14,8 @@ import { UpgradeJSIIAndTypeScript } from "./projenrc/upgrade-jsii-typescript";
 import { UpgradeProjen } from "./projenrc/upgrade-projen";
 
 const name = "projen-cdktf-hybrid-construct";
-/** JSII and TSII should always use the same major/minor version range */
+const constructsVersion = "10.3.0";
+/** JSII and TS should always use the same major/minor version range */
 const typescriptVersion = "~5.5.0";
 const projenVersion = "0.88.0";
 
@@ -67,12 +68,16 @@ project.tsconfig?.exclude?.push("src/exampleCode/**");
 project.tsconfig?.exclude?.push("example/**");
 project.tsconfig?.exclude?.push("examples/**");
 
-project.addPeerDeps(`projen@>= ${projenVersion}`, "constructs@^10.4.2");
+project.addPeerDeps(
+  `projen@>= ${projenVersion}`,
+  `constructs@>= ${constructsVersion}`
+);
 project.addBundledDeps("change-case");
 project.addDevDeps(
   "fs-extra",
   "glob",
   `projen@${projenVersion}`,
+  `constructs@${constructsVersion}`,
   "semver",
   "@types/semver",
   "@types/fs-extra",
@@ -81,6 +86,10 @@ project.addDevDeps(
   "ts-node@10.9.1",
   "comment-json"
 );
+// This gets rid of the following error during the build » package » package-all » package:js step:
+// Error: Conflicting versions of constructs in type system: previously loaded 10.3.0, trying to load 10.4.2
+// It is not clear why the above error occurs; none of our other Projen projects have this problem
+project.package.addPackageResolutions(`constructs@${constructsVersion}`);
 
 new CustomizedLicense(project);
 new AutoApprove(project);

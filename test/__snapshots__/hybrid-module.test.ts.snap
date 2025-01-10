@@ -892,7 +892,7 @@ exports[`HybridModule snapshot: package.json 1`] = `
     "cdktf": "0.20.0",
     "cdktf-cli": "~0.20.0",
     "commit-and-tag-version": "^12",
-    "constructs": "10.4.2",
+    "constructs": "10.3.0",
     "eslint": "^8",
     "eslint-config-prettier": "*",
     "eslint-import-resolver-typescript": "*",
@@ -979,7 +979,7 @@ exports[`HybridModule snapshot: package.json 1`] = `
   "name": "my-module",
   "peerDependencies": {
     "cdktf": ">=0.20.0",
-    "constructs": ">=10.4.2",
+    "constructs": ">=10.3.0",
   },
   "publishConfig": {
     "access": "public",

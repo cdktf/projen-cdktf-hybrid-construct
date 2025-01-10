@@ -37,7 +37,7 @@ export interface HybridModuleOptions extends ConstructLibraryOptions {
 
   /**
    * Construct version to use
-   * @default "^10.0.107"
+   * @default "^10.3.0"
    */
   readonly constructVersion?: string;
 
@@ -180,7 +180,7 @@ export class HybridModule extends JsiiProject {
       jsiiVersion: "~5.5.0",
       typescriptVersion: "~5.5.0", // should always be the same major/minor as JSII
     });
-    const constructVersion = options.constructVersion || "10.4.2";
+    const constructVersion = options.constructVersion || "10.3.0";
     const cdktfVersion = options.cdktfVersion || "0.20.0";
 
     console.log({ cdktfVersion, constructVersion });
@@ -191,6 +191,7 @@ export class HybridModule extends JsiiProject {
     this.addDevDeps(
       `cdktf@~${cdktfVersion}`,
       `cdktf-cli@~${cdktfVersion}`,
+      `constructs@${constructVersion}`,
       "ts-node@>=10.9.1",
       "jsii-docgen@^10.0.0"
     );
