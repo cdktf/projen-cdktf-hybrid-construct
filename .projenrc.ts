@@ -14,7 +14,8 @@ import { UpgradeJSIIAndTypeScript } from "./projenrc/upgrade-jsii-typescript";
 import { UpgradeProjen } from "./projenrc/upgrade-projen";
 
 const name = "projen-cdktf-hybrid-construct";
-/** JSII and TSII should always use the same major/minor version range */
+const constructsVersion = "10.3.0";
+/** JSII and TS should always use the same major/minor version range */
 const typescriptVersion = "~5.5.0";
 const projenVersion = "0.88.0";
 
@@ -67,12 +68,16 @@ project.tsconfig?.exclude?.push("src/exampleCode/**");
 project.tsconfig?.exclude?.push("example/**");
 project.tsconfig?.exclude?.push("examples/**");
 
-project.addPeerDeps(`projen@>= ${projenVersion}`, "constructs@^10.4.2");
+project.addPeerDeps(
+  `projen@>= ${projenVersion}`,
+  `constructs@>= ${constructsVersion}`
+);
 project.addBundledDeps("change-case");
 project.addDevDeps(
   "fs-extra",
   "glob",
   `projen@${projenVersion}`,
+  `constructs@${constructsVersion}`,
   "semver",
   "@types/semver",
   "@types/fs-extra",

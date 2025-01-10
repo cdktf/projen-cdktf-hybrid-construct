@@ -5593,7 +5593,7 @@ public readonly constructVersion: string;
 ```
 
 - *Type:* string
-- *Default:* "^10.0.107"
+- *Default:* "^10.3.0"
 
 Construct version to use.
 
@@ -8231,7 +8231,7 @@ public readonly constructVersion: string;
 ```
 
 - *Type:* string
-- *Default:* "^10.0.107"
+- *Default:* "^10.3.0"
 
 Construct version to use.
 
