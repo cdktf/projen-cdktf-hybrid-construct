@@ -3,5 +3,5 @@
 
 // To learn more about testing see cdk.tf/testing
 describe("MyModule", () => {
-  it.todo("should be tested");
+  it.todo("should be tested")
 });
