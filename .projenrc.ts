@@ -84,8 +84,6 @@ project.addDevDeps(
   "glob",
   `projen@${projenVersion}`,
   `constructs@${constructsVersion}`,
-  "semver",
-  "@types/semver",
   "@types/fs-extra",
   "@types/glob",
   "@types/change-case",
