@@ -31,7 +31,7 @@ export class UpgradeProjen {
         steps: [
           {
             name: "Checkout",
-            uses: "actions/checkout@v3",
+            uses: "actions/checkout",
           },
           {
             name: "Setup Terraform",
@@ -42,7 +42,10 @@ export class UpgradeProjen {
           },
           {
             name: "Setup Node.js",
-            uses: "actions/setup-node@v3",
+            uses: "actions/setup-node",
+            with: {
+              "node-version": project.minNodeVersion,
+            },
           },
           {
             name: "Install",
@@ -66,7 +69,7 @@ export class UpgradeProjen {
           },
           {
             name: "Create Pull Request",
-            uses: "peter-evans/create-pull-request@v3",
+            uses: "peter-evans/create-pull-request",
             with: {
               "commit-message":
                 "chore(deps)!: increase minimum required version of Projen to ${{ steps.latest_version.outputs.short }}",

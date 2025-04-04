@@ -31,7 +31,7 @@ export class UpgradeCDKTF {
         steps: [
           {
             name: "Checkout",
-            uses: "actions/checkout@v3",
+            uses: "actions/checkout",
           },
           {
             name: "Setup Terraform",
@@ -42,7 +42,10 @@ export class UpgradeCDKTF {
           },
           {
             name: "Setup Node.js",
-            uses: "actions/setup-node@v3",
+            uses: "actions/setup-node",
+            with: {
+              "node-version": project.minNodeVersion,
+            },
           },
           {
             name: "Install",
