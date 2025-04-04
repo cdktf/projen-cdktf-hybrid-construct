@@ -57,6 +57,7 @@ export class UpgradeJSIIAndTypeScript {
           },
           {
             name: "Get current JSII version",
+            id: "current_version",
             run: [
               `CURRENT_VERSION=$(npm list jsii --depth=0 --json | jq -r '.dependencies.jsii.version')`,
               `CURRENT_VERSION_SHORT=$(cut -d "." -f 1,2 <<< "$CURRENT_VERSION")`,
