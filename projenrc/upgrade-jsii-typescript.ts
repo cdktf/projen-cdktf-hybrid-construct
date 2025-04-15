@@ -73,7 +73,7 @@ export class UpgradeJSIIAndTypeScript {
           {
             name: "Get the earliest supported JSII version whose EOS date is at least a month away",
             if: "${{ ! inputs.version }}",
-            uses: "actions/github-script@v6",
+            uses: "actions/github-script",
             with: {
               script: [
                 `const script = require('./scripts/check-jsii-versions.js')`,
@@ -144,6 +144,13 @@ export class UpgradeJSIIAndTypeScript {
           {
             name: "Checkout",
             uses: "actions/checkout",
+          },
+          {
+            name: "Setup Terraform",
+            uses: "hashicorp/setup-terraform",
+            with: {
+              terraform_wrapper: false,
+            },
           },
           {
             name: "Setup Node.js",
