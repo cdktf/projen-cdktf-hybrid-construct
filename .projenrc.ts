@@ -16,7 +16,7 @@ import { UpgradeProjen } from "./projenrc/upgrade-projen";
 const name = "projen-cdktf-hybrid-construct";
 const constructsVersion = "10.3.0";
 /** JSII and TS should always use the same major/minor version range */
-const typescriptVersion = "~5.6.0";
+const typescriptVersion = "~5.7.0";
 const projenVersion = "0.88.0";
 
 const githubActionPinnedVersions = {
