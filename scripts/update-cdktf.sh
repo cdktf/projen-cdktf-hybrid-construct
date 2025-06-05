@@ -35,7 +35,8 @@ echo "Updating README"
 sed -i 's/`cdktf` >= .*/`cdktf` >= '"$CDKTF_VERSION"'/' "$PROJECT_ROOT/README.md"
 sed -i 's/`constructs` >= .*/`constructs` >= '"$CONSTRUCTS_VERSION"'/' "$PROJECT_ROOT/README.md"
 
-npx projen build
+CI=0 npx projen
+CI=0 npx projen build
 
 echo "Updating examples"
 # Loop through all examples and update the cdktf version
