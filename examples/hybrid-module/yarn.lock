@@ -450,10 +450,10 @@
     deepmerge "4.3.1"
     fs-extra "11.3.0"
 
-"@cdktf/tf-module-stack@>=5.0.0":
-  version "6.0.22"
-  resolved "https://registry.yarnpkg.com/@cdktf/tf-module-stack/-/tf-module-stack-6.0.22.tgz#104a55da331306b0bbd12d2215aa98382249ec29"
-  integrity sha512-toLAFgXl0dpRgzsRbS2GBfeEEEtynHzMpzeetqcxHCzCfNx4/lL4/3d2sMvScJYKIfieyP2HT59Hhttqum0TiQ==
+"@cdktf/tf-module-stack@>=7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@cdktf/tf-module-stack/-/tf-module-stack-7.0.0.tgz#eb1e913e80e9833fd17f688099c0a9b87b8143cd"
+  integrity sha512-bSkd+753tKE+gePtm79O/YuEUxxSH3CRKXK5yIZTUDrpdHin8RUCnKzJX9bCa6yPWAGS2ARgpV6brt3+90wCGg==
 
 "@cspotcode/source-map-support@^0.8.0":
   version "0.8.1"

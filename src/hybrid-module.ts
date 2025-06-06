@@ -202,7 +202,7 @@ export class HybridModule extends JsiiProject {
     this.setScript("terraform:test", "./scripts/tf-module-test.sh");
 
     // Module Entrypoint
-    this.addDeps("@cdktf/tf-module-stack@>=5.0.0");
+    this.addDeps("@cdktf/tf-module-stack@>=7.0.0");
     const moduleDocs = `
 # My Awesome Module
 

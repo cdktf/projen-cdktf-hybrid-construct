@@ -66,7 +66,7 @@
     "constructs": ">=10.4.2"
   },
   "dependencies": {
-    "@cdktf/tf-module-stack": ">=5.0.0"
+    "@cdktf/tf-module-stack": ">=7.0.0"
   },
   "keywords": [
     "cdk",
