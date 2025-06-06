@@ -21,12 +21,12 @@
     },
     {
       "name": "cdktf-cli",
-      "version": "~0.20.0",
+      "version": "~0.21.0",
       "type": "build"
     },
     {
       "name": "cdktf",
-      "version": "~0.20.0",
+      "version": "~0.21.0",
       "type": "build"
     },
     {
@@ -36,7 +36,7 @@
     },
     {
       "name": "constructs",
-      "version": "10.3.0",
+      "version": "10.4.2",
       "type": "build"
     },
     {
@@ -116,12 +116,12 @@
     },
     {
       "name": "cdktf",
-      "version": ">=0.20.0",
+      "version": ">=0.21.0",
       "type": "peer"
     },
     {
       "name": "constructs",
-      "version": ">=10.3.0",
+      "version": ">=10.4.2",
       "type": "peer"
     }
   ],

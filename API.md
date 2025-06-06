@@ -5567,7 +5567,7 @@ public readonly cdktfVersion: string;
 ```
 
 - *Type:* string
-- *Default:* "0.20.0"
+- *Default:* "0.21.0"
 
 Minimum target version of this library.
 
@@ -5593,7 +5593,7 @@ public readonly constructVersion: string;
 ```
 
 - *Type:* string
-- *Default:* "^10.3.0"
+- *Default:* "^10.4.2"
 
 Construct version to use.
 
@@ -8218,7 +8218,7 @@ public readonly cdktfVersion: string;
 ```
 
 - *Type:* string
-- *Default:* "0.20.0"
+- *Default:* "0.21.0"
 
 Minimum target version of this library.
 
@@ -8231,7 +8231,7 @@ public readonly constructVersion: string;
 ```
 
 - *Type:* string
-- *Default:* "^10.3.0"
+- *Default:* "^10.4.2"
 
 Construct version to use.
 
