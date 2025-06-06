@@ -126,7 +126,7 @@
     },
     {
       "name": "@cdktf/tf-module-stack",
-      "version": ">=5.0.0",
+      "version": ">=7.0.0",
       "type": "runtime"
     }
   ],
