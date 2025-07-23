@@ -134,6 +134,11 @@
       "type": "bundled"
     },
     {
+      "name": "@types/minimatch",
+      "version": "5.1.2",
+      "type": "override"
+    },
+    {
       "name": "constructs",
       "version": "10.4.2",
       "type": "override"
