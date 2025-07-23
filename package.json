@@ -81,6 +81,7 @@
     "change-case"
   ],
   "resolutions": {
+    "@types/minimatch": "5.1.2",
     "constructs": "10.4.2"
   },
   "main": "lib/index.js",

@@ -94,6 +94,11 @@ project.addDevDeps(
 // Error: Conflicting versions of constructs in type system: previously loaded 10.3.0, trying to load 10.4.2
 // It is not clear why the above error occurs; none of our other Projen projects have this problem
 project.package.addPackageResolutions(`constructs@${constructsVersion}`);
+// This gets rid of the following error when running `npx projen compile`:
+// error TS2688: Cannot find type definition file for 'minimatch'.
+//  The file is in the program because:
+//    Entry point for implicit type library 'minimatch'
+project.package.addPackageResolutions(`@types/minimatch@5.1.2`);
 
 new CustomizedLicense(project);
 new AutoApprove(project);
