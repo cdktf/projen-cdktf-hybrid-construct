@@ -180,8 +180,8 @@ export class HybridModule extends JsiiProject {
         fileExtensions: [],
       }),
       postBuildSteps: [],
-      jsiiVersion: "~5.7.0",
-      typescriptVersion: "~5.7.0", // should always be the same major/minor as JSII
+      jsiiVersion: "~5.8.0",
+      typescriptVersion: "~5.8.0", // should always be the same major/minor as JSII
     });
     const constructVersion = options.constructVersion || "10.4.2";
     const cdktfVersion = options.cdktfVersion || "0.21.0";
