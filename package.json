@@ -44,7 +44,7 @@
     "@types/fs-extra": "^9.0.13",
     "@types/glob": "^7.2.0",
     "@types/jest": "^29",
-    "@types/node": "ts5.7",
+    "@types/node": "ts5.8",
     "@typescript-eslint/eslint-plugin": "^7",
     "@typescript-eslint/parser": "^7",
     "comment-json": "^4.2.5",
@@ -59,16 +59,16 @@
     "glob": "^7.2.3",
     "jest": "^29",
     "jest-junit": "^15",
-    "jsii": "~5.7.0",
+    "jsii": "~5.8.0",
     "jsii-diff": "^1.113.0",
     "jsii-docgen": "^10.5.0",
     "jsii-pacmak": "^1.113.0",
-    "jsii-rosetta": "~5.7.0",
+    "jsii-rosetta": "~5.8.0",
     "prettier": "^2.8.8",
     "projen": "0.88.0",
     "ts-jest": "^29",
     "ts-node": "10.9.1",
-    "typescript": "~5.7.0"
+    "typescript": "~5.8.0"
   },
   "peerDependencies": {
     "constructs": ">= 10.4.2",
