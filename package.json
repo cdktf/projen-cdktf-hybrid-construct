@@ -47,7 +47,7 @@
     "@types/node": "ts5.8",
     "@typescript-eslint/eslint-plugin": "^7",
     "@typescript-eslint/parser": "^7",
-    "comment-json": "^4.2.5",
+    "comment-json": "^4.3.0",
     "commit-and-tag-version": "^12",
     "constructs": "10.4.2",
     "eslint": "^8",
